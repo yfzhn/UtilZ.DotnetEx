@@ -1,0 +1,38 @@
+﻿<Window x:Class="CoreWpfApp.TestMemoryCacheEx"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:utilz="clr-namespace:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls;assembly=UtilZ.Dotnet.WindowsDesktopEx"
+        xmlns:local="clr-namespace:CoreWpfApp"
+        mc:Ignorable="d"
+        Title="TestMemoryCacheEx" Height="600" Width="800"
+        WindowStartupLocation="CenterScreen"
+        Loaded="Window_Loaded">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Orientation="Horizontal">
+            <StackPanel.Resources>
+                <Style TargetType="Button">
+                    <Setter Property="Width" Value="80"/>
+                    <Setter Property="Height" Value="30"/>
+                    <Setter Property="Margin" Value="2"/>
+                </Style>
+            </StackPanel.Resources>
+
+            <Button Content="Get" x:Name="btnGet" Click="btnGet_Click"/>
+            <Button Content="Add" x:Name="btnAdd" Click="btnAdd_Click"/>
+            <Button Content="Set" x:Name="btnSet" Click="btnSet_Click"/>
+            <Button Content="Remove" x:Name="btnRemove" Click="btnRemove_Click"/>
+            <Button Content="Clear" x:Name="btnClear" Click="btnClear_Click"/>
+            <Button Content="ClearLog" x:Name="btnClearLog" Click="btnClearLog_Click"/>
+        </StackPanel>
+
+
+        <utilz:LogControl Grid.Row="1" x:Name="logControl"/>
+    </Grid>
+</Window>

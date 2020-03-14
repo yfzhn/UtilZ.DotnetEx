@@ -1,0 +1,68 @@
+﻿<UserControl x:Class="UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.UCCabinetEmptyUCalibrationControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls"
+             mc:Ignorable="d" 
+             Height="22.225" Width="271.3">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="UCCabinetUResourceDictionary.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+
+            <Style x:Key="screwHolesStytle" TargetType="Ellipse" BasedOn="{StaticResource screwHolesStyleBase}">
+                <Setter Property="Fill" Value="Transparent"/>
+            </Style>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="15"/>
+            <ColumnDefinition Width="13.65"/>
+            <ColumnDefinition Width="214"/>
+            <ColumnDefinition Width="13.65"/>
+            <ColumnDefinition Width="15"/>
+        </Grid.ColumnDefinitions>
+
+        <Border Grid.Column="0" BorderThickness="0,0,0,0">
+            <TextBlock Text="{Binding Path=Index}" HorizontalAlignment="Center" Foreground="#B8B9BA"/>
+        </Border>
+
+        <Border Grid.Column="1" BorderThickness="1,1,0,1">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.5*"/>
+                    <RowDefinition Height="0.5*"/>
+                </Grid.RowDefinitions>
+
+                <Rectangle StrokeThickness="0" Fill="Gray" Opacity="0.5" Grid.Row="0" Grid.RowSpan="2"/>
+
+                <Ellipse Grid.Row="0"/>
+                <Ellipse Grid.Row="1"/>
+            </Grid>
+        </Border>
+
+
+
+        <Border Grid.Column="3" BorderThickness="0,1,1,1">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.5*"/>
+                    <RowDefinition Height="0.5*"/>
+                </Grid.RowDefinitions>
+
+                <Rectangle StrokeThickness="0" Fill="Gray" Opacity="0.5" Grid.Row="0" Grid.RowSpan="2"/>
+
+                <Ellipse Grid.Row="0"/>
+                <Ellipse Grid.Row="1"/>
+            </Grid>
+        </Border>
+
+        <Border Grid.Column="4" BorderThickness="0">
+            <TextBlock Text="{Binding Path=Index}" HorizontalAlignment="Center" Foreground="#B8B9BA"/>
+        </Border>
+    </Grid>
+</UserControl>

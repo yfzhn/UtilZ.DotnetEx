@@ -1,0 +1,147 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<logConfig>
+  <!--Trace,Debug,Info,Warn,Error,Fatal,Off-->
+  <loger name="" level="Trace" enable="true">
+    <!--FileAppender[F],RedirectAppender[R],ConsoleAppender[C],DatabaseAppender[D],MailAppender[M],SystemLogAppender[S]-->
+    <!--<appender name="fileAppender" enable="true" type="UtilZ.Dotnet.Ex.Log.Appender.FileAppender,UtilZ.Dotnet.Ex">-->
+    <appender name="fileAppender" enable="true" type="F">
+      <!--<param name="Layout" value="%d %l %e %c 堆栈:%s" des="日志布局"/>-->
+      <param name="DateFormat" value="yyyy-MM-dd HH:mm:ss" des="时间格式"/>
+      <param name="LevelMap" value="Info:信息测试够狠;Warn:warning" des="日志级别名称映射,为空使用内置映射"/>
+      <param name="SeparatorCount" value="140" des="分隔线长度,0表示无分隔线"/>
+      <param name="EnableOutputCache" value="false" des="是否启用日志输出缓存,默认为true[true:启用;false:禁用]"/>
+
+      <param name="Levels" value="debug,info,warn"  des="过滤日志级别集合"/>
+      <param name="EventIdMin" value="-1" des="事件ID最小值(包含该值,默认值-1为不限)"/>
+      <param name="EventIdMax" value="-1" des="事件ID最大值(包含该值,默认值-1为不限)"/>
+      <param name="MatchString" value="" des="消息匹配指定的字符串才被记录,为空或null不匹配(默认为null)"/>
+      <param name="MatchExceptionType" value="" des="要记录的异常的类型为指定类型或其子类才被记录,为null不匹配(默认为null)"/>
+
+
+      <param name="Days" value="7"  des="日志保留天数"/>
+      <param name="MaxFileCount" value="-1" des="MaxSizeRollBackups最多产生的日志文件数，超过则只保留最新的n个,－1为不限文件数"/>
+      <param name="MaxFileSize" value="10"  des="日志文件上限大小,当文件超过此值则分隔成多个日志文件,单位/KB"/>
+      <!--<param name="FilePath" value="*yyyy-MM-dd_HH_mm_ss.fffffff*.log"  des="日志存放目录"/>-->
+      <param name="FilePath" value="Log\*yyyy-MM-dd_HH_mm_ss.fffffff*.log"  des="日志存放目录"/>
+      <!--<param name="FilePath" value="Log\*yyyy-MM-dd*\*HH_mm_ss.fffffff*.log"  des="日志存放目录"/>-->
+      <!--<param name="FilePath" value="Log\*yyyy*\*MM*\*dd*\*HH_mm_ss.fffffff*.log"  des="日志存放目录"/>-->
+      <param name="IsAppend" value="true"  des="是否追加日志"/>
+      <!--<param name="SecurityPolicy" value="UtilZ.Dotnet.Ex.Log.XSecurityPolicy,UtilZ.Dotnet.Ex"  des="日志安全策略,该类型为实现接口ILogSecurityPolicy的子类,必须实现Encryption方法"/>-->
+      <param name="LockingModel" value="Exclusive"  des="锁类模型[Exclusive,InterProcess,Minimal]"/>
+    </appender>
+
+    <appender name="rootFileAppender" enable="true" type="FileAppender">
+      <!--<param name="Layout" value="%d %l %e %c 堆栈:%s" des="日志布局"/>-->
+      <param name="DateFormat" value="yyyy-MM-dd HH:mm:ss" des="时间格式"/>
+      <param name="SeparatorCount" value="140" des="分隔线长度,0表示无分隔线"/>
+
+      <param name="Levels" value="debug,info,warn"  des="过滤日志级别集合"/>
+      <param name="EventIdMin" value="-1" des="事件ID最小值(包含该值,默认值-1为不限)"/>
+      <param name="EventIdMax" value="-1" des="事件ID最大值(包含该值,默认值-1为不限)"/>
+      <param name="MatchString" value="" des="消息匹配指定的字符串才被记录,为空或null不匹配(默认为null)"/>
+      <param name="MatchExceptionType" value="" des="要记录的异常的类型为指定类型或其子类才被记录,为null不匹配(默认为null)"/>
+
+      <param name="FilePath" value="*yyyy-MM-dd_HH_mm_ss.fffffff*.log"  des="日志存放目录"/>
+      <param name="Days" value="7"  des="日志保留天数"/>
+      <param name="MaxFileCount" value="-1" des="MaxSizeRollBackups最多产生的日志文件数，超过则只保留最新的n个,－1为不限文件数"/>
+      <param name="MaxFileSize" value="10"  des="日志文件上限大小,当文件超过此值则分隔成多个日志文件,单位/MB"/>
+      <param name="IsAppend" value="true"  des="是否追加日志"/>
+      <!--<param name="SecurityPolicy" value="UtilZ.Dotnet.Ex.Log.XSecurityPolicy,UtilZ.Dotnet.Ex"  des="日志安全策略,该类型为实现接口ILogSecurityPolicy的子类,必须实现Encryption方法"/>-->
+      <param name="LockingModel" value="Exclusive"  des="锁类模型[Exclusive,InterProcess,Minimal]"/>
+    </appender>
+
+    <appender name="absFileAppender" enable="true" type="F">
+      <!--<appender name="absFileAppender" enable="true" type="UtilZ.Dotnet.Ex.Log.Appender.FileAppender,UtilZ.Dotnet.Ex">    
+      <param name="Layout" value="%d %l %e %c 堆栈:%s" des="日志布局"/>-->
+      <param name="DateFormat" value="yyyy-MM-dd HH:mm:ss" des="时间格式"/>
+      <param name="SeparatorCount" value="140" des="分隔线长度,0表示无分隔线"/>
+
+      <param name="Levels" value="debug,info,warn"  des="过滤日志级别集合"/>
+      <param name="EventIdMin" value="-1" des="事件ID最小值(包含该值,默认值-1为不限)"/>
+      <param name="EventIdMax" value="-1" des="事件ID最大值(包含该值,默认值-1为不限)"/>
+      <param name="MatchString" value="" des="消息匹配指定的字符串才被记录,为空或null不匹配(默认为null)"/>
+      <param name="MatchExceptionType" value="" des="要记录的异常的类型为指定类型或其子类才被记录,为null不匹配(默认为null)"/>
+
+      <param name="FilePath" value="G:\Tmp\Log\*yyyy-MM-dd_HH_mm_ss.fffffff*.log"  des="日志存放目录"/>
+      <param name="Days" value="7"  des="日志保留天数"/>
+      <param name="MaxFileCount" value="-1" des="MaxSizeRollBackups最多产生的日志文件数，超过则只保留最新的n个,－1为不限文件数"/>
+      <param name="MaxFileSize" value="10"  des="日志文件上限大小,当文件超过此值则分隔成多个日志文件,单位/MB"/>
+      <param name="IsAppend" value="true"  des="是否追加日志"/>
+      <!--<param name="SecurityPolicy" value="UtilZ.Dotnet.Ex.Log.XSecurityPolicy,UtilZ.Dotnet.Ex"  des="日志安全策略,该类型为实现接口ILogSecurityPolicy的子类,必须实现Encryption方法"/>-->
+      <param name="LockingModel" value="Minimal"  des="锁类模型[Exclusive,InterProcess,Minimal]"/>
+    </appender>
+
+
+    <!--<appender name="redirectAppender" enable="true" type="UtilZ.Dotnet.Ex.Log.Appender.RedirectAppender,UtilZ.Dotnet.Ex">-->
+    <appender name="redirectAppender" enable="true" type="R">
+      <param name="EnableOutputCache" value="true" des="是否启用日志输出缓存,默认为false[true:启用;false:禁用]"/>
+    </appender>
+
+    <!--<appender name="ConsoleAppender" enable="true" type="UtilZ.Dotnet.Ex.Log.Appender.ConsoleAppender,UtilZ.Dotnet.Ex">-->
+    <appender name="ConsoleAppender" enable="true" type="ConsoleAppender">
+      <param name="SeparatorCount" value="0" des="分隔线长度,0表示无分隔线"/>
+      <param name="EnableOutputCache" value="true" des="是否启用日志输出缓存,默认为false[true:启用;false:禁用]"/>
+    </appender>
+
+    <appender name="MyDocumentsfileAppenderSpecDir" enable="true" type="F">
+      <param name="Layout" value="" des="日志布局"/>
+      <param name="DateFormat" value="yyyy_MM_dd_HH:mm:ss.ff" des="时间格式"/>
+      <param name="SeparatorCount" value="140" des="分隔线长度,0表示无分隔线"/>
+
+      <param name="Levels" value="debug,info,warn"  des="过滤日志级别集合"/>
+      <param name="EventIdMin" value="-1" des="事件ID最小值(包含该值,默认值为不限)"/>
+      <param name="EventIdMax" value="-1" des="事件ID最大值(包含该值,默认值为不限)"/>
+      <param name="MatchString" value="" des="消息匹配指定的字符串才被记录,为空或null不匹配(默认为null)"/>
+      <param name="MatchExceptionType" value="" des="要记录的异常的类型为指定类型或其子类才被记录,为null不匹配(默认为null)"/>
+
+
+      <param name="Days" value="7"  des="日志保留天数"/>
+      <param name="MaxFileCount" value="-1" des="MaxSizeRollBackups最多产生的日志文件数，超过则只保留最新的n个,－1为不限文件数"/>
+      <param name="MaxFileSize" value="10"  des="日志文件上限大小,当文件超过此值则分隔成多个日志文件,单位/MB"/>
+      <param name="FilePath" value="*MyDocuments*\Log\*yyyy-MM-dd_HH_mm_ss.fffffff*.log"  des="日志存放目录"/>
+      <param name="IsAppend" value="true"  des="是否追加日志"/>
+      <param name="SecurityPolicy" value=""  des="日志安全策略,该类型为实现接口ILogSecurityPolicy的子类,必须实现Encryption方法"/>
+      <param name="LockingModel" value="Exclusive"  des="锁类模型[Exclusive,InterProcess,Minimal]"/>
+    </appender>
+
+    <appender name="MyDocumentsfileAppenderSpecDir" enable="true" type="F">
+      <param name="Layout" value="" des="日志布局"/>
+      <param name="DateFormat" value="yyyy_MM_dd_HH:mm:ss.ff" des="时间格式"/>
+      <param name="SeparatorCount" value="140" des="分隔线长度,0表示无分隔线"/>
+
+      <param name="Levels" value="debug,info,warn"  des="过滤日志级别集合"/>
+      <param name="EventIdMin" value="-1" des="事件ID最小值(包含该值,默认值为不限)"/>
+      <param name="EventIdMax" value="-1" des="事件ID最大值(包含该值,默认值为不限)"/>
+      <param name="MatchString" value="" des="消息匹配指定的字符串才被记录,为空或null不匹配(默认为null)"/>
+      <param name="MatchExceptionType" value="" des="要记录的异常的类型为指定类型或其子类才被记录,为null不匹配(默认为null)"/>
+
+
+      <param name="Days" value="7"  des="日志保留天数"/>
+      <param name="MaxFileCount" value="-1" des="MaxSizeRollBackups最多产生的日志文件数，超过则只保留最新的n个,－1为不限文件数"/>
+      <param name="MaxFileSize" value="1"  des="日志文件上限大小,当文件超过此值则分隔成多个日志文件,单位/MB"/>
+      <param name="FilePath" value="*MyDocuments*\Log\abc.log"  des="日志存放目录"/>
+      <param name="IsAppend" value="true"  des="是否追加日志"/>
+      <param name="SecurityPolicy" value=""  des="日志安全策略,该类型为实现接口ILogSecurityPolicy的子类,必须实现Encryption方法"/>
+      <param name="LockingModel" value="InterProcess"  des="锁类模型[Exclusive,InterProcess,Minimal]"/>
+    </appender>
+  </loger>
+
+  <!--<loger name="flow" level="warn" enable="true">
+
+
+  </loger>
+
+  <loger name="loginfo" level="debug"  enable="true">
+    <appender name="fileAppender" type="UtilZ.Dotnet.Ex.Log.Appender.FileAppender,UtilZ.Dotnet.Ex">
+      <param name="RollingStyle" value="Date" />
+      <param name="FilterFrom" value="info" />
+      <param name="FilterTo" value="error" />
+    </appender>
+
+    <appender name="mailAppender" type="UtilZ.Dotnet.Ex.Log.Appender.FileAppender,UtilZ.Dotnet.Ex">
+      <param name="RollingStyle" value="Date" />
+      <param name="FilterFrom" value="error" />
+      <param name="FilterTo" value="faltal" />
+    </appender>
+  </loger>-->
+</logConfig>

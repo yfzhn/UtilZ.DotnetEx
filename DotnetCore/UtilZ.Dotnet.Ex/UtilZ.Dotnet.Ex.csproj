@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DefineConstants>TRACE;CORE</DefineConstants>
+  </PropertyGroup>
+
+  <Import Project="..\..\SharedProject\UtilZ.Dotnet.Ex\UtilZ.Dotnet.Ex.projitems" Label="Shared" />
+
+</Project>

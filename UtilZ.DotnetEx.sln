@@ -1,0 +1,83 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29806.167
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dotnet", "Dotnet", "{468CF7E8-BFF8-45B7-9D2C-B83C8C7918E4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DotnetCore", "DotnetCore", "{86110AB5-95ED-4462-83A6-DDFC4CCE72A9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SharedProject", "SharedProject", "{75447F14-A949-4C27-ABD3-F56B2A341383}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{D3C4C474-2ED3-4734-819D-E5C235014666}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UtilZ.Dotnet.Ex", "DotnetCore\UtilZ.Dotnet.Ex\UtilZ.Dotnet.Ex.csproj", "{F87FE451-7548-4CEB-8632-7370B5A18BE2}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "UtilZ.Dotnet.Ex", "SharedProject\UtilZ.Dotnet.Ex\UtilZ.Dotnet.Ex.shproj", "{6553DE9A-3810-468E-A690-7B154B6AB135}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UtilZ.Dotnet.Ex", "Dotnet\UtilZ.Dotnet.Ex\UtilZ.Dotnet.Ex.csproj", "{55847880-1C12-48D9-B3D7-5BAEE632C3E7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UtilZ.Dotnet.WindowsDesktopEx", "DotnetCore\UtilZ.Dotnet.WindowsDesktopEx\UtilZ.Dotnet.WindowsDesktopEx.csproj", "{79985894-9990-4ADF-88F4-C228A120712E}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "UtilZ.Dotnet.WindowsDesktopEx", "SharedProject\UtilZ.Dotnet.WindowsDesktopEx\UtilZ.Dotnet.WindowsDesktopEx.shproj", "{F04388D2-1217-48EF-8C2A-62D8C0B86953}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UtilZ.Dotnet.WindowsDesktopEx", "Dotnet\UtilZ.Dotnet.WindowsDesktopEx\UtilZ.Dotnet.WindowsDesktopEx.csproj", "{4B7B4CEE-5D03-4727-9D39-E4EFF830FAE1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoreWpfApp", "Test\CoreWpfApp\CoreWpfApp.csproj", "{B09AD787-22A2-4A86-B3AA-B99992B260F8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotnetWinFormApp", "Test\DotnetWinFormApp\DotnetWinFormApp.csproj", "{6A7444A1-88F9-4773-A61C-22DF9700A7E6}"
+EndProject
+Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		SharedProject\UtilZ.Dotnet.WindowsDesktopEx\UtilZ.Dotnet.WindowsDesktopEx.projitems*{4b7b4cee-5d03-4727-9d39-e4eff830fae1}*SharedItemsImports = 4
+		SharedProject\UtilZ.Dotnet.Ex\UtilZ.Dotnet.Ex.projitems*{55847880-1c12-48d9-b3d7-5baee632c3e7}*SharedItemsImports = 4
+		SharedProject\UtilZ.Dotnet.Ex\UtilZ.Dotnet.Ex.projitems*{6553de9a-3810-468e-a690-7b154b6ab135}*SharedItemsImports = 13
+		SharedProject\UtilZ.Dotnet.WindowsDesktopEx\UtilZ.Dotnet.WindowsDesktopEx.projitems*{f04388d2-1217-48ef-8c2a-62d8c0b86953}*SharedItemsImports = 13
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F87FE451-7548-4CEB-8632-7370B5A18BE2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F87FE451-7548-4CEB-8632-7370B5A18BE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F87FE451-7548-4CEB-8632-7370B5A18BE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F87FE451-7548-4CEB-8632-7370B5A18BE2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{55847880-1C12-48D9-B3D7-5BAEE632C3E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55847880-1C12-48D9-B3D7-5BAEE632C3E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55847880-1C12-48D9-B3D7-5BAEE632C3E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55847880-1C12-48D9-B3D7-5BAEE632C3E7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{79985894-9990-4ADF-88F4-C228A120712E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{79985894-9990-4ADF-88F4-C228A120712E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{79985894-9990-4ADF-88F4-C228A120712E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{79985894-9990-4ADF-88F4-C228A120712E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4B7B4CEE-5D03-4727-9D39-E4EFF830FAE1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4B7B4CEE-5D03-4727-9D39-E4EFF830FAE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4B7B4CEE-5D03-4727-9D39-E4EFF830FAE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4B7B4CEE-5D03-4727-9D39-E4EFF830FAE1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B09AD787-22A2-4A86-B3AA-B99992B260F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B09AD787-22A2-4A86-B3AA-B99992B260F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B09AD787-22A2-4A86-B3AA-B99992B260F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B09AD787-22A2-4A86-B3AA-B99992B260F8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6A7444A1-88F9-4773-A61C-22DF9700A7E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A7444A1-88F9-4773-A61C-22DF9700A7E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A7444A1-88F9-4773-A61C-22DF9700A7E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A7444A1-88F9-4773-A61C-22DF9700A7E6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F87FE451-7548-4CEB-8632-7370B5A18BE2} = {86110AB5-95ED-4462-83A6-DDFC4CCE72A9}
+		{6553DE9A-3810-468E-A690-7B154B6AB135} = {75447F14-A949-4C27-ABD3-F56B2A341383}
+		{55847880-1C12-48D9-B3D7-5BAEE632C3E7} = {468CF7E8-BFF8-45B7-9D2C-B83C8C7918E4}
+		{79985894-9990-4ADF-88F4-C228A120712E} = {86110AB5-95ED-4462-83A6-DDFC4CCE72A9}
+		{F04388D2-1217-48EF-8C2A-62D8C0B86953} = {75447F14-A949-4C27-ABD3-F56B2A341383}
+		{4B7B4CEE-5D03-4727-9D39-E4EFF830FAE1} = {468CF7E8-BFF8-45B7-9D2C-B83C8C7918E4}
+		{B09AD787-22A2-4A86-B3AA-B99992B260F8} = {D3C4C474-2ED3-4734-819D-E5C235014666}
+		{6A7444A1-88F9-4773-A61C-22DF9700A7E6} = {D3C4C474-2ED3-4734-819D-E5C235014666}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {082591EF-FFAA-4786-B27E-B6ADC4BB2016}
+	EndGlobalSection
+EndGlobal

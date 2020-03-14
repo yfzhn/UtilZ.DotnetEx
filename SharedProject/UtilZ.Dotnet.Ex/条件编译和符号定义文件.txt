@@ -1,0 +1,4 @@
+﻿NET4_0          .net framework4.0
+
+
+CORE			.net core

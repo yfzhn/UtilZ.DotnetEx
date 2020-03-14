@@ -1,0 +1,21 @@
+﻿<Window x:Class="CoreWpfApp.TestZoomTranslateContainerControl"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CoreWpfApp"
+        xmlns:utilz="clr-namespace:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls;assembly=UtilZ.Dotnet.WindowsDesktopEx"
+        mc:Ignorable="d"
+        Title="TestZoomTranslateContainerControl" Height="450" Width="800">
+    <Grid>
+        <utilz:ZoomTranslateContainer>
+            <utilz:ZoomTranslateContainer.Child>
+                <Grid Background="Transparent">
+                    <Rectangle Fill="Red" Width="200" Height="150"/>
+
+                    <utilz:DateTimePicker/>
+                </Grid>
+            </utilz:ZoomTranslateContainer.Child>
+        </utilz:ZoomTranslateContainer>
+    </Grid>
+</Window>

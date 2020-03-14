@@ -1,0 +1,241 @@
+﻿<UserControl x:Class="UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.UCPagingControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             xmlns:cl="clr-namespace:System.Collections;assembly=mscorlib"
+             xmlns:local="clr-namespace:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="40" d:DesignWidth="500"
+             Height="40"
+             Background="Transparent">
+    <UserControl.Resources>
+        <Style TargetType="TextBlock">
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+
+        <Style TargetType="TextBox">
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Text" Value="0"/>
+            <Setter Property="MinWidth" Value="26"/>
+            <Setter Property="Width" Value="Auto"/>
+            <Setter Property="MaxWidth" Value="80"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+
+            <!--禁用输入法,是只能输入字符-->
+            <Setter Property="InputMethod.IsInputMethodEnabled" Value="False"/>
+        </Style>
+
+        <Style x:Key="btnBase" TargetType="Button">
+            <Setter Property="Width" Value="40"/>
+            <Setter Property="Height" Value="26"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+
+        <Style x:Key="btnRightSingle" TargetType="Button" BasedOn="{StaticResource btnBase}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Grid x:Name="grid" Background="Gray">
+                            <Path Stroke="White" StrokeThickness="2" 
+                              Data="M15,6 L25,13 15,20"/>
+                        </Grid>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="grid" Property="Background" Value="Red"/>
+                            </Trigger>
+
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Opacity" Value="0.7"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="btnRightDouble" TargetType="Button" BasedOn="{StaticResource btnBase}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Grid x:Name="grid" Background="Gray">
+                            <Path Stroke="White" StrokeThickness="2" 
+                              Data="M10,6 L20,13 10,20 M20,6 L30,13 20,20"/>
+                        </Grid>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="grid" Property="Background" Value="Red"/>
+                            </Trigger>
+
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Opacity" Value="0.7"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="btnLeftSingle" TargetType="Button" BasedOn="{StaticResource btnRightSingle}">
+            <Setter Property="RenderTransform">
+                <Setter.Value>
+                    <RotateTransform CenterX="20" CenterY="13" Angle="180"/>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="btnLeftDouble" TargetType="Button" BasedOn="{StaticResource btnRightDouble}">
+            <Setter Property="RenderTransform">
+                <Setter.Value>
+                    <RotateTransform CenterX="20" CenterY="13" Angle="180"/>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="repeatButtonStyle" TargetType="RepeatButton">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="Width" Value="22"/>
+            <Setter Property="Height" Value="20"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Foreground" Value="Red"/>
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="RepeatButton">
+                        <Grid Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+
+            <!--<Style.Triggers>
+                    <Trigger Property="IsMouseOver" Value="True">
+                        <Setter Property="Background" Value="Transparent"/>
+                    </Trigger>
+                    <Trigger Property="IsPressed" Value="True">
+                        <Setter Property="Background" Value="Transparent"/>
+                    </Trigger>
+                </Style.Triggers>-->
+        </Style>
+        <!--<cl:ArrayList x:Key="list">
+            <sys:Int32>10001</sys:Int32>
+            <sys:Int32>10002</sys:Int32>
+            <sys:Int32>10003</sys:Int32>
+            <sys:Int32>10004</sys:Int32>
+        </cl:ArrayList>-->
+    </UserControl.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="20"/>
+
+            <ColumnDefinition Width="50"/>
+            <ColumnDefinition Width="50"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="50"/>
+            <ColumnDefinition Width="50"/>
+
+            <ColumnDefinition Width="55"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="20"/>
+            <ColumnDefinition Width="30"/>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Grid.Column="0" 
+                   x:Name="txtPagingInfo"
+                   Text="共0页,每页" 
+                   HorizontalAlignment="Right"
+                   Margin="0,0,5,0"/>
+
+        <TextBox x:Name="txtPageSize" 
+                 Grid.Column="1" 
+                 PreviewTextInput="TextBox_PreviewTextInput"
+                 LostFocus="txtPageSize_LostFocus" 
+                 KeyDown="txtPageSize_KeyDown"/>
+        <TextBlock Grid.Column="2" Text="条" HorizontalAlignment="Center"/>
+
+        <Button Grid.Column="3" x:Name="btnFirst" Style="{StaticResource btnLeftDouble}" ToolTip="首页" Click="btnFirst_Click"/>
+        <Button Grid.Column="4" x:Name="btnPre" Style="{StaticResource btnLeftSingle}" ToolTip="上一页" Click="btnPre_Click"/>
+
+        <!--ItemsSource="{StaticResource list}"-->
+        <ListBox Grid.Column="5" 
+                 Height="38"
+                 BorderThickness="0" 
+                 x:Name="listBoxPage" 
+                 
+                 ScrollViewer.VerticalScrollBarVisibility="Disabled" 
+                 ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel Orientation="Horizontal" IsItemsHost="True"/>
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Path=Text}" 
+                               HorizontalAlignment="Center" 
+                               VerticalAlignment="Center" 
+                               FontSize="15"/>
+                    <!--<TextBlock Text="{Binding}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="15"/>-->
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+
+            <ListBox.ItemContainerStyle>
+                <Style TargetType="ListBoxItem">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="ListBoxItem">
+                                <Border Name="ListBoxItemBorder" 
+                                        BorderThickness="1" 
+                                        BorderBrush="Gray" 
+                                        Background="White" 
+                                        Margin="1,5,1,5" 
+                                        Width="Auto" 
+                                        MinWidth="26" 
+                                        Height="26">
+                                    <ContentPresenter/>
+                                </Border>
+
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="ListBox.IsSelected" Value="True">
+                                        <Setter TargetName="ListBoxItemBorder" Property="Background" Value="Gray"/>
+                                        <Setter Property="Foreground" Value="WhiteSmoke"/>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </ListBox.ItemContainerStyle>
+        </ListBox>
+
+
+        <Button Grid.Column="6" x:Name="btnNext" Style="{StaticResource btnRightSingle}" ToolTip="下一页" Click="btnNext_Click"/>
+        <Button Grid.Column="7" x:Name="btnLast" Style="{StaticResource btnRightDouble}" ToolTip="末页" Click="btnLast_Click"/>
+
+
+
+        <TextBlock Grid.Column="8" Text="跳转到" HorizontalAlignment="Center"/>
+        <TextBox Grid.Column="9" x:Name="txtGoPageIndex" 
+                 PreviewTextInput="TextBox_PreviewTextInput"
+                 LostFocus="txtPageIndex_LostFocus"  
+                 KeyDown="txtGoPageIndex_KeyDown"/>
+        <TextBlock Grid.Column="10" Text="页" HorizontalAlignment="Center"/>
+        
+        <RepeatButton Grid.Column="11"
+                      Content="GO" 
+                      Style="{StaticResource repeatButtonStyle}"
+                      x:Name="btnGo"
+                      Click="btnGo_Click"/>
+    </Grid>
+</UserControl>

@@ -1,0 +1,414 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>f04388d2-1217-48ef-8c2a-62d8c0b86953</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>UtilZ.Dotnet.WindowsDesktopEx</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Base\FontEx.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Base\ILogControl.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Base\ImageEx.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Base\PartAsynWait\Excute\AsynExcuteCancellHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Base\PartAsynWait\Excute\PartAsynExcuteAbs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Base\PartAsynWait\Excute\PartAsynExcuteBase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Base\PartAsynWait\Excute\PartAsynExcuteFactoryBase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Base\PartAsynWait\Interface\IAsynExcuteCancell.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Base\PartAsynWait\Interface\IPartAsynExcute.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Base\PartAsynWait\Model\PartAsynExcuteResult.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Base\PartAsynWait\Model\PartAsynExcuteStatus.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Base\PartAsynWait\Model\PartAsynUIPara.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Base\PartAsynWait\Model\PartAsynUIParaProxy.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Base\PartAsynWait\Model\PartAsynWaitPara.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Base\PartAsynWait\Model\PartAsynWaitParaAbs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Base\PartAsynWait\PartAsynWaitHelperBase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Base\ProcessExHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Base\RegistryKeyEx.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Base\ScreenHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Base\Shortcut.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Base\UITextHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Base\WindowHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)NativeMethod\ICMP_ECHO_REPLY.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)NativeMethod\ICMP_OPTIONS.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)NativeMethod\NativeMethods.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Winform\Base\DropdownBox_ComboBox.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Winform\Base\DropdownBox_ToolStripComboBox.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Winform\Base\ScrollableControlEx.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Winform\Base\WindowNestProcess.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Winform\Base\WinformControlEx.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\BarChartControl.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\DataGridViewEx.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\FlowLayoutPanelZ.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\LineChartControl.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\LogControlF.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\LogControlF.Designer.cs">
+      <DependentUpon>LogControlF.cs</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\LogControl_bk.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\LogControl_bk.Designer.cs">
+      <DependentUpon>LogControl_bk.cs</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\NoneBorderForm.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\NumberTextBox.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\OpacityPanel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\PageGrid\FPageGridColumnsSetting.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\PageGrid\FPageGridColumnsSetting.designer.cs">
+      <DependentUpon>FPageGridColumnsSetting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\PageGrid\Model\DataRowClickArgs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\PageGrid\Model\DataRowSelectionChangedArgs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\PageGrid\Model\PageGridColumnSettingStatus.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\PageGrid\Model\PageInfo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\PageGrid\Model\PageSizeChangedArgs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\PageGrid\Model\QueryDataArgs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\PageGrid\PageGridControlCommon.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\PageGrid\UCPageGridControl.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\PageGrid\UCPageGridControl.designer.cs">
+      <DependentUpon>UCPageGridControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\PageGrid\UCPageGridControl_Event.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\PageGrid\UCPageGridControl_Method.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\PageGrid\UCPageGridControl_Property.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\PaintBaseControl.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\PartAsynWait\Interface\IPartAsynWaitWinform.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\PartAsynWait\PartAsynExcuteFactoryWinform.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\PartAsynWait\PartAsynWaitHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\PartAsynWait\V1\MetroShadeControl.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\PartAsynWait\V1\MetroShadeControl.designer.cs">
+      <DependentUpon>MetroShadeControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\PartAsynWait\V1\WinformPartAsynExcuteV1.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\PartAsynWait\V2\UCMetroShadeControl2.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\PartAsynWait\V2\UCMetroShadeControl2.Designer.cs">
+      <DependentUpon>UCMetroShadeControl2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\PartAsynWait\V2\WinformPartAsynExcute2.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\PartAsynWait\V3\UCMetroShadeControl3.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\PartAsynWait\V3\UCMetroShadeControl3.Designer.cs">
+      <DependentUpon>UCMetroShadeControl3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\PartAsynWait\V3\WinformPartAsynExcute3.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\PartAsynWait\V4\UCMetroShadeControl4.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\PartAsynWait\V4\UCMetroShadeControl4.Designer.cs">
+      <DependentUpon>UCMetroShadeControl4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\PartAsynWait\V4\WinformPartAsynExcute4.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\PartAsynWait\V5\ShadeControl5.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\PartAsynWait\V5\WinformPartAsynExcute5.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\PartAsynWait\WinformPartAsynExcuteBase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\PartAsynWait\WinformPartAsynExcuteHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\PartAsynWait\WinformPartAsynExcuteTypeDefine.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\PartAsynWait\WinformPartAsynWaitHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\PropertyGrid\Base\PropertyGridAttribute.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\PropertyGrid\Base\PropertyGridCollection.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\PropertyGrid\Base\PropertyGridOrderAttribute.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\PropertyGrid\Base\PropertyValueVerifyBase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\PropertyGrid\Demo\DemoLonLatTypeConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\PropertyGrid\Demo\DemoModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\PropertyGrid\Demo\DirectionEnum.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\PropertyGrid\Demo\NAddress.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\PropertyGrid\Demo\Person.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\PropertyGrid\Demo\PersonConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\PropertyGrid\Demo\PersonDemo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\PropertyGrid\Demo\PostureCommon.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\PropertyGrid\Demo\PropertyGridCustomEnumEditor.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\PropertyGrid\Demo\PropertyGridEnumControl.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\PropertyGrid\Demo\PropertyGridEnumControl.Designer.cs">
+      <DependentUpon>PropertyGridEnumControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\PropertyGrid\Demo\SexEnum.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\PropertyGrid\Interface\IPropertyGridCategoryOrder.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\PropertyGrid\Interface\IPropertyGridCollection.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\PropertyGrid\Interface\IPropertyGridDirectory.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\PropertyGrid\Interface\IPropertyGridDropDown.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\PropertyGrid\Interface\IPropertyGridFile.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\PropertyGrid\Interface\IPropertyGridOrder.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\PropertyGrid\Interface\IPropertyGridPassword.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\PropertyGrid\PropertyGridHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\PropertyGrid\TypeConverters\PropertyGridCollectionConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\PropertyGrid\TypeConverters\PropertyGridDropdownConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\PropertyGrid\TypeConverters\PropertyGridPasswordConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\PropertyGrid\TypeConverters\PropertyGridSortConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\PropertyGrid\UITypeEditors\PropertyGridDirectoryEditor.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\PropertyGrid\UITypeEditors\PropertyGridFileEditor.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\Resource.Designer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\TreeViewZ.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\UCOpacityControlBase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Winform\Interface\IControl.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Winform\Interface\IForm.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Winform\Interface\IOriginalDataShow.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Winform\Interface\IUIAction.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WPF\Base\ChromeWindowHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WPF\Base\TextBlockEx.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WPF\Base\TextBoxEx.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WPF\Base\ValueConverterAbs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WPF\Base\VisibilityBoolConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WPF\Base\WPFHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\Cabinet\CabinetDeviceUnit.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\Cabinet\UCCabinetCalibrationControl.xaml.cs">
+      <DependentUpon>UCCabinetCalibrationControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\Cabinet\UCCabinetControl.xaml.cs">
+      <DependentUpon>UCCabinetControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\Cabinet\UCCabinetDeviceControl.xaml.cs">
+      <DependentUpon>UCCabinetDeviceControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\Cabinet\UCCabinetDeviceUControl.xaml.cs">
+      <DependentUpon>UCCabinetDeviceUControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\Cabinet\UCCabinetEmptyUCalibrationControl.xaml.cs">
+      <DependentUpon>UCCabinetEmptyUCalibrationControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\Cabinet\UCCabinetEmptyUControl.xaml.cs">
+      <DependentUpon>UCCabinetEmptyUControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\Cabinet\UCCabinetRowControl.xaml.cs">
+      <DependentUpon>UCCabinetRowControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\Cabinet\UCSingleCabinetControl.xaml.cs">
+      <DependentUpon>UCSingleCabinetControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\Chart\Axis\AxisAbs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\Chart\Axis\AxisLabelLocation.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\Chart\Axis\AxisLabelOrientation.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\Chart\Axis\AxisType.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\Chart\Axis\DateTimeAxis.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\Chart\Axis\LabelAxis.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\Chart\Axis\NumberAxis.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\Chart\Base\BackgroundLabelLineSegment.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\Chart\Base\ChartCollection.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\Chart\Base\ChartConstant.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\Chart\Base\ChartDockOrientation.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\Chart\Base\IChartCollection.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\Chart\Base\PointInfo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\Chart\Base\SeriesLegendItem.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\Chart\Base\SeriesOrientation.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\Chart\ChartItem\Entity\ChartAxisDoubleValueAbs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\Chart\ChartItem\Entity\ChartAxisValueAbs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\Chart\ChartItem\Entity\ChartChildValueAbs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\Chart\ChartItem\Entity\ChartItemAbs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\Chart\ChartItem\Entity\ChartLabelValueAbs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\Chart\ChartItem\Entity\ChartNoAxisValueAbs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\Chart\ChartItem\Entity\ChartRadarValueAbs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\Chart\ChartItem\Entity\ChartValueAbs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\Chart\ChartItem\Interface\IChartAxisDoubleValue.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\Chart\ChartItem\Interface\IChartAxisValue.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\Chart\ChartItem\Interface\IChartChildValue.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\Chart\ChartItem\Interface\IChartItem.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\Chart\ChartItem\Interface\IChartLabelValue.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\Chart\ChartItem\Interface\IChartNoAxisValue.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\Chart\ChartItem\Interface\IChartRadarValue.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\Chart\ChartItem\Interface\IChartValue.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\Chart\ChartItem\Model\ChartAxisDoubleValue.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\Chart\ChartItem\Model\ChartAxisValue.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\Chart\ChartItem\Model\ChartChildValue.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\Chart\ChartItem\Model\ChartLabelValue.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\Chart\ChartItem\Model\ChartNoAxisValue.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\Chart\ChartItem\Model\ChartRadarValueAbs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\Chart\Helper\AxisHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\Chart\Helper\ChartHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\Chart\Helper\ChartStyleHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\Chart\Helper\ColorBrushHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\Chart\Legend\ChartLegendResourceDictionaryKeyConstant.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\Chart\Legend\HorizontalChartLegend.xaml.cs">
+      <DependentUpon>HorizontalChartLegend.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\Chart\Legend\IChartLegend.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\Chart\Legend\VerticalChartLegend.xaml.cs">
+      <DependentUpon>VerticalChartLegend.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\Chart\Series\ColumnSeries.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\Chart\Series\IColumnSeries.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\Chart\Series\ISeries.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\Chart\Series\LineSeries.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\Chart\Series\LineSeriesBase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\Chart\Series\PieSeries.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\Chart\Series\RadarSeries.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\Chart\Series\SegmentSeries.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\Chart\Series\SeriesAbs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\Chart\Series\StackedColumnSeries.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\Chart\Series\StepLineSeries.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\Chart\View\Chart.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\Chart\View\Chart_Common.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\Chart\View\Chart_FreezeAll.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\Chart\View\Chart_FreezeX.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\Chart\View\Chart_FreezeY.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\Chart\View\Chart_NoneFreeze.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\Chart\View\Model\AxisFreezeInfo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\Chart\View\Model\AxisFreezeType.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\Chart\View\Model\AxisXHeightInfo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\Chart\View\Model\AxisYWidthInfo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\Chart\View\Model\ChartGridRowColumnDefinition.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\Chart\View\Model\LegendAddResult.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\Chart\View\Model\RowColumnDefinitionItem.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\DateTimePicker.xaml.cs">
+      <DependentUpon>DateTimePicker.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\GifImage\GifAnimation.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\GifImage\GifFrame.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\GifImage\GifImage.xaml.cs">
+      <DependentUpon>GifImage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\GifImage\GifImageExceptionRoutedEventArgs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\GifImage\WebReadState.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\LogControl.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\NumberControl.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\NumericTextBox.xaml.cs">
+      <DependentUpon>NumericTextBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\PartAsynWait\ContainerControlType.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\PartAsynWait\PartAsynExcuteFactoryWPF.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\PartAsynWait\PartAsynWaitHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\PartAsynWait\V1\UCShadeControl1.xaml.cs">
+      <DependentUpon>UCShadeControl1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\PartAsynWait\V1\WPFPartAsynExcuteV1.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\PartAsynWait\WPFPartAsynExcuteBase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\PartAsynWait\WPFPartAsynExcuteTypeDefine.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\PartAsynWait\WPFPartAsynWaitHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\PopupEx.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\TextTrimmingAutoShowTooltipTextBlock.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\UCPagingControl.xaml.cs">
+      <DependentUpon>UCPagingControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\WaitingControls\MetroLRWaitIndicator.xaml.cs">
+      <DependentUpon>MetroLRWaitIndicator.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\WaitingControls\MetroRotaionIndicator.xaml.cs">
+      <DependentUpon>MetroRotaionIndicator.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\ZoomTranslateContainer.xaml.cs">
+      <DependentUpon>ZoomTranslateContainer.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="$(MSBuildThisFileDirectory)Resources\dropdown.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Resources\firstpage.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Resources\lastpage.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Resources\loadwait.gif" />
+    <Content Include="$(MSBuildThisFileDirectory)Resources\nextpage.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Resources\prepage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Winform\Controls\LogControlF.resx">
+      <DependentUpon>LogControlF.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Winform\Controls\LogControl_bk.resx">
+      <DependentUpon>LogControl_bk.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Winform\Controls\NoneBorderForm.resx">
+      <DependentUpon>NoneBorderForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Winform\Controls\PageGrid\FPageGridColumnsSetting.resx">
+      <DependentUpon>FPageGridColumnsSetting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Winform\Controls\PageGrid\UCPageGridControl.resx">
+      <DependentUpon>UCPageGridControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Winform\Controls\PartAsynWait\V1\MetroShadeControl.resx">
+      <DependentUpon>MetroShadeControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Winform\Controls\PartAsynWait\V2\UCMetroShadeControl2.resx">
+      <DependentUpon>UCMetroShadeControl2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Winform\Controls\PartAsynWait\V3\UCMetroShadeControl3.resx">
+      <DependentUpon>UCMetroShadeControl3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Winform\Controls\PartAsynWait\V4\UCMetroShadeControl4.resx">
+      <DependentUpon>UCMetroShadeControl4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Winform\Controls\PropertyGrid\Demo\PropertyGridEnumControl.resx">
+      <DependentUpon>PropertyGridEnumControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Winform\Controls\Resource.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="$(MSBuildThisFileDirectory)WPF\Controls\Cabinet\UCCabinetCalibrationControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)WPF\Controls\Cabinet\UCCabinetControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)WPF\Controls\Cabinet\UCCabinetDeviceControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)WPF\Controls\Cabinet\UCCabinetDeviceUControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)WPF\Controls\Cabinet\UCCabinetEmptyUCalibrationControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)WPF\Controls\Cabinet\UCCabinetEmptyUControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)WPF\Controls\Cabinet\UCCabinetRowControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)WPF\Controls\Cabinet\UCCabinetUResourceDictionary.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)WPF\Controls\Cabinet\UCSingleCabinetControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)WPF\Controls\Chart\Legend\ChartResourceDictionary.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)WPF\Controls\Chart\Legend\HorizontalChartLegend.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)WPF\Controls\Chart\Legend\VerticalChartLegend.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)WPF\Controls\DateTimePicker.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)WPF\Controls\GifImage\GifImage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)WPF\Controls\NumericTextBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)WPF\Controls\PartAsynWait\V1\UCShadeControl1.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)WPF\Controls\UCPagingControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)WPF\Controls\WaitingControls\MetroLRWaitIndicator.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)WPF\Controls\WaitingControls\MetroRotaionIndicator.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)WPF\Controls\ZoomTranslateContainer.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="$(MSBuildThisFileDirectory)WPF\Controls\Chart\ChartItem\ChartModel.vsdx" />
+  </ItemGroup>
+</Project>

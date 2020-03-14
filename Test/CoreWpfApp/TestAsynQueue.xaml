@@ -1,0 +1,52 @@
+﻿<Window x:Class="CoreWpfApp.TestAsynQueue"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CoreWpfApp"
+        mc:Ignorable="d"
+        Title="TestAsynQueue" Height="450" Width="800"
+        Loaded="Window_Loaded">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Orientation="Horizontal">
+            <StackPanel.Resources>
+                <Style TargetType="Button">
+                    <Setter Property="Width" Value="50"/>
+                    <Setter Property="Height" Value="30"/>
+                </Style>
+
+                <Style TargetType="TextBlock">
+                    <Setter Property="Width" Value="50"/>
+                    <Setter Property="Height" Value="30"/>
+                </Style>
+
+                <Style TargetType="TextBox">
+                    <Setter Property="Width" Value="50"/>
+                    <Setter Property="Height" Value="30"/>
+                </Style>
+            </StackPanel.Resources>
+
+
+            <Button Content="Start" x:Name="btnStart" Click="btnStart_Click"/>
+            <Button Content="StartProduce" x:Name="btnStartProduce" Click="btnStartProduce_Click"/>
+            <Button Content="ClearLog" x:Name="btnClearLog" Click="btnClearLog_Click"/>
+            <Button Content="Count" x:Name="btnCount" Click="btnCount_Click"/>
+
+            <TextBlock Text="生产间隔(ms)"/>
+            <TextBox x:Name="txtProduceInterval" Text="500"/>
+
+            <TextBlock Text="添加超时(ms)"/>
+            <TextBox x:Name="txtAddTimeout" Text="100"/>
+        </StackPanel>
+
+        <RichTextBox Grid.Row="1" x:Name="logControl"/>
+    </Grid>
+</Window>
+
+    
+    

@@ -1,0 +1,63 @@
+﻿<UserControl x:Class="UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.UCCabinetDeviceControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls"
+             mc:Ignorable="d" 
+             Height="22.225" d:DesignWidth="400">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="18"/>
+            <ColumnDefinition Width="271.3"/>
+        </Grid.ColumnDefinitions>
+
+        <!--<TextBlock Grid.Column="0"
+                   x:Name="tbDeviceName"
+                   Text="{Binding Path=DeviceName}" 
+                   HorizontalAlignment="Right" 
+                   TextWrapping="Wrap"
+                   Foreground="Black"
+                   LineHeight="12"
+                   LineStackingStrategy="BlockLineHeight"
+                   FontSize="15"/>-->
+        <TextBlock Grid.Column="0"
+                   x:Name="tbDeviceName"
+                   Text="{Binding Path=DeviceName}"/>
+
+        <Grid Grid.Column="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="15"/>
+                <ColumnDefinition Width="13.65"/>
+                <ColumnDefinition Width="214"/>
+                <ColumnDefinition Width="13.65"/>
+                <ColumnDefinition Width="15"/>
+            </Grid.ColumnDefinitions>
+
+            <Border x:Name="border" 
+                    Grid.Column="2" 
+                    BorderThickness="{Binding Path=DeviceBorderThickness}" 
+                    BorderBrush="{Binding Path=DeviceBorderBrush}">
+                <Border.Background>
+                    <SolidColorBrush Color="Gray" Opacity="0.4"/>
+                </Border.Background>
+                <Grid x:Name="grid" Background="{Binding Path=DeviceBackground}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="22.225"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Border Grid.Column="0" 
+                            BorderThickness="0" 
+                            Width="12.225" 
+                            Height="12.225" 
+                            HorizontalAlignment="Left" 
+                            VerticalAlignment="Top"
+                            Margin="2"
+                            Background="{Binding Path=DeviceStatusBrush}"/>
+                </Grid>
+            </Border>
+        </Grid>
+    </Grid>
+</UserControl>

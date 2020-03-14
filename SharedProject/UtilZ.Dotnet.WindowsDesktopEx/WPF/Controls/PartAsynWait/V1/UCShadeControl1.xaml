@@ -1,0 +1,55 @@
+﻿<UserControl x:Class="UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.PartAsynWait.V1.UCShadeControl1"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.PartAsynWait.V1"
+             xmlns:waitingControls="clr-namespace:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.WaitingControls"
+             mc:Ignorable="d" 
+             d:DesignHeight="200" d:DesignWidth="500"
+             MinHeight="150" MinWidth="300">
+    <Grid>
+        <Border Background="Gray" Opacity="0.3"/>
+
+        <Grid Height="150" 
+              Width="300" 
+              HorizontalAlignment="Center" 
+              VerticalAlignment="Center"
+              Background="AliceBlue">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="30"/>
+            </Grid.RowDefinitions>
+
+            <Grid.Resources>
+                <Style TargetType="TextBlock">
+                    <Setter Property="HorizontalAlignment" Value="Center"/>
+                    <Setter Property="VerticalAlignment" Value="Center"/>
+                </Style>
+            </Grid.Resources>
+
+            <TextBlock Grid.Row="0" FontSize="15" Text="温馨提示" x:Name="labelControlCaption"/>
+
+            <TextBlock Grid.Row="1" FontSize="12" Text="正在保存，请稍候..." x:Name="labelControlTitle"/>
+
+            <Viewbox Grid.Row="2" Width="40" Height="40">
+                <waitingControls:MetroRotaionIndicator x:Name="waitingAnimalControl" 
+                                                       Radius="5" 
+                                                       EllipseColorBrush="Green" 
+                                                       AnimalBackgroundBrush="Transparent"
+                                                       Width="60" Height="60"/>
+            </Viewbox>
+
+            <Button Grid.Row="3" 
+                    Width="74" 
+                    Height="25" 
+                    HorizontalAlignment="Center" 
+                    VerticalAlignment="Center" 
+                    Content="取消"
+                    x:Name="btnCancell"
+                    Click="btnCancell_Click"/>
+        </Grid>
+    </Grid>
+</UserControl>

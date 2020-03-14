@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<logconfig>
+  <!--Trace,Debug,Info,Warn,Error,Fatal-->
+  <loger name="" level="Trace" enable="true">
+    <!--FileAppender[F],RedirectAppender[R],ConsoleAppender[C],DatabaseAppender[D],MailAppender[M],SystemLogAppender[S]-->
+    <!--<appender name="fileAppender" enable="true" type="UtilZ.Dotnet.Ex.Log.Appender.FileAppender,UtilZ.Dotnet.Ex">-->
+    <appender name="开发维护人员所需要的日志" enable="true" type="F">
+      <!--<param name="Layout" value="%d %l %e %c 堆栈:%s" des="日志布局"/>-->
+      <param name="DateFormat" value="yyyy-MM-dd HH:mm:ss" des="时间格式"/>
+      <param name="SeparatorCount" value="140" des="分隔线长度,0表示无分隔线"/>
+      <param name="EnableOutputCache" value="false" des="是否启用日志输出缓存,默认为true[true:启用;false:禁用]"/>
+
+      <param name="Levels" value="Warn,Error,Fatal"  des="过滤日志级别集合"/>
+      <param name="EventIdMin" value="-1" des="事件ID最小值(包含该值,默认值-1为不限)"/>
+      <param name="EventIdMax" value="-1" des="事件ID最大值(包含该值,默认值-1为不限)"/>
+      <param name="MatchString" value="" des="消息匹配指定的字符串才被记录,为空或null不匹配(默认为null)"/>
+      <param name="MatchExceptionType" value="" des="要记录的异常的类型为指定类型或其子类才被记录,为null不匹配(默认为null)"/>
+
+      <param name="Days" value="7"  des="日志保留天数"/>
+      <param name="MaxFileCount" value="-1" des="MaxSizeRollBackups最多产生的日志文件数，超过则只保留最新的n个,－1为不限文件数"/>
+      <param name="MaxFileSize" value="10240"  des="日志文件上限大小,当文件超过此值则分隔成多个日志文件,单位/KB"/>
+      <param name="FilePath" value="Log\*yyyy-MM-dd_HH_mm_ss.fffffff*.log"  des="日志存放目录"/>
+      <param name="IsAppend" value="true"  des="是否追加日志"/>
+      <!--<param name="SecurityPolicy" value="UtilZ.Dotnet.Ex.Log.XSecurityPolicy,UtilZ.Dotnet.Ex" des="日志安全策略,该类型为实现接口ILogSecurityPolicy的子类,必须实现Encryption方法"/>-->
+      <param name="LockingModel" value="Exclusive"  des="锁类模型[Exclusive,InterProcess,Minimal]"/>
+    </appender>
+
+    <!--重定向输入服务UI-->
+    <appender name="RedirectToUI" enable="true" type="R">
+
+    </appender>
+  </loger>
+
+  <loger name="GCBLoger" level="Trace" enable="true">
+    <!--重定向输出到GCB-->
+    <appender name="RedirectToGCB" enable="true" type="R">
+
+    </appender>
+
+    <!--重定向输入服务UI-->
+    <appender name="RedirectToUI" enable="true" type="R">
+
+    </appender>
+  </loger>
+</logconfig>
