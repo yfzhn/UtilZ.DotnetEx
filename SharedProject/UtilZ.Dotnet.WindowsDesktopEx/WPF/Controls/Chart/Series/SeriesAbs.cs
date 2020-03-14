@@ -72,11 +72,11 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls
         /// <summary>
         /// 值集合
         /// </summary>
-        protected ChartCollection<IChartValue> _values = null;
+        protected ValueCollection _values = null;
         /// <summary>
         /// 获取或设置值集合
         /// </summary>
-        public ChartCollection<IChartValue> Values
+        public ValueCollection Values
         {
             get { return _values; }
             set

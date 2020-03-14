@@ -187,6 +187,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\Chart\Base\PointInfo.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\Chart\Base\SeriesLegendItem.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\Chart\Base\SeriesOrientation.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\Chart\Base\ValueCollection.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\Chart\ChartItem\Entity\ChartAxisDoubleValueAbs.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\Chart\ChartItem\Entity\ChartAxisValueAbs.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\Chart\ChartItem\Entity\ChartChildValueAbs.cs" />

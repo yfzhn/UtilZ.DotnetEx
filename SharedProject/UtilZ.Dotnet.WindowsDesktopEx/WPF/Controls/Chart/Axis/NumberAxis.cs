@@ -219,7 +219,7 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls
             return new NumberAxisValueArea(min, max);
         }
 
-        private void PrimitiveGetMinAndMaxValue(AxisAbs axis, ChartCollection<IChartValue> values, out double min, out double max)
+        private void PrimitiveGetMinAndMaxValue(AxisAbs axis, ValueCollection values, out double min, out double max)
         {
             min = double.NaN;
             max = double.NaN;
@@ -430,6 +430,7 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls
             if (this._axisData == null)
             {
                 axisCanvas.Width = ChartConstant.AXIS_DEFAULT_SIZE;
+                return null;
             }
 
             List<double> yList;

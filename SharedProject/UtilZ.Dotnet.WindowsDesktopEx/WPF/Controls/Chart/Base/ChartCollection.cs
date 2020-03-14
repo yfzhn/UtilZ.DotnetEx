@@ -350,5 +350,11 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls
         {
             return GetEnumerator();
         }
+
+
+        /// <summary>
+        /// 获取或设置标记Tag
+        /// </summary>
+        public object Tag { get; set; }
     }
 }

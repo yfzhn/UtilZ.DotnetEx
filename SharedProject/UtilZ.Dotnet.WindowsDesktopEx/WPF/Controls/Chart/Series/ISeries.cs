@@ -36,7 +36,7 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls
         /// <summary>
         /// 获取或设置值集合
         /// </summary>
-        ChartCollection<IChartValue> Values { get; set; }
+        ValueCollection Values { get; set; }
 
         /// <summary>
         /// 获取或设置Series样式
