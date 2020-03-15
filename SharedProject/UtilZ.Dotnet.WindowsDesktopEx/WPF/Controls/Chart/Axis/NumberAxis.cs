@@ -389,21 +389,24 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls
                 }
 
                 labelStep = valueArea / labelCount;
-
-                var muilt = ChartHelper.CalDoubleToIntegerMuilt(labelStep);
-                var step2 = ChartHelper.DoubleToCeilingInteger(labelStep, muilt);
-                while (step2 >= valueArea && muilt >= 1)
+                if (valueArea % labelCount > base._PRE)
                 {
-                    muilt = muilt / 10;
-                    step2 = ChartHelper.DoubleToCeilingInteger(labelStep, muilt);
-                }
+                    //不能整除,则调整
+                    var muilt = ChartHelper.CalDoubleToIntegerMuilt(labelStep);
+                    var step2 = ChartHelper.DoubleToCeilingInteger(labelStep, muilt);
+                    while (step2 >= valueArea && muilt >= 1)
+                    {
+                        muilt = muilt / 10;
+                        step2 = ChartHelper.DoubleToCeilingInteger(labelStep, muilt);
+                    }
 
-                if (!double.IsNaN(step2))
-                {
-                    labelStep = step2;
-                }
+                    if (!double.IsNaN(step2))
+                    {
+                        labelStep = step2;
+                    }
 
-                labelStep = (double)((long)(labelStep * 100)) / 100;
+                    labelStep = (double)((long)(labelStep * 100)) / 100;
+                }
             }
 
             return labelStep;
