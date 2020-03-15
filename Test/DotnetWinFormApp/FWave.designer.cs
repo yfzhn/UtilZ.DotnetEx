@@ -64,8 +64,8 @@
             // trackBarQualityCoefficient
             // 
             this.trackBarQualityCoefficient.Location = new System.Drawing.Point(647, 11);
-            this.trackBarQualityCoefficient.Minimum = 1;
             this.trackBarQualityCoefficient.Maximum = 5;
+            this.trackBarQualityCoefficient.Minimum = 1;
             this.trackBarQualityCoefficient.Name = "trackBarQualityCoefficient";
             this.trackBarQualityCoefficient.Size = new System.Drawing.Size(365, 45);
             this.trackBarQualityCoefficient.TabIndex = 30;
@@ -293,6 +293,7 @@
             this.wavePlayer1.Location = new System.Drawing.Point(11, 265);
             this.wavePlayer1.MinimumSize = new System.Drawing.Size(200, 100);
             this.wavePlayer1.Name = "wavePlayer1";
+            this.wavePlayer1.PlayLocationLineRefreshInterval = 100;
             this.wavePlayer1.QualityCoefficient = 1;
             this.wavePlayer1.Size = new System.Drawing.Size(1240, 242);
             this.wavePlayer1.TabIndex = 37;
@@ -328,11 +329,11 @@
             this.numFastSpeedReverseValue.Size = new System.Drawing.Size(120, 21);
             this.numFastSpeedReverseValue.TabIndex = 49;
             // 
-            // FWave22
+            // FWave
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.DarkGreen;
+            this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(1264, 519);
             this.Controls.Add(this.numFastSpeedReverseValue);
             this.Controls.Add(this.btnFastReversePlay);
@@ -359,7 +360,8 @@
             this.Controls.Add(this.btnStop);
             this.Controls.Add(this.btnPause);
             this.Controls.Add(this.btnPlay);
-            this.Name = "FWave22";
+            this.Name = "FWave";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FWave22";
             this.Load += new System.EventHandler(this.FWave22_Load);
             ((System.ComponentModel.ISupportInitialize)(this.trackBarQualityCoefficient)).EndInit();
