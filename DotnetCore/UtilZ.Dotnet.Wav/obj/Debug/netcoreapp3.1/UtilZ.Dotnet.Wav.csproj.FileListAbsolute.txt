@@ -1,0 +1,3 @@
+F:\Code\ZHN\UtilZ.DotnetEx\DotnetCore\UtilZ.Dotnet.Wav\obj\Debug\netcoreapp3.1\UtilZ.Dotnet.Wav.csprojAssemblyReference.cache
+F:\Code\ZHN\UtilZ.DotnetEx\DotnetCore\UtilZ.Dotnet.Wav\obj\Debug\netcoreapp3.1\UtilZ.Dotnet.Wav.AssemblyInfoInputs.cache
+F:\Code\ZHN\UtilZ.DotnetEx\DotnetCore\UtilZ.Dotnet.Wav\obj\Debug\netcoreapp3.1\UtilZ.Dotnet.Wav.AssemblyInfo.cs

@@ -52,8 +52,17 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="FWave.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FWave.designer.cs">
+      <DependentUpon>FWave.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FWave.resx">
+      <DependentUpon>FWave.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -81,10 +90,17 @@
       <Project>{55847880-1c12-48d9-b3d7-5baee632c3e7}</Project>
       <Name>UtilZ.Dotnet.Ex</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Dotnet\UtilZ.Dotnet.Wav\UtilZ.Dotnet.Wav.csproj">
+      <Project>{73a0a120-8020-48df-bb16-d73841f1d183}</Project>
+      <Name>UtilZ.Dotnet.Wav</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Dotnet\UtilZ.Dotnet.WindowsDesktopEx\UtilZ.Dotnet.WindowsDesktopEx.csproj">
       <Project>{4b7b4cee-5d03-4727-9d39-e4eff830fae1}</Project>
       <Name>UtilZ.Dotnet.WindowsDesktopEx</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Music\李志辉 - 紫禁花园.mp3" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

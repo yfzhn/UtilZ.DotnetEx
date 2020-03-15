@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>1510d4fa-81ec-4ad6-8952-d6b6cbf561dc</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>UtilZ.Dotnet.Wav</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Bk\FFTConvertor.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Bk\WaveHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Bk\WaveInfo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ExBass\Bass.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ExBass\BassConfigOption.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ExBass\BassErrorCode.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ExBass\BassX64.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ExBass\BassX86.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ExBass\ConfigPtrOptions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ExBass\Delegates.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\BASSAttribute.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\BASSDeviceInfo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\BASSFileFlag.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\BASSInit.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\BASSMode.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\BASSUrlFlag.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\BASS_ChannelGetDataLengthMode.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\BASS_CHANNELINFO_INTERNAL.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\BASS_DEVICEINFO_INTERNAL.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\BASS_PLUGININFO.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\ChannelDataSegment.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\PlayStatus.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\RepeatSampleDataSegmentInfo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\UIArea.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\WavLogInfoArgs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WavePlayer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WavePlayer_Const.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WavePlayer_Draw.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WavePlayer_Event.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WavePlayer_Method.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WavePlayer_Property.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WavePlayer_SystemEvent.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WavMaterial\FFTConvertor.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WavMaterial\WaveHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WavMaterial\WaveInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="$(MSBuildThisFileDirectory)bass.chm" />
+    <None Include="$(MSBuildThisFileDirectory)x64\bass.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)x64\BassDecoders\bassenc_mp3.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)x64\BassDecoders\bassflac.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)x64\BassDecoders\bass_aac.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)x64\BassDecoders\bass_ac3.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)x64\BassDecoders\bass_ape.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)x64\BassDecoders\bass_tta.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)x86\bass.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)x86\BassDecoders\bassenc_mp3.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)x86\BassDecoders\bassflac.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)x86\BassDecoders\bass_aac.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)x86\BassDecoders\bass_ac3.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)x86\BassDecoders\bass_ape.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)x86\BassDecoders\bass_tta.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+</Project>
