@@ -163,7 +163,7 @@ namespace CoreWpfApp
         private void TestRadarSeries()
         {
             this.ManaulComit = true;
-            ChartCollection<IChartValue> values = new ChartCollection<IChartValue>();
+            var values = new ValueCollection();
             int count = 5;
             int min = 10, mid = 50, max = 100;
 
@@ -267,7 +267,7 @@ namespace CoreWpfApp
 
             int step = 10;
             int x1 = 0, x2, y, count, max = 100;
-            ChartCollection<IChartValue> segmentValues = new ChartCollection<IChartValue>();
+            var segmentValues = new ValueCollection();
 
             while (true)
             {
@@ -330,8 +330,8 @@ namespace CoreWpfApp
             int min = 10, max = 100;
             int count = 5;
             int value;
-            ChartCollection<IChartValue> values1 = new ChartCollection<IChartValue>();
-            ChartCollection<IChartValue> values2 = new ChartCollection<IChartValue>();
+            var values1 = new ValueCollection();
+            var values2 = new ValueCollection();
 
             for (int i = 0; i < count; i++)
             {
@@ -447,8 +447,8 @@ namespace CoreWpfApp
             int value = (minY + maxY) / 2;
             DateTime time = minTime;
 
-            ChartCollection<IChartValue> values1 = new ChartCollection<IChartValue>();
-            ChartCollection<IChartValue> values2 = new ChartCollection<IChartValue>();
+            var values1 = new ValueCollection();
+            var values2 = new ValueCollection();
             IChartValue chartValue;
             double stepTotalMilliseconds = TimeSpan.FromDays(1).TotalMilliseconds;
             int offset = 10;
@@ -573,7 +573,7 @@ namespace CoreWpfApp
 
             var time = DateTime.Parse("2010-01-01 00:00:00");
             double value;
-            ChartCollection<IChartValue> values1 = new ChartCollection<IChartValue>();
+            var values1 = new ValueCollection();
             for (int i = 0; i < columnCount; i++)
             {
                 var x = new List<IChartChildValue>();
@@ -611,8 +611,8 @@ namespace CoreWpfApp
 
             time = DateTime.Parse("2010-01-01 00:00:00");
             value = min;
-            ChartCollection<IChartValue> values2 = new ChartCollection<IChartValue>();
-            ChartCollection<IChartValue> values3 = new ChartCollection<IChartValue>();
+            var values2 = new ValueCollection();
+            var values3 = new ValueCollection();
             for (int i = 0; i < columnCount; i++)
             {
                 value = _rnd.Next(min, max);
@@ -695,7 +695,7 @@ namespace CoreWpfApp
 
             var time = DateTime.Parse("2010-01-01 00:00:00");
             double value;
-            ChartCollection<IChartValue> values = new ChartCollection<IChartValue>();
+            var values = new ValueCollection();
             for (int i = 0; i < 5; i++)
             {
                 var x = new List<IChartChildValue>();
@@ -779,7 +779,7 @@ namespace CoreWpfApp
 
             var time = DateTime.Parse("2010-01-01 00:00:00");
             double value;
-            ChartCollection<IChartValue> values = new ChartCollection<IChartValue>();
+            var values = new ValueCollection();
             for (int i = 0; i < 5; i++)
             {
                 var xValues = new List<IChartChildValue>();
@@ -873,8 +873,8 @@ namespace CoreWpfApp
             int count = 5;
             var time = DateTime.Parse("2010-01-01 00:00:00");
             double value = min;
-            ChartCollection<IChartValue> values = new ChartCollection<IChartValue>();
-            ChartCollection<IChartValue> values2 = new ChartCollection<IChartValue>();
+            var values = new ValueCollection();
+            var values2 = new ValueCollection();
             for (int i = 0; i < count; i++)
             {
                 value = _rnd.Next(min, max);
@@ -953,7 +953,7 @@ namespace CoreWpfApp
 
             var time = DateTime.Parse("2010-01-01 00:00:00");
             double value;
-            ChartCollection<IChartValue> values = new ChartCollection<IChartValue>();
+            var values = new ValueCollection();
             for (int i = 0; i < 5; i++)
             {
                 value = _rnd.Next(min, max);
@@ -1026,7 +1026,7 @@ namespace CoreWpfApp
 
             var time = DateTime.Parse("2010-01-01 00:00:00");
             double value;
-            ChartCollection<IChartValue> values = new ChartCollection<IChartValue>();
+            var values = new ValueCollection();
             for (int i = 0; i < 5; i++)
             {
                 value = _rnd.Next(min, max);
@@ -1153,7 +1153,7 @@ namespace CoreWpfApp
 
             double value;
             DateTime time;
-            ChartCollection<IChartValue> values3 = new ChartCollection<IChartValue>();
+            var values3 = new ValueCollection();
             using (StreamReader sr = new StreamReader(fileName))
             {
                 string line = sr.ReadLine();
@@ -1282,7 +1282,7 @@ namespace CoreWpfApp
             double value;
             double axisXValueStep = 10;
             double axisXValue = minX;
-            ChartCollection<IChartValue> values = new ChartCollection<IChartValue>();
+            var values = new ValueCollection();
             while (axisXValue < maxX)
             {
                 value = _rnd.Next(minY, maxY);
@@ -1295,7 +1295,7 @@ namespace CoreWpfApp
 
             DateTime time = minTime;
             TimeSpan ts = maxTime - time;
-            ChartCollection<IChartValue> values2 = new ChartCollection<IChartValue>();
+            var values2 = new ValueCollection();
             double stepTotalMilliseconds = ts.TotalMilliseconds / ((maxY - minY) / axisXValueStep);
             while (time < maxTime)
             {
@@ -1307,7 +1307,7 @@ namespace CoreWpfApp
 
 
             //StringBuilder sb = new StringBuilder();
-            ChartCollection<IChartValue> values3 = new ChartCollection<IChartValue>();
+            var values3 = new ValueCollection();
             minY = minY / 10;
             maxY = maxY / 10;
             time = minTime;

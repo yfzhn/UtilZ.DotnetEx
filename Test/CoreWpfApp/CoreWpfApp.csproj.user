@@ -7,6 +7,11 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="TestWave.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
     <Page Update="AsynWaitWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -32,6 +37,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="TestMemoryCacheEx.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="TestWave.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="TestZoomTranslateContainerControl.xaml">
