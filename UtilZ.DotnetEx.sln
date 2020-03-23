@@ -27,7 +27,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoreWpfApp", "Test\CoreWpfA
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotnetWinFormApp", "Test\DotnetWinFormApp\DotnetWinFormApp.csproj", "{6A7444A1-88F9-4773-A61C-22DF9700A7E6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UtilZ.Dotnet.Wav", "DotnetCore\UtilZ.Dotnet.Wav\UtilZ.Dotnet.Wav.csproj", "{9B9D21BA-3844-4B40-B103-43C4F431DA00}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UtilZ.Dotnet.Wav", "DotnetCore\UtilZ.Dotnet.Wav\UtilZ.Dotnet.Wav.csproj", "{9B9D21BA-3844-4B40-B103-43C4F431DA00}"
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "UtilZ.Dotnet.Wav", "SharedProject\UtilZ.Dotnet.Wav\UtilZ.Dotnet.Wav.shproj", "{1510D4FA-81EC-4AD6-8952-D6B6CBF561DC}"
 EndProject
@@ -40,7 +40,10 @@ Global
 		SharedProject\UtilZ.Dotnet.Ex\UtilZ.Dotnet.Ex.projitems*{55847880-1c12-48d9-b3d7-5baee632c3e7}*SharedItemsImports = 4
 		SharedProject\UtilZ.Dotnet.Ex\UtilZ.Dotnet.Ex.projitems*{6553de9a-3810-468e-a690-7b154b6ab135}*SharedItemsImports = 13
 		SharedProject\UtilZ.Dotnet.Wav\UtilZ.Dotnet.Wav.projitems*{73a0a120-8020-48df-bb16-d73841f1d183}*SharedItemsImports = 4
+		SharedProject\UtilZ.Dotnet.WindowsDesktopEx\UtilZ.Dotnet.WindowsDesktopEx.projitems*{79985894-9990-4adf-88f4-c228a120712e}*SharedItemsImports = 5
+		SharedProject\UtilZ.Dotnet.WindowsDesktopEx\UtilZ.Dotnet.WindowsDesktopEx.projitems*{9b9d21ba-3844-4b40-b103-43c4f431da00}*SharedItemsImports = 5
 		SharedProject\UtilZ.Dotnet.WindowsDesktopEx\UtilZ.Dotnet.WindowsDesktopEx.projitems*{f04388d2-1217-48ef-8c2a-62d8c0b86953}*SharedItemsImports = 13
+		SharedProject\UtilZ.Dotnet.Ex\UtilZ.Dotnet.Ex.projitems*{f87fe451-7548-4ceb-8632-7370b5a18be2}*SharedItemsImports = 5
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

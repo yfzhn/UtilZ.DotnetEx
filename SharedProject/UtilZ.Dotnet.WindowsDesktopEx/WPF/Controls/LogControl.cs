@@ -45,7 +45,8 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls
             var control = d as LogControl;
             if (e.Property == LogControl.MaxItemCountProperty)
             {
-                control.RemoveOutElements();
+                control.MaxItemCountChanged((int)e.NewValue);
+
             }
             else if (e.Property == LogControl.IsLockProperty)
             {
@@ -137,8 +138,6 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls
         /// </summary>
         private int _cacheCapcity = 100;
 
-        private readonly List<Inline> _lines = new List<Inline>();
-
         /// <summary>
         /// 样式字典集合[key:样式key;value:样式]
         /// </summary>
@@ -147,7 +146,7 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls
 
 
 
-        private readonly Paragraph content;
+        private readonly Paragraph _paragraph;
         private readonly Delegate _primitiveShowLogDelegate;
         private DispatcherPriority _priority;
 
@@ -163,9 +162,9 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls
             this.IsReadOnly = true;
             this.Background = Brushes.Black;
             this.BorderThickness = new Thickness(0d);
-            this.content = new Paragraph();
+            this._paragraph = new Paragraph();
             base.Document.Blocks.Clear();
-            base.Document.Blocks.Add(this.content);
+            base.Document.Blocks.Add(this._paragraph);
 
             this._primitiveShowLogDelegate = new Action<List<ShowLogItem>>(this.PrimitiveShowLog);
             this._priority = this.Priority;
@@ -254,28 +253,45 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls
             }
         }
 
+
+        private readonly List<Inline> _lineCacheList = new List<Inline>();
+        private FontFamily _defaultFontFamily = null;
         private void PrimitiveShowLog(List<ShowLogItem> items)
         {
             try
             {
+                Inline line;
                 FontFamily fontFamily;
+
                 foreach (var item in items)
                 {
                     LogShowStyle style = this.GetStyleById(item.StyleID);
-                    var run = new Run()
+                    //var run = new Run(item.LogText, this._paragraph.ContentEnd);
+
+                    if (this._lineCacheList.Count > 0)
                     {
-                        Text = item.LogText,
-                        Foreground = style.ForegroundBrush,
-                        FontSize = style.FontSize,
-                    };
+                        line = this._lineCacheList.Last();
+                        this._lineCacheList.RemoveAt(this._lineCacheList.Count - 1);
+                        ((Run)line).Text = item.LogText;
+                        line.FontFamily = this._defaultFontFamily;
+                    }
+                    else
+                    {
+                        line = new Run(item.LogText);
+                        if (this._defaultFontFamily == null)
+                        {
+                            this._defaultFontFamily = line.FontFamily;
+                        }
+                    }
+
+                    line.Foreground = style.ForegroundBrush;
+                    line.FontSize = style.FontSize;
                     fontFamily = style.FontFamily;
                     if (fontFamily != null)
                     {
-                        run.FontFamily = fontFamily;
+                        line.FontFamily = fontFamily;
                     }
-
-                    content.Inlines.Add(run);
-                    this._lines.Add(run);
+                    this._paragraph.Inlines.Add(line);
 
                     if (!this.IsLock)
                     {
@@ -293,14 +309,26 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls
 
         private void RemoveOutElements()
         {
-            var maxItemCount = this.MaxItemCount;
-            while (this._lines.Count > maxItemCount)
+            Inline line = null;
+            while (this._paragraph.Inlines.Count > 0 && this._paragraph.Inlines.Count > this.MaxItemCount)
             {
-                content.Inlines.Remove(this._lines[0]);
-                this._lines.RemoveAt(0);
+                line = this._paragraph.Inlines.First();
+                this._lineCacheList.Add(line);
+                this._paragraph.Inlines.Remove(line);
             }
         }
 
+        private void MaxItemCountChanged(int newMaxItemCount)
+        {
+            this.RemoveOutElements();
+
+            int removeCount = this._paragraph.Inlines.Count + this._lineCacheList.Count - newMaxItemCount;
+            if (removeCount > 0)
+            {
+                int index = newMaxItemCount - this._paragraph.Inlines.Count;
+                this._lineCacheList.RemoveRange(index, removeCount);
+            }
+        }
 
 
 
@@ -428,8 +456,7 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls
         /// </summary>
         public void Clear()
         {
-            this.content.Inlines.Clear();
-            this._lines.Clear();
+            this._paragraph.Inlines.Clear();
         }
 
         /// <summary>

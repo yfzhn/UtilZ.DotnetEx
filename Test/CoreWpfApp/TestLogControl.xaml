@@ -7,7 +7,8 @@
         xmlns:utilz="clr-namespace:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls;assembly=UtilZ.Dotnet.WindowsDesktopEx"
         mc:Ignorable="d"
         Title="TestLogControl" Height="450" Width="800"
-        Loaded="Window_Loaded">
+        Loaded="Window_Loaded"
+        WindowStartupLocation="CenterScreen">
     <Grid>
 
         <Grid.RowDefinitions>
@@ -26,6 +27,7 @@
 
             <Button Content="Test" x:Name="btnTest" Click="btnTest_Click"/>
             <Button Content="Clear" x:Name="btnClear" Click="btnClear_Click"/>
+            <TextBox Text="{Binding ElementName=logControl,Path=MaxItemCount}" Width="50" Height="30" VerticalContentAlignment="Center" FontSize="14"/>
         </StackPanel>
 
         <utilz:LogControl Grid.Row="1" x:Name="logControl"/>

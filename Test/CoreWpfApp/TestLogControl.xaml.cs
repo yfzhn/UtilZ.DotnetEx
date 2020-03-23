@@ -28,14 +28,15 @@ namespace CoreWpfApp
 
         }
 
+        private int _index = 1;
         private void btnTest_Click(object sender, RoutedEventArgs e)
         {
-            logControl.AddLog("Trace", LogLevel.Trace);
-            logControl.AddLog("Debug", LogLevel.Debug);
-            logControl.AddLog("Info", LogLevel.Info);
-            logControl.AddLog("Warn", LogLevel.Warn);
-            logControl.AddLog("Error", LogLevel.Error);
-            logControl.AddLog("Fatal", LogLevel.Fatal);
+            logControl.AddLog($"Trace_{this._index++}", LogLevel.Trace);
+            logControl.AddLog($"Debug_{this._index++}", LogLevel.Debug);
+            logControl.AddLog($"Info_{this._index++}", LogLevel.Info);
+            logControl.AddLog($"Warn_{this._index++}", LogLevel.Warn);
+            logControl.AddLog($"Error_{this._index++}", LogLevel.Error);
+            logControl.AddLog($"Fatal_{this._index++}", LogLevel.Fatal);
         }
 
         private void btnClear_Click(object sender, RoutedEventArgs e)
