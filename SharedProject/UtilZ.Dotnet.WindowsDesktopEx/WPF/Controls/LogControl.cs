@@ -325,8 +325,11 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls
             int removeCount = this._paragraph.Inlines.Count + this._lineCacheList.Count - newMaxItemCount;
             if (removeCount > 0)
             {
-                int index = newMaxItemCount - this._paragraph.Inlines.Count;
-                this._lineCacheList.RemoveRange(index, removeCount);
+                int index = newMaxItemCount - this._paragraph.Inlines.Count + 1;
+                if (index < this._lineCacheList.Count)
+                {
+                    this._lineCacheList.RemoveRange(index, removeCount - 1);
+                }
             }
         }
 
