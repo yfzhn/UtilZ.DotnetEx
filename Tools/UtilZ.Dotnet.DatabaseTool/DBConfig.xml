@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<DBConfig>
+  <DBConfigItems>
+    <DBConfigItem Parser=""
+                  DBID="1"
+           ConName="SQLiteDB"
+           DBConInfoType="1"
+           DatabaseName="D:\Demo\SQLiteDB\test.db"
+           DBFactory="UtilZ.Dotnet.DBSQLite.Core.SQLiteDBFactory,DBPlugins\SQLite\UtilZ.Dotnet.DBSQLite">
+    </DBConfigItem>
+
+    <DBConfigItem DBID="2"
+         ConName="SqlServer"
+         DBConInfoType="0"
+         ConStr="data source=192.168.10.241;initial catalog=TEST;user id=sa;password=qweQWE123"
+         DBFactory="UtilZ.Dotnet.DBSqlServer.Core.SQLServerDBFactory,DBPlugins\SQLServer\UtilZ.Dotnet.DBSqlServer"/>
+
+    <DBConfigItem DBID="3"
+         ConName="OracleDB"
+         DBConInfoType="1"
+         Host="192.168.10.241"
+         DatabaseName="testdb"
+         Account="scott"
+         Password="qweQWE123"
+         DBFactory="UtilZ.Dotnet.DBOracle.Core.OracleDBFactory,DBPlugins\Oracle\UtilZ.Dotnet.DBOracle"/>
+    
+    <DBConfigItem DBID="4"
+         ConName="MysqlDB"
+         DBConInfoType="1"
+         Host="192.168.10.241"
+         Port="3306"
+         DatabaseName="testdb"
+         Account="gripp"
+         Password="gripp"
+         DBFactory="UtilZ.Dotnet.DBMySql.Core.MySqlDBFactory,DBPlugins\MySql\UtilZ.Dotnet.DBMySql"/>
+
+    <DBConfigItem DBID="5"
+         ConName="POSDB"
+         DBConInfoType="1"
+         Host="192.168.10.12"
+         DatabaseName="POSDB"
+         Account="hzdb_zd"
+         Password="123456"
+         DBFactory="UtilZ.Dotnet.DBOracle.Core.OracleDBFactory,DBPlugins\Oracle\UtilZ.Dotnet.DBOracle"/>
+    
+
+    <!--<DBConfigItem DBID="1"
+           ConName="SQLiteDB"
+           DBConInfoType="1"
+           DatabaseName="F:\Code\Git\UtilZ\UtilZ.Dotnet\WebApplication1\DB\DB2.sqlite"
+           DBFactory="UtilZ.Dotnet.DBSqlite.Core.SQLiteDBFactory,DBPlugins\SQLite\UtilZ.Dotnet.DBSqlite"/>
+
+<DBConfigItem
+           Parser=""
+           DBID="11"
+           ConName="POSDB"
+           DBConInfoType="1"
+           Host="192.168.10.12"
+           DatabaseName="POSDB"
+           Account="hzdb_zd"
+           Password="123456"
+           DBFactory="UtilZ.Dotnet.DBOracle.Core.OracleDBFactory,DBPlugins\Oracle\UtilZ.Dotnet.DBOracle">
+    </DBConfigItem>
+
+    <DBConfigItem DBID="2"
+         ConName="SqlServerDB"
+         DBConInfoType="0"
+         ConStr="data source=192.168.0.104;initial catalog=ntestdb;user id=sa;password=qweQWE123"
+         DBFactory="UtilZ.Dotnet.DBSQLServer.Core.SQLServerDBFactory,DBPlugins\SQLServer\UtilZ.Dotnet.DBSQLServer"/>
+
+    <DBConfigItem DBID="3"
+         ConName="MysqlDB"
+         DBConInfoType="1"
+         Host="192.168.0.104"
+         Port="3306"
+         DatabaseName="test"
+         Account="yf"
+         Password="qweQWE123"
+         DBFactory="UtilZ.Dotnet.DBMySql.Core.MysqlDBFactory,DBPlugins\MySql\UtilZ.Dotnet.DBMySql"/>
+
+    <DBConfigItem DBID="4"
+         ConName="OracleDB"
+         DBConInfoType="1"
+         Host="192.168.0.104"
+         DatabaseName="ntestdb.org"
+         Account="DBUSER"
+         Password="qwe123"
+         DBFactory="UtilZ.Dotnet.DBOracle.Core.OracleDBFactory,DBPlugins\Oracle\UtilZ.Dotnet.DBOracle"/>-->
+  </DBConfigItems>
+</DBConfig>

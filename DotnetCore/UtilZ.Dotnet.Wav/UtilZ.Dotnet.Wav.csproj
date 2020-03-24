@@ -8,7 +8,11 @@
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <OutputPath></OutputPath>
-    <DocumentationFile></DocumentationFile>
+    <DocumentationFile>D:\SelfCode\UtilZ.DotnetEx\DotnetCore\UtilZ.Dotnet.Wav\UtilZ.Dotnet.Wav.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile>D:\SelfCode\UtilZ.DotnetEx\DotnetCore\UtilZ.Dotnet.Wav\UtilZ.Dotnet.Wav.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>

@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>1ec2393c-5ce9-478f-bbd2-a6b43cd049b9</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>UtilZ.Dotnet.DBPostgreSQL</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Core\PostgreSQLDatabase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Core\PostgreSQLDBAccess.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Core\PostgreSQLDBAccess_DBInfo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Core\PostgreSQLDBFactory.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Core\PostgreSQLDBInteraction.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Core\PostgreSQLSqlFieldValueFormator.cs" />
+  </ItemGroup>
+</Project>

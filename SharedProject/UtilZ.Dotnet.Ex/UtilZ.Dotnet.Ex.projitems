@@ -21,6 +21,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Base\BaseEx\CharEx.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Base\BaseEx\CompressEx.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Base\BaseEx\ConvertEx.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Base\BaseEx\DateTimeEx.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Base\BaseEx\DebugEx.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Base\BaseEx\DirectoryInfoEx.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Base\BaseEx\DoubleEx.cs" />

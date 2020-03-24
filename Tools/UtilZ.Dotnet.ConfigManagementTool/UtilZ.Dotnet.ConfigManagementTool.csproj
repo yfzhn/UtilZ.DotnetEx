@@ -1,0 +1,192 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{557FBD92-FDA9-48E6-8562-D79578C9F93F}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>UtilZ.Dotnet.ConfigManagementTool</RootNamespace>
+    <AssemblyName>UtilZ.Dotnet.ConfigManagementTool</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BLL\ConfigBLL.cs" />
+    <Compile Include="Model\ConfigParaGroup.cs" />
+    <Compile Include="Model\ConfigParaKeyValue.cs" />
+    <Compile Include="Model\ConfigParaKeyValue2.cs" />
+    <Compile Include="Model\ConfigParaServiceMap.cs" />
+    <Compile Include="Model\ConfigParaServiceMap2.cs" />
+    <Compile Include="Model\ConfigParaServiceMap3.cs" />
+    <Compile Include="Model\ConfigParaValidDomain.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UI\FConfig.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FConfig.designer.cs">
+      <DependentUpon>FConfig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\FConfigParaKeyValueEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FConfigParaKeyValueEdit.designer.cs">
+      <DependentUpon>FConfigParaKeyValueEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\FParaGroupManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FParaGroupManager.designer.cs">
+      <DependentUpon>FParaGroupManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\FParaManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FParaManager.designer.cs">
+      <DependentUpon>FParaManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\FServiceMapManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FServiceMapManager.designer.cs">
+      <DependentUpon>FServiceMapManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\UCViews\FServiceConfigParaKeyValueEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\UCViews\FServiceConfigParaKeyValueEdit.Designer.cs">
+      <DependentUpon>FServiceConfigParaKeyValueEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\UCViews\UCParaView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\UCViews\UCParaView.Designer.cs">
+      <DependentUpon>UCParaView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\UCViews\UCServiceView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\UCViews\UCServiceView.Designer.cs">
+      <DependentUpon>UCServiceView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\UCViews\UCViewBase.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\UCViews\UCViewBase.Designer.cs">
+      <DependentUpon>UCViewBase.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="UI\FConfig.resx">
+      <DependentUpon>FConfig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FConfigParaKeyValueEdit.resx">
+      <DependentUpon>FConfigParaKeyValueEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FParaGroupManager.resx">
+      <DependentUpon>FParaGroupManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FParaManager.resx">
+      <DependentUpon>FParaManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FServiceMapManager.resx">
+      <DependentUpon>FServiceMapManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\UCViews\FServiceConfigParaKeyValueEdit.resx">
+      <DependentUpon>FServiceConfigParaKeyValueEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\UCViews\UCParaView.resx">
+      <DependentUpon>UCParaView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\UCViews\UCServiceView.resx">
+      <DependentUpon>UCServiceView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\UCViews\UCViewBase.resx">
+      <DependentUpon>UCViewBase.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="App.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\UtilZ.Dotnet.DBIBase\UtilZ.Dotnet.DBIBase.csproj">
+      <Project>{ea8994cc-3b5b-4860-9e9b-6f85f59eb8c0}</Project>
+      <Name>UtilZ.Dotnet.DBIBase</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UtilZ.Dotnet.Ex\UtilZ.Dotnet.Ex.csproj">
+      <Project>{b5d06430-e6e2-40b3-ba77-15778abd31dd}</Project>
+      <Name>UtilZ.Dotnet.Ex</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UtilZ.Dotnet.WindowEx\UtilZ.Dotnet.WindowEx.csproj">
+      <Project>{2e7f4a5f-361b-4b39-966b-34e7bc57a2b0}</Project>
+      <Name>UtilZ.Dotnet.WindowEx</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\group.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Map.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ParaManager.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\search.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\View.ico" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

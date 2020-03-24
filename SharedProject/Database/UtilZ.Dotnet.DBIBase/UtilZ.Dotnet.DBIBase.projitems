@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>54dbb4e1-ea5b-428c-855c-2bf9e9955e13</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>UtilZ.Dotnet.DBIBase</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Config\DatabaseConfig.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Config\DatabaseConfigManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Config\DatabaseConfigParserAbs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Config\DefaultDatabaseConfigParser.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Config\IDatabaseConfigParser.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Connection\DbConnectionInfo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Connection\DbConnectionPool.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Connection\DbConnectionPoolManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Connection\IDbConnectionInfo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Core\DatabaseAbs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Core\DatabaseAbs_Protected.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Core\DBAccessAbs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Core\DBAccessAbs_DBInfo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Core\DBAccessAbs_Protected.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Core\DBAccessAbs_Query.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Core\DBAccessAbs_Update.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Core\DBAccessEx.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Core\DBAccessHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Core\DBConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DBAccessManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)EF\EFConnectionFactory.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)EF\EFDbConfiguration.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)EF\EFDbContext.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)EF\EFDbContextException.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)EF\EFEntityTypeManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)EF\IEFDbContext.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ExpressionTree\CompareOperater.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ExpressionTree\CompareOperaterWhereGenerator\CompareOperaterAttribute.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ExpressionTree\CompareOperaterWhereGenerator\CompareOperaterHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ExpressionTree\CompareOperaterWhereGenerator\CompareOperaterWhereGeneratorAbs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ExpressionTree\CompareOperaterWhereGenerator\ConditionValueGeneratorPara.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ExpressionTree\CompareOperaterWhereGenerator\ConditionValueNoSqlParaGeneratorPara.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ExpressionTree\CompareOperaterWhereGenerator\DBFiledValueConverterAbs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ExpressionTree\CompareOperaterWhereGenerator\DBFiledValueConverterCollection.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ExpressionTree\CompareOperaterWhereGenerator\ICompareOperaterWhereGenerator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ExpressionTree\CompareOperaterWhereGenerator\IDBFiledValueConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ExpressionTree\CompareOperaterWhereGenerator\LikeCompareOperaterWhereGenerator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ExpressionTree\CompareOperaterWhereGenerator\MultValueCompareOperaterWhereGenerator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ExpressionTree\CompareOperaterWhereGenerator\NotInRangeCompareOperaterWhereGenerator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ExpressionTree\CompareOperaterWhereGenerator\NullCompareOperaterWhereGenerator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ExpressionTree\CompareOperaterWhereGenerator\SingleValueCompareOperaterWhereGenerator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ExpressionTree\DBQueryExpression.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ExpressionTree\DBQueryField.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ExpressionTree\DBQueryFieldCollection.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ExpressionTree\ExpressionNode.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ExpressionTree\ExpressionNodeCollection.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ExpressionTree\ISqlFieldValueFormator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ExpressionTree\LogicOperaters.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ExpressionTree\SqlFieldValueFormatorAbs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Factory\DBFactoryAbs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Factory\DBFactoryManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Factory\IDBFactory.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Factory\TestEFDbContextDbConnectionInfo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Interaction\DBInteractionAbs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Interaction\IDBInteraction.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Interface\IDatabase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Interface\IDBAccess.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Interface\IDBAccess_DBInfo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Interface\IDBAccess_Query.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Interface\IDBAccess_Update.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\DatabasePropertyInfo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\DataBaseVersionInfo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\DBConstant.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\DBFieldInfo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\DBFieldInfoCollection.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\DBFieldType.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\DBHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\DBIndexInfo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\DBIndexInfoCollection.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\DBOrderInfo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\DbOrderType.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\DBPageInfo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\DBTableInfo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\DBVisitType.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="$(MSBuildThisFileDirectory)Lib\EntityFramework.dll" />
+    <None Include="$(MSBuildThisFileDirectory)Lib\EntityFramework.resources.dll" />
+    <None Include="$(MSBuildThisFileDirectory)Lib\Z.EntityFramework.Plus.EF6.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="$(MSBuildThisFileDirectory)Lib\EntityFramework.xml" />
+  </ItemGroup>
+</Project>

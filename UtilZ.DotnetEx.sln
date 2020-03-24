@@ -33,16 +33,60 @@ Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "UtilZ.Dotnet.Wav", "SharedP
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UtilZ.Dotnet.Wav", "Dotnet\UtilZ.Dotnet.Wav\UtilZ.Dotnet.Wav.csproj", "{73A0A120-8020-48DF-BB16-D73841F1D183}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Database", "Database", "{773E2981-821B-409A-A3CF-8339979102C2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Database", "Database", "{9F91FB1E-ABAD-4422-AF6B-1D588B69C68D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Database", "Database", "{455DA9A7-5387-462A-8715-E788C53E9D6D}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "UtilZ.Dotnet.DBIBase", "SharedProject\Database\UtilZ.Dotnet.DBIBase\UtilZ.Dotnet.DBIBase.shproj", "{54DBB4E1-EA5B-428C-855C-2BF9E9955E13}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UtilZ.Dotnet.DBIBase", "Dotnet\Database\UtilZ.Dotnet.DBIBase\UtilZ.Dotnet.DBIBase.csproj", "{136EC218-CFEA-4D4F-AE2F-6D0D6A1E2058}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UtilZ.Dotnet.DBSqlServer", "Dotnet\Database\UtilZ.Dotnet.DBSqlServer\UtilZ.Dotnet.DBSqlServer\UtilZ.Dotnet.DBSqlServer.csproj", "{F7FDD6DB-B266-42C1-A455-AF14A2FFD221}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "UtilZ.Dotnet.DBOracle", "SharedProject\Database\UtilZ.Dotnet.DBOracle\UtilZ.Dotnet.DBOracle\UtilZ.Dotnet.DBOracle.shproj", "{98933349-2FAD-4882-BE20-EB0B929E0B25}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UtilZ.Dotnet.DBOracle", "Dotnet\Database\UtilZ.Dotnet.DBOracle\UtilZ.Dotnet.DBOracle\UtilZ.Dotnet.DBOracle.csproj", "{32DDAE2F-0156-4DAB-A5BB-DA0B1FD74C3F}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "UtilZ.Dotnet.DBMySql", "SharedProject\Database\UtilZ.Dotnet.DBMySql\UtilZ.Dotnet.DBMySql\UtilZ.Dotnet.DBMySql.shproj", "{043790D5-9FC2-4E13-A4EF-0AEC4FACE6BC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UtilZ.Dotnet.DBMySql", "Dotnet\Database\UtilZ.Dotnet.DBMySql\UtilZ.Dotnet.DBMySql\UtilZ.Dotnet.DBMySql.csproj", "{3C80DA8D-668D-4DC1-9B68-11040A8249BC}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "UtilZ.Dotnet.DBPostgreSQL", "SharedProject\Database\UtilZ.Dotnet.DBPostgreSQL\UtilZ.Dotnet.DBPostgreSQL\UtilZ.Dotnet.DBPostgreSQL.shproj", "{1EC2393C-5CE9-478F-BBD2-A6B43CD049B9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UtilZ.Dotnet.DBPostgreSQL", "Dotnet\Database\UtilZ.Dotnet.DBPostgreSQL\UtilZ.Dotnet.DBPostgreSQL\UtilZ.Dotnet.DBPostgreSQL.csproj", "{4399F067-6B57-4BC5-B993-8426EA183D45}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "UtilZ.Dotnet.DBSQLite", "SharedProject\Database\UtilZ.Dotnet.DBSQLite\UtilZ.Dotnet.DBSQLite\UtilZ.Dotnet.DBSQLite.shproj", "{E11D2D27-C12D-4219-A564-8B06E7A8DE99}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UtilZ.Dotnet.DBSQLite", "Dotnet\Database\UtilZ.Dotnet.DBSQLite\UtilZ.Dotnet.DBSQLite\UtilZ.Dotnet.DBSQLite.csproj", "{E64613A7-3782-49DA-BE2F-A44D3E3350E7}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "UtilZ.Dotnet.DBSqlServer", "SharedProject\Database\UtilZ.Dotnet.DBSqlServer\UtilZ.Dotnet.DBSqlServer\UtilZ.Dotnet.DBSqlServer.shproj", "{76131FA5-2930-48F7-B816-1058616C3AD7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tools", "Tools", "{93C26BA8-2AF4-4253-8D9E-3D420823DB3F}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		SharedProject\Database\UtilZ.Dotnet.DBMySql\UtilZ.Dotnet.DBMySql\UtilZ.Dotnet.DBMySql.projitems*{043790d5-9fc2-4e13-a4ef-0aec4face6bc}*SharedItemsImports = 13
+		SharedProject\Database\UtilZ.Dotnet.DBIBase\UtilZ.Dotnet.DBIBase.projitems*{136ec218-cfea-4d4f-ae2f-6d0d6a1e2058}*SharedItemsImports = 4
 		SharedProject\UtilZ.Dotnet.Wav\UtilZ.Dotnet.Wav.projitems*{1510d4fa-81ec-4ad6-8952-d6b6cbf561dc}*SharedItemsImports = 13
+		SharedProject\Database\UtilZ.Dotnet.DBPostgreSQL\UtilZ.Dotnet.DBPostgreSQL\UtilZ.Dotnet.DBPostgreSQL.projitems*{1ec2393c-5ce9-478f-bbd2-a6b43cd049b9}*SharedItemsImports = 13
+		SharedProject\Database\UtilZ.Dotnet.DBOracle\UtilZ.Dotnet.DBOracle\UtilZ.Dotnet.DBOracle.projitems*{32ddae2f-0156-4dab-a5bb-da0b1fd74c3f}*SharedItemsImports = 4
+		SharedProject\Database\UtilZ.Dotnet.DBMySql\UtilZ.Dotnet.DBMySql\UtilZ.Dotnet.DBMySql.projitems*{3c80da8d-668d-4dc1-9b68-11040a8249bc}*SharedItemsImports = 4
+		SharedProject\Database\UtilZ.Dotnet.DBPostgreSQL\UtilZ.Dotnet.DBPostgreSQL\UtilZ.Dotnet.DBPostgreSQL.projitems*{4399f067-6b57-4bc5-b993-8426ea183d45}*SharedItemsImports = 4
 		SharedProject\UtilZ.Dotnet.WindowsDesktopEx\UtilZ.Dotnet.WindowsDesktopEx.projitems*{4b7b4cee-5d03-4727-9d39-e4eff830fae1}*SharedItemsImports = 4
+		SharedProject\Database\UtilZ.Dotnet.DBIBase\UtilZ.Dotnet.DBIBase.projitems*{54dbb4e1-ea5b-428c-855c-2bf9e9955e13}*SharedItemsImports = 13
 		SharedProject\UtilZ.Dotnet.Ex\UtilZ.Dotnet.Ex.projitems*{55847880-1c12-48d9-b3d7-5baee632c3e7}*SharedItemsImports = 4
 		SharedProject\UtilZ.Dotnet.Ex\UtilZ.Dotnet.Ex.projitems*{6553de9a-3810-468e-a690-7b154b6ab135}*SharedItemsImports = 13
 		SharedProject\UtilZ.Dotnet.Wav\UtilZ.Dotnet.Wav.projitems*{73a0a120-8020-48df-bb16-d73841f1d183}*SharedItemsImports = 4
+		SharedProject\Database\UtilZ.Dotnet.DBSqlServer\UtilZ.Dotnet.DBSqlServer\UtilZ.Dotnet.DBSqlServer.projitems*{76131fa5-2930-48f7-b816-1058616c3ad7}*SharedItemsImports = 13
 		SharedProject\UtilZ.Dotnet.WindowsDesktopEx\UtilZ.Dotnet.WindowsDesktopEx.projitems*{79985894-9990-4adf-88f4-c228a120712e}*SharedItemsImports = 5
+		SharedProject\Database\UtilZ.Dotnet.DBOracle\UtilZ.Dotnet.DBOracle\UtilZ.Dotnet.DBOracle.projitems*{98933349-2fad-4882-be20-eb0b929e0b25}*SharedItemsImports = 13
 		SharedProject\UtilZ.Dotnet.WindowsDesktopEx\UtilZ.Dotnet.WindowsDesktopEx.projitems*{9b9d21ba-3844-4b40-b103-43c4f431da00}*SharedItemsImports = 5
+		SharedProject\Database\UtilZ.Dotnet.DBSQLite\UtilZ.Dotnet.DBSQLite\UtilZ.Dotnet.DBSQLite.projitems*{e11d2d27-c12d-4219-a564-8b06e7a8de99}*SharedItemsImports = 13
+		SharedProject\Database\UtilZ.Dotnet.DBSQLite\UtilZ.Dotnet.DBSQLite\UtilZ.Dotnet.DBSQLite.projitems*{e64613a7-3782-49da-be2f-a44d3e3350e7}*SharedItemsImports = 4
 		SharedProject\UtilZ.Dotnet.WindowsDesktopEx\UtilZ.Dotnet.WindowsDesktopEx.projitems*{f04388d2-1217-48ef-8c2a-62d8c0b86953}*SharedItemsImports = 13
+		SharedProject\Database\UtilZ.Dotnet.DBSqlServer\UtilZ.Dotnet.DBSqlServer\UtilZ.Dotnet.DBSqlServer.projitems*{f7fdd6db-b266-42c1-a455-af14a2ffd221}*SharedItemsImports = 4
 		SharedProject\UtilZ.Dotnet.Ex\UtilZ.Dotnet.Ex.projitems*{f87fe451-7548-4ceb-8632-7370b5a18be2}*SharedItemsImports = 5
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -82,6 +126,30 @@ Global
 		{73A0A120-8020-48DF-BB16-D73841F1D183}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{73A0A120-8020-48DF-BB16-D73841F1D183}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{73A0A120-8020-48DF-BB16-D73841F1D183}.Release|Any CPU.Build.0 = Release|Any CPU
+		{136EC218-CFEA-4D4F-AE2F-6D0D6A1E2058}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{136EC218-CFEA-4D4F-AE2F-6D0D6A1E2058}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{136EC218-CFEA-4D4F-AE2F-6D0D6A1E2058}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{136EC218-CFEA-4D4F-AE2F-6D0D6A1E2058}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F7FDD6DB-B266-42C1-A455-AF14A2FFD221}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7FDD6DB-B266-42C1-A455-AF14A2FFD221}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F7FDD6DB-B266-42C1-A455-AF14A2FFD221}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F7FDD6DB-B266-42C1-A455-AF14A2FFD221}.Release|Any CPU.Build.0 = Release|Any CPU
+		{32DDAE2F-0156-4DAB-A5BB-DA0B1FD74C3F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{32DDAE2F-0156-4DAB-A5BB-DA0B1FD74C3F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{32DDAE2F-0156-4DAB-A5BB-DA0B1FD74C3F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{32DDAE2F-0156-4DAB-A5BB-DA0B1FD74C3F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3C80DA8D-668D-4DC1-9B68-11040A8249BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3C80DA8D-668D-4DC1-9B68-11040A8249BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3C80DA8D-668D-4DC1-9B68-11040A8249BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3C80DA8D-668D-4DC1-9B68-11040A8249BC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4399F067-6B57-4BC5-B993-8426EA183D45}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4399F067-6B57-4BC5-B993-8426EA183D45}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4399F067-6B57-4BC5-B993-8426EA183D45}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4399F067-6B57-4BC5-B993-8426EA183D45}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E64613A7-3782-49DA-BE2F-A44D3E3350E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E64613A7-3782-49DA-BE2F-A44D3E3350E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E64613A7-3782-49DA-BE2F-A44D3E3350E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E64613A7-3782-49DA-BE2F-A44D3E3350E7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -98,6 +166,21 @@ Global
 		{9B9D21BA-3844-4B40-B103-43C4F431DA00} = {86110AB5-95ED-4462-83A6-DDFC4CCE72A9}
 		{1510D4FA-81EC-4AD6-8952-D6B6CBF561DC} = {75447F14-A949-4C27-ABD3-F56B2A341383}
 		{73A0A120-8020-48DF-BB16-D73841F1D183} = {468CF7E8-BFF8-45B7-9D2C-B83C8C7918E4}
+		{773E2981-821B-409A-A3CF-8339979102C2} = {86110AB5-95ED-4462-83A6-DDFC4CCE72A9}
+		{9F91FB1E-ABAD-4422-AF6B-1D588B69C68D} = {468CF7E8-BFF8-45B7-9D2C-B83C8C7918E4}
+		{455DA9A7-5387-462A-8715-E788C53E9D6D} = {75447F14-A949-4C27-ABD3-F56B2A341383}
+		{54DBB4E1-EA5B-428C-855C-2BF9E9955E13} = {455DA9A7-5387-462A-8715-E788C53E9D6D}
+		{136EC218-CFEA-4D4F-AE2F-6D0D6A1E2058} = {9F91FB1E-ABAD-4422-AF6B-1D588B69C68D}
+		{F7FDD6DB-B266-42C1-A455-AF14A2FFD221} = {9F91FB1E-ABAD-4422-AF6B-1D588B69C68D}
+		{98933349-2FAD-4882-BE20-EB0B929E0B25} = {455DA9A7-5387-462A-8715-E788C53E9D6D}
+		{32DDAE2F-0156-4DAB-A5BB-DA0B1FD74C3F} = {9F91FB1E-ABAD-4422-AF6B-1D588B69C68D}
+		{043790D5-9FC2-4E13-A4EF-0AEC4FACE6BC} = {455DA9A7-5387-462A-8715-E788C53E9D6D}
+		{3C80DA8D-668D-4DC1-9B68-11040A8249BC} = {9F91FB1E-ABAD-4422-AF6B-1D588B69C68D}
+		{1EC2393C-5CE9-478F-BBD2-A6B43CD049B9} = {455DA9A7-5387-462A-8715-E788C53E9D6D}
+		{4399F067-6B57-4BC5-B993-8426EA183D45} = {9F91FB1E-ABAD-4422-AF6B-1D588B69C68D}
+		{E11D2D27-C12D-4219-A564-8B06E7A8DE99} = {455DA9A7-5387-462A-8715-E788C53E9D6D}
+		{E64613A7-3782-49DA-BE2F-A44D3E3350E7} = {9F91FB1E-ABAD-4422-AF6B-1D588B69C68D}
+		{76131FA5-2930-48F7-B816-1058616C3AD7} = {455DA9A7-5387-462A-8715-E788C53E9D6D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {082591EF-FFAA-4786-B27E-B6ADC4BB2016}

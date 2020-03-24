@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>043790d5-9fc2-4e13-a4ef-0aec4face6bc</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>UtilZ.Dotnet.DBMySql</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Core\MySqlClientFactoryZ.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Core\MySqlDatabase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Core\MySqlDBAccess.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Core\MySqlDBAccess_DBInfo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Core\MySqlDBFactory.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Core\MySqlDBInteraction.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Core\MySqlSqlFieldValueFormator.cs" />
+  </ItemGroup>
+</Project>

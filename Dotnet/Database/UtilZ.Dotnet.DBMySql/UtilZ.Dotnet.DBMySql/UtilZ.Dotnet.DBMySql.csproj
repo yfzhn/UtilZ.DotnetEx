@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{3C80DA8D-668D-4DC1-9B68-11040A8249BC}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>UtilZ.Dotnet.DBMySql</RootNamespace>
+    <AssemblyName>UtilZ.Dotnet.DBMySql</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\..\..\Test\DotnetWinFormApp\bin\Debug\DBPlugins\MySql\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\..\..\Test\DotnetWinFormApp\bin\Release\DBPlugins\MySql\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>
+    </DocumentationFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\..\UtilZ.Dotnet.DBIBase\Lib\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.resources">
+      <HintPath>..\..\UtilZ.Dotnet.DBIBase\Lib\EntityFramework.resources.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data, Version=6.10.8.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Lib\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data.Entity.EF6, Version=6.10.8.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Lib\MySql.Data.Entity.EF6.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Z.EntityFramework.Plus.EF6">
+      <HintPath>..\..\UtilZ.Dotnet.DBIBase\Lib\Z.EntityFramework.Plus.EF6.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Lib\MySql.Data.dll" />
+    <Content Include="Lib\MySql.Data.Entity.EF6.dll" />
+    <Content Include="Lib\MySql.Data.Entity.EF6.xml" />
+    <Content Include="Lib\MySql.Data.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\UtilZ.Dotnet.Ex\UtilZ.Dotnet.Ex.csproj">
+      <Project>{55847880-1c12-48d9-b3d7-5baee632c3e7}</Project>
+      <Name>UtilZ.Dotnet.Ex</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\UtilZ.Dotnet.DBIBase\UtilZ.Dotnet.DBIBase.csproj">
+      <Project>{136ec218-cfea-4d4f-ae2f-6d0d6a1e2058}</Project>
+      <Name>UtilZ.Dotnet.DBIBase</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="..\..\..\..\SharedProject\Database\UtilZ.Dotnet.DBMySql\UtilZ.Dotnet.DBMySql\UtilZ.Dotnet.DBMySql.projitems" Label="Shared" />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

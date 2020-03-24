@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>76131fa5-2930-48f7-b816-1058616c3ad7</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>UtilZ.Dotnet.DBSqlServer</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Core\SqlServerDatabase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Core\SQLServerDBAccess.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Core\SQLServerDBAccess_DBInfo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Core\SQLServerDBFactory.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Core\SQLServerDBInteraction.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Core\SQLServerSqlFieldValueFormator.cs" />
+  </ItemGroup>
+</Project>

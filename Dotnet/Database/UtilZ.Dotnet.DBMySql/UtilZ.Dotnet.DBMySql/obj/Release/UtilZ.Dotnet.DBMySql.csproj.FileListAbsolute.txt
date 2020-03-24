@@ -1,0 +1,6 @@
+D:\SelfCode\UtilZ.DotnetEx\Test\DotnetWinFormApp\bin\Release\DBPlugins\MySql\UtilZ.Dotnet.DBMySql.dll
+D:\SelfCode\UtilZ.DotnetEx\Test\DotnetWinFormApp\bin\Release\DBPlugins\MySql\UtilZ.Dotnet.DBMySql.pdb
+D:\SelfCode\UtilZ.DotnetEx\Dotnet\Database\UtilZ.Dotnet.DBMySql\UtilZ.Dotnet.DBMySql\obj\Release\UtilZ.Dotnet.DBMySql.csprojAssemblyReference.cache
+D:\SelfCode\UtilZ.DotnetEx\Dotnet\Database\UtilZ.Dotnet.DBMySql\UtilZ.Dotnet.DBMySql\obj\Release\UtilZ.Dotnet.DBMySql.csproj.CopyComplete
+D:\SelfCode\UtilZ.DotnetEx\Dotnet\Database\UtilZ.Dotnet.DBMySql\UtilZ.Dotnet.DBMySql\obj\Release\UtilZ.Dotnet.DBMySql.dll
+D:\SelfCode\UtilZ.DotnetEx\Dotnet\Database\UtilZ.Dotnet.DBMySql\UtilZ.Dotnet.DBMySql\obj\Release\UtilZ.Dotnet.DBMySql.pdb

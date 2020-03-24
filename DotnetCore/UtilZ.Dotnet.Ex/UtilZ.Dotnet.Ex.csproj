@@ -6,6 +6,11 @@
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DefineConstants>TRACE;CORE</DefineConstants>
+    <DocumentationFile>D:\SelfCode\UtilZ.DotnetEx\DotnetCore\UtilZ.Dotnet.Ex\UtilZ.Dotnet.Ex.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile>D:\SelfCode\UtilZ.DotnetEx\DotnetCore\UtilZ.Dotnet.Ex\UtilZ.Dotnet.Ex.xml</DocumentationFile>
   </PropertyGroup>
 
   <Import Project="..\..\SharedProject\UtilZ.Dotnet.Ex\UtilZ.Dotnet.Ex.projitems" Label="Shared" />

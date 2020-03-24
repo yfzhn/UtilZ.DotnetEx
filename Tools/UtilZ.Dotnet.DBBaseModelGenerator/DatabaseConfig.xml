@@ -1,0 +1,127 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<DBConfig>
+  <Help>
+    <![CDATA[
+      //数据库类型
+      type:SQLServer=1,Oracle=2,MySQL=3,DB2=4,SQLite=5,Sybase=6,Access=7,ODBC=8
+      
+      //数据库连接信息类型
+      DBIntoType:
+      0:数据库连接字符串
+      1:主机,数据库,用户名,密码信息
+      无该属性项时默认为0处理,即当DBIntoType值为0时可省略
+      
+      //账号信息加密标识
+      EncryptionFlag:
+      0:账号信息未加密
+      1:账号信息加密
+      当EncryptionFlag为0时可省略,当DBIntoType为0时不支持加密解密
+      
+      //数据库连接字符串示例
+      SQLServer ConnectionString:data source=172.17.43.111;initial catalog=AIDataBase;user id=sa;password=xtaITXwwx982+-
+      Oracle ConnectionString:User Id=scott;Password=QWEqwe123;Data Source=(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=192.168.2.6)(PORT=1521)))(CONNECT_DATA=(SERVICE_NAME=hwdb)))
+      Oracle ConnectionString:User Id=userwq21210;Password=123456;Data Source=192.168.0.10:1521/daojiao
+      MySQL ConnectionString:database=testdb;data source=192.168.2.6;user id=breeze;password=xtaITXwwx982+-
+      SQLite ConnectionString:Data Source=F:\Project\AI\AIDB.sqlite
+      ]]>
+  </Help>
+  <DataBaseConfig>
+    <!--<item name="SQLServer库" DBIntoType="1" EncryptionFlag="1">
+      <dbid value="1"/>
+      <type value="1"/>
+      <host value="192.168.2.10"/>
+      <port value="1433"/>
+      <database value="AIDataBase"/>
+      <account value="sasa"/>
+      <password value="xtaITXwwx982+-xtaITXwwx982+-"/>
+      <encryption lib="WindowsFormsApplication1.exe" type="WindowsFormsApplication1.AuthenticationEncryption"/>
+    </item>-->
+
+    <item name="Oracle库" DBIntoType="1">
+      <dbid value="2"/>
+      <type value="2"/>
+      <host value="192.168.2.10"/>
+      <database value="hwdb"/>
+      <account value="scott"/>
+      <password value="QWEqwe123"/>
+    </item>
+
+    <item name="MySql库" DBIntoType="1">
+      <dbid value="3"/>
+      <type value="3"/>
+      <host value="192.168.2.10"/>
+      <database value="testdb"/>
+      <account value="breeze"/>
+      <password value="xtaITXwwx982+-"/>
+    </item>
+
+    <item name="SQLite库">
+      <dbid value="4"/>
+      <type value="5"/>
+      <constr><![CDATA[Data Source=G:\Project\AI\AIDB.sqlite]]></constr>
+    </item>
+
+    <item name="SQLServer.TestDB" DBIntoType="0">
+      <dbid value="5"/>
+      <type value="1"/>
+      <constr><![CDATA[data source=192.168.2.10;initial catalog=TestDB;user id=sa;password=xtaITXwwx982+-]]></constr>
+    </item>
+
+    <item name="DaoJiao" DBIntoType="1">
+      <dbid value="2714"/>
+      <type value="2"/>
+      <host value="192.168.0.10"/>
+      <database value="daojiao"/>
+      <account value="erchuuser"/>
+      <password value="erchuuser"/>
+    </item>
+
+    <item name="WQ21212" DBIntoType="1">
+      <dbid value="21212"/>
+      <type value="2"/>
+      <host value="192.168.0.10"/>
+      <database value="daojiao"/>
+      <account value="userwq21212"/>
+      <password value="123456"/>
+    </item>
+
+    <item name="WQ21210" DBIntoType="1">
+      <dbid value="21210"/>
+      <type value="2"/>
+      <host value="192.168.0.10"/>
+      <database value="daojiao"/>
+      <account value="userwq21210"/>
+      <password value="123456"/>
+    </item>
+	
+	<item name="测试" DBIntoType="1">
+      <dbid value="12345"/>
+      <type value="2"/>
+      <host value="192.168.0.234"/>
+      <database value="WQ21212"/>
+      <account value="userwq21212"/>
+      <password value="123456"/>
+    </item>
+	
+	<item name="SQLServer.TestDB" DBIntoType="0">
+      <dbid value="123"/>
+      <type value="1"/>
+      <constr><![CDATA[data source=192.168.0.250;initial catalog=TestDB;user id=sa;password=xtaITXwwx982+-]]></constr>
+    </item>
+	
+	<item name="MySql库" DBIntoType="1">
+      <dbid value="51"/>
+      <type value="3"/>
+      <host value="192.168.0.250"/>
+      <database value="testdb"/>
+      <account value="root"/>
+      <password value="xtaITXwwx982+-"/>
+    </item>
+	
+	<item name="SQLite库">
+      <dbid value="52"/>
+      <type value="5"/>
+      <constr><![CDATA[Data Source=E:\HSoft\DataBase\SQLite\test.sqlite]]></constr>
+    </item>
+  </DataBaseConfig>
+</DBConfig>

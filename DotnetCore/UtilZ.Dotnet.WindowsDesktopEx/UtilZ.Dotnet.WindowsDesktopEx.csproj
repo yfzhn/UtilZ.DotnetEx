@@ -11,6 +11,10 @@
     <DocumentationFile>F:\Code\Git\UtilZ\UtilZ.Dotnet2020\UtilZ.DotnetCore.WindowEx\UtilZ.DotnetCore.WindowEx.xml</DocumentationFile>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile>D:\SelfCode\UtilZ.DotnetEx\DotnetCore\UtilZ.Dotnet.WindowsDesktopEx\UtilZ.Dotnet.WindowsDesktopEx.xml</DocumentationFile>
+  </PropertyGroup>
+
   <ItemGroup>
     <ProjectReference Include="..\UtilZ.Dotnet.Ex\UtilZ.Dotnet.Ex.csproj" />
   </ItemGroup>

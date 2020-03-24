@@ -31,15 +31,13 @@
     </appender>
   </loger>
 
-  <loger name="GCBLoger" level="Trace" enable="true">
-    <!--重定向输出到GCB-->
+  <!--<loger name="GCBLoger" level="Trace" enable="true">
     <appender name="RedirectToGCB" enable="true" type="R">
 
     </appender>
 
-    <!--重定向输入服务UI-->
     <appender name="RedirectToUI" enable="true" type="R">
 
     </appender>
-  </loger>
+  </loger>-->
 </logconfig>
