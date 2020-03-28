@@ -503,7 +503,7 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls
             }
             else if (update)
             {
-                this.DrawSeries(this._chartCanvas, e.NewItems);
+                this.DrawSeries(this._chartGrid, this._chartCanvas, e.NewItems, null, null);
             }
         }
 

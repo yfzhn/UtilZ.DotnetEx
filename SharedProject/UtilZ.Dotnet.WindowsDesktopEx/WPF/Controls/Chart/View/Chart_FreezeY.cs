@@ -19,9 +19,8 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls
             * 4.根据Y轴高度绘制Y轴,并计算Y轴宽度
             * 5.根据宽度绘制X轴
             * 6.绘制坐标背景标记线
-            * 7.绘各Series
-            * 8.填充legend
-            * 9.布局UI
+            * 7.布局UI
+            * 8.绘各Series和填充legend
             ************************************************************************************************************/
 
             //chartGrid.ShowGridLines = true;
@@ -67,20 +66,15 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls
             //第六步 绘制坐标背景标记线
             this.DrawAxisBackgroundLabelLine(chartCanvas, axisYWidthInfo.AxisYLabelDic, axisXLabelDic);
 
-            //第七步 绘各Series
-            this.DrawSeries(chartCanvas, seriesCollection);
+            //第七步 布局UI
+            this.FreezeYLayout(axisCollection, legend, chartCanvas, chartGrid, scrollViewer, chartContentGrid, legendAddResult, axisXHeightInfo, axisYWidthInfo);
 
-            //第八步 填充legend
-            if (legendAddResult.HasLegend)
-            {
-                this.UpdateLegend(legend, seriesCollection);
-            }
+            //第八步 绘各Series和填充legend
+            this.DrawSeries(chartGrid, chartCanvas, seriesCollection, legendAddResult, legend);
+        }
 
-
-            //第九步 布局UI
-
-
-
+        private void FreezeYLayout(ChartCollection<AxisAbs> axisCollection, IChartLegend legend, Canvas chartCanvas, Grid chartGrid, ScrollViewer scrollViewer, Grid chartContentGrid, LegendAddResult legendAddResult, AxisXHeightInfo axisXHeightInfo, AxisYWidthInfo axisYWidthInfo)
+        {
             //添加scrollViewer
             scrollViewer.HorizontalScrollBarVisibility = ScrollBarVisibility.Auto;
             scrollViewer.VerticalScrollBarVisibility = ScrollBarVisibility.Disabled;

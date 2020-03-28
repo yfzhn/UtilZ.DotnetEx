@@ -4,7 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 using System.Windows.Shapes;
+using UtilZ.Dotnet.WindowsDesktopEx.Base.PartAsynWait.Model;
+using UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.PartAsynWait;
 
 namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls
 {
@@ -211,9 +214,91 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls
             }
         }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+        private class DrawSeriesPara
+        {
+            public Grid ChartGrid { get; private set; }
+            public Canvas ChartCanvas { get; private set; }
+            public IEnumerable<ISeries> SeriesCollection { get; private set; }
+            public LegendAddResult LegendAddResult { get; private set; }
+            public IChartLegend Legend { get; private set; }
+
+            public DrawSeriesPara(Grid chartGrid, Canvas chartCanvas, IEnumerable<ISeries> seriesCollection, LegendAddResult legendAddResult, IChartLegend legend)
+            {
+                this.ChartGrid = chartGrid;
+                this.ChartCanvas = chartCanvas;
+                this.SeriesCollection = seriesCollection;
+                this.LegendAddResult = legendAddResult;
+                this.Legend = legend;
+            }
+        }
+
+
+        private void DrawSeries(Grid chartGrid, Canvas chartCanvas, IEnumerable<ISeries> seriesCollection,
+            LegendAddResult legendAddResult, IChartLegend legend)
+        {
+            var para = new PartAsynWaitPara<DrawSeriesPara, object>();
+            para.Para = new DrawSeriesPara(chartGrid, chartCanvas, seriesCollection, legendAddResult, legend);
+            para.Caption = "正在绘制,请稍等...";
+            para.Function = (inPara) =>
+            {
+                //第七步 绘各Series
+                this.DrawSeries(chartCanvas, seriesCollection);
+
+                //填充legend
+                if (legendAddResult != null &&
+                    legendAddResult.HasLegend &&
+                    legend != null)
+                {
+                    inPara.Para.ChartGrid.Dispatcher.Invoke(new Action<IChartLegend, IEnumerable<ISeries>>((le, se) =>
+                   {
+                       this.UpdateLegend(le, se);
+                   }), new object[] { inPara.Para.Legend, inPara.Para.SeriesCollection });
+                }
+
+                return null;
+            };
+            para.IsShowCancel = false;
+            para.CancelAbort = false;
+            para.AsynWaitBackground = Brushes.Transparent;
+            WPFPartAsynWaitHelper.Wait(para, chartGrid);
+
+
+
+
+            ////第七步 绘各Series
+            //this.DrawSeries(chartCanvas, seriesCollection);
+
+            ////填充legend
+            //if (legendAddResult != null &&
+            //    legendAddResult.HasLegend &&
+            //    legend != null)
+            //{
+            //    this.UpdateLegend(legend, seriesCollection);
+            //}
+        }
+
         private void DrawSeries(Canvas chartCanvas, IEnumerable<ISeries> seriesCollection)
         {
-            if (chartCanvas.Width <= ChartConstant.ZERO_D || chartCanvas.Height <= ChartConstant.ZERO_D)
+            bool denyDraw = chartCanvas.Dispatcher.Invoke(new Func<bool>(() =>
+            {
+                return chartCanvas.Width <= ChartConstant.ZERO_D || chartCanvas.Height <= ChartConstant.ZERO_D;
+            }));
+
+            //if (chartCanvas.Width <= ChartConstant.ZERO_D || chartCanvas.Height <= ChartConstant.ZERO_D)
+            if (denyDraw)
             {
                 return;
             }
@@ -228,10 +313,10 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls
         }
 
 
-        private void UpdateLegend(IChartLegend legend, ChartCollection<ISeries> seriesCollection)
+        private void UpdateLegend(IChartLegend legend, IEnumerable<ISeries> seriesCollection)
         {
             var legendBrushList = new List<SeriesLegendItem>();
-            if (seriesCollection != null && seriesCollection.Count > ChartConstant.ZERO_I)
+            if (seriesCollection != null)
             {
                 foreach (ISeries series in seriesCollection)
                 {
@@ -241,6 +326,23 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls
 
             legend.UpdateLegend(legendBrushList);
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         private void SetRowColumn(Grid chartGrid, FrameworkElement element, RowColumnDefinitionItem rowColumnDefinition)
         {
