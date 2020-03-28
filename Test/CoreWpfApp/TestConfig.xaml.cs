@@ -190,6 +190,11 @@ namespace CoreWpfApp
     [ConfigRoot("配置", "根描述")]
     public class ConfigDemo
     {
+        [ConfigCommentAttribute]
+        public string Comment1 { get; set; } = "=======================================================================================";
+        [ConfigCommentAttribute]
+        public string Comment2 { get; set; } = "++++++++++++++++++++++++++++++++++++这是第一个注释开始+++++++++++++++++++++++++++++++++";
+
         [ConfigItem("年龄", "1-200")]
         public int Age { get; set; }
 
@@ -198,6 +203,9 @@ namespace CoreWpfApp
 
         public double? Interval2 { get; set; }
 
+
+        [ConfigCommentAttribute]
+        public string Comment3 { get; set; } = "=======================================================================================";
 
         [ConfigIgnore]
         public string Name { get; set; }

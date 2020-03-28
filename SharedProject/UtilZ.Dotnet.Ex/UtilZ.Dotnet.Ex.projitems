@@ -56,6 +56,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Base\BindingCollection\ICollectionOwner.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Base\Config\Attributes\ConfigAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Base\Config\Attributes\ConfigCollectionAttribute.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Base\Config\Attributes\ConfigCommentAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Base\Config\Attributes\ConfigIgnoreAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Base\Config\Attributes\ConfigItemAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Base\Config\Attributes\ConfigItemCustomerAttribute.cs" />

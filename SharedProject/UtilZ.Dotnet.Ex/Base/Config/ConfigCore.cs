@@ -234,7 +234,7 @@ namespace UtilZ.Dotnet.Ex.Base.Config
 
             ConfigAttribute attri;
             object propertyValue;
-            string name, eleName;
+            string name, eleName, comment;
             Type eleType;
             ConfigDataType configDataType;
 
@@ -248,9 +248,31 @@ namespace UtilZ.Dotnet.Ex.Base.Config
                 }
 
                 propertyValue = propertyInfo.GetValue(ownerObj, null);
+                attri = propertyInfo.GetCustomAttribute(configAttributeTypes.ConfigCommentAttributeType, false) as ConfigCommentAttribute;
+                if (attri != null)
+                {
+                    //注释
+                    if (propertyValue != null)
+                    {
+                        if (propertyValue is string)
+                        {
+                            comment = (string)propertyValue;
+                        }
+                        else
+                        {
+                            comment = propertyValue.ToString();
+                        }
+
+                        ownerEle.Add(new XComment(comment));
+                    }
+
+                    continue;
+                }
+
+
                 configDataType = this.GetDataType(propertyInfo.PropertyType);
 
-                attri = propertyInfo.GetCustomAttribute(configAttributeTypes.CustomerAttribute, false) as ConfigAttribute;
+                attri = propertyInfo.GetCustomAttribute(configAttributeTypes.CustomerAttributeType, false) as ConfigAttribute;
                 if (attri != null)
                 {
                     //自定义
@@ -288,7 +310,7 @@ namespace UtilZ.Dotnet.Ex.Base.Config
                     continue;
                 }
 
-                attri = propertyInfo.GetCustomAttribute(configAttributeTypes.ObjectAttribute, false) as ConfigAttribute;
+                attri = propertyInfo.GetCustomAttribute(configAttributeTypes.ObjectAttributeType, false) as ConfigAttribute;
                 if (attri != null)
                 {
                     //复合对象
@@ -651,6 +673,7 @@ namespace UtilZ.Dotnet.Ex.Base.Config
             {
                 eleDic[ele.Name.LocalName] = ele;
             }
+
             return eleDic;
         }
 
@@ -673,8 +696,15 @@ namespace UtilZ.Dotnet.Ex.Base.Config
                     continue;
                 }
 
+                attri = propertyInfo.GetCustomAttribute(configAttributeTypes.ConfigCommentAttributeType, false) as ConfigCommentAttribute;
+                if (attri != null)
+                {
+                    //注释
+                    continue;
+                }
+
                 configDataType = this.GetDataType(propertyInfo.PropertyType);
-                attri = propertyInfo.GetCustomAttribute(configAttributeTypes.CustomerAttribute, false) as ConfigAttribute;
+                attri = propertyInfo.GetCustomAttribute(configAttributeTypes.CustomerAttributeType, false) as ConfigAttribute;
                 if (attri != null)
                 {
                     var configItemCustomerAttribute = (ConfigItemCustomerAttribute)attri;
@@ -708,7 +738,7 @@ namespace UtilZ.Dotnet.Ex.Base.Config
                     continue;
                 }
 
-                attri = propertyInfo.GetCustomAttribute(configAttributeTypes.ObjectAttribute, false) as ConfigAttribute;
+                attri = propertyInfo.GetCustomAttribute(configAttributeTypes.ObjectAttributeType, false) as ConfigAttribute;
                 if (attri != null)
                 {
                     //复合对象
