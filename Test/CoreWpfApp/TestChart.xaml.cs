@@ -133,11 +133,11 @@ namespace CoreWpfApp
         public void Test()
         {
             //TestNumAxis1();
-            //TestNumAxis2();
+            TestNumAxis2();
             //TestDateTimeAxis();
 
 
-            // TestLineSeries();
+            //TestLineSeries();
             //TestVerStepLineSeries();
 
             //TestColumnSeriesHorizontal();
@@ -156,7 +156,7 @@ namespace CoreWpfApp
 
             //TestSegmentSeries();
 
-            TestRadarSeries();
+            //TestRadarSeries();
         }
 
 
@@ -1367,10 +1367,10 @@ namespace CoreWpfApp
                 AxisType = AxisType.X,
                 DockOrientation = ChartDockOrientation.Bottom,
                 Orientation = AxisLabelOrientation.LeftToRight,
-                MinValue = min,
+                //MinValue = min,
                 MaxValue = max,
                 CustomAxisTextFormatCunc = this.DatetimeAsixCustomAxisTextFormatCunc,
-                LabelStep = null
+                LabelStep = TimeSpan.FromMinutes(20)
             });
             axes.Add(new DateTimeAxis()
             {
@@ -1388,9 +1388,9 @@ namespace CoreWpfApp
                 DockOrientation = ChartDockOrientation.Left,
                 Orientation = AxisLabelOrientation.BottomToTop,
                 MinValue = min,
-                MaxValue = max,
+                //MaxValue = max,
                 CustomAxisTextFormatCunc = this.DatetimeAsixCustomAxisTextFormatCunc,
-                LabelStep = null
+                LabelStep = TimeSpan.FromMinutes(200)
             });
             axes.Add(new DateTimeAxis()
             {
@@ -1419,8 +1419,8 @@ namespace CoreWpfApp
                 DockOrientation = ChartDockOrientation.Left,
                 Orientation = AxisLabelOrientation.BottomToTop,
                 MinValue = -100,
-                MaxValue = 100,
-                LabelStep = double.NaN
+                //MaxValue = 100,
+                LabelStep = 50
             });
             axes.Add(new NumberAxis()
             {
@@ -1436,9 +1436,9 @@ namespace CoreWpfApp
                 AxisType = AxisType.X,
                 DockOrientation = ChartDockOrientation.Bottom,
                 Orientation = AxisLabelOrientation.LeftToRight,
-                MinValue = -1000,
+                //MinValue = -1000,
                 MaxValue = 1000,
-                LabelStep = double.NaN
+                LabelStep = 200
             });
             axes.Add(new NumberAxis()
             {

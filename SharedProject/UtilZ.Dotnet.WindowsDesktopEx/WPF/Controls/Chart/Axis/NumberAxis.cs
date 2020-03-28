@@ -124,67 +124,97 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls
 
         private NumberAxisData CreateAxisData(ChartCollection<ISeries> seriesCollection)
         {
-            NumberAxisValueArea result = this.GetMinAndMaxValue(seriesCollection);
-            long minMuilt, maxMuilt;
-            if (ChartHelper.DoubleHasValue(this._minValue))
+            if (!ChartHelper.DoubleHasValue(this._minValue) || !ChartHelper.DoubleHasValue(this._maxValue))
             {
-                result.Min = this._minValue;
+                NumberAxisValueArea result = this.GetMinAndMaxValue(seriesCollection);
+                if (ChartHelper.DoubleHasValue(this._minValue))
+                {
+                    result.Min = this._minValue;
+                }
 
                 if (ChartHelper.DoubleHasValue(this._maxValue))
                 {
                     result.Max = this._maxValue;
                 }
-                else
-                {
-                    if (ChartHelper.DoubleHasValue(result.Max))
-                    {
-                        maxMuilt = ChartHelper.CalDoubleToIntegerMuilt(result.Max);
-                        result.Max = ChartHelper.DoubleToCeilingInteger(result.Max, maxMuilt);
-                    }
-                    else
-                    {
-                        return null;
-                    }
-                }
+
+                this.ZoomAxisValueArea(result);
+                this.CompleteAxisAreaValue(result);
+                return this.CreateNumberAxisData(result.Min, result.Max);
             }
             else
             {
-                if (ChartHelper.DoubleHasValue(result.Min))
-                {
-                    minMuilt = ChartHelper.CalDoubleToIntegerMuilt(result.Min);
-                    if (ChartHelper.DoubleHasValue(this._maxValue))
-                    {
-                        result.Min = ChartHelper.DoubleToFloorInteger(result.Min, minMuilt);
-                        result.Max = this._maxValue;
-                    }
-                    else
-                    {
-                        if (ChartHelper.DoubleHasValue(result.Max))
-                        {
-                            maxMuilt = ChartHelper.CalDoubleToIntegerMuilt(result.Max);
-                            long muilt = minMuilt > maxMuilt ? minMuilt : maxMuilt;
-                            result.Min = ChartHelper.DoubleToFloorInteger(result.Min, muilt);
-                            result.Max = ChartHelper.DoubleToCeilingInteger(result.Max, muilt);
-                        }
-                        else
-                        {
-                            return null;
-                        }
-                    }
-                }
-                else
-                {
-                    return null;
-                }
+                return this.CreateNumberAxisData(this._minValue, this._maxValue);
             }
+        }
 
-            if (result.Max - result.Min <= base._PRE)
+
+        private NumberAxisData CreateNumberAxisData(double min, double max)
+        {
+            if (!ChartHelper.DoubleHasValue(min) ||
+                !ChartHelper.DoubleHasValue(max) ||
+                max - min <= base._PRE)
             {
                 return null;
             }
 
-            return new NumberAxisData(result.Min, result.Max);
+            return new NumberAxisData(min, max);
         }
+
+        private void ZoomAxisValueArea(NumberAxisValueArea result)
+        {
+            long minMuilt, maxMuilt;
+            if (ChartHelper.DoubleHasValue(this._minValue))
+            {
+                if (ChartHelper.DoubleHasValue(this._maxValue))
+                {
+                    //不调整
+                }
+                else
+                {
+                    maxMuilt = ChartHelper.CalDoubleToIntegerMuilt(result.Max);
+                    result.Max = ChartHelper.DoubleToCeilingInteger(result.Max, maxMuilt);
+                }
+            }
+            else
+            {
+                minMuilt = ChartHelper.CalDoubleToIntegerMuilt(result.Min);
+                if (ChartHelper.DoubleHasValue(this._maxValue))
+                {
+                    result.Min = ChartHelper.DoubleToFloorInteger(result.Min, minMuilt);
+                }
+                else
+                {
+                    maxMuilt = ChartHelper.CalDoubleToIntegerMuilt(result.Max);
+                    long muilt = minMuilt > maxMuilt ? minMuilt : maxMuilt;
+                    result.Min = ChartHelper.DoubleToFloorInteger(result.Min, muilt);
+                    result.Max = ChartHelper.DoubleToCeilingInteger(result.Max, muilt);
+                }
+            }
+        }
+
+        private NumberAxisValueArea CompleteAxisAreaValue(NumberAxisValueArea result)
+        {
+            if (ChartHelper.DoubleHasValue(result.Max))
+            {
+                if (!ChartHelper.DoubleHasValue(result.Min) && ChartHelper.DoubleHasValue(this._labelStep))
+                {
+                    result.Min = result.Max - this._labelStep;
+                }
+            }
+            else
+            {
+                if (ChartHelper.DoubleHasValue(result.Min) && ChartHelper.DoubleHasValue(this._labelStep))
+                {
+                    result.Max = result.Min + this._labelStep;
+                }
+            }
+
+            return result;
+        }
+
+
+
+
 
 
         #region GetMinAndMaxValue

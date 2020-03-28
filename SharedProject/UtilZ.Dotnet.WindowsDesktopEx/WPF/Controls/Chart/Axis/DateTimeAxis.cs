@@ -139,23 +139,56 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls
                     result.MaxTime = this._maxValue.Value;
                 }
 
-                if (result.MinTime == null || result.MaxTime == null)
+                this.CompleteAxisAreaValue(result);
+                return this.CreateDateTimeAxisData(result.MinTime, result.MaxTime);
+            }
+            else
+            {
+                return this.CreateDateTimeAxisData(this._minValue, this._maxValue);
+            }
+        }
+
+        private DateTimeAxisData CreateDateTimeAxisData(DateTime? minTime, DateTime? maxTime)
+        {
+            if (minTime == null || maxTime == null)
+            {
+                return null;
+            }
+
+            TimeSpan area = maxTime.Value - minTime.Value;
+            if (area.TotalMilliseconds < base._PRE)
+            {
+                return null;
+            }
+
+            return new DateTimeAxisData(minTime.Value, maxTime.Value);
+        }
+
+        private void CompleteAxisAreaValue(DateTimeMinAndMaxValue result)
+        {
+            if (result.MinTime == null)
+            {
+                if (result.MaxTime != null && this._labelStep != null)
                 {
-                    return null;
-                }
-                else
-                {
-                    return new DateTimeAxisData(result.MinTime.Value, result.MaxTime.Value);
+                    result.MinTime = result.MaxTime.Value.Subtract(this._labelStep.Value);
                 }
             }
             else
             {
-                return new DateTimeAxisData(this._minValue.Value, this._maxValue.Value);
+                if (result.MaxTime == null && this._labelStep != null)
+                {
+                    result.MaxTime = result.MinTime.Value.Add(this._labelStep.Value);
+                }
             }
         }
 
         private DateTimeMinAndMaxValue GetMinAndMaxValue(ChartCollection<ISeries> seriesCollection)
         {
+            if (seriesCollection == null || seriesCollection.Count == 0)
+            {
+                return new DateTimeMinAndMaxValue(null, null);
+            }
+
             DateTime? min = null, max = null;
             IChartAxisValue chartAxisValue;
             object obj;
