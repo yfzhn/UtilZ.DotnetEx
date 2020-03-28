@@ -254,36 +254,38 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls
         }
 
 
-        private readonly List<Inline> _lineCacheList = new List<Inline>();
-        private FontFamily _defaultFontFamily = null;
+        //private readonly List<Inline> _lineCacheList = new List<Inline>();
+        //private FontFamily _defaultFontFamily = null;
         private void PrimitiveShowLog(List<ShowLogItem> items)
         {
             try
             {
                 Inline line;
                 FontFamily fontFamily;
+                LogShowStyle style;
 
                 foreach (var item in items)
                 {
-                    LogShowStyle style = this.GetStyleById(item.StyleID);
+
                     //var run = new Run(item.LogText, this._paragraph.ContentEnd);
 
-                    if (this._lineCacheList.Count > 0)
-                    {
-                        line = this._lineCacheList.Last();
-                        this._lineCacheList.RemoveAt(this._lineCacheList.Count - 1);
-                        ((Run)line).Text = item.LogText;
-                        line.FontFamily = this._defaultFontFamily;
-                    }
-                    else
-                    {
-                        line = new Run(item.LogText);
-                        if (this._defaultFontFamily == null)
-                        {
-                            this._defaultFontFamily = line.FontFamily;
-                        }
-                    }
+                    //if (this._lineCacheList.Count > 0)
+                    //{
+                    //    line = this._lineCacheList.Last();
+                    //    this._lineCacheList.RemoveAt(this._lineCacheList.Count - 1);
+                    //    ((Run)line).Text = item.LogText;
+                    //    line.FontFamily = this._defaultFontFamily;
+                    //}
+                    //else
+                    //{
+                    line = new Run(item.LogText);
+                    //    if (this._defaultFontFamily == null)
+                    //    {
+                    //        this._defaultFontFamily = line.FontFamily;
+                    //    }
+                    //}
 
+                    style = this.GetStyleById(item.StyleID);
                     line.Foreground = style.ForegroundBrush;
                     line.FontSize = style.FontSize;
                     fontFamily = style.FontFamily;
@@ -313,7 +315,7 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls
             while (this._paragraph.Inlines.Count > 0 && this._paragraph.Inlines.Count > this.MaxItemCount)
             {
                 line = this._paragraph.Inlines.First();
-                this._lineCacheList.Add(line);
+                //this._lineCacheList.Add(line);
                 this._paragraph.Inlines.Remove(line);
             }
         }
@@ -322,15 +324,15 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls
         {
             this.RemoveOutElements();
 
-            int removeCount = this._paragraph.Inlines.Count + this._lineCacheList.Count - newMaxItemCount;
-            if (removeCount > 0)
-            {
-                int index = newMaxItemCount - this._paragraph.Inlines.Count + 1;
-                if (index < this._lineCacheList.Count)
-                {
-                    this._lineCacheList.RemoveRange(index, removeCount - 1);
-                }
-            }
+            //int removeCount = this._paragraph.Inlines.Count + this._lineCacheList.Count - newMaxItemCount;
+            //if (removeCount > 0)
+            //{
+            //    int index = newMaxItemCount - this._paragraph.Inlines.Count + 1;
+            //    if (index < this._lineCacheList.Count)
+            //    {
+            //        this._lineCacheList.RemoveRange(index, removeCount - 1);
+            //    }
+            //}
         }
 
 
