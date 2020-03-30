@@ -6,8 +6,6 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Shapes;
-using UtilZ.Dotnet.WindowsDesktopEx.Base.PartAsynWait.Model;
-using UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.PartAsynWait;
 
 namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls
 {
@@ -249,56 +247,21 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls
         private void DrawSeries(Grid chartGrid, Canvas chartCanvas, IEnumerable<ISeries> seriesCollection,
             LegendAddResult legendAddResult, IChartLegend legend)
         {
-            var para = new PartAsynWaitPara<DrawSeriesPara, object>();
-            para.Para = new DrawSeriesPara(chartGrid, chartCanvas, seriesCollection, legendAddResult, legend);
-            para.Caption = "正在绘制,请稍等...";
-            para.Function = (inPara) =>
+            //第七步 绘各Series
+            this.DrawSeries(chartCanvas, seriesCollection);
+
+            //填充legend
+            if (legendAddResult != null &&
+                legendAddResult.HasLegend &&
+                legend != null)
             {
-                //第七步 绘各Series
-                this.DrawSeries(chartCanvas, seriesCollection);
-
-                //填充legend
-                if (legendAddResult != null &&
-                    legendAddResult.HasLegend &&
-                    legend != null)
-                {
-                    inPara.Para.ChartGrid.Dispatcher.Invoke(new Action<IChartLegend, IEnumerable<ISeries>>((le, se) =>
-                   {
-                       this.UpdateLegend(le, se);
-                   }), new object[] { inPara.Para.Legend, inPara.Para.SeriesCollection });
-                }
-
-                return null;
-            };
-            para.IsShowCancel = false;
-            para.CancelAbort = false;
-            para.AsynWaitBackground = Brushes.Transparent;
-            WPFPartAsynWaitHelper.Wait(para, chartGrid);
-
-
-
-
-            ////第七步 绘各Series
-            //this.DrawSeries(chartCanvas, seriesCollection);
-
-            ////填充legend
-            //if (legendAddResult != null &&
-            //    legendAddResult.HasLegend &&
-            //    legend != null)
-            //{
-            //    this.UpdateLegend(legend, seriesCollection);
-            //}
+                this.UpdateLegend(legend, seriesCollection);
+            }
         }
 
         private void DrawSeries(Canvas chartCanvas, IEnumerable<ISeries> seriesCollection)
         {
-            bool denyDraw = chartCanvas.Dispatcher.Invoke(new Func<bool>(() =>
-            {
-                return chartCanvas.Width <= ChartConstant.ZERO_D || chartCanvas.Height <= ChartConstant.ZERO_D;
-            }));
-
-            //if (chartCanvas.Width <= ChartConstant.ZERO_D || chartCanvas.Height <= ChartConstant.ZERO_D)
-            if (denyDraw)
+            if (chartCanvas.Width <= ChartConstant.ZERO_D || chartCanvas.Height <= ChartConstant.ZERO_D)
             {
                 return;
             }

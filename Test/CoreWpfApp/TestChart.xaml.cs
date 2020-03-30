@@ -1193,7 +1193,7 @@ namespace CoreWpfApp
 
             this.ManaulComit = true;
 
-            //this.ChartMinWidth = 900d;
+            this.ChartMinWidth = 900d;
             //this.ChartMinHeight = 400d;
 
 
@@ -1263,26 +1263,26 @@ namespace CoreWpfApp
                 Title = "LineSeries",
                 Style = ChartStyleHelper.CreateLineSeriesStyle(Brushes.Gray)
             });
-            //series.Add(new LineSeries()
-            //{
-            //    AxisX = axes[2],
-            //    AxisY = axes[0],
-            //    LineSeriesType = LineSeriesType.Bezier,
-            //    EnableTooltip = true,
-            //    Title = "DateTimeLineSeries",
-            //    Style = ChartStyleHelper.CreateLineSeriesStyle(Brushes.Green),
-            //    //CreatePointFunc = this.CreatePointFunc
-            //});
-            //series.Add(new StepLineSeries()
-            //{
-            //    AxisX = axes[2],
-            //    AxisY = axes[0],
-            //    EnableTooltip = true,
-            //    Title = "DateTimeStepLineSeries",
-            //    Style = ChartStyleHelper.CreateLineSeriesStyle(Brushes.Red),
-            //    Orientation = SeriesOrientation.Horizontal
-            //});
-           
+            series.Add(new LineSeries()
+            {
+                AxisX = axes[2],
+                AxisY = axes[0],
+                LineSeriesType = LineSeriesType.Bezier,
+                EnableTooltip = true,
+                Title = "DateTimeLineSeries",
+                Style = ChartStyleHelper.CreateLineSeriesStyle(Brushes.Green),
+                //CreatePointFunc = this.CreatePointFunc
+            });
+            series.Add(new StepLineSeries()
+            {
+                AxisX = axes[2],
+                AxisY = axes[0],
+                EnableTooltip = true,
+                Title = "DateTimeStepLineSeries",
+                Style = ChartStyleHelper.CreateLineSeriesStyle(Brushes.Red),
+                Orientation = SeriesOrientation.Horizontal
+            });
+
 
             double value;
             double axisXValueStep = 10;
@@ -1298,34 +1298,34 @@ namespace CoreWpfApp
 
 
 
-            //DateTime time = minTime;
-            //TimeSpan ts = maxTime - time;
-            //var values2 = new ValueCollection();
-            //double stepTotalMilliseconds = ts.TotalMilliseconds / ((maxY - minY) / axisXValueStep);
-            //while (time < maxTime)
-            //{
-            //    value = _rnd.Next(minY, maxY);
-            //    values2.Add(new ChartAxisValue(time, value, $"{time.ToString()}_{value}"));
-            //    time = time.AddMilliseconds(stepTotalMilliseconds);
-            //}
-            //series[1].Values = values2;
+            DateTime time = minTime;
+            TimeSpan ts = maxTime - time;
+            var values2 = new ValueCollection();
+            double stepTotalMilliseconds = ts.TotalMilliseconds / ((maxY - minY) / axisXValueStep);
+            while (time < maxTime)
+            {
+                value = _rnd.Next(minY, maxY);
+                values2.Add(new ChartAxisValue(time, value, $"{time.ToString()}_{value}"));
+                time = time.AddMilliseconds(stepTotalMilliseconds);
+            }
+            series[1].Values = values2;
 
 
-            ////StringBuilder sb = new StringBuilder();
-            //var values3 = new ValueCollection();
-            //minY = minY / 10;
-            //maxY = maxY / 10;
-            //time = minTime;
-            //while (time < maxTime)
-            //{
-            //    value = _rnd.Next(minY, maxY) * 10;
-            //    values3.Add(new ChartAxisValue(time, value, $"{time.ToString()}_{value}"));
-            //    //sb.AppendLine($"{time.ToString("yyyy-MM-dd HH:mm:ss")}_{value}");
-            //    ts = maxTime - time;
-            //    time = time.AddDays(_rnd.Next(1, (int)ts.TotalDays));
-            //}
-            ////File.WriteAllText(fileName, sb.ToString());
-            //series[2].Values = values3;
+            //StringBuilder sb = new StringBuilder();
+            var values3 = new ValueCollection();
+            minY = minY / 10;
+            maxY = maxY / 10;
+            time = minTime;
+            while (time < maxTime)
+            {
+                value = _rnd.Next(minY, maxY) * 10;
+                values3.Add(new ChartAxisValue(time, value, $"{time.ToString()}_{value}"));
+                //sb.AppendLine($"{time.ToString("yyyy-MM-dd HH:mm:ss")}_{value}");
+                ts = maxTime - time;
+                time = time.AddDays(_rnd.Next(1, (int)ts.TotalDays));
+            }
+            //File.WriteAllText(fileName, sb.ToString());
+            series[2].Values = values3;
 
 
 
