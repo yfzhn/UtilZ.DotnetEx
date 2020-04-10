@@ -56,6 +56,12 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls
             DependencyProperty.Register(nameof(ZoomToFull), typeof(bool), typeof(ZoomTranslateContainer),
                 new FrameworkPropertyMetadata(true, new PropertyChangedCallback(OnPropertyChangedCallback)));
 
+        /// <summary>
+        /// 缩放至完整显示模式依赖属性
+        /// </summary>
+        public static readonly DependencyProperty ZoomToFullPolicyProperty =
+            DependencyProperty.Register(nameof(ZoomToFullPolicy), typeof(ZoomToFullPolicy), typeof(ZoomTranslateContainer),
+                new FrameworkPropertyMetadata(ZoomToFullPolicy.Both, new PropertyChangedCallback(OnPropertyChangedCallback)));
 
         /// <summary>
         /// 缩放启用依赖属性
@@ -168,6 +174,21 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls
         }
 
         /// <summary>
+        /// 获取或设置缩放至完整显示模式
+        /// </summary>
+        public ZoomToFullPolicy ZoomToFullPolicy
+        {
+            get
+            {
+                return (ZoomToFullPolicy)base.GetValue(ZoomToFullPolicyProperty);
+            }
+            set
+            {
+                base.SetValue(ZoomToFullPolicyProperty, value);
+            }
+        }
+
+        /// <summary>
         /// 获取或设置缩放启用
         /// </summary>
         public bool ZoomEnable
@@ -215,6 +236,10 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls
             else if (e.Property == ZoomScaleProperty)
             {
                 selfControl.UpdateScale((double)e.NewValue);
+            }
+            else if (e.Property == ZoomToFullProperty || e.Property == ZoomToFullPolicyProperty)
+            {
+                selfControl.AutoZoomToFull();
             }
         }
         #endregion
@@ -474,17 +499,31 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls
 
         private bool HasZoomout()
         {
-            //if (canvasRoot.Height - scrollViewer.ViewportHeight > _PRE ||
-            //   canvasRoot.Width - scrollViewer.ViewportWidth > _PRE)
-            if (canvasRoot.Height - scrollViewer.RenderSize.Height > _PRE ||
-               canvasRoot.Width - scrollViewer.RenderSize.Width > _PRE)
+            bool hasZoomout = false;
+            switch (this.ZoomToFullPolicy)
             {
-                return true;
+                case ZoomToFullPolicy.Both:
+                    if (canvasRoot.Height - scrollViewer.RenderSize.Height > _PRE ||
+                        canvasRoot.Width - scrollViewer.RenderSize.Width > _PRE)
+                    {
+                        hasZoomout = true;
+                    }
+                    break;
+                case ZoomToFullPolicy.Width:
+                    if (canvasRoot.Width - scrollViewer.RenderSize.Width > _PRE)
+                    {
+                        hasZoomout = true;
+                    }
+                    break;
+                case ZoomToFullPolicy.Height:
+                    if (canvasRoot.Height - scrollViewer.RenderSize.Height > _PRE)
+                    {
+                        hasZoomout = true;
+                    }
+                    break;
             }
-            else
-            {
-                return false;
-            }
+
+            return hasZoomout;
         }
 
         /// <summary>
@@ -531,5 +570,26 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls
             }
         }
         #endregion
+    }
+
+    /// <summary>
+    /// 缩放至全屏策略
+    /// </summary>
+    public enum ZoomToFullPolicy
+    {
+        /// <summary>
+        /// 以宽度为依据,当宽度达到超出可视范围则停止
+        /// </summary>
+        Width,
+
+        /// <summary>
+        /// 以高度为依据,当高度达到超出可视范围则停止
+        /// </summary>
+        Height,
+
+        /// <summary>
+        /// 同时以宽度和高度为依据,当宽度或高度达到超出可视范围则停止
+        /// </summary>
+        Both
     }
 }

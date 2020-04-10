@@ -44,14 +44,13 @@ namespace UtilZ.Dotnet.DBIBase.Connection
                     throw new ApplicationException("连接池已释放");
                 }
 
-                DbConnectionPool dbConnectionPool;
                 if (_dbConnectionPoolDic.ContainsKey(dbid))
                 {
                     //连接池已经创建,不再重复创建,直接返回
                     return;
                 }
 
-                dbConnectionPool = new DbConnectionPool(config, dbInteraction);
+                var dbConnectionPool = new DbConnectionPool(config, dbInteraction);
                 _dbConnectionPoolDic.TryAdd(dbid, dbConnectionPool);
             }
         }
@@ -65,12 +64,9 @@ namespace UtilZ.Dotnet.DBIBase.Connection
             lock (_dbConnectionPoolDicMonitor)
             {
                 DbConnectionPool dbConnectionPool;
-                if (_dbConnectionPoolDic.ContainsKey(dbid))
+                if (_dbConnectionPoolDic.TryRemove(dbid, out dbConnectionPool))
                 {
-                    if (_dbConnectionPoolDic.TryRemove(dbid, out dbConnectionPool))
-                    {
-                        dbConnectionPool.Dispose();
-                    }
+                    dbConnectionPool.Dispose();
                 }
             }
         }
@@ -110,8 +106,8 @@ namespace UtilZ.Dotnet.DBIBase.Connection
                 {
                     return;
                 }
-
                 _status = false;
+
                 try
                 {
                     foreach (var dbConnectionPool in _dbConnectionPoolDic.Values)
