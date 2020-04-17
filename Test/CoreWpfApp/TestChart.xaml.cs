@@ -1515,16 +1515,16 @@ namespace CoreWpfApp
             this._thread = new ThreadEx(this.ThreadMethod, "ThreadMethod", true);
         }
 
-        private void ThreadMethod(CancellationToken token)
+        private void ThreadMethod(ThreadExPara para)
         {
             const int INTERVAL = 500;
             try
             {
-                while (!token.IsCancellationRequested)
+                while (!para.Token.IsCancellationRequested)
                 {
                     try
                     {
-                        token.WaitHandle.WaitOne(INTERVAL);
+                        para.WaitOne(INTERVAL);
                     }
                     catch (ObjectDisposedException)
                     {

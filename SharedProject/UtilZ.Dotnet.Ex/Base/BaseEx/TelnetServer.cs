@@ -63,10 +63,10 @@ namespace UtilZ.Dotnet.Ex.Base
             this._thread = new ThreadEx(this.StartListen, "TelnetServer监听线程", true);
         }
 
-        private void StartListen(CancellationToken token)
+        private void StartListen(ThreadExPara para)
         {
             Socket client;
-            while (true)
+            while (!para.Token.IsCancellationRequested)
             {
                 //client = this._listenerSocket.Accept();
                 client = this._tcpListener.AcceptSocket();
@@ -284,12 +284,12 @@ namespace UtilZ.Dotnet.Ex.Base
             return resultStr;
         }
 
-        private void RecieveMethod(CancellationToken token)
+        private void RecieveMethod(ThreadExPara para)
         {
             byte[] buffer = new byte[4096];
             int recCount;
             this.SendWelcom();
-            while (!token.IsCancellationRequested)
+            while (!para.Token.IsCancellationRequested)
             {
                 try
                 {

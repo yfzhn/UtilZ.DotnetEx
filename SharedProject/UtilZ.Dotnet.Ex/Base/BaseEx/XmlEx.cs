@@ -170,6 +170,62 @@ namespace UtilZ.Dotnet.Ex.Base
         }
         #endregion
 
+        /// <summary>
+        /// 设置XAttribute
+        /// </summary>
+        /// <param name="ele">目标元素</param>
+        /// <param name="attributeName">特性名称</param>
+        /// <param name="value">特性值</param>
+        /// <param name="valueNullExitAttribute">当特性值为null时,是否存在该特性[true:存在;false:不存在]</param>
+        public static void SetXElementAttribute(this XElement ele, string attributeName, string value, bool valueNullExitAttribute = false)
+        {
+            if (ele == null)
+            {
+                throw new ArgumentNullException(nameof(ele));
+            }
+
+            if (string.IsNullOrWhiteSpace(attributeName))
+            {
+                throw new ArgumentNullException(nameof(attributeName));
+            }
+
+            XAttribute attribute = ele.Attribute(attributeName);
+            if (value == null)
+            {
+                if (valueNullExitAttribute)
+                {
+                    if (attribute == null)
+                    {
+                        attribute = new XAttribute(attributeName, string.Empty);
+                        ele.Add(attribute);
+                    }
+                    else
+                    {
+                        attribute.Value = string.Empty;
+                    }
+                }
+                else
+                {
+                    if (attribute != null)
+                    {
+                        attribute.Remove();
+                    }
+                }
+            }
+            else
+            {
+                if (attribute == null)
+                {
+                    attribute = new XAttribute(attributeName, value);
+                    ele.Add(attribute);
+                }
+                else
+                {
+                    attribute.Value = value;
+                }
+            }
+        }
+
         #region CreateXElement
         /// <summary>
         /// 创建特性值xml元素节点

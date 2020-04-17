@@ -88,7 +88,7 @@ namespace UtilZ.Dotnet.Ex.Transfer.Net
             this._socketRevDataThread.Start(this._client);
         }
 
-        private void ParseData(CancellationToken token)
+        private void ParseData(ThreadExPara para)
         {
             const int millisecondsTimeout = 500;
             byte[] parsePackgeBuffer = new byte[TransferConstant.MTU_MAX * 3];
@@ -100,11 +100,30 @@ namespace UtilZ.Dotnet.Ex.Transfer.Net
                 int parsePostion = 0;
                 byte[] buffer;
 
-                while (!token.IsCancellationRequested)
+                while (!para.Token.IsCancellationRequested)
                 {
                     try
                     {
-                        if (!this._parseDatas.TryTake(out buffer, millisecondsTimeout, token))
+                        try
+                        {
+                            if (!this._parseDatas.TryTake(out buffer, millisecondsTimeout, para.Token))
+                            {
+                                continue;
+                            }
+                        }
+                        catch (ArgumentNullException)
+                        {
+                            continue;
+                        }
+                        catch (OperationCanceledException)
+                        {
+                            continue;
+                        }
+                        catch (ObjectDisposedException)
+                        {
+                            continue;
+                        }
+                        catch (InvalidOperationException)
                         {
                             continue;
                         }

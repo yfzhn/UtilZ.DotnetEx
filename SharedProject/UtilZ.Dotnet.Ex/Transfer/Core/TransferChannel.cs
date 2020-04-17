@@ -119,25 +119,33 @@ namespace UtilZ.Dotnet.Ex.Transfer.Net
             { }
         }
 
-        private void ProReceiveDataThreadMethod(CancellationToken token)
+        private void ProReceiveDataThreadMethod(ThreadExPara para)
         {
             Stopwatch watch = new Stopwatch();
             ReceiveDatagramInfo receiveDatagramInfo;
 
-            while (!token.IsCancellationRequested)
+            while (!para.Token.IsCancellationRequested)
             {
                 try
                 {
                     try
                     {
-                        receiveDatagramInfo = this._waitParseDatas.Take(token);
+                        receiveDatagramInfo = this._waitParseDatas.Take(para.Token);
                     }
                     catch (ArgumentNullException)
                     {
                         Loger.Error(".net平台库ArgumentNullException异常,忽略");
                         continue;
                     }
+                    catch (ObjectDisposedException)
+                    {
+                        continue;
+                    }
                     catch (OperationCanceledException)
+                    {
+                        continue;
+                    }
+                    catch (InvalidOperationException)
                     {
                         continue;
                     }

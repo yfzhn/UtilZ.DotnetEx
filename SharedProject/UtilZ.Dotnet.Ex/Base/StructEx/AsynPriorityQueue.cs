@@ -53,19 +53,10 @@ namespace UtilZ.Dotnet.Ex.Base
         /// <summary>
         /// 重写执行线程方法
         /// </summary>
-        /// <param name="token">线程取消通知参数</param>
-        private void ExcuteThreadMethod(CancellationToken token)
+        /// <param name="para">线程参数</param>
+        private void ExcuteThreadMethod(ThreadExPara para)
         {
             //执行数据处理方法
-            this.DataProcessThreadMethod(token);
-        }
-
-        /// <summary>
-        /// 数据处理线程
-        /// </summary>
-        /// <param name="token">线程取消通知参数</param>
-        private void DataProcessThreadMethod(CancellationToken token)
-        {
             long count = 0;
 
             while (true)
@@ -76,7 +67,7 @@ namespace UtilZ.Dotnet.Ex.Base
                     count = this._priorityQueue.Count;
 
                     //如果线程取消
-                    if (token.IsCancellationRequested)
+                    if (para.Token.IsCancellationRequested)
                     {
                         break;
                     }
@@ -92,7 +83,7 @@ namespace UtilZ.Dotnet.Ex.Base
                     this.OnRaiseDataProcess(this._priorityQueue.Dequeue());
 
                     //如果线程取消
-                    if (token.IsCancellationRequested)
+                    if (para.Token.IsCancellationRequested)
                     {
                         break;
                     }

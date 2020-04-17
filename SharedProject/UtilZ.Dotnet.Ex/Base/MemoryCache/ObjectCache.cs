@@ -72,22 +72,26 @@ namespace UtilZ.Dotnet.Ex.Base.MemoryCache
             }
         }
 
-        private void ExpirationChaeckThreadMethod(CancellationToken token)
+        private void ExpirationChaeckThreadMethod(ThreadExPara para)
         {
             try
             {
                 CacheItem[] cacheItemArr;
-                while (!token.IsCancellationRequested)
+                while (!para.Token.IsCancellationRequested)
                 {
                     try
                     {
-                        token.WaitHandle.WaitOne(this._checkIntervalMillisecondsTimeout, true);
+                        para.Token.WaitHandle.WaitOne(this._checkIntervalMillisecondsTimeout, true);
                     }
                     catch (ObjectDisposedException)
                     {
                         break;
                     }
                     catch (AbandonedMutexException)
+                    {
+                        break;
+                    }
+                    catch (InvalidOperationException)
                     {
                         break;
                     }

@@ -150,19 +150,19 @@ namespace UtilZ.Dotnet.Ex.Base
         }
 
 
-        private void ProcessThreadMethod(CancellationToken token)
+        private void ProcessThreadMethod(ThreadExPara para)
         {
             try
             {
                 const int millisecondsTimeout = 1000;
                 T item;
-                while (!token.IsCancellationRequested)
+                while (!para.Token.IsCancellationRequested)
                 {
                     try
                     {
                         try
                         {
-                            if (!this._blockingCollection.TryTake(out item, millisecondsTimeout, token))
+                            if (!this._blockingCollection.TryTake(out item, millisecondsTimeout, para.Token))
                             {
                                 continue;
                             }

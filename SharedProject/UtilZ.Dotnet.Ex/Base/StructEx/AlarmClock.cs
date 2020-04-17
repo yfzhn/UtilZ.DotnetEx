@@ -27,7 +27,7 @@ namespace UtilZ.Dotnet.Ex.Base
         /// </summary>
         public AlarmClock()
         {
-            this._timingThread = new ThreadEx(new Action<CancellationToken>((token) => { this.Timing(token); }), "闹钟线程", true);
+            this._timingThread = new ThreadEx(this.TimingThreadMethod, "闹钟线程", true);
         }
 
         /// <summary>
@@ -174,8 +174,8 @@ namespace UtilZ.Dotnet.Ex.Base
         /// <summary>
         /// 定时操作
         /// </summary>
-        /// <param name="token">取消执行token</param>
-        private void Timing(CancellationToken token)
+        /// <param name="para">线程参数</param>
+        private void TimingThreadMethod(ThreadExPara para)
         {
             LoopLinked<AlarmTime> alarmLoopLinked = this.CreateAlarmLoopLinked();
             if (alarmLoopLinked.Count == 0)
@@ -191,7 +191,7 @@ namespace UtilZ.Dotnet.Ex.Base
             {
                 tsWait = this.CaculateWaitTime(currentNode.Value.Time);
                 //如果停止门铃执行
-                if (token.IsCancellationRequested)
+                if (para.Token.IsCancellationRequested)
                 {
                     break;
                 }
@@ -199,7 +199,7 @@ namespace UtilZ.Dotnet.Ex.Base
                 Thread.Sleep(tsWait);
 
                 //如果停止门铃执行
-                if (token.IsCancellationRequested)
+                if (para.Token.IsCancellationRequested)
                 {
                     break;
                 }

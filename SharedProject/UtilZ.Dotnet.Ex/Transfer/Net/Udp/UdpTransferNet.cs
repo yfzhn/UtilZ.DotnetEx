@@ -119,14 +119,14 @@ namespace UtilZ.Dotnet.Ex.Transfer.Net
             this._receiveDataThread = null;
         }
 
-        private void CopyRevDataThreadMethod(CancellationToken token)
+        private void CopyRevDataThreadMethod(ThreadExPara para)
         {
             RevDataInfo revDataPosition;
-            while (!token.IsCancellationRequested)
+            while (!para.Token.IsCancellationRequested)
             {
                 try
                 {
-                    revDataPosition = this._revDataPositions.Take(token);
+                    revDataPosition = this._revDataPositions.Take(para.Token);
                     this._revBufferParseOffset = revDataPosition.Offset;
 
                     byte[] buffer = new byte[revDataPosition.Length];
@@ -144,6 +144,10 @@ namespace UtilZ.Dotnet.Ex.Transfer.Net
                 {
                     break;
                 }
+                catch (InvalidOperationException)
+                {
+                    break;
+                }
                 catch (Exception ex)
                 {
                     Loger.Error(ex, "ProRevRevDataPosition异常");
@@ -151,7 +155,7 @@ namespace UtilZ.Dotnet.Ex.Transfer.Net
             }
         }
 
-        private void ReceiveDtaThreadMethod(CancellationToken token)
+        private void ReceiveDtaThreadMethod(ThreadExPara para)
         {
             int bufLen = TransferConstant.MTU_MAX + 128;//原本+28(IP头20+udp头8)即可,为了靠谱点,大一点无所谓
             byte[] buffer = new byte[bufLen];

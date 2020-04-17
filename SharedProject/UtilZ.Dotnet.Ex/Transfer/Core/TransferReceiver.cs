@@ -78,14 +78,14 @@ namespace UtilZ.Dotnet.Ex.Transfer.Net
             this._revTimeoutCheckThread.Start();
         }
 
-        private void RevTimeoutCheckThreadMethod(CancellationToken token)
+        private void RevTimeoutCheckThreadMethod(ThreadExPara para)
         {
             const int defaultTimeoutCheckInveral = 100;
             int timeoutCheckInveral = defaultTimeoutCheckInveral;
             ReceiveDataItem[] revItems;
             SendDataNotifyMessage notifyMessage;
 
-            while (!token.IsCancellationRequested)
+            while (!para.Token.IsCancellationRequested)
             {
                 try
                 {
@@ -146,16 +146,16 @@ namespace UtilZ.Dotnet.Ex.Transfer.Net
             }
         }
 
-        private void ReqDataThreadMethod(CancellationToken token, object obj)
+        private void ReqDataThreadMethod(ThreadExPara para)
         {
             const int reqDataThreadsEventHandleTimeout = 2000;
             int currentThreadId = Thread.CurrentThread.ManagedThreadId;
-            var reqDataThreadsEventHandle = (AutoResetEvent)obj;
+            var reqDataThreadsEventHandle = (AutoResetEvent)para.Para;
             TransferReqDataSchduleInfoManager reqDataSchduleInfoManager = null;
             TransferReqDataSchduleInfo currentReqDataSchduleInfo;
             bool hasSendTransferCompletedMessageLock;
 
-            while (!token.IsCancellationRequested)
+            while (!para.Token.IsCancellationRequested)
             {
                 try
                 {

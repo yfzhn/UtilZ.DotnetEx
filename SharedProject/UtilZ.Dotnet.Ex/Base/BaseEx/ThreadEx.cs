@@ -12,19 +12,9 @@ namespace UtilZ.Dotnet.Ex.Base
     public sealed class ThreadEx : IThreadEx
     {
         /// <summary>
-        /// 线程要执行的委托,无参数
+        /// 线程要执行的委托
         /// </summary>
-        private readonly Action<CancellationToken> _action = null;
-
-        /// <summary>
-        /// 线程要执行的委托,带参数
-        /// </summary>
-        private readonly Action<CancellationToken, object> _actionObj = null;
-
-        /// <summary>
-        /// true:无参数;false:带参数
-        /// </summary>
-        private readonly bool _flag;
+        private readonly Action<ThreadExPara> _action = null;
 
         /// <summary>
         /// 线程名称
@@ -67,12 +57,10 @@ namespace UtilZ.Dotnet.Ex.Base
         /// <summary>
         /// 构造函数
         /// </summary>
-        /// <param name="flag">true:无参数;false:带参数</param>
         /// <param name="name">线程名称</param>
         /// <param name="isBackground">是否后台运行[true:后台线程;false:前台线程]</param>
-        private ThreadEx(bool flag, string name, bool isBackground)
+        private ThreadEx(string name, bool isBackground)
         {
-            this._flag = flag;
             this._name = name;
             this._isBackground = isBackground;
         }
@@ -83,23 +71,12 @@ namespace UtilZ.Dotnet.Ex.Base
         /// <param name="action">线程要执行的委托</param>
         /// <param name="name">线程名称</param>
         /// <param name="isBackground">后台运行标识[true:后台线程;false:前台线程]</param>
-        public ThreadEx(Action<CancellationToken> action, string name = null, bool isBackground = true)
-            : this(true, name, isBackground)
+        public ThreadEx(Action<ThreadExPara> action, string name = null, bool isBackground = true)
+            : this(name, isBackground)
         {
             this._action = action ?? throw new ArgumentNullException(nameof(action));
         }
 
-        /// <summary>
-        /// 构造函数
-        /// </summary>
-        /// <param name="action">线程要执行的委托</param>
-        /// <param name="name">线程名称</param>
-        /// <param name="isBackground">后台运行标识[true:后台线程;false:前台线程]</param>
-        public ThreadEx(Action<CancellationToken, object> action, string name = null, bool isBackground = true)
-            : this(false, name, isBackground)
-        {
-            this._actionObj = action ?? throw new ArgumentNullException(nameof(action));
-        }
 
 
 
@@ -227,14 +204,7 @@ namespace UtilZ.Dotnet.Ex.Base
             try
             {
                 var token = threadStartPara.Cts.Token;
-                if (this._flag)
-                {
-                    this._action(token);
-                }
-                else
-                {
-                    this._actionObj(token, threadStartPara.Obj);
-                }
+                this._action(new ThreadExPara(token, threadStartPara.Obj));
 
                 if (token.IsCancellationRequested)
                 {
@@ -372,27 +342,13 @@ namespace UtilZ.Dotnet.Ex.Base
         /// <param name="action">线程要执行的委托</param>
         /// <param name="name">线程名称</param>
         /// <param name="isBackground">是否后台运行[true:后台线程;false:前台线程]</param>
-        /// <returns>返回线程对象</returns>
-        public static IThreadEx Start(Action<CancellationToken> action, string name = null, bool isBackground = true)
-        {
-            var ext = new ThreadEx(action, name, isBackground);
-            ext.Start();
-            return ext;
-        }
-
-        /// <summary>
-        /// 创建线程对象
-        /// </summary>
-        /// <param name="action">线程要执行的委托</param>
         /// <param name="obj">线程启动参数</param>
-        /// <param name="name">线程名称</param>
-        /// <param name="isBackground">是否后台运行[true:后台线程;false:前台线程]</param>
         /// <returns>返回线程对象</returns>
-        public static IThreadEx Start(Action<CancellationToken, object> action, object obj, string name = null, bool isBackground = true)
+        public static IThreadEx Start(Action<ThreadExPara> action, string name = null, bool isBackground = true, object obj = null)
         {
-            var ext = new ThreadEx(action, name, isBackground);
-            ext.Start(obj);
-            return ext;
+            var thread = new ThreadEx(action, name, isBackground);
+            thread.Start(obj);
+            return thread;
         }
 
         ///// <summary>
@@ -457,7 +413,88 @@ namespace UtilZ.Dotnet.Ex.Base
 
 
 
+    /// <summary>
+    /// 线程参数
+    /// </summary>
+    public sealed class ThreadExPara
+    {
+        private readonly CancellationToken _token;
+        /// <summary>
+        /// 线程取消通知Token
+        /// </summary>
+        public CancellationToken Token
+        {
+            get { return _token; }
+        }
 
+        /// <summary>
+        /// 参数
+        /// </summary>
+        public object Para { get; private set; }
+
+        /// <summary>
+        /// 构造函数
+        /// </summary>
+        /// <param name="token">CancellationToken</param>
+        /// <param name="para">参数</param>
+        internal ThreadExPara(CancellationToken token, object para)
+        {
+            this._token = token;
+            this.Para = para;
+        }
+
+        /// <summary>
+        /// Blocks the current thread until the current System.Threading.WaitHandle receives a signal. 
+        /// </summary>
+        /// <returns>true if the current instance receives a signal. 
+        /// If the current instance is never signaled, 
+        /// System.Threading.WaitHandle.WaitOne(System.Int32,System.Boolean) never returns.</returns>
+        public bool WaitOne()
+        {
+            try
+            {
+                return this._token.WaitHandle.WaitOne();
+            }
+            catch (AbandonedMutexException)
+            {
+                return false;
+            }
+            catch (InvalidOperationException)
+            {
+                return false;
+            }
+            //catch (ObjectDisposedException)
+            //{
+            //    return false;
+            //}
+        }
+
+        /// <summary>
+        /// Blocks the current thread until the current System.Threading.WaitHandle receives a signal, using a 32-bit signed integer to specify the time interval in milliseconds.
+        /// </summary>
+        /// <param name="millisecondsTimeout">The number of milliseconds to wait, or System.Threading.Timeout.Infinite (-1)to wait indefinitely</param>
+        /// <returns>true if the current instance receives a signal; otherwise, false</returns>
+        public bool WaitOne(int millisecondsTimeout)
+        {
+            try
+            {
+                return this._token.WaitHandle.WaitOne(millisecondsTimeout);
+            }
+            catch (AbandonedMutexException)
+            {
+                return false;
+            }
+            catch (InvalidOperationException)
+            {
+                return false;
+            }
+            //catch (ObjectDisposedException)
+            //{
+            //    return false;
+            //}
+        }
+
+    }
 
 
 
@@ -465,7 +502,7 @@ namespace UtilZ.Dotnet.Ex.Base
     /// <summary>
     /// 线程启动参数
     /// </summary>
-    public sealed class ThreadStartPara : IDisposable
+    internal sealed class ThreadStartPara : IDisposable
     {
         /// <summary>
         /// 参数对象

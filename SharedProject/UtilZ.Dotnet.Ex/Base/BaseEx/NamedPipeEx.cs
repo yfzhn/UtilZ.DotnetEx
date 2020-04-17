@@ -61,11 +61,11 @@ namespace UtilZ.Dotnet.Ex.Base
             }
         }
 
-        private void ListenThreadMethod(CancellationToken token)
+        private void ListenThreadMethod(ThreadExPara para)
         {
             try
             {
-                while (!token.IsCancellationRequested)
+                while (!para.Token.IsCancellationRequested)
                 {
                     try
                     {
@@ -74,21 +74,21 @@ namespace UtilZ.Dotnet.Ex.Base
                             try
                             {
                                 pipeServerStream.WaitForConnection();
-                                if (token.IsCancellationRequested)
+                                if (para.Token.IsCancellationRequested)
                                 {
                                     pipeServerStream.Close();
                                     break;
                                 }
 
-                                byte[] data = ReadData(this._pipeName, pipeServerStream, this._readDataMillisecondsTimeout, token);
-                                if (token.IsCancellationRequested)
+                                byte[] data = ReadData(this._pipeName, pipeServerStream, this._readDataMillisecondsTimeout, para.Token);
+                                if (para.Token.IsCancellationRequested)
                                 {
                                     break;
                                 }
 
                                 //回调操作-各种处理
                                 byte[] result = this._proFunc?.Invoke(data);
-                                if (token.IsCancellationRequested)
+                                if (para.Token.IsCancellationRequested)
                                 {
                                     break;
                                 }

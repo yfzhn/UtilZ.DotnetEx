@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -12,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Xml.Linq;
 using UtilZ.Dotnet.Ex.Base;
 
 namespace CoreWpfApp
@@ -31,23 +33,60 @@ namespace CoreWpfApp
 
         }
 
-        private void btnAdd_Click(object sender, RoutedEventArgs e)
+        private void TestXmlExSetXElementAttribute()
         {
-            //object key = "123";
-            //object value = MemoryCacheEx.Get(key);
+            XElement ele = new XElement("Person");
+            XmlEx.SetXElementAttribute(ele, "name", "yf", false);
+            XmlEx.SetXElementAttribute(ele, "age", null, false);
+            XmlEx.SetXElementAttribute(ele, "addr", "chengdu", true);
+            XmlEx.SetXElementAttribute(ele, "sex", null, true);
         }
 
-        private void btnSet_Click(object sender, RoutedEventArgs e)
+        private ThreadEx _thread = null;
+        private void btnTest_Click(object sender, RoutedEventArgs e)
         {
+            //this.TestXmlExSetXElementAttribute();
 
+            if (_thread != null)
+            {
+                _thread.Stop();
+                _thread.Dispose();
+                _thread = null;
+                return;
+            }
+
+            _thread = new ThreadEx(ThreadMethod, "xx", true);
+            _thread.Start();
         }
 
-        private void btnRemove_Click(object sender, RoutedEventArgs e)
+        private void ThreadMethod(ThreadExPara para)
         {
+            try
+            {
+                while (!para.Token.IsCancellationRequested)
+                {
+                    try
+                    {
+                        if (para.WaitOne(10000))
+                        {
+                            continue;
+                        }
+                    }
+                    catch (ObjectDisposedException)
+                    {
+                        continue;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
 
+            }
         }
 
-        private void btnExpire_Click(object sender, RoutedEventArgs e)
+
+
+        private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
 
         }
