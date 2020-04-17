@@ -30,22 +30,29 @@ namespace CoreWpfApp
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-
+           
         }
 
-        private void TestXmlExSetXElementAttribute()
+       
+        private void btnXmlEx_Click(object sender, RoutedEventArgs e)
         {
             XElement ele = new XElement("Person");
             XmlEx.SetXElementAttribute(ele, "name", "yf", false);
             XmlEx.SetXElementAttribute(ele, "age", null, false);
             XmlEx.SetXElementAttribute(ele, "addr", "chengdu", true);
             XmlEx.SetXElementAttribute(ele, "sex", null, true);
+
+            XmlEx.SetXElementAttribute(ele, "name", null, false);
+            XmlEx.SetXElementAttribute(ele, "addr", null, true);
         }
 
+      
+
+
+
         private ThreadEx _thread = null;
-        private void btnTest_Click(object sender, RoutedEventArgs e)
+        private void btnThreadEx_Click(object sender, RoutedEventArgs e)
         {
-            //this.TestXmlExSetXElementAttribute();
 
             if (_thread != null)
             {
@@ -82,13 +89,6 @@ namespace CoreWpfApp
             {
 
             }
-        }
-
-
-
-        private void btnCancel_Click(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }

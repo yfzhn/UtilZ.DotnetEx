@@ -22,8 +22,8 @@
             </StackPanel.Resources>
 
 
-            <Button Content="Test" x:Name="btnTest" Click="btnTest_Click"/>
-            <Button Content="Cancel" x:Name="btnCancel" Click="btnCancel_Click"/>
+            <Button Content="XmlEx" x:Name="btnXmlEx" Click="btnXmlEx_Click"/>
+            <Button Content="ThreadEx" x:Name="btnThreadEx" Click="btnThreadEx_Click"/>
         </StackPanel>
     </Grid>
 </Window>
