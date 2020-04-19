@@ -17,7 +17,7 @@ namespace UtilZ.Dotnet.Ex.Transfer.Net
     /// <summary>
     /// 传输通道类
     /// </summary>
-    public class TransferChannel : IDisposable
+    public sealed class TransferChannel : IDisposable
     {
         private readonly TransferConfig _config;
         private readonly ITransferNet _net = null;
@@ -102,7 +102,6 @@ namespace UtilZ.Dotnet.Ex.Transfer.Net
         {
             try
             {
-                var token = this._parseDataThreadsCts.Token;
                 lock (this._parseDataThreadsLock)
                 {
                     if (this._parseDataThreads.Count >= this._config.ParseDataMaxThreadCount)
@@ -111,7 +110,7 @@ namespace UtilZ.Dotnet.Ex.Transfer.Net
                     }
 
                     var parseDataThread = new ThreadEx(this.ProReceiveDataThreadMethod, $"解析数据线程方法[{this._index++}]", true);
-                    parseDataThread.Start(token);
+                    parseDataThread.Start();
                     this._parseDataThreads.Add(parseDataThread);
                 }
             }
@@ -121,47 +120,59 @@ namespace UtilZ.Dotnet.Ex.Transfer.Net
 
         private void ProReceiveDataThreadMethod(ThreadExPara para)
         {
-            Stopwatch watch = new Stopwatch();
-            ReceiveDatagramInfo receiveDatagramInfo;
-
-            while (!para.Token.IsCancellationRequested)
+            try
             {
-                try
+                Stopwatch watch = new Stopwatch();
+                ReceiveDatagramInfo receiveDatagramInfo;
+                CancellationToken token = this._parseDataThreadsCts.Token;
+
+                while (!token.IsCancellationRequested)
                 {
                     try
                     {
-                        receiveDatagramInfo = this._waitParseDatas.Take(para.Token);
-                    }
-                    catch (ArgumentNullException)
-                    {
-                        Loger.Error(".net平台库ArgumentNullException异常,忽略");
-                        continue;
-                    }
-                    catch (ObjectDisposedException)
-                    {
-                        continue;
-                    }
-                    catch (OperationCanceledException)
-                    {
-                        continue;
-                    }
-                    catch (InvalidOperationException)
-                    {
-                        continue;
-                    }
+                        try
+                        {
+                            receiveDatagramInfo = this._waitParseDatas.Take(token);
+                        }
+                        catch (ArgumentNullException)
+                        {
+                            Loger.Error(".net平台库ArgumentNullException异常,忽略");
+                            continue;
+                        }
+                        catch (ObjectDisposedException)
+                        {
+                            continue;
+                        }
+                        catch (OperationCanceledException)
+                        {
+                            continue;
+                        }
+                        catch (InvalidOperationException)
+                        {
+                            continue;
+                        }
 
-                    watch.Restart();
-                    this.ProReceiveData(receiveDatagramInfo);
-                    watch.Stop();
-                    if (watch.ElapsedMilliseconds > this._config.ProReceiveDataAddThreadTimeout)
+                        watch.Restart();
+                        this.ProReceiveData(receiveDatagramInfo);
+                        watch.Stop();
+                        if (watch.ElapsedMilliseconds > this._config.ProReceiveDataAddThreadTimeout)
+                        {
+                            this.AddParseDispoatchThread();
+                        }
+                    }
+                    catch (Exception exi)
                     {
-                        this.AddParseDispoatchThread();
+                        Loger.Error(exi, $"{Thread.CurrentThread.Name}发生异常");
                     }
                 }
-                catch (Exception ex)
-                {
-                    Loger.Error(ex, $"{Thread.CurrentThread.Name}发生异常");
-                }
+            }
+            catch (OperationCanceledException)
+            { }
+            catch (ObjectDisposedException)
+            { }
+            catch (Exception ex)
+            {
+                Loger.Error(ex);
             }
         }
 

@@ -16,13 +16,12 @@ namespace UtilZ.Dotnet.Ex.Base
     /// </summary>
     /// <typeparam name="T">集合中的元素类型</typeparam>
     [ComVisible(false)]
-    public class BlockingCollectionEx<T> : IDisposable
+    public sealed class BlockingCollectionEx<T> : IDisposable
     {
         private Queue<T> _queue = new Queue<T>();
         private readonly object _queueLock = new object();
         private const int _DEFAULT_TIMEOUT = 10;
         private readonly AutoResetEvent _queueChangedEventHandle = new AutoResetEvent(false);
-        private readonly CancellationTokenSource _cts = new CancellationTokenSource();
         private bool _isDisposabled = false;
 
         /// <summary>
@@ -76,7 +75,7 @@ namespace UtilZ.Dotnet.Ex.Base
         /// <returns>从该集合中移除的项</returns>
         public T Take()
         {
-            return this.Take(this._cts.Token);
+            return this.Take(CancellationToken.None);
         }
 
         /// <summary>
@@ -121,7 +120,7 @@ namespace UtilZ.Dotnet.Ex.Base
         /// <returns>从该集合中移除的项</returns>
         public T Take(int millisecondsTimeout)
         {
-            return this.Take(millisecondsTimeout, this._cts.Token);
+            return this.Take(millisecondsTimeout, CancellationToken.None);
         }
 
         /// <summary>
@@ -200,18 +199,7 @@ namespace UtilZ.Dotnet.Ex.Base
         /// <returns>如果在指定的时间内可以从集合中移除某个项，则为 true；否则为 false</returns>
         public bool TryTake(out T item)
         {
-            CancellationToken token;
-            try
-            {
-                token = _cts.Token;
-            }
-            catch (ObjectDisposedException)
-            {
-                item = default(T);
-                return false;
-            }
-
-            return this.TryTake(out item, Timeout.Infinite, token);
+            return this.TryTake(out item, Timeout.Infinite, CancellationToken.None);
         }
 
         /// <summary>
@@ -225,18 +213,7 @@ namespace UtilZ.Dotnet.Ex.Base
         /// <returns>如果在指定的时间内可以从集合中移除某个项，则为 true；否则为 false</returns>
         public bool TryTake(out T item, int millisecondsTimeout)
         {
-            CancellationToken token;
-            try
-            {
-                token = _cts.Token;
-            }
-            catch (ObjectDisposedException)
-            {
-                item = default(T);
-                return false;
-            }
-
-            return this.TryTake(out item, millisecondsTimeout, token);
+            return this.TryTake(out item, millisecondsTimeout, CancellationToken.None);
         }
 
         /// <summary>
@@ -346,11 +323,8 @@ namespace UtilZ.Dotnet.Ex.Base
                         return;
                     }
 
-                    this._cts.Cancel();
-                    this._cts.Dispose();
                     this._queueChangedEventHandle.Dispose();
                     this._isDisposabled = true;
-
                 }
                 catch (Exception ex)
                 {

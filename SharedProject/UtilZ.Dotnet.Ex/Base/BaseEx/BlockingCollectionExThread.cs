@@ -11,7 +11,7 @@ namespace UtilZ.Dotnet.Ex.Base
     /// BlockingCollectionEx线程
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public class BlockingCollectionExThread<T> : IDisposable
+    public sealed class BlockingCollectionExThread<T> : IDisposable
     {
         /// <summary>
         /// 默认添加处理线程阈值条件

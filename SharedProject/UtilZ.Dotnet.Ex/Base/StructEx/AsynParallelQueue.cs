@@ -456,17 +456,17 @@ namespace UtilZ.Dotnet.Ex.Base
                 {
                     return;
                 }
-
+                this._isDisposed = true;
 
                 this.PrimitiveStop(false, false, 5000);
                 if (this._cts != null)
                 {
                     this._cts.Dispose();
+                    this._cts = null;
                 }
 
                 this._blockingCollection.Dispose();
                 this._stopAutoResetEvent.Dispose();
-                this._isDisposed = true;
             }
         }
     }

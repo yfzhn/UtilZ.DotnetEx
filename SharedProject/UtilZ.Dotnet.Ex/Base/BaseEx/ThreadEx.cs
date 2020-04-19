@@ -444,7 +444,7 @@ namespace UtilZ.Dotnet.Ex.Base
         }
 
         /// <summary>
-        /// Blocks the current thread until the current System.Threading.WaitHandle receives a signal. 
+        /// 对Token,WaitHandle方法的包装,Blocks the current thread until the current System.Threading.WaitHandle receives a signal. 
         /// </summary>
         /// <returns>true if the current instance receives a signal. 
         /// If the current instance is never signaled, 
@@ -459,18 +459,18 @@ namespace UtilZ.Dotnet.Ex.Base
             {
                 return false;
             }
+            catch (ObjectDisposedException)
+            {
+                return false;
+            }
             catch (InvalidOperationException)
             {
                 return false;
             }
-            //catch (ObjectDisposedException)
-            //{
-            //    return false;
-            //}
         }
 
         /// <summary>
-        /// Blocks the current thread until the current System.Threading.WaitHandle receives a signal, using a 32-bit signed integer to specify the time interval in milliseconds.
+        /// 对Token,WaitHandle方法的包装,Blocks the current thread until the current System.Threading.WaitHandle receives a signal, using a 32-bit signed integer to specify the time interval in milliseconds.
         /// </summary>
         /// <param name="millisecondsTimeout">The number of milliseconds to wait, or System.Threading.Timeout.Infinite (-1)to wait indefinitely</param>
         /// <returns>true if the current instance receives a signal; otherwise, false</returns>
@@ -484,16 +484,15 @@ namespace UtilZ.Dotnet.Ex.Base
             {
                 return false;
             }
+            catch (ObjectDisposedException)
+            {
+                return false;
+            }
             catch (InvalidOperationException)
             {
                 return false;
             }
-            //catch (ObjectDisposedException)
-            //{
-            //    return false;
-            //}
         }
-
     }
 
 
