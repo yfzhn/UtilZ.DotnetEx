@@ -153,7 +153,7 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.Base.PartAsynWait.Excute
                 {
                     result = function(new PartAsynFuncPara<T>(this._asynWaitPara.Para, token, this._asynWaitPara.AsynWait));
                 }
-                token.ThrowIfCancellationRequested();
+                
                 if (token.IsCancellationRequested)
                 {
                     excuteStatus = PartAsynExcuteStatus.Cancel;
