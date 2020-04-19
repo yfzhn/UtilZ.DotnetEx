@@ -12,7 +12,7 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.PartAsynWait
     /// <typeparam name="T"></typeparam>
     /// <typeparam name="TContainer"></typeparam>
     /// <typeparam name="TResult"></typeparam>
-    public abstract class WPFPartAsynExcuteBase<T, TContainer, TResult> : PartAsynExcuteAbs<T, TContainer, TResult> where TContainer : System.Windows.Controls.Panel
+    public abstract class WPFPartAsynExcuteBase<T, TContainer, TResult> : AsynExcuteAbs<T, TContainer, TResult> where TContainer : System.Windows.Controls.Panel
     {
         /// <summary>
         /// 异步等待控件类型

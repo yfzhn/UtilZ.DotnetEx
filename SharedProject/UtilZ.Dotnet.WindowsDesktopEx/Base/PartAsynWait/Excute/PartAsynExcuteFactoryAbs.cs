@@ -9,12 +9,12 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.Base.PartAsynWait.Excute
     /// <summary>
     /// 异步执行对象创建工厂基类
     /// </summary>
-    public abstract class PartAsynExcuteFactoryBase
+    public abstract class PartAsynExcuteFactoryAbs
     {
         /// <summary>
         /// 构造函数
         /// </summary>
-        public PartAsynExcuteFactoryBase()
+        public PartAsynExcuteFactoryAbs()
         {
 
         }

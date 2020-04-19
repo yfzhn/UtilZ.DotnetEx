@@ -28,12 +28,12 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.PartAsynWait
         /// <summary>
         /// 异步执行对象创建工厂对象
         /// </summary>
-        private static PartAsynExcuteFactoryBase _partAsynExcuteFactory;
+        private static PartAsynExcuteFactoryAbs _partAsynExcuteFactory;
 
         /// <summary>
         /// 获取或设置异步执行对象创建工厂对象
         /// </summary>
-        public static PartAsynExcuteFactoryBase PartAsynExcuteFactory
+        public static PartAsynExcuteFactoryAbs PartAsynExcuteFactory
         {
             get { return _partAsynExcuteFactory; }
             set

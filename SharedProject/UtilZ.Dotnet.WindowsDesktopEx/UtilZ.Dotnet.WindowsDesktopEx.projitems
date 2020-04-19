@@ -13,9 +13,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Base\ILogControl.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Base\ImageEx.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Base\PartAsynWait\Excute\AsynExcuteCancellHelper.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Base\PartAsynWait\Excute\PartAsynExcuteAbs.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Base\PartAsynWait\Excute\PartAsynExcuteBase.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Base\PartAsynWait\Excute\PartAsynExcuteFactoryBase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Base\PartAsynWait\Excute\AsynExcuteAbs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Base\PartAsynWait\Excute\PartAsynExcuteFactoryAbs.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Base\PartAsynWait\Interface\IAsynExcuteCancell.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Base\PartAsynWait\Interface\IPartAsynExcute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Base\PartAsynWait\Model\PartAsynExcuteResult.cs" />
@@ -98,7 +97,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\PartAsynWait\V4\WinformPartAsynExcute4.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\PartAsynWait\V5\ShadeControl5.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\PartAsynWait\V5\WinformPartAsynExcute5.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\PartAsynWait\WinformPartAsynExcuteBase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\PartAsynWait\WinformPartAsynExcuteAbs.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\PartAsynWait\WinformPartAsynExcuteHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\PartAsynWait\WinformPartAsynExcuteTypeDefine.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\PartAsynWait\WinformPartAsynWaitHelper.cs" />

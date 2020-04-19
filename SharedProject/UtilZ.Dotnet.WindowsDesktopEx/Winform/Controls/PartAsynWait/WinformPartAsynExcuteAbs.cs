@@ -13,7 +13,7 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.PartAsynWait.Excute.Win
     /// <typeparam name="T"></typeparam>
     /// <typeparam name="TContainer"></typeparam>
     /// <typeparam name="TResult"></typeparam>
-    public abstract class WinformPartAsynExcuteBase<T, TContainer, TResult> : PartAsynExcuteAbs<T, TContainer, TResult> where TContainer : class
+    public abstract class WinformPartAsynExcuteAbs<T, TContainer, TResult> : AsynExcuteAbs<T, TContainer, TResult> where TContainer : class
     {
         /// <summary>
         /// 异步等待控件类型
@@ -28,7 +28,7 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.PartAsynWait.Excute.Win
         /// <summary>
         /// 静态构造函数初始化
         /// </summary>
-        static WinformPartAsynExcuteBase()
+        static WinformPartAsynExcuteAbs()
         {
             _asynControlType = typeof(System.Windows.Forms.Control);
         }
@@ -45,7 +45,7 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.PartAsynWait.Excute.Win
         /// <summary>
         /// 构造函数
         /// </summary>
-        public WinformPartAsynExcuteBase()
+        protected WinformPartAsynExcuteAbs()
             : base()
         {
 

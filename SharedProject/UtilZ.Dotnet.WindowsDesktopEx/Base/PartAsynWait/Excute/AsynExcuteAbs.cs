@@ -17,7 +17,7 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.Base.PartAsynWait.Excute
     /// <typeparam name="T">异步执行参数类型</typeparam>
     /// <typeparam name="TContainer">容器控件类型</typeparam>
     /// <typeparam name="TResult">异步执行返回值类型</typeparam>
-    public abstract class PartAsynExcuteAbs<T, TContainer, TResult> : IAsynExcute<T, TContainer, TResult>, IAsynExcuteCancell where TContainer : class
+    public abstract class AsynExcuteAbs<T, TContainer, TResult> : IAsynExcute<T, TContainer, TResult>, IAsynExcuteCancell where TContainer : class
     {
         /// <summary>
         /// 异步执行线程
@@ -57,7 +57,7 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.Base.PartAsynWait.Excute
         /// <summary>
         /// 构造函数
         /// </summary>
-        public PartAsynExcuteAbs()
+        protected AsynExcuteAbs()
         {
 
         }
@@ -153,7 +153,7 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.Base.PartAsynWait.Excute
                 {
                     result = function(new PartAsynFuncPara<T>(this._asynWaitPara.Para, token, this._asynWaitPara.AsynWait));
                 }
-
+                token.ThrowIfCancellationRequested();
                 if (token.IsCancellationRequested)
                 {
                     excuteStatus = PartAsynExcuteStatus.Cancel;
@@ -324,14 +324,14 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.Base.PartAsynWait.Excute
             }
 
             this._isDisposed = true;
-            this.Dispose(this._isDisposed);
+            this.Dispose(true);
         }
 
         /// <summary>
         /// 释放资源方法
         /// </summary>
-        /// <param name="isDispose">是否释放标识</param>
-        protected virtual void Dispose(bool isDispose)
+        /// <param name="isDisposing">是否释放标识</param>
+        protected virtual void Dispose(bool isDisposing)
         {
 
         }

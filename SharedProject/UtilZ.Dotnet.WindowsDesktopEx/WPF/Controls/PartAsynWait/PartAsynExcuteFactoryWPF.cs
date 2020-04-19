@@ -11,7 +11,7 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.PartAsynWait
     /// <summary>
     /// WPF异步执行对象创建工厂类
     /// </summary>
-    public class PartAsynExcuteFactoryWPF : PartAsynExcuteFactoryBase
+    public class PartAsynExcuteFactoryWPF : PartAsynExcuteFactoryAbs
     {
         /// <summary>
         /// 构造函数

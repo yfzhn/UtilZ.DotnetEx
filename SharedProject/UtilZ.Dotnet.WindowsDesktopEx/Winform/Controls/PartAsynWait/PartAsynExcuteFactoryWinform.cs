@@ -13,7 +13,7 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.PartAsynWait
     /// <summary>
     /// Winform异步执行对象创建工厂类
     /// </summary>
-    public class PartAsynExcuteFactoryWinform : PartAsynExcuteFactoryBase
+    public class PartAsynExcuteFactoryWinform : PartAsynExcuteFactoryAbs
     {
         /// <summary>
         /// 静态构造函数初始化默认异步等待类型

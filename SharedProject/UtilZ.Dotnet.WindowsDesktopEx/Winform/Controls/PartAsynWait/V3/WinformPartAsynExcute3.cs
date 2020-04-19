@@ -16,7 +16,7 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.PartAsynWait.Excute.Win
     /// <typeparam name="T">异步执行参数类型</typeparam>
     /// <typeparam name="TContainer">容器控件类型</typeparam>
     /// <typeparam name="TResult">异步执行返回值类型</typeparam>
-    internal class WinformPartAsynExcute3<T, TContainer, TResult> : WinformPartAsynExcuteBase<T, TContainer, TResult> where TContainer : class
+    internal class WinformPartAsynExcute3<T, TContainer, TResult> : WinformPartAsynExcuteAbs<T, TContainer, TResult> where TContainer : class
     {
         /// <summary>
         /// 静态构造函数

@@ -18,7 +18,7 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.PartAsynWait.V1
     /// <typeparam name="T">异步执行参数类型</typeparam>
     /// <typeparam name="TContainer">容器控件类型</typeparam>
     /// <typeparam name="TResult">异步执行返回值类型</typeparam>
-    internal class WPFPartAsynExcuteV1<T, TContainer, TResult> : PartAsynExcuteAbs<T, TContainer, TResult> where TContainer : class
+    internal class WPFPartAsynExcuteV1<T, TContainer, TResult> : AsynExcuteAbs<T, TContainer, TResult> where TContainer : class
     {
         /// <summary>
         /// 异步等待控件类型
