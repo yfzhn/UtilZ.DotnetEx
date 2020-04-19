@@ -16,13 +16,15 @@
         <StackPanel Grid.Row="0" Orientation="Horizontal">
             <StackPanel.Resources>
                 <Style TargetType="Button">
-                    <Setter Property="Width" Value="50"/>
+                    <Setter Property="Width" Value="100"/>
                     <Setter Property="Height" Value="30"/>
+                    <Setter Property="Margin" Value="2"/>
                 </Style>
             </StackPanel.Resources>
 
 
             <Button Content="XmlEx" x:Name="btnXmlEx" Click="btnXmlEx_Click"/>
+            <Button Content="XmlEx.XmlNode" x:Name="btnXmlExXmlNode" Click="btnXmlExXmlNode_Click"/>
             <Button Content="ThreadEx" x:Name="btnThreadEx" Click="btnThreadEx_Click"/>
         </StackPanel>
     </Grid>

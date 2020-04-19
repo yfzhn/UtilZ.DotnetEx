@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Xml;
 using System.Xml.Linq;
 
 namespace UtilZ.Dotnet.Ex.Base
@@ -11,106 +12,93 @@ namespace UtilZ.Dotnet.Ex.Base
     /// </summary>
     public static class XmlEx
     {
-        #region ConvertValue
-        private static T ConvertValue<T>(string attiValue)
-        {
-            if (string.IsNullOrWhiteSpace(attiValue))
-            {
-                return default(T);
-            }
-
-            return (T)ConvertEx.ToObject(typeof(T), attiValue);
-        }
-
-        private static object ConvertValue(string attiValue, Type targetType)
+        private static object ConvertValue(string valueStr, Type targetType)
         {
             object value;
-            if (string.IsNullOrWhiteSpace(attiValue))
+            if (string.IsNullOrWhiteSpace(valueStr))
             {
                 value = ConvertEx.GetTypeDefaultValue(targetType);
             }
             else
             {
-                value = ConvertEx.ToObject(targetType, attiValue);
+                value = ConvertEx.ToObject(targetType, valueStr);
             }
 
             return value;
         }
-        #endregion
 
-        #region GetXElementValue
+
+
+
+        #region Xml
+        #region GetXmlNodeValue
         /// <summary>
-        /// 获取XElement元素节点值[节点为null时返回空字符串]
+        /// 获取XmlNode值[节点为null时返回空字符串]
         /// </summary>
-        /// <param name="ele">XElement节点</param>
+        /// <param name="node">XmlNode</param>
+        /// <param name="nodeIsNullValueIsNull">元素为null时是否返回null[true:null;false:string.Empty],默认为false</param>
         /// <returns>值</returns>
-        public static string GetXElementValue(this XElement ele)
+        public static string GetXmlNodeValue(this XmlNode node, bool nodeIsNullValueIsNull = false)
         {
-            if (ele == null)
+            if (node == null)
             {
-                return string.Empty;
+                if (nodeIsNullValueIsNull)
+                {
+                    return null;
+                }
+                else
+                {
+                    return string.Empty;
+                }
             }
             else
             {
-                return ele.Value;
+                return node.InnerText;
             }
         }
 
         /// <summary>
-        /// 获取XElement元素节点值[节点为null时返回空字符串]
+        /// 获取XmlNode值[节点为null时返回空字符串]
         /// </summary>
-        /// <param name="ele">XElement节点</param>
-        /// <returns>值</returns>
-        public static T GetXElementValue<T>(this XElement ele)
-        {
-            string valueStr;
-            if (ele == null)
-            {
-                valueStr = null;
-            }
-            else
-            {
-                valueStr = ele.Value;
-            }
-
-            return ConvertValue<T>(valueStr);
-        }
-
-        /// <summary>
-        /// 获取XElement元素节点值[节点为null时返回空字符串]
-        /// </summary>
-        /// <param name="ele">XElement节点</param>
+        /// <param name="node">XmlNode</param>
         /// <param name="targetType">数据目标类型</param>
         /// <returns>值</returns>
-        public static object GetXElementValue(this XElement ele, Type targetType)
+        public static object GetXmlNodeValue(this XmlNode node, Type targetType)
         {
-            string valueStr;
-            if (ele == null)
-            {
-                valueStr = null;
-            }
-            else
-            {
-                valueStr = ele.Value;
-            }
+            string value = GetXmlNodeValue(node, true);
+            return ConvertValue(value, targetType);
+        }
 
-            return ConvertValue(valueStr, targetType);
+        /// <summary>
+        /// 获取XmlNode值[节点为null时返回空字符串]
+        /// </summary>
+        /// <param name="node">XmlNode</param>
+        /// <returns>值</returns>
+        public static T GetXmlNodeValue<T>(this XmlNode node)
+        {
+            return (T)GetXmlNodeValue(node, typeof(T));
         }
         #endregion
 
-        #region GetXElementAttributeValue
+
+        #region GetXmlNodeAttributeValue
         /// <summary>
-        /// 获取XElement元素属性值
+        /// 获取XmlNode指定属性值
         /// </summary>
-        /// <param name="ele">XElement节点</param>
+        /// <param name="node">XmlNode</param>
         /// <param name="attributeName">属性名称</param>
-        /// <param name="noValueNull">特性不存在时返回null值[true:人财两空null;false:返回string.Empty],默认为false</param>
-        /// <returns>值</returns>
-        public static string GetXElementAttributeValue(this XElement ele, string attributeName, bool noValueNull = false)
+        /// <param name="attributeNotExitValueIsNull">特性不存在时是否返回null值[true:null;false:string.Empty],默认为false</param>
+        /// <returns>属性值</returns>
+        public static string GetXmlNodeAttributeValue(this XmlNode node, string attributeName, bool attributeNotExitValueIsNull = false)
         {
-            if (ele == null)
+            if (string.IsNullOrEmpty(attributeName))
             {
-                if (noValueNull)
+                throw new ArgumentNullException(nameof(attributeName));
+            }
+
+            if (node == null)
+            {
+                if (attributeNotExitValueIsNull)
                 {
                     return null;
                 }
@@ -120,15 +108,10 @@ namespace UtilZ.Dotnet.Ex.Base
                 }
             }
 
-            if (string.IsNullOrEmpty(attributeName))
-            {
-                throw new ArgumentNullException(nameof(attributeName));
-            }
-
-            XAttribute attri = ele.Attribute(attributeName);
+            XmlAttribute attri = node.Attributes[attributeName];
             if (attri == null)
             {
-                if (noValueNull)
+                if (attributeNotExitValueIsNull)
                 {
                     return null;
                 }
@@ -144,40 +127,281 @@ namespace UtilZ.Dotnet.Ex.Base
         }
 
         /// <summary>
-        /// 获取XElement元素属性值
+        /// 获取XmlNode指定属性值
         /// </summary>
-        /// <typeparam name="T">数据目标泛型类型</typeparam>
-        /// <param name="ele">XElement节点</param>
+        /// <param name="node">XmlNode</param>
         /// <param name="attributeName">属性名称</param>
-        /// <returns></returns>
-        public static T GetXElementAttributeValue<T>(this XElement ele, string attributeName)
+        /// <param name="targetType">数据目标类型</param>
+        /// <returns>属性值</returns>
+        public static object GetXmlNodeAttributeValue(this XmlNode node, string attributeName, Type targetType)
         {
-            string attiValue = GetXElementAttributeValue(ele, attributeName);
-            return ConvertValue<T>(attiValue);
+            string attiValue = GetXmlNodeAttributeValue(node, attributeName);
+            return ConvertValue(attiValue, targetType);
         }
 
         /// <summary>
-        /// 获取XElement元素属性值
+        /// 获取XmlNode指定属性值
+        /// </summary>
+        /// <typeparam name="T">数据目标泛型类型</typeparam>
+        /// <param name="node">XmlNode</param>
+        /// <param name="attributeName">属性名称</param>
+        /// <returns>属性值</returns>
+        public static T GetXmlNodeAttributeValue<T>(this XmlNode node, string attributeName)
+        {
+            return (T)GetXmlNodeAttributeValue(node, attributeName, typeof(T));
+        }
+        #endregion
+
+
+        #region SetXElementAttribute
+        /// <summary>
+        /// 设置XmlAttribute
+        /// </summary>
+        /// <param name="node">目标XmlNode元素</param>
+        /// <param name="attributeName">特性名称</param>
+        /// <param name="value">特性值</param>
+        /// <param name="valueIsNullAttributeExit">当特性值为null时,是否存在该特性[true:存在;false:不存在]</param>
+        public static void SetXmlNodeAttribute(this XmlNode node, string attributeName, string value, bool valueIsNullAttributeExit = false)
+        {
+            if (node == null)
+            {
+                throw new ArgumentNullException(nameof(node));
+            }
+
+            if (string.IsNullOrWhiteSpace(attributeName))
+            {
+                throw new ArgumentNullException(nameof(attributeName));
+            }
+
+            XmlAttribute attri = node.Attributes[attributeName];
+            if (value == null)
+            {
+                if (valueIsNullAttributeExit)
+                {
+                    if (attri == null)
+                    {
+                        attri = node.OwnerDocument.CreateAttribute(attributeName);
+                        node.Attributes.Append(attri);
+                    }
+
+                    attri.Value = string.Empty;
+                }
+                else
+                {
+                    if (attri != null)
+                    {
+                        node.Attributes.Remove(attri);
+                    }
+                }
+            }
+            else
+            {
+                if (attri == null)
+                {
+                    attri = node.OwnerDocument.CreateAttribute(attributeName);
+                    node.Attributes.Append(attri);
+                }
+
+                attri.Value = value;
+            }
+        }
+        #endregion
+
+        #region CreateXElement
+        /// <summary>
+        /// 创建XmlNode
+        /// </summary>
+        /// <param name="xdoc">所属XmlDocument</param>
+        /// <param name="nodeName">要创建的子节点名称</param>
+        /// <param name="attriName">属性名称</param>
+        /// <param name="attiValue">属性值</param>
+        /// <param name="nodeValue">节点值</param>
+        /// <returns>XmlNode</returns>
+        public static XmlNode CreateXmlNode(XmlDocument xdoc, string nodeName, string attriName, string attiValue, string nodeValue = null)
+        {
+            if (string.IsNullOrWhiteSpace(nodeName))
+            {
+                throw new ArgumentNullException(nameof(nodeName));
+            }
+
+            if (string.IsNullOrWhiteSpace(attriName))
+            {
+                throw new ArgumentNullException(nameof(attriName));
+            }
+
+            XmlNode node = xdoc.CreateElement(nodeName);
+            if (nodeValue != null)
+            {
+                node.InnerText = nodeValue;
+            }
+
+            SetXmlNodeAttribute(node, attriName, attiValue);
+            return node;
+        }
+
+        /// <summary>
+        /// 创建XmlCDataSection
+        /// </summary>
+        /// <param name="xdoc">所属XmlDocument</param>
+        /// <param name="nodeName">节点名称</param>
+        /// <param name="value">值</param>
+        /// <returns>XmlCDataSection</returns>
+        public static XmlCDataSection CreateXmlCDataSection(XmlDocument xdoc, string nodeName, string value)
+        {
+            if (string.IsNullOrWhiteSpace(nodeName))
+            {
+                throw new ArgumentNullException(nameof(nodeName));
+            }
+
+            XmlCDataSection node = xdoc.CreateCDataSection(nodeName);
+            if (value != null)
+            {
+                node.InnerText = value;
+            }
+
+            return node;
+        }
+        #endregion
+        #endregion
+
+
+
+
+        #region Xml.Linq
+        #region GetXElementValue
+        /// <summary>
+        /// 获取XElement元素节点值[节点为null时返回空字符串]
         /// </summary>
         /// <param name="ele">XElement节点</param>
+        /// <param name="eleIsNullValueIsNull">元素为null时是否返回null[true:null;false:string.Empty],默认为false</param>
+        /// <returns>值</returns>
+        public static string GetXElementValue(this XElement ele, bool eleIsNullValueIsNull = false)
+        {
+            if (ele == null)
+            {
+                if (eleIsNullValueIsNull)
+                {
+                    return null;
+                }
+                else
+                {
+                    return string.Empty;
+                }
+            }
+            else
+            {
+                return ele.Value;
+            }
+        }
+
+        /// <summary>
+        /// 获取XElement元素节点值[节点为null时返回空字符串]
+        /// </summary>
+        /// <param name="ele">XElement节点</param>
+        /// <returns>值</returns>
+        public static T GetXElementValue<T>(this XElement ele)
+        {
+            return (T)GetXElementValue(ele, typeof(T));
+        }
+
+        /// <summary>
+        /// 获取XElement元素节点值[节点为null时返回空字符串]
+        /// </summary>
+        /// <param name="ele">XElement节点</param>
+        /// <param name="targetType">数据目标类型</param>
+        /// <returns>值</returns>
+        public static object GetXElementValue(this XElement ele, Type targetType)
+        {
+            string value = null;
+            if (ele != null)
+            {
+                value = ele.Value;
+            }
+
+            return ConvertValue(value, targetType);
+        }
+        #endregion
+
+        #region GetXElementAttributeValue
+        /// <summary>
+        /// 获取XElement指定属性值
+        /// </summary>
+        /// <param name="ele">XElement</param>
+        /// <param name="attributeName">属性名称</param>
+        /// <param name="attributeNotExitValueIsNull">特性不存在时是否返回null[true:null;false:string.Empty],默认为false</param>
+        /// <returns>属性值</returns>
+        public static string GetXElementAttributeValue(this XElement ele, string attributeName, bool attributeNotExitValueIsNull = false)
+        {
+            if (string.IsNullOrEmpty(attributeName))
+            {
+                throw new ArgumentNullException(nameof(attributeName));
+            }
+
+            if (ele == null)
+            {
+                if (attributeNotExitValueIsNull)
+                {
+                    return null;
+                }
+                else
+                {
+                    return string.Empty;
+                }
+            }
+
+            XAttribute attri = ele.Attribute(attributeName);
+            if (attri == null)
+            {
+                if (attributeNotExitValueIsNull)
+                {
+                    return null;
+                }
+                else
+                {
+                    return string.Empty;
+                }
+            }
+            else
+            {
+                return attri.Value;
+            }
+        }
+
+        /// <summary>
+        /// 获取XElement指定属性值
+        /// </summary>
+        /// <param name="ele">XElement</param>
         /// <param name="attributeName">属性名称</param>
         /// <param name="targetType">数据目标类型</param>
-        /// <returns></returns>
+        /// <returns>属性值</returns>
         public static object GetXElementAttributeValue(this XElement ele, string attributeName, Type targetType)
         {
             string attiValue = GetXElementAttributeValue(ele, attributeName);
             return ConvertValue(attiValue, targetType);
         }
+
+        /// <summary>
+        /// 获取XElement指定属性值
+        /// </summary>
+        /// <typeparam name="T">数据目标泛型类型</typeparam>
+        /// <param name="ele">XElement</param>
+        /// <param name="attributeName">属性名称</param>
+        /// <returns>属性值</returns>
+        public static T GetXElementAttributeValue<T>(this XElement ele, string attributeName)
+        {
+            return (T)GetXElementAttributeValue(ele, attributeName, typeof(T));
+        }
         #endregion
 
+        #region SetXElementAttribute
         /// <summary>
         /// 设置XAttribute
         /// </summary>
         /// <param name="ele">目标元素</param>
         /// <param name="attributeName">特性名称</param>
         /// <param name="value">特性值</param>
-        /// <param name="valueNullExitAttribute">当特性值为null时,是否存在该特性[true:存在;false:不存在]</param>
-        public static void SetXElementAttribute(this XElement ele, string attributeName, string value, bool valueNullExitAttribute = false)
+        /// <param name="valueIsNullAttributeExit">当特性值为null时,是否存在该特性[true:存在;false:不存在]</param>
+        public static void SetXElementAttribute(this XElement ele, string attributeName, string value, bool valueIsNullAttributeExit = false)
         {
             if (ele == null)
             {
@@ -192,7 +416,7 @@ namespace UtilZ.Dotnet.Ex.Base
             XAttribute attribute = ele.Attribute(attributeName);
             if (value == null)
             {
-                if (valueNullExitAttribute)
+                if (valueIsNullAttributeExit)
                 {
                     if (attribute == null)
                     {
@@ -225,6 +449,7 @@ namespace UtilZ.Dotnet.Ex.Base
                 }
             }
         }
+        #endregion
 
         #region CreateXElement
         /// <summary>
@@ -235,16 +460,11 @@ namespace UtilZ.Dotnet.Ex.Base
         /// <param name="attiValue">属性值</param>
         /// <param name="eleValue">节点值</param>
         /// <returns>特性值xml元素节点</returns>
-        public static XElement CreateXElement(string eleName, string attriName, object attiValue, string eleValue = null)
+        public static XElement CreateXElement(string eleName, string attriName, string attiValue, string eleValue = null)
         {
             if (string.IsNullOrWhiteSpace(eleName))
             {
                 throw new ArgumentNullException(nameof(eleName));
-            }
-
-            if (string.IsNullOrWhiteSpace(attriName))
-            {
-                throw new ArgumentNullException(nameof(attriName));
             }
 
             XElement ele = new XElement(eleName);
@@ -253,7 +473,7 @@ namespace UtilZ.Dotnet.Ex.Base
                 ele.Value = eleValue;
             }
 
-            ele.Add(new XAttribute(attriName, attiValue));
+            SetXElementAttribute(ele, attriName, attiValue, true);
             return ele;
         }
 
@@ -266,9 +486,14 @@ namespace UtilZ.Dotnet.Ex.Base
         public static XElement CreateXCDataXElement(string eleName, string value)
         {
             XElement ele = new XElement(eleName);
-            ele.Add(new XCData(value));
+            if (value != null)
+            {
+                ele.Add(new XCData(value));
+            }
+
             return ele;
         }
+        #endregion
         #endregion
     }
 }
