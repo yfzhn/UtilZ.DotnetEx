@@ -59,7 +59,7 @@ namespace DotnetWinFormApp
 
                 return "OK";
             };
-            para.IsShowCancel = true;
+            para.CancelButtonVisible = true;
             para.AsynWaitBackground = Color.Red;
             para.Completed = (p) =>
             {

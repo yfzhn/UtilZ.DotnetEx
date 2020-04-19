@@ -152,32 +152,34 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.Base.PartAsynWait.Model
             }
         }
 
-        private bool _isShowCancel = true;
+        private bool _cancelButtonVisible = true;
 
         /// <summary>
-        /// 获取或设置是否显示取消按钮
+        /// 取消按钮可见性[true:显示;false:隐藏]
         /// </summary>
-        public bool IsShowCancel
+        public bool CancelButtonVisible
         {
-            get { return _isShowCancel; }
+            get { return _cancelButtonVisible; }
             set
             {
                 this.AssetLock();
-                _isShowCancel = value;
+                _cancelButtonVisible = value;
             }
         }
 
-        private bool _cancelAbort = false;
-        /// <summary>
-        /// 取消执行是否强制终止线程[true:终止线程;false:回调函数内部根据取消通知标识自行处理取消]
+        private bool _immediatelyCompleted = false;
+        /// <summary> 
+        /// 点击取消按钮后,立即调用完成方法
+        /// [true:当调用取消后,直接调用执行完成方法,执行操作的线程方法等待操作完成后再根据Token判断取消操作,跳出执行,该选项无执行结果;
+        /// false:当调用取消后,不调用执行完成方法,直到后台线程等待操作完成后返回,再根据Token判断取消操作,最后才执行完成方法,该选项有执行结果]
         /// </summary>
-        public bool CancelAbort
+        public bool ImmediatelyCompleted
         {
-            get { return _cancelAbort; }
+            get { return _immediatelyCompleted; }
             set
             {
                 this.AssetLock();
-                _cancelAbort = value;
+                _immediatelyCompleted = value;
             }
         }
 

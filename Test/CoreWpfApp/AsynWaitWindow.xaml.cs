@@ -50,25 +50,34 @@ namespace CoreWpfApp
             para.Caption = "测试这个控件";
             para.Function = (inp) =>
             {
-                for (int i = 0; i < inp.Para; i++)
+                try
                 {
-                    inp.AsynWait.Hint = string.Format("正在处理:{0}项..", i);
-                    Thread.Sleep(500);
-                    if (inp.Token.IsCancellationRequested)
+                    for (int i = 0; i < inp.Para; i++)
                     {
-                        break;
+                        inp.AsynWait.Hint = string.Format("正在处理:{0}项..", i);
+                        Thread.Sleep(2000);
+
+                        inp.Token.ThrowIfCancellationRequested();
+                        //if (inp.Token.IsCancellationRequested)
+                        //{
+                        //    break;
+                        //}
+
+                        //if (i > 5)
+                        //{
+                        //    throw new NotSupportedException("XXX");
+                        //}
                     }
 
-                    //if (i > 5)
-                    //{
-                    //    throw new NotSupportedException("XXX");
-                    //}
+                    return "OK";
                 }
-
-                return "OK";
+                catch (OperationCanceledException)
+                {
+                    return "OperationCanceledException";
+                }
             };
-            para.IsShowCancel = true;
-            para.CancelAbort = true;
+            para.CancelButtonVisible = true;
+            para.ImmediatelyCompleted = false;
             para.AsynWaitBackground = Brushes.Red;
             para.Completed = (p) =>
             {
@@ -82,7 +91,7 @@ namespace CoreWpfApp
                         str = p.Exception.Message;
                         break;
                     case PartAsynExcuteStatus.Cancel:
-                        str = "Cancel";
+                        str = p.Result + "_Cancel";
                         break;
                     default:
                         str = "none";

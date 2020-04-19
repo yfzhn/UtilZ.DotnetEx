@@ -58,7 +58,7 @@ namespace CoreWpfApp
 
                 return "OK";
             };
-            para.IsShowCancel = true;
+            para.CancelButtonVisible = true;
             para.AsynWaitBackground = Brushes.Red;
             para.Completed = (p) =>
             {

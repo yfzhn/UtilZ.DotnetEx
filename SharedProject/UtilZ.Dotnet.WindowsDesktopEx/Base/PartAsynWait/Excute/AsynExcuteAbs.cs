@@ -109,7 +109,7 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.Base.PartAsynWait.Excute
             IPartAsynWait ishade = (IPartAsynWait)Activator.CreateInstance(shadeType);
             ishade.Caption = para.Caption;
             ishade.Hint = para.Hint;
-            ishade.IsShowCancel = para.IsShowCancel;
+            ishade.IsShowCancel = para.CancelButtonVisible;
             return ishade;
         }
 
@@ -153,7 +153,7 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.Base.PartAsynWait.Excute
                 {
                     result = function(new PartAsynFuncPara<T>(this._asynWaitPara.Para, token, this._asynWaitPara.AsynWait));
                 }
-                
+
                 if (token.IsCancellationRequested)
                 {
                     excuteStatus = PartAsynExcuteStatus.Cancel;
@@ -162,10 +162,6 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.Base.PartAsynWait.Excute
                 {
                     excuteStatus = PartAsynExcuteStatus.Completed;
                 }
-            }
-            catch (ThreadAbortException)
-            {
-                return;
             }
             catch (Exception ex)
             {
@@ -221,7 +217,7 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.Base.PartAsynWait.Excute
         /// <param name="e"></param>
         protected void CancellExcute(object sender, EventArgs e)
         {
-            this.PrimitiveCancell(this._asynWaitPara.CancelAbort);
+            this.PrimitiveCancell();
         }
 
         /// <summary>
@@ -229,24 +225,20 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.Base.PartAsynWait.Excute
         /// </summary>
         public void Cancell()
         {
-            this.PrimitiveCancell(true);
+            this.PrimitiveCancell();
         }
 
         /// <summary>
         /// 取消执行
         /// </summary>
         /// <param name="abortThread"></param>
-        private void PrimitiveCancell(bool abortThread)
+        private void PrimitiveCancell()
         {
             lock (this._excuteCompletedLock)
             {
-                if (abortThread)
+                if (this._excuteCompleted)
                 {
-                    if (this._excuteCompleted)
-                    {
-                        return;
-                    }
-                    this._excuteCompleted = true;
+                    return;
                 }
 
                 try
@@ -263,12 +255,15 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.Base.PartAsynWait.Excute
                     return;
                 }
 
-                var asynExcuteThread = this._asynExcuteThread;
-                if (abortThread && asynExcuteThread != null)
+                if (this._asynExcuteThread != null && this._asynWaitPara.ImmediatelyCompleted)
                 {
-                    //asynExcuteThread.Abort();//.netcore不支持此方法,直接报平台不支持异常
                     this._asynExcuteThread = null;
                     this.ExcuteCompleted(default(TResult), PartAsynExcuteStatus.Cancel, null);
+                    this._excuteCompleted = true;
+                }
+                else
+                {
+                    //this._excuteCompleted = false;
                 }
             }
         }
