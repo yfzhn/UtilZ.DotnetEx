@@ -38,12 +38,12 @@ namespace CoreWpfApp
         {
             var para = new PartAsynWaitPara<int, string>();
             para.Para = 100;
-            para.Caption = "测试这个控件";
+            para.Title = "测试这个控件";
             para.Function = (inp) =>
             {
                 for (int i = 0; i < inp.Para; i++)
                 {
-                    inp.AsynWait.Hint = string.Format("正在处理:{0}项..", i);
+                    inp.AsynWait.Message = string.Format("正在处理:{0}项..", i);
                     Thread.Sleep(500);
                     if (inp.Token.IsCancellationRequested)
                     {
@@ -58,7 +58,7 @@ namespace CoreWpfApp
 
                 return "OK";
             };
-            para.CancelButtonVisible = true;
+            para.ShowCancel = true;
             para.AsynWaitBackground = Brushes.Red;
             para.Completed = (p) =>
             {

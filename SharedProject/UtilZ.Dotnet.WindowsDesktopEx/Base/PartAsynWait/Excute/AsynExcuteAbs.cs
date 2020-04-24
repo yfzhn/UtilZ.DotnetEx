@@ -107,9 +107,9 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.Base.PartAsynWait.Excute
             }
 
             IPartAsynWait ishade = (IPartAsynWait)Activator.CreateInstance(shadeType);
-            ishade.Caption = para.Caption;
-            ishade.Hint = para.Hint;
-            ishade.IsShowCancel = para.CancelButtonVisible;
+            ishade.Title = para.Title;
+            ishade.Message = para.Message;
+            ishade.ShowCancel = para.ShowCancel;
             return ishade;
         }
 
@@ -124,7 +124,7 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.Base.PartAsynWait.Excute
                 this._excuteCompleted = false;
 
                 //取消执行委托
-                this._asynWaitPara.AsynWait.Canceled += CancellExcute;
+                this._asynWaitPara.AsynWait.CanceledNotify += CancellExcute;
 
                 //启动滚动条动画
                 this._asynWaitPara.AsynWait.StartAnimation();
@@ -231,7 +231,6 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.Base.PartAsynWait.Excute
         /// <summary>
         /// 取消执行
         /// </summary>
-        /// <param name="abortThread"></param>
         private void PrimitiveCancell()
         {
             lock (this._excuteCompletedLock)
@@ -278,7 +277,7 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.Base.PartAsynWait.Excute
             try
             {
                 PartAsynUIParaProxy.UnLock(this._asynWaitPara);
-                this._asynWaitPara.AsynWait.Canceled -= CancellExcute;
+                this._asynWaitPara.AsynWait.CanceledNotify -= CancellExcute;
                 this._asynWaitPara.AsynWait.StopAnimation();
                 AsynExcuteCancellHelper.RemoveAsynExcuteCancell(this);
                 this._asynExcuteThreadCts.Dispose();

@@ -124,7 +124,7 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.PartAsynWait.Excute.Win
                     try
                     {
                         containerControl.Controls.Remove((Control)this._asynWaitPara.AsynWait);
-                        this._asynWaitPara.AsynWait.Canceled -= CancellExcute;
+                        this._asynWaitPara.AsynWait.CanceledNotify -= CancellExcute;
                         this._asynWaitPara.AsynWait.StopAnimation();
                         //启用当显示类型为只显示提示信息框大小类型时禁用状态的控件
                         WinformPartAsynExcuteHelper.EnableControls(this._asynModifyControls);

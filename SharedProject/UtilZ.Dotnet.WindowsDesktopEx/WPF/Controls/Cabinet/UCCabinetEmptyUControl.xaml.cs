@@ -20,18 +20,11 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls
     /// </summary>
     public partial class UCCabinetEmptyUControl : UserControl
     {
-        /// <summary>
-        /// 构造函数
-        /// </summary>
         public UCCabinetEmptyUControl()
         {
             InitializeComponent();
         }
 
-        /// <summary>
-        /// 更新设备单元
-        /// </summary>
-        /// <param name="deviceUnit">备单元</param>
         public void UpdateCabinetDevice(CabinetDeviceUnit deviceUnit)
         {
             this.Height = deviceUnit.Height * CabinetConstant.SINGLE_U_HEIGHT;

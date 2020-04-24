@@ -6,25 +6,17 @@
              xmlns:local="clr-namespace:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls"
              mc:Ignorable="d" 
              Height="22.225" d:DesignWidth="400">
-    <Grid>
+    <Grid x:Name="root">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="18"/>
             <ColumnDefinition Width="271.3"/>
         </Grid.ColumnDefinitions>
 
-        <!--<TextBlock Grid.Column="0"
-                   x:Name="tbDeviceName"
-                   Text="{Binding Path=DeviceName}" 
-                   HorizontalAlignment="Right" 
-                   TextWrapping="Wrap"
-                   Foreground="Black"
-                   LineHeight="12"
-                   LineStackingStrategy="BlockLineHeight"
-                   FontSize="15"/>-->
         <TextBlock Grid.Column="0"
                    x:Name="tbDeviceName"
-                   Text="{Binding Path=DeviceName}"/>
+                   Text="{Binding Path=DeviceName}"
+                   Visibility="{Binding Path=DeviceNameVisibility}"/>
 
         <Grid Grid.Column="2">
             <Grid.ColumnDefinitions>
@@ -50,11 +42,11 @@
 
                     <Border Grid.Column="0" 
                             BorderThickness="0" 
-                            Width="12.225" 
-                            Height="12.225" 
+                            Width="18" 
+                            Height="18" 
                             HorizontalAlignment="Left" 
                             VerticalAlignment="Top"
-                            Margin="2"
+                            Margin="0"
                             Background="{Binding Path=DeviceStatusBrush}"/>
                 </Grid>
             </Border>

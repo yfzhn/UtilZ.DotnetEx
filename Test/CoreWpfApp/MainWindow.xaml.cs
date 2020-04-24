@@ -16,6 +16,7 @@ using System.Windows.Shapes;
 using System.Xml;
 using System.Xml.Linq;
 using UtilZ.Dotnet.Ex.Base;
+using UtilZ.Dotnet.Ex.Log;
 
 namespace CoreWpfApp
 {
@@ -135,7 +136,7 @@ namespace CoreWpfApp
             }
             catch (Exception ex)
             {
-
+                Loger.Error(ex);
             }
         }
     }

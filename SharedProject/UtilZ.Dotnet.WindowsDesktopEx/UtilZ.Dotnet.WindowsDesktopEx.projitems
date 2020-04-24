@@ -38,6 +38,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Winform\Base\ScrollableControlEx.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Winform\Base\WindowNestProcess.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Winform\Base\WinformControlEx.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Winform\Base\WinformEx.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\BarChartControl.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\DataGridViewEx.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\FlowLayoutPanelZ.cs" />
@@ -147,6 +148,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)WPF\Base\VisibilityBoolConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)WPF\Base\WPFHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\Cabinet\CabinetDeviceUnit.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\Cabinet\SelectedDeviceChangedArgs.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\Cabinet\UCCabinetCalibrationControl.xaml.cs">
       <DependentUpon>UCCabinetCalibrationControl.xaml</DependentUpon>
     </Compile>

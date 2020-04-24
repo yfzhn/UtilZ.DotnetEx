@@ -18,7 +18,7 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls
     /// <summary>
     /// UCCabinetControl.xaml 的交互逻辑
     /// </summary>
-    public partial class UCCabinetControl : UserControl
+    public partial class UCCabinetControl : UserControl, IDisposable
     {
         #region 依赖属性
         /// <summary>
@@ -69,6 +69,27 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls
         public static readonly DependencyProperty CabinetNameStyleProperty =
             DependencyProperty.Register(nameof(CabinetNameStyle), typeof(Style), typeof(UCCabinetControl),
                 new FrameworkPropertyMetadata(null, new PropertyChangedCallback(OnPropertyChangedCallback)));
+
+        /// <summary>
+        /// 机柜组名称样式依赖属性
+        /// </summary>
+        public static readonly DependencyProperty CabinetInfoGroupNameStyleProperty =
+            DependencyProperty.Register(nameof(CabinetInfoGroupNameStyle), typeof(Style), typeof(UCCabinetControl),
+                new FrameworkPropertyMetadata(null, new PropertyChangedCallback(OnPropertyChangedCallback)));
+
+        /// <summary>
+        /// 选中的设备依赖属性
+        /// </summary>
+        public static readonly DependencyProperty SelectedCabinetDeviceProperty =
+            DependencyProperty.Register(nameof(SelectedCabinetDevice), typeof(CabinetDevice), typeof(UCCabinetControl),
+                new FrameworkPropertyMetadata(null, new PropertyChangedCallback(OnPropertyChangedCallback)));
+
+        /// <summary>
+        /// 行头可见性依赖属性
+        /// </summary>
+        public static readonly DependencyProperty RowNameVisibleProperty =
+            DependencyProperty.Register(nameof(RowNameVisible), typeof(bool), typeof(UCCabinetControl),
+                new FrameworkPropertyMetadata(true, new PropertyChangedCallback(OnPropertyChangedCallback)));
 
 
 
@@ -187,6 +208,54 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls
             }
         }
 
+        /// <summary>
+        /// 机柜组名称样式依赖属性   
+        /// </summary>
+        public Style CabinetInfoGroupNameStyle
+        {
+            get
+            {
+                return (Style)base.GetValue(CabinetInfoGroupNameStyleProperty);
+            }
+            set
+            {
+                base.SetValue(CabinetInfoGroupNameStyleProperty, value);
+            }
+        }
+
+        /// <summary>
+        /// 选中的设备
+        /// </summary>
+        public CabinetDevice SelectedCabinetDevice
+        {
+            get
+            {
+                return (CabinetDevice)base.GetValue(SelectedCabinetDeviceProperty);
+            }
+            set
+            {
+                var oldDevice = this.SelectedCabinetDevice;
+                base.SetValue(SelectedCabinetDeviceProperty, value);
+                this.SelectedDeviceChanged?.Invoke(this, new SelectedDeviceChangedArgs(oldDevice, value));
+            }
+        }
+
+        /// <summary>
+        /// 行头可见性
+        /// </summary>
+        public bool RowNameVisible
+        {
+            get
+            {
+                return (bool)base.GetValue(RowNameVisibleProperty);
+            }
+            set
+            {
+                base.SetValue(RowNameVisibleProperty, value);
+            }
+        }
+
+
         private static void OnPropertyChangedCallback(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var selfControl = (UCCabinetControl)d;
@@ -210,22 +279,32 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls
             {
                 selfControl.SetCabinetNameStyle((Style)e.NewValue);
             }
+            else if (e.Property == CabinetInfoGroupNameStyleProperty)
+            {
+                selfControl.SetCabinetInfoGroupNameStyle((Style)e.NewValue);
+            }
+            else if (e.Property == RowNameVisibleProperty)
+            {
+                selfControl.SetCabinetInfoGroupRowNameVisible((bool)e.NewValue);
+            }
         }
         #endregion
 
 
-        /// <summary>
-        /// 构造函数
-        /// </summary>
+        public event EventHandler<SelectedDeviceChangedArgs> SelectedDeviceChanged;
         public UCCabinetControl()
         {
             InitializeComponent();
+
+            this.SetCabinetInfoGroupRowNameVisible(this.RowNameVisible);
         }
+
 
         private void UpdateCabinet()
         {
+            this.Dispose();//释放前一次资源
+
             List<CabinetInfoGroup> cabinetInfoGroupList = this.CabinetInfoGroupList;
-            canvas.Children.Clear();
 
             if (cabinetInfoGroupList == null || cabinetInfoGroupList.Count == 0)
             {
@@ -241,11 +320,14 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls
             for (int i = 0; i < cabinetInfoGroupList.Count; i++)
             {
                 var cabinetRowControl = new UCCabinetRowControl();
+                cabinetRowControl.SelectedDeviceChanged += CabinetRowControl_SelectedDeviceChanged;
                 cabinetRowControl.TitleVisible = this.TitleVisible;
                 cabinetRowControl.CabinetWidth = this.CabinetWidth;
                 cabinetRowControl.Separator = this.ColumnSeparator;
                 cabinetRowControl.DeviceNameStyle = this.DeviceNameStyle;
                 cabinetRowControl.CabinetNameStyle = this.CabinetNameStyle;
+                cabinetRowControl.CabinetInfoGroupNameStyle = this.CabinetInfoGroupNameStyle;
+                cabinetRowControl.RowNameVisible = this.RowNameVisible;
                 cabinetRowControl.CabinetInfoGroup = cabinetInfoGroupList[i];
                 canvas.Children.Add(cabinetRowControl);
 
@@ -269,6 +351,11 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls
 
             this.Width = maxWidth;
             this.Height = top;
+        }
+
+        private void CabinetRowControl_SelectedDeviceChanged(object sender, SelectedDeviceChangedArgs e)
+        {
+            this.SelectedCabinetDevice = e.NewDevice;
         }
 
         private void SetTitleVisible(bool visible)
@@ -309,6 +396,53 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls
                     ((UCCabinetRowControl)ele).CabinetNameStyle = style;
                 }
             }
+        }
+
+        private void SetCabinetInfoGroupNameStyle(Style style)
+        {
+            if (canvas.Children.Count == 0)
+            {
+                return;
+            }
+
+            foreach (var ele in canvas.Children)
+            {
+                if (ele is UCCabinetRowControl)
+                {
+                    ((UCCabinetRowControl)ele).CabinetInfoGroupNameStyle = style;
+                }
+            }
+        }
+
+
+        private void SetCabinetInfoGroupRowNameVisible(bool visible)
+        {
+            if (canvas.Children.Count == 0)
+            {
+                return;
+            }
+
+            foreach (var ele in canvas.Children)
+            {
+                if (ele is UCCabinetRowControl)
+                {
+                    ((UCCabinetRowControl)ele).RowNameVisible = visible;
+                }
+            }
+        }
+
+        public void Dispose()
+        {
+            foreach (var ele in canvas.Children)
+            {
+                var cabinetRowControl = ele as UCCabinetRowControl;
+                if (cabinetRowControl != null)
+                {
+                    cabinetRowControl.SelectedDeviceChanged -= CabinetRowControl_SelectedDeviceChanged;
+                    cabinetRowControl.Dispose();
+                }
+            }
+            canvas.Children.Clear();
         }
     }
 }

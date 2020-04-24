@@ -18,22 +18,14 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls
     /// <summary>
     /// UCCabinetU.xaml 的交互逻辑
     /// </summary>
-    public partial class UCCabinetDeviceUControl : UserControl
+    public partial class UCCabinetDeviceUControl : UserControl, IDisposable
     {
-        /// <summary>
-        /// 构造函数
-        /// </summary>
         public UCCabinetDeviceUControl()
         {
             InitializeComponent();
         }
 
 
-        /// <summary>
-        /// 更新机柜设备
-        /// </summary>
-        /// <param name="deviceUnit"></param>
-        /// <param name="deviceNameStyle"></param>
         public void UpdateCabinetDevice(CabinetDeviceUnit deviceUnit, Style deviceNameStyle)
         {
             this.Height = deviceUnit.Height * CabinetConstant.SINGLE_U_HEIGHT;
@@ -49,6 +41,12 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls
             foreach (var device in deviceUnit.DeviceList)
             {
                 var cabinetDeviceUnitControl = new UCCabinetDeviceControl();
+                cabinetDeviceUnitControl.SelectedDeviceChanged = this.DeviceSelectedChanged;
+                if (device.DeviceNameVisibility != Visibility.Visible)
+                {
+                    cabinetDeviceUnitControl.ToolTip = device.DeviceName;
+                }
+
                 cabinetDeviceUnitControl.DeviceNameStyle = deviceNameStyle;
                 cabinetDeviceUnitControl.DataContext = device;
                 cabinetDeviceUnitControl.Height = cabinetDeviceUnitHeight;
@@ -77,10 +75,6 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls
         }
 
 
-        /// <summary>
-        /// 蠹啄剖梁柱设备名称样式
-        /// </summary>
-        /// <param name="style"></param>
         public void UpdateDeviceNameStyle(Style style)
         {
             if (stackPanel.Children.Count == 0)
@@ -95,6 +89,26 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls
                     ((UCCabinetDeviceControl)ele).DeviceNameStyle = style;
                 }
             }
+        }
+
+
+        public Action<CabinetDevice> SelectedDeviceChanged;
+        private void DeviceSelectedChanged(CabinetDevice device)
+        {
+            this.SelectedDeviceChanged?.Invoke(device);
+        }
+
+        public void Dispose()
+        {
+            foreach (var ele in stackPanel.Children)
+            {
+                var cabinetDeviceUnitControl = ele as UCCabinetDeviceControl;
+                if (cabinetDeviceUnitControl != null)
+                {
+                    cabinetDeviceUnitControl.SelectedDeviceChanged = null;
+                }
+            }
+            stackPanel.Children.Clear();
         }
     }
 }

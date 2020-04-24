@@ -135,22 +135,22 @@
             异步等待UI接口
             </summary>
         </member>
-        <member name="P:UtilZ.Dotnet.Ex.Base.IPartAsynWait.IsCanceled">
+        <member name="P:UtilZ.Dotnet.Ex.Base.IPartAsynWait.Canceled">
             <summary>
             获取是否已经取消
             </summary>
         </member>
-        <member name="P:UtilZ.Dotnet.Ex.Base.IPartAsynWait.Caption">
+        <member name="P:UtilZ.Dotnet.Ex.Base.IPartAsynWait.Title">
             <summary>
             获取或设置提示标题
             </summary>
         </member>
-        <member name="P:UtilZ.Dotnet.Ex.Base.IPartAsynWait.Hint">
+        <member name="P:UtilZ.Dotnet.Ex.Base.IPartAsynWait.Message">
             <summary>
             获取或设置提示内容
             </summary>
         </member>
-        <member name="P:UtilZ.Dotnet.Ex.Base.IPartAsynWait.IsShowCancel">
+        <member name="P:UtilZ.Dotnet.Ex.Base.IPartAsynWait.ShowCancel">
             <summary>
             是否显示取消按钮
             </summary>
@@ -160,9 +160,9 @@
             获取或设置遮罩层背景色
             </summary>
         </member>
-        <member name="E:UtilZ.Dotnet.Ex.Base.IPartAsynWait.Canceled">
+        <member name="E:UtilZ.Dotnet.Ex.Base.IPartAsynWait.CanceledNotify">
             <summary>
-            取消操作事件
+            取消通知事件
             </summary>
         </member>
         <member name="M:UtilZ.Dotnet.Ex.Base.IPartAsynWait.Cancel">
@@ -787,7 +787,7 @@
             Convert类型扩展方法类
             </summary>
         </member>
-        <member name="M:UtilZ.Dotnet.Ex.Base.ConvertEx.ToObject``2(``0)">
+        <member name="M:UtilZ.Dotnet.Ex.Base.ConvertEx.ConvertTo``2(``0)">
             <summary>
             转换数据到
             </summary>
@@ -796,7 +796,17 @@
             <param name="value">要转换的值</param>
             <returns>转换后的值,存放在object中,如果转换失败为目标类型的默认值</returns>
         </member>
-        <member name="M:UtilZ.Dotnet.Ex.Base.ConvertEx.ToObject(System.Type,System.Object)">
+        <member name="M:UtilZ.Dotnet.Ex.Base.ConvertEx.TryConvertTo``2(``0,``1@)">
+            <summary>
+            尝试转换数据到
+            </summary>
+            <typeparam name="T">要待转换的目标类型</typeparam>
+            <typeparam name="TResult">目标类型</typeparam>
+            <param name="value">要转换的值</param>
+            <param name="result">结果值</param>
+            <returns>转换结果</returns>
+        </member>
+        <member name="M:UtilZ.Dotnet.Ex.Base.ConvertEx.ConvertToObject(System.Type,System.Object)">
             <summary>
             转换数据到
             </summary>
@@ -804,7 +814,16 @@
             <param name="value">要转换的值</param>
             <returns>转换后的值,存放在object中,如果转换失败为目标类型的默认值</returns>
         </member>
-        <member name="M:UtilZ.Dotnet.Ex.Base.ConvertEx.ToNumber``1(System.String,System.Byte)">
+        <member name="M:UtilZ.Dotnet.Ex.Base.ConvertEx.TryConvertToObject(System.Type,System.Object,System.Object@)">
+            <summary>
+            尝试转换数据到指定类型
+            </summary>
+            <param name="targetValueType">要待转换的目标类型</param>
+            <param name="value">要转换的值</param>
+            <param name="result">转换后的值</param>
+            <returns></returns>
+        </member>
+        <member name="M:UtilZ.Dotnet.Ex.Base.ConvertEx.ConvertTo``1(System.String,System.Byte)">
             <summary>
             字符串转换为指定类型数值类型
             </summary>
@@ -813,7 +832,7 @@
             <param name="fromBase">值中数字基数(value是何种进制的字符串),必须是2,8,10,16</param>
             <returns>目标数值</returns>
         </member>
-        <member name="M:UtilZ.Dotnet.Ex.Base.ConvertEx.ToNumber``1(System.String,``0,System.Byte,System.IFormatProvider)">
+        <member name="M:UtilZ.Dotnet.Ex.Base.ConvertEx.ConvertTo``1(System.String,``0,System.Byte,System.IFormatProvider)">
             <summary>
             各种进制字符串转换为数据类型,转换失败返回默认值,包括枚举
             </summary>
@@ -824,9 +843,9 @@
             <param name="formatProvider">一个提供区域性特定的格式设置信息的对象</param>
             <returns>转换后的值,存放在object中,如果转换失败为目标类型的默认值</returns>
         </member>
-        <member name="M:UtilZ.Dotnet.Ex.Base.ConvertEx.ToNumber(System.Type,System.String,System.Byte,System.IFormatProvider)">
+        <member name="M:UtilZ.Dotnet.Ex.Base.ConvertEx.ConvertTo(System.Type,System.String,System.Byte,System.IFormatProvider)">
             <summary>
-            各种进制字符串转换为数据类型,包括枚举
+            将字符串转换为值类型数据,包括枚举
             </summary>
             <param name="targetValueType">要待转换的目标类型</param>
             <param name="value">要转换的值</param>
@@ -834,9 +853,9 @@
             <param name="formatProvider">一个提供区域性特定的格式设置信息的对象</param>
             <returns>转换后的值,存放在object中,如果转换失败为目标类型的默认值</returns>
         </member>
-        <member name="M:UtilZ.Dotnet.Ex.Base.ConvertEx.TryToNumber(System.Type,System.String,System.Object@)">
+        <member name="M:UtilZ.Dotnet.Ex.Base.ConvertEx.TryConvertTo(System.Type,System.String,System.Object@)">
             <summary>
-            字符串转换为数据类型,包括枚举
+            尝试将字符串转换为值类型数据,包括枚举
             </summary>
             <param name="targetValueType">要待转换的目标类型</param>
             <param name="value">要转换的值</param>
@@ -2085,17 +2104,7 @@
         </member>
         <member name="F:UtilZ.Dotnet.Ex.Base.ThreadEx._action">
             <summary>
-            线程要执行的委托,无参数
-            </summary>
-        </member>
-        <member name="F:UtilZ.Dotnet.Ex.Base.ThreadEx._actionObj">
-            <summary>
-            线程要执行的委托,带参数
-            </summary>
-        </member>
-        <member name="F:UtilZ.Dotnet.Ex.Base.ThreadEx._flag">
-            <summary>
-            true:无参数;false:带参数
+            线程要执行的委托
             </summary>
         </member>
         <member name="F:UtilZ.Dotnet.Ex.Base.ThreadEx._name">
@@ -2133,23 +2142,14 @@
             线程参数
              </summary>
         </member>
-        <member name="M:UtilZ.Dotnet.Ex.Base.ThreadEx.#ctor(System.Boolean,System.String,System.Boolean)">
+        <member name="M:UtilZ.Dotnet.Ex.Base.ThreadEx.#ctor(System.String,System.Boolean)">
             <summary>
             构造函数
             </summary>
-            <param name="flag">true:无参数;false:带参数</param>
             <param name="name">线程名称</param>
             <param name="isBackground">是否后台运行[true:后台线程;false:前台线程]</param>
         </member>
-        <member name="M:UtilZ.Dotnet.Ex.Base.ThreadEx.#ctor(System.Action{System.Threading.CancellationToken},System.String,System.Boolean)">
-            <summary>
-            构造函数
-            </summary>
-            <param name="action">线程要执行的委托</param>
-            <param name="name">线程名称</param>
-            <param name="isBackground">后台运行标识[true:后台线程;false:前台线程]</param>
-        </member>
-        <member name="M:UtilZ.Dotnet.Ex.Base.ThreadEx.#ctor(System.Action{System.Threading.CancellationToken,System.Object},System.String,System.Boolean)">
+        <member name="M:UtilZ.Dotnet.Ex.Base.ThreadEx.#ctor(System.Action{UtilZ.Dotnet.Ex.Base.ThreadExPara},System.String,System.Boolean)">
             <summary>
             构造函数
             </summary>
@@ -2215,23 +2215,14 @@
             Dispose
             </summary>
         </member>
-        <member name="M:UtilZ.Dotnet.Ex.Base.ThreadEx.Start(System.Action{System.Threading.CancellationToken},System.String,System.Boolean)">
+        <member name="M:UtilZ.Dotnet.Ex.Base.ThreadEx.Start(System.Action{UtilZ.Dotnet.Ex.Base.ThreadExPara},System.String,System.Boolean,System.Object)">
             <summary>
             创建线程对象
             </summary>
             <param name="action">线程要执行的委托</param>
             <param name="name">线程名称</param>
             <param name="isBackground">是否后台运行[true:后台线程;false:前台线程]</param>
-            <returns>返回线程对象</returns>
-        </member>
-        <member name="M:UtilZ.Dotnet.Ex.Base.ThreadEx.Start(System.Action{System.Threading.CancellationToken,System.Object},System.Object,System.String,System.Boolean)">
-            <summary>
-            创建线程对象
-            </summary>
-            <param name="action">线程要执行的委托</param>
             <param name="obj">线程启动参数</param>
-            <param name="name">线程名称</param>
-            <param name="isBackground">是否后台运行[true:后台线程;false:前台线程]</param>
             <returns>返回线程对象</returns>
         </member>
         <member name="M:UtilZ.Dotnet.Ex.Base.ThreadEx.AssignCoreRun(System.Int32,System.Int32,System.Int32)">
@@ -2248,6 +2239,43 @@
             </summary>
             <param name="thread">要设置的线程</param>
             <param name="isBackground">true:后台线程;false:前台线程</param>
+        </member>
+        <member name="T:UtilZ.Dotnet.Ex.Base.ThreadExPara">
+            <summary>
+            线程参数
+            </summary>
+        </member>
+        <member name="P:UtilZ.Dotnet.Ex.Base.ThreadExPara.Token">
+            <summary>
+            线程取消通知Token
+            </summary>
+        </member>
+        <member name="P:UtilZ.Dotnet.Ex.Base.ThreadExPara.Para">
+            <summary>
+            参数
+            </summary>
+        </member>
+        <member name="M:UtilZ.Dotnet.Ex.Base.ThreadExPara.#ctor(System.Threading.CancellationToken,System.Object)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="token">CancellationToken</param>
+            <param name="para">参数</param>
+        </member>
+        <member name="M:UtilZ.Dotnet.Ex.Base.ThreadExPara.WaitOne">
+            <summary>
+            对Token,WaitHandle方法的包装,Blocks the current thread until the current System.Threading.WaitHandle receives a signal. 
+            </summary>
+            <returns>true if the current instance receives a signal. 
+            If the current instance is never signaled, 
+            System.Threading.WaitHandle.WaitOne(System.Int32,System.Boolean) never returns.</returns>
+        </member>
+        <member name="M:UtilZ.Dotnet.Ex.Base.ThreadExPara.WaitOne(System.Int32)">
+            <summary>
+            对Token,WaitHandle方法的包装,Blocks the current thread until the current System.Threading.WaitHandle receives a signal, using a 32-bit signed integer to specify the time interval in milliseconds.
+            </summary>
+            <param name="millisecondsTimeout">The number of milliseconds to wait, or System.Threading.Timeout.Infinite (-1)to wait indefinitely</param>
+            <returns>true if the current instance receives a signal; otherwise, false</returns>
         </member>
         <member name="T:UtilZ.Dotnet.Ex.Base.ThreadStartPara">
             <summary>
@@ -2482,11 +2510,128 @@
             Xml辅助类
             </summary>
         </member>
-        <member name="M:UtilZ.Dotnet.Ex.Base.XmlEx.GetXElementValue(System.Xml.Linq.XElement)">
+        <member name="M:UtilZ.Dotnet.Ex.Base.XmlEx.GetXmlNodeValue(System.Xml.XmlNode,System.Boolean)">
+            <summary>
+            获取XmlNode值[节点为null时返回空字符串]
+            </summary>
+            <param name="node">XmlNode</param>
+            <param name="nodeIsNullValueIsNull">元素为null时是否返回null[true:null;false:string.Empty],默认为false</param>
+            <returns>值</returns>
+        </member>
+        <member name="M:UtilZ.Dotnet.Ex.Base.XmlEx.GetXmlNodeValue(System.Xml.XmlNode,System.Type)">
+            <summary>
+            获取XmlNode值[节点为null时返回空字符串]
+            </summary>
+            <param name="node">XmlNode</param>
+            <param name="targetType">数据目标类型</param>
+            <returns>值</returns>
+        </member>
+        <member name="M:UtilZ.Dotnet.Ex.Base.XmlEx.GetXmlNodeValue``1(System.Xml.XmlNode)">
+            <summary>
+            获取XmlNode值[节点为null时返回空字符串]
+            </summary>
+            <param name="node">XmlNode</param>
+            <returns>值</returns>
+        </member>
+        <member name="M:UtilZ.Dotnet.Ex.Base.XmlEx.TryGetXmlNodeValue(System.Xml.XmlNode,System.Type,System.Object@)">
+            <summary>
+            尝试获取并转换XmlNode值[节点为null时返回空字符串]
+            </summary>
+            <param name="node">XmlNode</param>
+            <param name="targetType">数据目标类型</param>
+            <param name="result">结果值</param>
+            <returns>转换结果</returns>
+        </member>
+        <member name="M:UtilZ.Dotnet.Ex.Base.XmlEx.TryGetXmlNodeValue``1(System.Xml.XmlNode,``0@)">
+            <summary>
+            尝试获取并转换XmlNode值[节点为null时返回空字符串]
+            </summary>
+            <param name="node">XmlNode</param>
+            <param name="result">结果值</param>
+            <returns>转换结果</returns>
+        </member>
+        <member name="M:UtilZ.Dotnet.Ex.Base.XmlEx.GetXmlNodeAttributeValue(System.Xml.XmlNode,System.String,System.Boolean)">
+            <summary>
+            获取XmlNode指定属性值
+            </summary>
+            <param name="node">XmlNode</param>
+            <param name="attributeName">属性名称</param>
+            <param name="attributeNotExitValueIsNull">特性不存在时是否返回null值[true:null;false:string.Empty],默认为false</param>
+            <returns>属性值</returns>
+        </member>
+        <member name="M:UtilZ.Dotnet.Ex.Base.XmlEx.GetXmlNodeAttributeValue(System.Xml.XmlNode,System.String,System.Type)">
+            <summary>
+            获取XmlNode指定属性值
+            </summary>
+            <param name="node">XmlNode</param>
+            <param name="attributeName">属性名称</param>
+            <param name="targetType">数据目标类型</param>
+            <returns>属性值</returns>
+        </member>
+        <member name="M:UtilZ.Dotnet.Ex.Base.XmlEx.GetXmlNodeAttributeValue``1(System.Xml.XmlNode,System.String)">
+            <summary>
+            获取XmlNode指定属性值
+            </summary>
+            <typeparam name="T">数据目标泛型类型</typeparam>
+            <param name="node">XmlNode</param>
+            <param name="attributeName">属性名称</param>
+            <returns>属性值</returns>
+        </member>
+        <member name="M:UtilZ.Dotnet.Ex.Base.XmlEx.TryGetXmlNodeAttributeValue(System.Xml.XmlNode,System.String,System.Type,System.Object@)">
+            <summary>
+            尝试获取并转换XmlNode指定属性值
+            </summary>
+            <param name="node">XmlNode</param>
+            <param name="attributeName">属性名称</param>
+            <param name="targetType">数据目标类型</param>
+            <param name="result">结果值</param>
+            <returns>转换结果</returns>
+        </member>
+        <member name="M:UtilZ.Dotnet.Ex.Base.XmlEx.TryGetXmlNodeAttributeValue``1(System.Xml.XmlNode,System.String,``0@)">
+            <summary>
+            尝试获取并转换XmlNode指定属性值
+            </summary>
+            <typeparam name="T">数据目标泛型类型</typeparam>
+            <param name="node">XmlNode</param>
+            <param name="attributeName">属性名称</param>
+            <param name="result">结果值</param>
+            <returns>转换结果</returns>
+        </member>
+        <member name="M:UtilZ.Dotnet.Ex.Base.XmlEx.SetXmlNodeAttribute(System.Xml.XmlNode,System.String,System.String,System.Boolean)">
+            <summary>
+            设置XmlAttribute
+            </summary>
+            <param name="node">目标XmlNode元素</param>
+            <param name="attributeName">特性名称</param>
+            <param name="value">特性值</param>
+            <param name="valueIsNullAttributeExit">当特性值为null时,是否存在该特性[true:存在;false:不存在]</param>
+        </member>
+        <member name="M:UtilZ.Dotnet.Ex.Base.XmlEx.CreateXmlNode(System.Xml.XmlDocument,System.String,System.String,System.String,System.String)">
+            <summary>
+            创建XmlNode
+            </summary>
+            <param name="xdoc">所属XmlDocument</param>
+            <param name="nodeName">要创建的子节点名称</param>
+            <param name="attriName">属性名称</param>
+            <param name="attiValue">属性值</param>
+            <param name="nodeValue">节点值</param>
+            <returns>XmlNode</returns>
+        </member>
+        <member name="M:UtilZ.Dotnet.Ex.Base.XmlEx.CreateXmlCDataSection(System.Xml.XmlDocument,System.String,System.String)">
+            <summary>
+            创建XmlCDataSection
+            </summary>
+            <param name="xdoc">所属XmlDocument</param>
+            <param name="nodeName">节点名称</param>
+            <param name="value">值</param>
+            <returns>XmlCDataSection</returns>
+        </member>
+        <member name="M:UtilZ.Dotnet.Ex.Base.XmlEx.GetXElementValue(System.Xml.Linq.XElement,System.Boolean)">
             <summary>
             获取XElement元素节点值[节点为null时返回空字符串]
             </summary>
             <param name="ele">XElement节点</param>
+            <param name="eleIsNullValueIsNull">元素为null时是否返回null[true:null;false:string.Empty],默认为false</param>
             <returns>值</returns>
         </member>
         <member name="M:UtilZ.Dotnet.Ex.Base.XmlEx.GetXElementValue``1(System.Xml.Linq.XElement)">
@@ -2504,34 +2649,80 @@
             <param name="targetType">数据目标类型</param>
             <returns>值</returns>
         </member>
+        <member name="M:UtilZ.Dotnet.Ex.Base.XmlEx.TryTryGetXElementValue``1(System.Xml.Linq.XElement,``0@)">
+            <summary>
+            尝试获取并转换XElement元素节点值
+            </summary>
+            <param name="ele">XElement节点</param>
+            <param name="result">结果值</param>
+            <returns>转换结果</returns>
+        </member>
+        <member name="M:UtilZ.Dotnet.Ex.Base.XmlEx.TryGetXElementValue(System.Xml.Linq.XElement,System.Type,System.Object@)">
+            <summary>
+            尝试获取并转换XElement元素节点值
+            </summary>
+            <param name="ele">XElement节点</param>
+            <param name="targetType">数据目标类型</param>
+            <param name="result">结果值</param>
+            <returns>转换结果</returns>
+        </member>
         <member name="M:UtilZ.Dotnet.Ex.Base.XmlEx.GetXElementAttributeValue(System.Xml.Linq.XElement,System.String,System.Boolean)">
             <summary>
-            获取XElement元素属性值
+            获取XElement指定属性值
             </summary>
-            <param name="ele">XElement节点</param>
+            <param name="ele">XElement</param>
             <param name="attributeName">属性名称</param>
-            <param name="noValueNull">特性不存在时返回null值[true:人财两空null;false:返回string.Empty],默认为false</param>
-            <returns>值</returns>
-        </member>
-        <member name="M:UtilZ.Dotnet.Ex.Base.XmlEx.GetXElementAttributeValue``1(System.Xml.Linq.XElement,System.String)">
-            <summary>
-            获取XElement元素属性值
-            </summary>
-            <typeparam name="T">数据目标泛型类型</typeparam>
-            <param name="ele">XElement节点</param>
-            <param name="attributeName">属性名称</param>
-            <returns></returns>
+            <param name="attributeNotExitValueIsNull">特性不存在时是否返回null[true:null;false:string.Empty],默认为false</param>
+            <returns>属性值</returns>
         </member>
         <member name="M:UtilZ.Dotnet.Ex.Base.XmlEx.GetXElementAttributeValue(System.Xml.Linq.XElement,System.String,System.Type)">
             <summary>
-            获取XElement元素属性值
+            获取XElement指定属性值
             </summary>
-            <param name="ele">XElement节点</param>
+            <param name="ele">XElement</param>
             <param name="attributeName">属性名称</param>
             <param name="targetType">数据目标类型</param>
-            <returns></returns>
+            <returns>属性值</returns>
         </member>
-        <member name="M:UtilZ.Dotnet.Ex.Base.XmlEx.CreateXElement(System.String,System.String,System.Object,System.String)">
+        <member name="M:UtilZ.Dotnet.Ex.Base.XmlEx.GetXElementAttributeValue``1(System.Xml.Linq.XElement,System.String)">
+            <summary>
+            获取XElement指定属性值
+            </summary>
+            <typeparam name="T">数据目标泛型类型</typeparam>
+            <param name="ele">XElement</param>
+            <param name="attributeName">属性名称</param>
+            <returns>属性值</returns>
+        </member>
+        <member name="M:UtilZ.Dotnet.Ex.Base.XmlEx.TryGetXElementAttributeValue(System.Xml.Linq.XElement,System.String,System.Type,System.Object@)">
+            <summary>
+            尝试获取并转换XElement指定属性值
+            </summary>
+            <param name="ele">XElement</param>
+            <param name="attributeName">属性名称</param>
+            <param name="targetType">数据目标类型</param>
+            <param name="result">结果值</param>
+            <returns>转换结果</returns>
+        </member>
+        <member name="M:UtilZ.Dotnet.Ex.Base.XmlEx.TryGetXElementAttributeValue``1(System.Xml.Linq.XElement,System.String,``0@)">
+            <summary>
+            尝试获取并转换XElement指定属性值
+            </summary>
+            <typeparam name="T">数据目标泛型类型</typeparam>
+            <param name="ele">XElement</param>
+            <param name="attributeName">属性名称</param>
+            <param name="result">结果值</param>
+            <returns>转换结果</returns>
+        </member>
+        <member name="M:UtilZ.Dotnet.Ex.Base.XmlEx.SetXElementAttribute(System.Xml.Linq.XElement,System.String,System.String,System.Boolean)">
+            <summary>
+            设置XAttribute
+            </summary>
+            <param name="ele">目标元素</param>
+            <param name="attributeName">特性名称</param>
+            <param name="value">特性值</param>
+            <param name="valueIsNullAttributeExit">当特性值为null时,是否存在该特性[true:存在;false:不存在]</param>
+        </member>
+        <member name="M:UtilZ.Dotnet.Ex.Base.XmlEx.CreateXElement(System.String,System.String,System.String,System.String)">
             <summary>
             创建特性值xml元素节点
             </summary>
@@ -3095,6 +3286,16 @@
             <param name="des">描述</param>
             <param name="allowNullValueElement">值为null时节点是否存在[true:存在;false:不存在]</param>
         </member>
+        <member name="T:UtilZ.Dotnet.Ex.Base.Config.ConfigCommentAttribute">
+            <summary>
+            标记注释文本项
+            </summary>
+        </member>
+        <member name="M:UtilZ.Dotnet.Ex.Base.Config.ConfigCommentAttribute.#ctor">
+            <summary>
+            构造函数
+            </summary>
+        </member>
         <member name="T:UtilZ.Dotnet.Ex.Base.Config.ConfigIgnoreAttribute">
             <summary>
             标记配置项为忽略
@@ -3123,23 +3324,23 @@
             <param name="des">描述</param>
             <param name="allowNullValueElement">值为null时节点是否存在[true:存在;false:不存在]</param>
         </member>
-        <member name="T:UtilZ.Dotnet.Ex.Base.Config.ConfigItemCustomerAttribute">
+        <member name="T:UtilZ.Dotnet.Ex.Base.Config.ConfigCustomerAttribute">
             <summary>
             标记配置项自定义读写
             </summary>
         </member>
-        <member name="P:UtilZ.Dotnet.Ex.Base.Config.ConfigItemCustomerAttribute.CustomerConfig">
+        <member name="P:UtilZ.Dotnet.Ex.Base.Config.ConfigCustomerAttribute.CustomerConfig">
             <summary>
             自定义配置项读写
             </summary>
         </member>
-        <member name="M:UtilZ.Dotnet.Ex.Base.Config.ConfigItemCustomerAttribute.#ctor(System.Type)">
+        <member name="M:UtilZ.Dotnet.Ex.Base.Config.ConfigCustomerAttribute.#ctor(System.Type)">
             <summary>
             构造函数
             </summary>
             <param name="customerConfigType">自定义配置项读写类型</param>
         </member>
-        <member name="M:UtilZ.Dotnet.Ex.Base.Config.ConfigItemCustomerAttribute.#ctor(System.Type,System.String,System.String,System.Boolean)">
+        <member name="M:UtilZ.Dotnet.Ex.Base.Config.ConfigCustomerAttribute.#ctor(System.Type,System.String,System.String,System.Boolean)">
             <summary>
             构造函数
             </summary>
@@ -3230,27 +3431,27 @@
             <param name="value">字符串</param>
             <returns>属性值</returns>
         </member>
-        <member name="T:UtilZ.Dotnet.Ex.Base.Config.ICustomerConfig">
+        <member name="T:UtilZ.Dotnet.Ex.Base.Config.IConfigCustomerRW">
             <summary>
             自定义配置项读写接口
             </summary>
         </member>
-        <member name="M:UtilZ.Dotnet.Ex.Base.Config.ICustomerConfig.Write(System.Reflection.PropertyInfo,System.Object,System.Xml.Linq.XElement,UtilZ.Dotnet.Ex.Base.Config.ConfigItemCustomerAttribute)">
+        <member name="M:UtilZ.Dotnet.Ex.Base.Config.IConfigCustomerRW.Write(System.Reflection.PropertyInfo,System.Object,System.Xml.Linq.XElement,UtilZ.Dotnet.Ex.Base.Config.ConfigCustomerAttribute)">
             <summary>
             写配置项
             </summary>
             <param name="propertyInfo">PropertyInfo</param>
             <param name="value">属性值</param>
             <param name="element">存放配置的XElement</param>
-            <param name="attri">ConfigItemCustomerAttribute</param>
+            <param name="attri">ConfigCustomerAttribute</param>
         </member>
-        <member name="M:UtilZ.Dotnet.Ex.Base.Config.ICustomerConfig.Read(System.Reflection.PropertyInfo,System.Xml.Linq.XElement,UtilZ.Dotnet.Ex.Base.Config.ConfigItemCustomerAttribute)">
+        <member name="M:UtilZ.Dotnet.Ex.Base.Config.IConfigCustomerRW.Read(System.Reflection.PropertyInfo,System.Xml.Linq.XElement,UtilZ.Dotnet.Ex.Base.Config.ConfigCustomerAttribute)">
             <summary>
             读配置项
             </summary>
             <param name="propertyInfo">PropertyInfo</param>
             <param name="element">存放配置的XElement</param>
-            <param name="attri">ConfigItemCustomerAttribute</param>
+            <param name="attri">ConfigCustomerAttribute</param>
             <returns>属性值</returns>
         </member>
         <member name="T:UtilZ.Dotnet.Ex.Base.Config.ConfigCore">
@@ -4301,11 +4502,11 @@
             </summary>
             <returns>时刻点环形链表</returns>
         </member>
-        <member name="M:UtilZ.Dotnet.Ex.Base.AlarmClock.Timing(System.Threading.CancellationToken)">
+        <member name="M:UtilZ.Dotnet.Ex.Base.AlarmClock.TimingThreadMethod(UtilZ.Dotnet.Ex.Base.ThreadExPara)">
             <summary>
             定时操作
             </summary>
-            <param name="token">取消执行token</param>
+            <param name="para">线程参数</param>
         </member>
         <member name="M:UtilZ.Dotnet.Ex.Base.AlarmClock.CaculateWaitTime(System.TimeSpan)">
             <summary>
@@ -4737,17 +4938,11 @@
             </summary>
             <param name="item">待处理数据项</param>
         </member>
-        <member name="M:UtilZ.Dotnet.Ex.Base.PriorityQueueThread`1.ExcuteThreadMethod(System.Threading.CancellationToken)">
+        <member name="M:UtilZ.Dotnet.Ex.Base.PriorityQueueThread`1.ExcuteThreadMethod(UtilZ.Dotnet.Ex.Base.ThreadExPara)">
             <summary>
             重写执行线程方法
             </summary>
-            <param name="token">线程取消通知参数</param>
-        </member>
-        <member name="M:UtilZ.Dotnet.Ex.Base.PriorityQueueThread`1.DataProcessThreadMethod(System.Threading.CancellationToken)">
-            <summary>
-            数据处理线程
-            </summary>
-            <param name="token">线程取消通知参数</param>
+            <param name="para">线程参数</param>
         </member>
         <member name="M:UtilZ.Dotnet.Ex.Base.PriorityQueueThread`1.Start">
             <summary>

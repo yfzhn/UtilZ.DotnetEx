@@ -72,9 +72,6 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls
         }
         #endregion
 
-        /// <summary>
-        /// 构造函数
-        /// </summary>
         public UCCabinetDeviceControl()
         {
             InitializeComponent();
@@ -87,6 +84,36 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls
         private void SetDeviceNameStyle(Style stytle)
         {
             tbDeviceName.Style = stytle;
+        }
+
+        protected override void OnMouseEnter(MouseEventArgs e)
+        {
+            base.OnMouseEnter(e);
+            this.OnRaiseSelectedDeviceChanged((CabinetDevice)this.DataContext);
+        }
+
+        protected override void OnMouseLeave(MouseEventArgs e)
+        {
+            base.OnMouseLeave(e);
+            this.OnRaiseSelectedDeviceChanged(null);
+        }
+
+        public Action<CabinetDevice> SelectedDeviceChanged;
+
+        private void OnRaiseSelectedDeviceChanged(CabinetDevice device)
+        {
+            this.SelectedDeviceChanged?.Invoke(device);
+        }
+
+
+
+
+
+        public static double GetNoNameDeviceUWidth()
+        {
+            var control = new UCCabinetDeviceControl();
+            //第二列和第三列宽度相加,即为无设备名称宽度
+            return control.root.ColumnDefinitions[1].Width.Value + control.root.ColumnDefinitions[2].Width.Value;
         }
     }
 }

@@ -18,7 +18,7 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls
     /// <summary>
     /// UCCabinetControl.xaml 的交互逻辑
     /// </summary>
-    public partial class UCSingleCabinetControl : UserControl
+    public partial class UCSingleCabinetControl : UserControl, IDisposable
     {
         #region 依赖属性
         /// <summary>
@@ -41,6 +41,14 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls
         public static readonly DependencyProperty CabinetNameStyleProperty =
             DependencyProperty.Register(nameof(CabinetNameStyle), typeof(Style), typeof(UCSingleCabinetControl),
                 new FrameworkPropertyMetadata(null, new PropertyChangedCallback(OnPropertyChangedCallback)));
+
+        /// <summary>
+        /// 选中的设备依赖属性
+        /// </summary>
+        public static readonly DependencyProperty SelectedCabinetDeviceProperty =
+            DependencyProperty.Register(nameof(SelectedCabinetDevice), typeof(CabinetDevice), typeof(UCSingleCabinetControl),
+                new FrameworkPropertyMetadata(null, new PropertyChangedCallback(OnPropertyChangedCallback)));
+
 
 
         /// <summary>
@@ -88,6 +96,24 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls
             }
         }
 
+
+        /// <summary>
+        /// 选中的设备
+        /// </summary>
+        public CabinetDevice SelectedCabinetDevice
+        {
+            get
+            {
+                return (CabinetDevice)base.GetValue(SelectedCabinetDeviceProperty);
+            }
+            set
+            {
+                var oldDevice = this.SelectedCabinetDevice;
+                base.SetValue(SelectedCabinetDeviceProperty, value);
+                this.SelectedDeviceChanged?.Invoke(this, new SelectedDeviceChangedArgs(oldDevice, value));
+            }
+        }
+
         private static void OnPropertyChangedCallback(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var selfControl = (UCSingleCabinetControl)d;
@@ -116,16 +142,6 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls
             _bottomHeight = ((GridLength)control.Resources["bottomHeight"]).Value;
         }
 
-        /// <summary>
-        /// 构造函数
-        /// </summary>
-        public UCSingleCabinetControl()
-        {
-            InitializeComponent();
-
-            this.CabinetNameStyle = GetCabinetNameDefaultStyle();
-        }
-
         private static Style _cabinetNameDefaultStyle = null;
         private static Style GetCabinetNameDefaultStyle()
         {
@@ -144,19 +160,30 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls
             return _cabinetNameDefaultStyle;
         }
 
-        /// <summary>
-        /// 计算机柜控件高度
-        /// </summary>
-        /// <param name="height">机柜身体高度</param>
-        /// <returns>机柜控件高度</returns>
         public static double CalCabinetControlHeight(int height)
         {
             return height * CabinetConstant.SINGLE_U_HEIGHT + _titleHeight + _bottomHeight;
         }
 
+
+
+
+
+
+        public event EventHandler<SelectedDeviceChangedArgs> SelectedDeviceChanged;
+        public UCSingleCabinetControl()
+        {
+            InitializeComponent();
+
+            this.CabinetNameStyle = GetCabinetNameDefaultStyle();
+        }
+
+
+
         private void SetCabinetDeviceUnit(CabinetInfo cabinetInfo)
         {
-            stackPanel.Children.Clear();
+            this.Dispose();//释放前一次资源
+
             if (cabinetInfo == null)
             {
                 return;
@@ -198,6 +225,7 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls
 
                 //插入设备U
                 var cabinetDeviceUControl = new UCCabinetDeviceUControl();
+                cabinetDeviceUControl.SelectedDeviceChanged = this.DeviceSelectedChanged;
                 cabinetDeviceUControl.UpdateCabinetDevice(cabinetDeviceUnit, this.DeviceNameStyle);
                 stackPanel.Children.Insert(0, cabinetDeviceUControl);
                 targetIndex = cabinetDeviceUnit.BeginLocation + cabinetDeviceUnit.Height;
@@ -208,6 +236,13 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls
                 this.FillEmptyU(targetIndex, cabinetInfo.Height - targetIndex + 1);
             }
         }
+
+
+        private void DeviceSelectedChanged(CabinetDevice device)
+        {
+            this.SelectedCabinetDevice = device;
+        }
+
 
         private void FillEmptyU(int begindex, int count)
         {
@@ -240,6 +275,20 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls
         private void SetCabinetNameStyle(Style style)
         {
             tbName.Style = style;
+        }
+
+        public void Dispose()
+        {
+            foreach (var ele in stackPanel.Children)
+            {
+                var cabinetDeviceUnitControl = ele as UCCabinetDeviceUControl;
+                if (cabinetDeviceUnitControl != null)
+                {
+                    cabinetDeviceUnitControl.Dispose();
+                    cabinetDeviceUnitControl.SelectedDeviceChanged = null;
+                }
+            }
+            stackPanel.Children.Clear();
         }
     }
 }

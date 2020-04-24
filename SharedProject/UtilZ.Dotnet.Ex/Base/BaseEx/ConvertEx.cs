@@ -20,9 +20,33 @@ namespace UtilZ.Dotnet.Ex.Base
         /// <typeparam name="TResult">目标类型</typeparam>
         /// <param name="value">要转换的值</param>
         /// <returns>转换后的值,存放在object中,如果转换失败为目标类型的默认值</returns>
-        public static TResult ToObject<T, TResult>(T value) where T : IConvertible
+        public static TResult ConvertTo<T, TResult>(T value) where T : IConvertible
         {
-            return (TResult)ToObject(typeof(TResult), value);
+            return (TResult)ConvertToObject(typeof(TResult), value);
+        }
+
+        /// <summary>
+        /// 尝试转换数据到
+        /// </summary>
+        /// <typeparam name="T">要待转换的目标类型</typeparam>
+        /// <typeparam name="TResult">目标类型</typeparam>
+        /// <param name="value">要转换的值</param>
+        /// <param name="result">结果值</param>
+        /// <returns>转换结果</returns>
+        public static bool TryConvertTo<T, TResult>(T value, out TResult result) where T : IConvertible
+        {
+            object obj;
+            bool ret = TryConvertToObject(typeof(TResult), value, out obj);
+            if (ret)
+            {
+                result = (TResult)obj;
+            }
+            else
+            {
+                result = default(TResult);
+            }
+
+            return ret;
         }
 
         /// <summary>
@@ -31,18 +55,18 @@ namespace UtilZ.Dotnet.Ex.Base
         /// <param name="targetValueType">要待转换的目标类型</param>
         /// <param name="value">要转换的值</param>
         /// <returns>转换后的值,存放在object中,如果转换失败为目标类型的默认值</returns>
-        public static object ToObject(Type targetValueType, object value)
+        public static object ConvertToObject(Type targetValueType, object value)
         {
             object resultValue = null;
             if (value != null)
             {
                 if (targetValueType.IsEnum)
                 {
-                    resultValue = Enum.Parse(targetValueType, value.ToString());
+                    resultValue = Enum.Parse(targetValueType, value.ToString(), true);
                 }
                 else
                 {
-                    resultValue = Convert.ChangeType(value, targetValueType);
+                    resultValue = System.Convert.ChangeType(value, targetValueType);
                 }
             }
             else
@@ -51,6 +75,38 @@ namespace UtilZ.Dotnet.Ex.Base
             }
 
             return resultValue;
+        }
+
+        /// <summary>
+        /// 尝试转换数据到指定类型
+        /// </summary>
+        /// <param name="targetValueType">要待转换的目标类型</param>
+        /// <param name="value">要转换的值</param>
+        /// <param name="result">转换后的值</param>
+        /// <returns></returns>
+        public static bool TryConvertToObject(Type targetValueType, object value, out object result)
+        {
+            result = null;
+            if (value == null)
+            {
+                return false;
+            }
+
+            try
+            {
+                if (targetValueType.IsEnum)
+                {
+                    result = Enum.Parse(targetValueType, value.ToString(), true);
+                    return true;
+                }
+
+                result = System.Convert.ChangeType(value, targetValueType);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
         #endregion
 
@@ -62,9 +118,9 @@ namespace UtilZ.Dotnet.Ex.Base
         /// <param name="value">待转换字符串</param>
         /// <param name="fromBase">值中数字基数(value是何种进制的字符串),必须是2,8,10,16</param>
         /// <returns>目标数值</returns>
-        public static T ToNumber<T>(string value, byte fromBase = 10)
+        public static T ConvertTo<T>(string value, byte fromBase = 10)
         {
-            return (T)ToNumber(typeof(T), value, fromBase);
+            return (T)ConvertTo(typeof(T), value, fromBase);
         }
 
         /// <summary>
@@ -76,12 +132,12 @@ namespace UtilZ.Dotnet.Ex.Base
         /// <param name="fromBase">值中数字基数(value是何种进制的字符串),必须是2,8,10,16</param>
         /// <param name="formatProvider">一个提供区域性特定的格式设置信息的对象</param>
         /// <returns>转换后的值,存放在object中,如果转换失败为目标类型的默认值</returns>
-        public static T ToNumber<T>(string value, T defaultValue, byte fromBase = 10, IFormatProvider formatProvider = null)
+        public static T ConvertTo<T>(string value, T defaultValue, byte fromBase = 10, IFormatProvider formatProvider = null)
         {
             T resultValue;
             try
             {
-                resultValue = (T)ToNumber(typeof(T), value, fromBase, formatProvider);
+                resultValue = (T)ConvertTo(typeof(T), value, fromBase, formatProvider);
             }
             catch
             {
@@ -92,14 +148,14 @@ namespace UtilZ.Dotnet.Ex.Base
         }
 
         /// <summary>
-        /// 各种进制字符串转换为数据类型,包括枚举
+        /// 将字符串转换为值类型数据,包括枚举
         /// </summary>
         /// <param name="targetValueType">要待转换的目标类型</param>
         /// <param name="value">要转换的值</param>
         /// <param name="fromBase">值中数字基数(value是何种进制的字符串),必须是2,8,10,16</param>
         /// <param name="formatProvider">一个提供区域性特定的格式设置信息的对象</param>
         /// <returns>转换后的值,存放在object中,如果转换失败为目标类型的默认值</returns>
-        public static object ToNumber(Type targetValueType, string value, byte fromBase = 10, IFormatProvider formatProvider = null)
+        public static object ConvertTo(Type targetValueType, string value, byte fromBase = 10, IFormatProvider formatProvider = null)
         {
             if (targetValueType == null)
             {
@@ -118,8 +174,7 @@ namespace UtilZ.Dotnet.Ex.Base
 
             if (targetValueType.IsEnum)
             {
-                //枚举
-                return Enum.Parse(targetValueType, value);
+                return Enum.Parse(targetValueType, value, true);
             }
 
             if (fromBase != 2 && fromBase != 8 && fromBase != 10 && fromBase == 16)
@@ -137,46 +192,46 @@ namespace UtilZ.Dotnet.Ex.Base
             switch (code)
             {
                 case TypeCode.Boolean:
-                    resultValue = Convert.ToBoolean(value, formatProvider);
+                    resultValue = System.Convert.ToBoolean(value, formatProvider);
                     break;
                 case TypeCode.Char:
-                    resultValue = Convert.ToChar(value, formatProvider);
+                    resultValue = System.Convert.ToChar(value, formatProvider);
                     break;
                 case TypeCode.SByte:
-                    resultValue = Convert.ToSByte(value, fromBase);
+                    resultValue = System.Convert.ToSByte(value, fromBase);
                     break;
                 case TypeCode.Byte:
-                    resultValue = Convert.ToByte(value, fromBase);
+                    resultValue = System.Convert.ToByte(value, fromBase);
                     break;
                 case TypeCode.Int16:
-                    resultValue = Convert.ToInt16(value, fromBase);
+                    resultValue = System.Convert.ToInt16(value, fromBase);
                     break;
                 case TypeCode.UInt16:
-                    resultValue = Convert.ToUInt16(value, fromBase);
+                    resultValue = System.Convert.ToUInt16(value, fromBase);
                     break;
                 case TypeCode.Int32:
-                    resultValue = Convert.ToInt32(value, fromBase);
+                    resultValue = System.Convert.ToInt32(value, fromBase);
                     break;
                 case TypeCode.UInt32:
-                    resultValue = Convert.ToUInt32(value, fromBase);
+                    resultValue = System.Convert.ToUInt32(value, fromBase);
                     break;
                 case TypeCode.Int64:
-                    resultValue = Convert.ToInt64(value, fromBase);
+                    resultValue = System.Convert.ToInt64(value, fromBase);
                     break;
                 case TypeCode.UInt64:
-                    resultValue = Convert.ToUInt64(value, fromBase);
+                    resultValue = System.Convert.ToUInt64(value, fromBase);
                     break;
                 case TypeCode.Decimal:
-                    resultValue = Convert.ToDecimal(value, formatProvider);
+                    resultValue = System.Convert.ToDecimal(value, formatProvider);
                     break;
                 case TypeCode.Double:
-                    resultValue = Convert.ToDouble(value, formatProvider);
+                    resultValue = System.Convert.ToDouble(value, formatProvider);
                     break;
                 case TypeCode.Single:
-                    resultValue = Convert.ToSingle(value, formatProvider);
+                    resultValue = System.Convert.ToSingle(value, formatProvider);
                     break;
                 case TypeCode.DateTime:
-                    resultValue = Convert.ToDateTime(value, formatProvider);
+                    resultValue = System.Convert.ToDateTime(value, formatProvider);
                     break;
                 case TypeCode.String:
                     resultValue = value;
@@ -189,44 +244,50 @@ namespace UtilZ.Dotnet.Ex.Base
         }
 
         /// <summary>
-        /// 字符串转换为数据类型,包括枚举
+        /// 尝试将字符串转换为值类型数据,包括枚举
         /// </summary>
         /// <param name="targetValueType">要待转换的目标类型</param>
         /// <param name="value">要转换的值</param>
         /// <param name="result">转换结果</param>
         /// <returns>转换后的值,存放在object中,如果转换失败为目标类型的默认值</returns>
-        public static bool TryToNumber(Type targetValueType, string value, out object result)
+        public static bool TryConvertTo(Type targetValueType, string value, out object result)
         {
+            result = null;
             if (targetValueType == null)
             {
-                throw new ArgumentNullException(nameof(targetValueType));
+                return false;
             }
 
             if (!targetValueType.IsValueType)
             {
-                throw new ArgumentException(string.Format("目标类型:{0}不是值类型", targetValueType.FullName), nameof(targetValueType));
+                return false;
             }
 
             if (string.IsNullOrWhiteSpace(value))
             {
-                throw new ArgumentNullException(nameof(value));
+                return false;
             }
 
             if (targetValueType.IsEnum)
             {
-                //枚举
-                result = Enum.Parse(targetValueType, value);
-                return true;
+                try
+                {
+                    result = Enum.Parse(targetValueType, value, true);
+                    return true;
+                }
+                catch
+                {
+                    return false;
+                }
             }
 
             IConvertible convertible = value as IConvertible;
             if (convertible == null)
             {
-                throw new InvalidOperationException();
+                return false;
             }
 
             bool resultValue;
-            result = null;
             TypeCode code = Type.GetTypeCode(targetValueType);
             switch (code)
             {

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,17 +8,11 @@ using System.Windows.Media;
 
 namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls
 {
-
     /// <summary>
-    /// 机柜组-对应一行机柜
+    /// 机柜组
     /// </summary>
-    public class CabinetInfoGroup
+    public class CabinetInfoGroup : List<CabinetInfo>
     {
-        /// <summary>
-        /// 机柜组
-        /// </summary>
-        public List<CabinetInfo> Group { get; set; } = new List<CabinetInfo>();
-
         /// <summary>
         /// 组名
         /// </summary>
@@ -105,29 +98,8 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls
     /// <summary>
     /// 设备
     /// </summary>
-    public class CabinetDevice : INotifyPropertyChanged
+    public class CabinetDevice : UtilZ.Dotnet.Ex.Base.NotifyPropertyChangedAbs
     {
-        #region INotifyPropertyChanged
-        /// <summary>
-        /// 属性值改变通知事件
-        /// </summary>
-        [field: NonSerializedAttribute()]
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        /// <summary>
-        /// 属性值改变通知方法
-        /// </summary>
-        /// <param name="propertyName">属性名称</param>
-        protected void OnRaisePropertyChanged(string propertyName)
-        {
-            PropertyChangedEventHandler handler = PropertyChanged;
-            if (null != handler)
-            {
-                handler(this, new PropertyChangedEventArgs(propertyName));
-            }
-        }
-        #endregion
-
         private string _deviceName = string.Empty;
         /// <summary>
         /// 获取或设置该U对应的设备名称
@@ -138,9 +110,25 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls
             set
             {
                 _deviceName = value;
-                this.OnRaisePropertyChanged(nameof(DeviceName));
+                base.OnRaisePropertyChanged(nameof(DeviceName));
             }
         }
+
+        private Visibility _deviceNameVisibility = Visibility.Visible;
+        /// <summary>
+        /// 获取或设置该U对应的设备名称是否可见
+        /// </summary>
+        public Visibility DeviceNameVisibility
+        {
+            get { return _deviceNameVisibility; }
+            set
+            {
+                _deviceNameVisibility = value;
+                base.OnRaisePropertyChanged(nameof(DeviceNameVisibility));
+            }
+        }
+
+
 
         private Brush _deviceBackground = Brushes.Transparent;
         /// <summary>
@@ -152,7 +140,7 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls
             set
             {
                 _deviceBackground = value;
-                this.OnRaisePropertyChanged(nameof(DeviceBackground));
+                base.OnRaisePropertyChanged(nameof(DeviceBackground));
             }
         }
 
@@ -166,7 +154,7 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls
             set
             {
                 _deviceStatusBrush = value;
-                this.OnRaisePropertyChanged(nameof(DeviceStatusBrush));
+                base.OnRaisePropertyChanged(nameof(DeviceStatusBrush));
             }
         }
 
@@ -180,7 +168,7 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls
             set
             {
                 _deviceBorderThickness = value;
-                this.OnRaisePropertyChanged(nameof(DeviceBorderThickness));
+                base.OnRaisePropertyChanged(nameof(DeviceBorderThickness));
             }
         }
 
@@ -194,7 +182,7 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls
             set
             {
                 _deviceBorderBrush = value;
-                this.OnRaisePropertyChanged(nameof(DeviceBorderBrush));
+                base.OnRaisePropertyChanged(nameof(DeviceBorderBrush));
             }
         }
 

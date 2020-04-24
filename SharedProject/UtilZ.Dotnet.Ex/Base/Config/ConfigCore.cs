@@ -276,7 +276,7 @@ namespace UtilZ.Dotnet.Ex.Base.Config
                 if (attri != null)
                 {
                     //自定义
-                    var configItemCustomerAttribute = (ConfigItemCustomerAttribute)attri;
+                    var configItemCustomerAttribute = (ConfigCustomerAttribute)attri;
                     configItemCustomerAttribute.CustomerConfig.Write(propertyInfo, propertyValue, ownerEle, configItemCustomerAttribute);
                     continue;
                 }
@@ -707,7 +707,7 @@ namespace UtilZ.Dotnet.Ex.Base.Config
                 attri = propertyInfo.GetCustomAttribute(configAttributeTypes.CustomerAttributeType, false) as ConfigAttribute;
                 if (attri != null)
                 {
-                    var configItemCustomerAttribute = (ConfigItemCustomerAttribute)attri;
+                    var configItemCustomerAttribute = (ConfigCustomerAttribute)attri;
                     customerValue = configItemCustomerAttribute.CustomerConfig.Read(propertyInfo, ownerEle, configItemCustomerAttribute);
                     propertyInfo.SetValue(ownerObj, customerValue, null);
                     continue;
@@ -1090,7 +1090,7 @@ namespace UtilZ.Dotnet.Ex.Base.Config
             object value = str;
             if (Type.GetTypeCode(targetType) != TypeCode.String)
             {
-                value = ConvertEx.ToObject(targetType, str);
+                value = ConvertEx.ConvertToObject(targetType, str);
             }
 
             return value;

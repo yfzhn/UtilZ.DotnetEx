@@ -59,14 +59,14 @@
     <Compile Include="$(MSBuildThisFileDirectory)Base\Config\Attributes\ConfigCommentAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Base\Config\Attributes\ConfigIgnoreAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Base\Config\Attributes\ConfigItemAttribute.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Base\Config\Attributes\ConfigItemCustomerAttribute.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Base\Config\Attributes\ConfigCustomerAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Base\Config\Attributes\ConfigObjectAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Base\Config\Attributes\ConfigRootAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Base\Config\Base\ConfigAttributeTypes.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Base\Config\Base\ConfigConstant.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Base\Config\Base\ConfigDataType.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Base\Config\Base\IConfigValueConverter.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Base\Config\Base\ICustomerConfig.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Base\Config\Base\IConfigCustomerRW.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Base\Config\ConfigCore.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Base\Config\ConfigHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Base\MemoryCache\CacheEntryRemovedArguments.cs" />

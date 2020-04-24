@@ -14,17 +14,52 @@ namespace UtilZ.Dotnet.Ex.Base
     {
         private static object ConvertValue(string valueStr, Type targetType)
         {
-            object value;
+            object result;
             if (string.IsNullOrWhiteSpace(valueStr))
             {
-                value = ConvertEx.GetTypeDefaultValue(targetType);
+                result = ConvertEx.GetTypeDefaultValue(targetType);
             }
             else
             {
-                value = ConvertEx.ToObject(targetType, valueStr);
+                result = ConvertEx.ConvertToObject(targetType, valueStr);
             }
 
-            return value;
+            return result;
+        }
+
+        private static bool TryConvertValue(string valueStr, Type targetType, out object result)
+        {
+            result = null;
+            if (string.IsNullOrWhiteSpace(valueStr))
+            {
+                return false;
+            }
+
+            try
+            {
+                result = ConvertEx.ConvertToObject(targetType, valueStr);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        private static bool TryConvertValue<T>(string valueStr, out T result)
+        {
+            object value;
+            bool convertResult = TryConvertValue(valueStr, typeof(T), out value);
+            if (convertResult)
+            {
+                result = (T)value;
+            }
+            else
+            {
+                result = default(T);
+            }
+
+            return convertResult;
         }
 
 
@@ -77,6 +112,32 @@ namespace UtilZ.Dotnet.Ex.Base
         public static T GetXmlNodeValue<T>(this XmlNode node)
         {
             return (T)GetXmlNodeValue(node, typeof(T));
+        }
+
+
+        /// <summary>
+        /// 尝试获取并转换XmlNode值[节点为null时返回空字符串]
+        /// </summary>
+        /// <param name="node">XmlNode</param>
+        /// <param name="targetType">数据目标类型</param>
+        /// <param name="result">结果值</param>
+        /// <returns>转换结果</returns>
+        public static bool TryGetXmlNodeValue(this XmlNode node, Type targetType, out object result)
+        {
+            string value = GetXmlNodeValue(node, true);
+            return TryConvertValue(value, targetType, out result);
+        }
+
+        /// <summary>
+        /// 尝试获取并转换XmlNode值[节点为null时返回空字符串]
+        /// </summary>
+        /// <param name="node">XmlNode</param>
+        /// <param name="result">结果值</param>
+        /// <returns>转换结果</returns>
+        public static bool TryGetXmlNodeValue<T>(this XmlNode node, out T result)
+        {
+            string value = GetXmlNodeValue(node, true);
+            return TryConvertValue<T>(value, out result);
         }
         #endregion
 
@@ -149,6 +210,35 @@ namespace UtilZ.Dotnet.Ex.Base
         public static T GetXmlNodeAttributeValue<T>(this XmlNode node, string attributeName)
         {
             return (T)GetXmlNodeAttributeValue(node, attributeName, typeof(T));
+        }
+
+
+        /// <summary>
+        /// 尝试获取并转换XmlNode指定属性值
+        /// </summary>
+        /// <param name="node">XmlNode</param>
+        /// <param name="attributeName">属性名称</param>
+        /// <param name="targetType">数据目标类型</param>
+        /// <param name="result">结果值</param>
+        /// <returns>转换结果</returns>
+        public static bool TryGetXmlNodeAttributeValue(this XmlNode node, string attributeName, Type targetType, out object result)
+        {
+            string attiValue = GetXmlNodeAttributeValue(node, attributeName);
+            return TryConvertValue(attiValue, targetType, out result);
+        }
+
+        /// <summary>
+        /// 尝试获取并转换XmlNode指定属性值
+        /// </summary>
+        /// <typeparam name="T">数据目标泛型类型</typeparam>
+        /// <param name="node">XmlNode</param>
+        /// <param name="attributeName">属性名称</param>
+        /// <param name="result">结果值</param>
+        /// <returns>转换结果</returns>
+        public static bool TryGetXmlNodeAttributeValue<T>(this XmlNode node, string attributeName, out T result)
+        {
+            string attiValue = GetXmlNodeAttributeValue(node, attributeName);
+            return TryConvertValue<T>(attiValue, out result);
         }
         #endregion
 
@@ -320,6 +410,32 @@ namespace UtilZ.Dotnet.Ex.Base
 
             return ConvertValue(value, targetType);
         }
+
+
+        /// <summary>
+        /// 尝试获取并转换XElement元素节点值
+        /// </summary>
+        /// <param name="ele">XElement节点</param>
+        /// <param name="result">结果值</param>
+        /// <returns>转换结果</returns>
+        public static bool TryTryGetXElementValue<T>(this XElement ele, out T result)
+        {
+            string value = GetXElementValue(ele, true);
+            return TryConvertValue<T>(value, out result);
+        }
+
+        /// <summary>
+        /// 尝试获取并转换XElement元素节点值
+        /// </summary>
+        /// <param name="ele">XElement节点</param>
+        /// <param name="targetType">数据目标类型</param>
+        /// <param name="result">结果值</param>
+        /// <returns>转换结果</returns>
+        public static bool TryGetXElementValue(this XElement ele, Type targetType, out object result)
+        {
+            string value = GetXElementValue(ele, true);
+            return TryConvertValue(value, targetType, out result);
+        }
         #endregion
 
         #region GetXElementAttributeValue
@@ -390,6 +506,34 @@ namespace UtilZ.Dotnet.Ex.Base
         public static T GetXElementAttributeValue<T>(this XElement ele, string attributeName)
         {
             return (T)GetXElementAttributeValue(ele, attributeName, typeof(T));
+        }
+
+        /// <summary>
+        /// 尝试获取并转换XElement指定属性值
+        /// </summary>
+        /// <param name="ele">XElement</param>
+        /// <param name="attributeName">属性名称</param>
+        /// <param name="targetType">数据目标类型</param>
+        /// <param name="result">结果值</param>
+        /// <returns>转换结果</returns>
+        public static bool TryGetXElementAttributeValue(this XElement ele, string attributeName, Type targetType, out object result)
+        {
+            string attiValue = GetXElementAttributeValue(ele, attributeName);
+            return TryConvertValue(attiValue, targetType, out result);
+        }
+
+        /// <summary>
+        /// 尝试获取并转换XElement指定属性值
+        /// </summary>
+        /// <typeparam name="T">数据目标泛型类型</typeparam>
+        /// <param name="ele">XElement</param>
+        /// <param name="attributeName">属性名称</param>
+        /// <param name="result">结果值</param>
+        /// <returns>转换结果</returns>
+        public static bool TryGetXElementAttributeValue<T>(this XElement ele, string attributeName, out T result)
+        {
+            string attiValue = GetXElementAttributeValue(ele, attributeName);
+            return TryConvertValue<T>(attiValue, out result);
         }
         #endregion
 

@@ -181,7 +181,7 @@ namespace CoreWpfApp
         public ConfigChildItem[] ChildArr2 { get; set; }
 
 
-        [ConfigItemCustomer(typeof(CusConfig))]
+        [ConfigCustomerAttribute(typeof(CusConfigRW))]
         public string Cus { get; set; }
     }
 
@@ -257,7 +257,7 @@ namespace CoreWpfApp
 
 
 
-        [ConfigItemCustomer(typeof(CusConfig))]
+        [ConfigCustomerAttribute(typeof(CusConfigRW))]
         public string Cus { get; set; }
 
 
@@ -426,9 +426,9 @@ namespace CoreWpfApp
         }
     }
 
-    public class CusConfig : ICustomerConfig
+    public class CusConfigRW : IConfigCustomerRW
     {
-        public object Read(PropertyInfo propertyInfo, XElement element, ConfigItemCustomerAttribute attri)
+        public object Read(PropertyInfo propertyInfo, XElement element, ConfigCustomerAttribute attri)
         {
             var ele = element.Element(propertyInfo.Name);
             if (ele == null)
@@ -439,7 +439,7 @@ namespace CoreWpfApp
             return ele.Value;
         }
 
-        public void Write(PropertyInfo propertyInfo, object value, XElement element, ConfigItemCustomerAttribute attri)
+        public void Write(PropertyInfo propertyInfo, object value, XElement element, ConfigCustomerAttribute attri)
         {
             element.Add(new XElement(propertyInfo.Name, value));
         }

@@ -8,14 +8,22 @@
              d:DesignHeight="300" d:DesignWidth="600" MinWidth="600">
     <UserControl.Resources>
         <GridLength x:Key="titleWidth">40</GridLength>
+
+        <Style x:Key="cabinetInfoGroupNameStyle" TargetType="TextBlock">
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
     </UserControl.Resources>
-    <Grid>
+    <Grid x:Name="root">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="{StaticResource titleWidth}"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <TextBlock x:Name="tbTitle" Grid.Column="0" Text="A区" TextWrapping="Wrap" FontSize="16" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBlock x:Name="tbTitle" Grid.Column="0" Text="A区"/>
 
         <Canvas Grid.Column="1" x:Name="canvas">
 

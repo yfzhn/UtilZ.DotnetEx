@@ -165,7 +165,7 @@ namespace CoreWpfApp
             this.ManaulComit = true;
             var values = new ValueCollection();
             int count = 5;
-            int min = 10, mid = 50, max = 100;
+            //int min = 10, mid = 50, max = 100;
 
             Style labelStyle = new Style();
             labelStyle.TargetType = typeof(TextBlock);

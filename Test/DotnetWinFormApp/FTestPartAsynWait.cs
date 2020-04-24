@@ -44,7 +44,7 @@ namespace DotnetWinFormApp
             {
                 for (int i = 0; i < inp.Para; i++)
                 {
-                    inp.AsynWait.Hint = string.Format("正在处理:{0}项..", i);
+                    inp.AsynWait.Message = string.Format("正在处理:{0}项..", i);
                     Thread.Sleep(500);
                     if (inp.Token.IsCancellationRequested)
                     {
@@ -59,7 +59,7 @@ namespace DotnetWinFormApp
 
                 return "OK";
             };
-            para.CancelButtonVisible = true;
+            para.ShowCancel = true;
             para.AsynWaitBackground = Color.Red;
             para.Completed = (p) =>
             {

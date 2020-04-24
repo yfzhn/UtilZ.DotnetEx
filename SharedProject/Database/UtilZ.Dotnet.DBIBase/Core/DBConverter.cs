@@ -392,7 +392,6 @@ namespace UtilZ.Dotnet.DBIBase.Core
         /// <summary>
         /// 将clr类型值转换为数据库字段值
         /// </summary>
-        /// <typeparam name="T">clr类型</typeparam>
         /// <param name="value">clr类型值</param>
         /// <returns>数据库字段值</returns>
         public static object GetDBValue(object value)

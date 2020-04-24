@@ -13,22 +13,22 @@ namespace UtilZ.Dotnet.Ex.Base
         /// <summary>
         /// 获取是否已经取消
         /// </summary>
-        bool IsCanceled { get; }
+        bool Canceled { get; }
 
         /// <summary>
         /// 获取或设置提示标题
         /// </summary>
-        string Caption { get; set; }
+        string Title { get; set; }
 
         /// <summary>
         /// 获取或设置提示内容
         /// </summary>
-        string Hint { get; set; }
+        string Message { get; set; }
 
         /// <summary>
         /// 是否显示取消按钮
         /// </summary>
-        bool IsShowCancel { get; set; }
+        bool ShowCancel { get; set; }
 
         /// <summary>
         /// 获取或设置遮罩层背景色
@@ -36,9 +36,9 @@ namespace UtilZ.Dotnet.Ex.Base
         object ShadeBackground { get; set; }
 
         /// <summary>
-        /// 取消操作事件
+        /// 取消通知事件
         /// </summary>
-        event EventHandler Canceled;
+        event EventHandler CanceledNotify;
 
         /// <summary>
         /// 取消操作

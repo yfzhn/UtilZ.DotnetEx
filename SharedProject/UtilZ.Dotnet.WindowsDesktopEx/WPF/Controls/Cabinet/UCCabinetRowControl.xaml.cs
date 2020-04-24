@@ -18,7 +18,7 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls
     /// <summary>
     /// UCCabinetRowControl.xaml 的交互逻辑
     /// </summary>
-    public partial class UCCabinetRowControl : UserControl
+    public partial class UCCabinetRowControl : UserControl, IDisposable
     {
         internal const int COLUMN_COUNT = 5;
         internal const double SEPARATOR = 10d;
@@ -67,6 +67,28 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls
         public static readonly DependencyProperty CabinetNameStyleProperty =
             DependencyProperty.Register(nameof(CabinetNameStyle), typeof(Style), typeof(UCCabinetRowControl),
                 new FrameworkPropertyMetadata(null, new PropertyChangedCallback(OnPropertyChangedCallback)));
+
+        /// <summary>
+        /// 机柜组名称样式依赖属性
+        /// </summary>
+        public static readonly DependencyProperty CabinetInfoGroupNameStyleProperty =
+            DependencyProperty.Register(nameof(CabinetInfoGroupNameStyle), typeof(Style), typeof(UCCabinetRowControl),
+                new FrameworkPropertyMetadata(null, new PropertyChangedCallback(OnPropertyChangedCallback)));
+
+        /// <summary>
+        /// 选中的设备依赖属性
+        /// </summary>
+        public static readonly DependencyProperty SelectedCabinetDeviceProperty =
+            DependencyProperty.Register(nameof(SelectedCabinetDevice), typeof(CabinetDevice), typeof(UCCabinetRowControl),
+                new FrameworkPropertyMetadata(null, new PropertyChangedCallback(OnPropertyChangedCallback)));
+
+        /// <summary>
+        /// 行头可见性依赖属性
+        /// </summary>
+        public static readonly DependencyProperty RowNameVisibleProperty =
+            DependencyProperty.Register(nameof(RowNameVisible), typeof(bool), typeof(UCCabinetRowControl),
+                new FrameworkPropertyMetadata(true, new PropertyChangedCallback(OnPropertyChangedCallback)));
+
 
 
         /// <summary>
@@ -164,6 +186,53 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls
             }
         }
 
+        /// <summary>
+        /// 机柜组名称样式依赖属性   
+        /// </summary>
+        public Style CabinetInfoGroupNameStyle
+        {
+            get
+            {
+                return (Style)base.GetValue(CabinetInfoGroupNameStyleProperty);
+            }
+            set
+            {
+                base.SetValue(CabinetInfoGroupNameStyleProperty, value);
+            }
+        }
+
+        /// <summary>
+        /// 选中的设备
+        /// </summary>
+        public CabinetDevice SelectedCabinetDevice
+        {
+            get
+            {
+                return (CabinetDevice)base.GetValue(SelectedCabinetDeviceProperty);
+            }
+            set
+            {
+                var oldDevice = this.SelectedCabinetDevice;
+                base.SetValue(SelectedCabinetDeviceProperty, value);
+                this.SelectedDeviceChanged?.Invoke(this, new SelectedDeviceChangedArgs(oldDevice, value));
+            }
+        }
+
+        /// <summary>
+        /// 行头可见性
+        /// </summary>
+        public bool RowNameVisible
+        {
+            get
+            {
+                return (bool)base.GetValue(RowNameVisibleProperty);
+            }
+            set
+            {
+                base.SetValue(RowNameVisibleProperty, value);
+            }
+        }
+
 
         private static void OnPropertyChangedCallback(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
@@ -186,60 +255,43 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls
             {
                 selfControl.SetCabinetNameStyle((Style)e.NewValue);
             }
+            else if (e.Property == CabinetInfoGroupNameStyleProperty)
+            {
+                selfControl.SetCabinetInfoGroupNameStyle((Style)e.NewValue);
+            }
+            else if (e.Property == RowNameVisibleProperty)
+            {
+                selfControl.SetCabinetInfoGroupRowNameVisible((bool)e.NewValue);
+            }
         }
         #endregion
 
-        private static readonly double _titleWidth;
 
+        private static readonly double _titleWidth;
+        private static readonly Style _cabinetInfoGroupNameStyle;
         static UCCabinetRowControl()
         {
             var control = new UCCabinetRowControl();
             _titleWidth = ((GridLength)control.Resources["titleWidth"]).Value;
+            _cabinetInfoGroupNameStyle = (Style)control.Resources["cabinetInfoGroupNameStyle"];
         }
 
-        /// <summary>
-        /// 构造函数
-        /// </summary>
+
+
+        public event EventHandler<SelectedDeviceChangedArgs> SelectedDeviceChanged;
+
         public UCCabinetRowControl()
         {
             InitializeComponent();
+
+            this.CabinetInfoGroupNameStyle = _cabinetInfoGroupNameStyle;
+            this.SetCabinetInfoGroupRowNameVisible(this.RowNameVisible);
         }
 
-        /// <summary>
-        /// 计算行控件宽度
-        /// </summary>
-        /// <param name="cabineCount"></param>
-        /// <param name="cabinetWidth"></param>
-        /// <param name="separator"></param>
-        /// <returns></returns>
-        public static double CalCabineRowtControlWidth(int cabineCount, double cabinetWidth, double separator)
-        {
-            return cabineCount * cabinetWidth + (cabineCount - 1) * separator + _titleWidth;
-        }
-
-        /// <summary>
-        /// 计算机柜控件宽度
-        /// </summary>
-        /// <param name="cabineCount"></param>
-        /// <param name="totalWidth"></param>
-        /// <param name="separator"></param>
-        /// <param name="maxWidth"></param>
-        /// <returns></returns>
-        public static double CalCabinetWidth(int cabineCount, double totalWidth, double separator, double maxWidth = 1000d)
-        {
-            totalWidth = totalWidth - _titleWidth - separator * (cabineCount - 1);
-            double cabinetWidth = totalWidth / cabineCount;
-            if (cabinetWidth > maxWidth)
-            {
-                cabinetWidth = maxWidth;
-            }
-
-            return cabinetWidth;
-        }
 
         private void UpdateCabinet()
         {
-            canvas.Children.Clear();
+            this.Dispose();//释放前一次资源
 
             CabinetInfoGroup cabinetInfoGroup = this.CabinetInfoGroup;
             if (cabinetInfoGroup == null)
@@ -247,27 +299,21 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls
                 return;
             }
 
-
-            var group = cabinetInfoGroup.Group;
-            if (group == null)
-            {
-                return;
-            }
-
             tbTitle.Text = this.ConvertTitleToVertical(cabinetInfoGroup.Name);
-            if (group.Count == 0)
+            if (cabinetInfoGroup.Count == 0)
             {
                 return;
             }
 
-            byte cabinetMaxHeight = group.Max(t => { return t.Height; });
+            byte cabinetMaxHeight = cabinetInfoGroup.Max(t => { return t.Height; });
             this.Height = UCSingleCabinetControl.CalCabinetControlHeight(cabinetMaxHeight);
-            this.Width = CalCabineRowtControlWidth(group.Count, this.CabinetWidth, this.Separator);
+            this.Width = CalCabineRowControlWidth(cabinetInfoGroup.Count, this.CabinetWidth, this.Separator, this.RowNameVisible);
 
             double left = 0d;
-            foreach (CabinetInfo cabinetInfo in group)
+            foreach (CabinetInfo cabinetInfo in cabinetInfoGroup)
             {
                 var singleCabinetControl = new UCSingleCabinetControl();
+                singleCabinetControl.SelectedDeviceChanged += SingleCabinetControl_SelectedDeviceChanged;
                 singleCabinetControl.DeviceNameStyle = this.DeviceNameStyle;
                 singleCabinetControl.CabinetNameStyle = this.CabinetNameStyle;
                 singleCabinetControl.CabinetInfo = cabinetInfo;
@@ -280,7 +326,10 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls
             }
         }
 
-
+        private void SingleCabinetControl_SelectedDeviceChanged(object sender, SelectedDeviceChangedArgs e)
+        {
+            this.SelectedCabinetDevice = e.NewDevice;
+        }
 
         private string ConvertTitleToVertical(string title)
         {
@@ -328,6 +377,93 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls
                     ((UCSingleCabinetControl)ele).CabinetNameStyle = style;
                 }
             }
+        }
+
+        private void SetCabinetInfoGroupNameStyle(Style style)
+        {
+            tbTitle.Style = style;
+        }
+
+        private void SetCabinetInfoGroupRowNameVisible(bool visible)
+        {
+            if (visible)
+            {
+                if (root.ColumnDefinitions.Count == 0)
+                {
+                    var titleWidth = (GridLength)this.Resources["titleWidth"];
+                    root.ColumnDefinitions.Add(new ColumnDefinition() { Width = titleWidth });
+                    root.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(1d, GridUnitType.Star) });
+                }
+            }
+            else
+            {
+                root.ColumnDefinitions.Clear();
+                root.Children.Remove(tbTitle);
+            }
+        }
+
+        public void Dispose()
+        {
+            foreach (var ele in canvas.Children)
+            {
+                var singleCabinetControl = ele as UCSingleCabinetControl;
+                if (singleCabinetControl != null)
+                {
+                    singleCabinetControl.SelectedDeviceChanged -= SingleCabinetControl_SelectedDeviceChanged;
+                    singleCabinetControl.Dispose();
+                }
+            }
+            canvas.Children.Clear();
+        }
+
+
+
+
+
+
+
+
+
+
+
+        /// <summary>
+        /// 计算机柜行宽度
+        /// </summary>
+        /// <param name="cabineCount"></param>
+        /// <param name="cabinetWidth"></param>
+        /// <param name="separator"></param>
+        /// <param name="rowNameVisible"></param>
+        /// <returns></returns>
+        public static double CalCabineRowControlWidth(int cabineCount, double cabinetWidth, double separator, bool rowNameVisible)
+        {
+            double width = cabineCount * cabinetWidth + (cabineCount - 1) * separator;
+            if (rowNameVisible)
+            {
+                width += _titleWidth;
+            }
+
+            return width;
+        }
+
+
+        /// <summary>
+        /// 计算单个机柜宽度
+        /// </summary>
+        /// <param name="cabineCount"></param>
+        /// <param name="totalWidth"></param>
+        /// <param name="separator"></param>
+        /// <param name="maxWidth"></param>
+        /// <returns></returns>
+        public static double CalCabinetWidth(int cabineCount, double totalWidth, double separator, double maxWidth = 1000d)
+        {
+            totalWidth = totalWidth - _titleWidth - separator * (cabineCount - 1);
+            double cabinetWidth = totalWidth / cabineCount;
+            if (cabinetWidth > maxWidth)
+            {
+                cabinetWidth = maxWidth;
+            }
+
+            return cabinetWidth;
         }
     }
 }

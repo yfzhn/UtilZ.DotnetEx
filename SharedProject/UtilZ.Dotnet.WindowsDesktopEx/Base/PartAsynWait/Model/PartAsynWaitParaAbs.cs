@@ -119,51 +119,51 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.Base.PartAsynWait.Model
         /// <summary>
         /// 标题
         /// </summary>
-        private string _caption = string.Empty;
+        private string _title = string.Empty;
 
         /// <summary>
         /// 获取或设置标题
         /// </summary>
-        public string Caption
+        public string Title
         {
-            get { return _caption; }
+            get { return _title; }
             set
             {
                 this.AssetLock();
-                _caption = value;
+                _title = value;
             }
         }
 
         /// <summary>
         /// 提示信息
         /// </summary>
-        private string _hint = string.Empty;
+        private string _message = string.Empty;
 
         /// <summary>
         /// 获取或设置提示信息
         /// </summary>
-        public string Hint
+        public string Message
         {
-            get { return _hint; }
+            get { return _message; }
             set
             {
                 this.AssetLock();
-                _hint = value;
+                _message = value;
             }
         }
 
-        private bool _cancelButtonVisible = true;
+        private bool _showCancel = true;
 
         /// <summary>
         /// 取消按钮可见性[true:显示;false:隐藏]
         /// </summary>
-        public bool CancelButtonVisible
+        public bool ShowCancel
         {
-            get { return _cancelButtonVisible; }
+            get { return _showCancel; }
             set
             {
                 this.AssetLock();
-                _cancelButtonVisible = value;
+                _showCancel = value;
             }
         }
 

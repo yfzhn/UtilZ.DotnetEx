@@ -105,7 +105,7 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.PartAsynWait.Excute.Win
         /// 获取是否已经取消
         /// </summary>
         [Browsable(false)]
-        public bool IsCanceled
+        public bool Canceled
         {
             get { return this._isCanceled; }
         }
@@ -117,7 +117,7 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.PartAsynWait.Excute.Win
         [DisplayName("提示标题")]
         [Description("获取或设置提示标题")]
         [EditorBrowsable(EditorBrowsableState.Always)]
-        public string Caption
+        public string Title
         {
             get
             {
@@ -142,7 +142,7 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.PartAsynWait.Excute.Win
         [DisplayName("提示内容")]
         [Description("获取或设置提示内容")]
         [EditorBrowsable(EditorBrowsableState.Always)]
-        public string Hint
+        public string Message
         {
             get
             {
@@ -167,7 +167,7 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.PartAsynWait.Excute.Win
         [DisplayName("是否显示取消按钮")]
         [Description("获取或设置是否显示取消按钮")]
         [EditorBrowsable(EditorBrowsableState.Always)]
-        public bool IsShowCancel
+        public bool ShowCancel
         {
             get { return _isShowCancel; }
             set
@@ -205,9 +205,9 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.PartAsynWait.Excute.Win
         }
 
         /// <summary>
-        /// 取消事件
+        /// 取消通知事件
         /// </summary>
-        public event EventHandler Canceled;
+        public event EventHandler CanceledNotify;
 
         /// <summary>
         /// 线程锁
@@ -243,7 +243,7 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.PartAsynWait.Excute.Win
                 ButtonCancel();
             }
 
-            var handler = this.Canceled;
+            var handler = this.CanceledNotify;
             if (handler != null)
             {
                 handler(this, new EventArgs());

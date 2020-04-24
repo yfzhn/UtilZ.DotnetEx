@@ -35,10 +35,10 @@ namespace DotnetWinFormApp
         }
 
         private readonly Random _rnd = new Random();
-        private void Create(CancellationToken token)
+        private void Create(ThreadExPara para)
         {
             int count = 0;
-            while (!token.IsCancellationRequested&& count<100000)
+            while (!para.Token.IsCancellationRequested && count < 100000)
             {
                 count++;
                 count++;

@@ -71,22 +71,38 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Base
         /// <summary>
         /// 查找元素根窗口
         /// </summary>
-        /// <param name="element"></param>
-        /// <returns></returns>
-        public static Window FindRootWindow(FrameworkElement element)
+        /// <param name="element">目标控件</param>
+        ///  <param name="targetWindowType">父窗口类型,不为null时查找与该类型匹配的父窗口;为null时找到第一级为结果</param>
+        /// <returns>查找结果</returns>
+        public static Window FindParentForm(FrameworkElement element, Type targetWindowType = null)
         {
-            Window rootWindow = null;
-            while (element.Parent != null)
+            if (element == null)
             {
-                element = (FrameworkElement)element.Parent;
-                if (element is Window)
-                {
-                    rootWindow = (Window)element;
-                    break;
-                }
+                return null;
             }
 
-            return rootWindow;
+            Window window = null;
+            Type controlType = typeof(FrameworkElement);
+            FrameworkElement framework = element.Parent as FrameworkElement;
+
+            while (framework != null)
+            {
+                if (framework.GetType() == controlType)
+                {
+                    break;
+                }
+
+                if (framework is Window &&
+                    (targetWindowType == null || framework.GetType() == targetWindowType))
+                {
+                    window = (Window)framework;
+                    break;
+                }
+
+                framework = framework.Parent as FrameworkElement;
+            }
+
+            return window;
         }
     }
 }
