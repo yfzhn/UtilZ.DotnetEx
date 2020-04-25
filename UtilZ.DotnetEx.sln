@@ -65,6 +65,18 @@ Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "UtilZ.Dotnet.DBSqlServer", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tools", "Tools", "{93C26BA8-2AF4-4253-8D9E-3D420823DB3F}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UtilZ.Dotnet.DBIBase", "DotnetCore\Database\UtilZ.Dotnet.DBIBase\UtilZ.Dotnet.DBIBase.csproj", "{5A5983D2-6231-4EC8-AD90-C84297B330A5}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UtilZ.Dotnet.DBMySql", "DotnetCore\Database\UtilZ.Dotnet.DBMySql\UtilZ.Dotnet.DBMySql.csproj", "{14AE8C74-307F-4869-8345-D7D8A6BF31E3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UtilZ.Dotnet.DBOracle", "DotnetCore\Database\UtilZ.Dotnet.DBOracle\UtilZ.Dotnet.DBOracle.csproj", "{5C777986-E174-4F69-8AA9-C70823E4C91F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UtilZ.Dotnet.DBPostgreSQL", "DotnetCore\Database\UtilZ.Dotnet.DBPostgreSQL\UtilZ.Dotnet.DBPostgreSQL.csproj", "{B114111C-638B-41D1-B54E-6B17D1C5E387}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UtilZ.Dotnet.DBSQLite", "DotnetCore\Database\UtilZ.Dotnet.DBSQLite\UtilZ.Dotnet.DBSQLite.csproj", "{86FC3459-D1E2-43C5-8E37-3355C2F21746}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UtilZ.Dotnet.DBSqlServer", "DotnetCore\Database\UtilZ.Dotnet.DBSqlServer\UtilZ.Dotnet.DBSqlServer.csproj", "{080579AC-8E95-41E9-831E-2EB30A1141FD}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		SharedProject\Database\UtilZ.Dotnet.DBMySql\UtilZ.Dotnet.DBMySql\UtilZ.Dotnet.DBMySql.projitems*{043790d5-9fc2-4e13-a4ef-0aec4face6bc}*SharedItemsImports = 13
@@ -77,6 +89,7 @@ Global
 		SharedProject\UtilZ.Dotnet.WindowsDesktopEx\UtilZ.Dotnet.WindowsDesktopEx.projitems*{4b7b4cee-5d03-4727-9d39-e4eff830fae1}*SharedItemsImports = 4
 		SharedProject\Database\UtilZ.Dotnet.DBIBase\UtilZ.Dotnet.DBIBase.projitems*{54dbb4e1-ea5b-428c-855c-2bf9e9955e13}*SharedItemsImports = 13
 		SharedProject\UtilZ.Dotnet.Ex\UtilZ.Dotnet.Ex.projitems*{55847880-1c12-48d9-b3d7-5baee632c3e7}*SharedItemsImports = 4
+		SharedProject\Database\UtilZ.Dotnet.DBIBase\UtilZ.Dotnet.DBIBase.projitems*{5a5983d2-6231-4ec8-ad90-c84297b330a5}*SharedItemsImports = 5
 		SharedProject\UtilZ.Dotnet.Ex\UtilZ.Dotnet.Ex.projitems*{6553de9a-3810-468e-a690-7b154b6ab135}*SharedItemsImports = 13
 		SharedProject\UtilZ.Dotnet.Wav\UtilZ.Dotnet.Wav.projitems*{73a0a120-8020-48df-bb16-d73841f1d183}*SharedItemsImports = 4
 		SharedProject\Database\UtilZ.Dotnet.DBSqlServer\UtilZ.Dotnet.DBSqlServer\UtilZ.Dotnet.DBSqlServer.projitems*{76131fa5-2930-48f7-b816-1058616c3ad7}*SharedItemsImports = 13
@@ -150,6 +163,30 @@ Global
 		{E64613A7-3782-49DA-BE2F-A44D3E3350E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E64613A7-3782-49DA-BE2F-A44D3E3350E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E64613A7-3782-49DA-BE2F-A44D3E3350E7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A5983D2-6231-4EC8-AD90-C84297B330A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A5983D2-6231-4EC8-AD90-C84297B330A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A5983D2-6231-4EC8-AD90-C84297B330A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A5983D2-6231-4EC8-AD90-C84297B330A5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{14AE8C74-307F-4869-8345-D7D8A6BF31E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14AE8C74-307F-4869-8345-D7D8A6BF31E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14AE8C74-307F-4869-8345-D7D8A6BF31E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14AE8C74-307F-4869-8345-D7D8A6BF31E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5C777986-E174-4F69-8AA9-C70823E4C91F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C777986-E174-4F69-8AA9-C70823E4C91F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C777986-E174-4F69-8AA9-C70823E4C91F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C777986-E174-4F69-8AA9-C70823E4C91F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B114111C-638B-41D1-B54E-6B17D1C5E387}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B114111C-638B-41D1-B54E-6B17D1C5E387}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B114111C-638B-41D1-B54E-6B17D1C5E387}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B114111C-638B-41D1-B54E-6B17D1C5E387}.Release|Any CPU.Build.0 = Release|Any CPU
+		{86FC3459-D1E2-43C5-8E37-3355C2F21746}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{86FC3459-D1E2-43C5-8E37-3355C2F21746}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{86FC3459-D1E2-43C5-8E37-3355C2F21746}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{86FC3459-D1E2-43C5-8E37-3355C2F21746}.Release|Any CPU.Build.0 = Release|Any CPU
+		{080579AC-8E95-41E9-831E-2EB30A1141FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{080579AC-8E95-41E9-831E-2EB30A1141FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{080579AC-8E95-41E9-831E-2EB30A1141FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{080579AC-8E95-41E9-831E-2EB30A1141FD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -181,6 +218,12 @@ Global
 		{E11D2D27-C12D-4219-A564-8B06E7A8DE99} = {455DA9A7-5387-462A-8715-E788C53E9D6D}
 		{E64613A7-3782-49DA-BE2F-A44D3E3350E7} = {9F91FB1E-ABAD-4422-AF6B-1D588B69C68D}
 		{76131FA5-2930-48F7-B816-1058616C3AD7} = {455DA9A7-5387-462A-8715-E788C53E9D6D}
+		{5A5983D2-6231-4EC8-AD90-C84297B330A5} = {773E2981-821B-409A-A3CF-8339979102C2}
+		{14AE8C74-307F-4869-8345-D7D8A6BF31E3} = {773E2981-821B-409A-A3CF-8339979102C2}
+		{5C777986-E174-4F69-8AA9-C70823E4C91F} = {773E2981-821B-409A-A3CF-8339979102C2}
+		{B114111C-638B-41D1-B54E-6B17D1C5E387} = {773E2981-821B-409A-A3CF-8339979102C2}
+		{86FC3459-D1E2-43C5-8E37-3355C2F21746} = {773E2981-821B-409A-A3CF-8339979102C2}
+		{080579AC-8E95-41E9-831E-2EB30A1141FD} = {773E2981-821B-409A-A3CF-8339979102C2}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {082591EF-FFAA-4786-B27E-B6ADC4BB2016}

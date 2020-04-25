@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <Import Project="..\..\..\SharedProject\Database\UtilZ.Dotnet.DBIBase\UtilZ.Dotnet.DBIBase.projitems" Label="Shared" />
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\UtilZ.Dotnet.Ex\UtilZ.Dotnet.Ex.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Lib\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.3" />
+  </ItemGroup>
+
+</Project>
