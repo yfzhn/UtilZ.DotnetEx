@@ -43,13 +43,13 @@
     <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\DataGridViewEx.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\FlowLayoutPanelZ.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\LineChartControl.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\LogControlF.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\LogControlF.Designer.cs">
-      <DependentUpon>LogControlF.cs</DependentUpon>
+    <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\LogControl.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\LogControl.Designer.cs">
+      <DependentUpon>LogControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\LogControl_bk.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\LogControl_bk.Designer.cs">
-      <DependentUpon>LogControl_bk.cs</DependentUpon>
+    <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\LogControlWeb.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\LogControlWeb.Designer.cs">
+      <DependentUpon>LogControlWeb.cs</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\NoneBorderForm.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\NumberTextBox.cs" />
@@ -296,11 +296,11 @@
     <Content Include="$(MSBuildThisFileDirectory)Resources\prepage.png" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Winform\Controls\LogControlF.resx">
-      <DependentUpon>LogControlF.cs</DependentUpon>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Winform\Controls\LogControl.resx">
+      <DependentUpon>LogControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Winform\Controls\LogControl_bk.resx">
-      <DependentUpon>LogControl_bk.cs</DependentUpon>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Winform\Controls\LogControlWeb.resx">
+      <DependentUpon>LogControlWeb.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Winform\Controls\NoneBorderForm.resx">
       <DependentUpon>NoneBorderForm.cs</DependentUpon>

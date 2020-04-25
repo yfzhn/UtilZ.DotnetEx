@@ -14,7 +14,7 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls
     /// <summary>
     /// Winform日志控件,对WPF版本进行封装得到
     /// </summary>
-    public partial class LogControlF : UserControl, ILogControl
+    public partial class LogControl : UserControl, ILogControl
     {
         /// <summary>
         /// 获取或设置最多显示项数
@@ -147,7 +147,7 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls
         /// <summary>
         /// 构造函数
         /// </summary>
-        public LogControlF()
+        public LogControl()
         {
             InitializeComponent();
         }

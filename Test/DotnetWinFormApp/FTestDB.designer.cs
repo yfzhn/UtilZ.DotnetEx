@@ -53,7 +53,7 @@
             this.btnTest = new System.Windows.Forms.Button();
             this.comboBoxDB = new System.Windows.Forms.ComboBox();
             this.btnDataBaseSysTime = new System.Windows.Forms.Button();
-            this.logControl = new UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.LogControlF();
+            this.logControl = new UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.LogControl();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -381,7 +381,7 @@
         #endregion
 
         private System.Windows.Forms.SplitContainer splitContainer1;
-        private UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.LogControlF logControl;
+        private UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.LogControl logControl;
         private System.Windows.Forms.Button btnDataBaseSysTime;
         private System.Windows.Forms.ComboBox comboBoxDB;
         private System.Windows.Forms.Button btnTest;

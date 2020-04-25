@@ -17,7 +17,7 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls
     /// <summary>
     /// 日志显示控件
     /// </summary>
-    public partial class LogControl_bk : UserControl
+    public partial class LogControlWeb : UserControl
     {
         /// <summary>
         /// 最多显示项数
@@ -135,7 +135,7 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls
         /// <summary>
         /// 构造函数
         /// </summary>
-        public LogControl_bk()
+        public LogControlWeb()
         {
             InitializeComponent();
 
