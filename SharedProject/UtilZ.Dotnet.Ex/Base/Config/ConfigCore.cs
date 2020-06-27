@@ -44,7 +44,7 @@ namespace UtilZ.Dotnet.Ex.Base.Config
             PropertyInfo[] propertyInfoArr;
             if (!this._typePropertyInfoArrDic.TryGetValue(type, out propertyInfoArr))
             {
-                propertyInfoArr = type.GetProperties(System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Instance);
+                propertyInfoArr = type.GetProperties(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
                 this._typePropertyInfoArrDic.Add(type, propertyInfoArr);
             }
 

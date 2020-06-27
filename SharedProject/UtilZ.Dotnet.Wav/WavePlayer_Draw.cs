@@ -37,7 +37,7 @@ namespace UtilZ.Dotnet.Wav
                 //清空所有已绘制的图形
                 graphics.Clear(this._backgroudColor);
 
-                //如果数据他要0.则清空
+                //如果数据长度为0.则清空
                 if (this._srcLeftChannelDataLength == 0)
                 {
                     this.Refresh();

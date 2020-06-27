@@ -180,6 +180,7 @@
             // cbIsMergeChanel
             // 
             this.cbIsMergeChanel.AutoSize = true;
+            this.cbIsMergeChanel.ForeColor = System.Drawing.SystemColors.Window;
             this.cbIsMergeChanel.Location = new System.Drawing.Point(23, 114);
             this.cbIsMergeChanel.Name = "cbIsMergeChanel";
             this.cbIsMergeChanel.Size = new System.Drawing.Size(156, 16);
@@ -191,6 +192,7 @@
             // cbRingHear
             // 
             this.cbRingHear.AutoSize = true;
+            this.cbRingHear.ForeColor = System.Drawing.SystemColors.Window;
             this.cbRingHear.Location = new System.Drawing.Point(23, 137);
             this.cbRingHear.Name = "cbRingHear";
             this.cbRingHear.Size = new System.Drawing.Size(48, 16);

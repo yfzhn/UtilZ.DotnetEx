@@ -12,6 +12,7 @@ using System.IO;
 using System.Drawing.Drawing2D;
 using System.Threading.Tasks;
 using System.Diagnostics;
+using MathNet.Numerics.IntegralTransforms;
 
 namespace UtilZ.Dotnet.Wav
 {
@@ -440,8 +441,9 @@ namespace UtilZ.Dotnet.Wav
                 short[] srcRightData = null;
 
                 //初始化波形数据
-                bool initWavInfoRet = this.InitWavInfo(fileName, out this._channelInfo, out this._srcData, out srcLeftData, out srcRightData, out this._bassDataTotalLength, out this._durationTime, out this._isStereo);
-
+                this._srcData = null;
+                bool initWavInfoRet = this.InitWavInfo(fileName, out this._channelInfo, out srcLeftData, out srcRightData, out this._bassDataTotalLength, out this._durationTime, out this._isStereo);
+                //bool initWavInfoRet = this.InitWavInfo_bk(fileName, out this._channelInfo, out srcLeftData, out srcRightData, out this._bassDataTotalLength, out this._durationTime, out this._isStereo);
                 //重置操作区域
                 this.ResetOperArea();
 
@@ -552,7 +554,7 @@ namespace UtilZ.Dotnet.Wav
                 begeinIndex = 0;
             }
 
-            if (endIndex == -1)
+            if (endIndex <= 0)
             {
                 endIndex = srcLeftData.Length;
             }
@@ -800,10 +802,17 @@ namespace UtilZ.Dotnet.Wav
                                 }
                             }
 
-                            leftData[position] = lMinValue;
-                            leftData[position + 1] = lMaxValue;
-                            rightData[position] = rMinValue;
-                            rightData[position + 1] = rMaxValue;
+                            if (position >= 0)
+                            {
+                                leftData[position] = lMinValue;
+                                leftData[position + 1] = lMaxValue;
+                                rightData[position] = rMinValue;
+                                rightData[position + 1] = rMaxValue;
+                            }
+                            else
+                            {
+
+                            }
                         }
                     }
                 }
@@ -891,14 +900,91 @@ namespace UtilZ.Dotnet.Wav
         /// </summary>
         /// <param name="fileName">文件路径</param>
         /// <param name="channelInfo">声道信息</param>
-        /// <param name="srcData">原始数据</param>
         /// <param name="leftData">左声道数据</param>
         /// <param name="rightData">右声道数据</param>
         /// <param name="totalLength">bass获取到的总数据长度</param>
         /// <param name="time">播放时长</param>
         /// <param name="isStereo">当前文件是否是立体声,即双声道[true:双声道;false:单声道]</param>
         /// <returns>成功返回ttue;失败返回false</returns>
-        private bool InitWavInfo(string fileName, out BASS_CHANNELINFO_INTERNAL channelInfo, out short[] srcData, out short[] leftData, out short[] rightData, out long totalLength, out double time, out bool isStereo)
+        private bool InitWavInfo(string fileName, out BASS_CHANNELINFO_INTERNAL channelInfo, out short[] leftData, out short[] rightData,
+            out long totalLength, out double time, out bool isStereo)
+        {
+            int handle = Bass.BASS_StreamCreateFile(false, fileName, 0, 0, BASSFileFlag.BASS_UNICODE | BASSFileFlag.BASS_STREAM_DECODE);
+            //获取文件信息
+            channelInfo = Bass.BASS_ChannelGetInfo(handle);
+            //if (channelInfo.chans > 2)
+            //{
+            //    throw new ApplicationException("不支持双声道以上的多声道");
+            //}
+
+            totalLength = Bass.BASS_ChannelGetLength(handle, BASSMode.BASS_POS_BYTE);
+            time = Bass.BASS_ChannelBytes2Seconds(handle, totalLength);//时间,秒
+            time = Math.Round(time, 3);
+            Bass.BASS_StreamFree(handle);
+
+            rightData = null;
+            isStereo = false;
+            //leftData = new short[totalLength / 2 + 2];
+            List<short> list = new List<short>();
+
+            var muilt = float.MaxValue / short.MaxValue;
+            muilt = 100;
+            using (var fs = File.OpenRead(fileName))
+            {
+                int count = (int)(totalLength / 2);
+                count = 480;
+
+                //尝试的参数
+                count = 960;
+                muilt = 150;
+
+                var lastPos = fs.Length - 1;
+                float[] data = new float[count + 2];
+
+                while (fs.Position < lastPos)
+                {
+                    var mod = (int)((fs.Length - fs.Position) / 2);
+                    if (mod < count)
+                    {
+                        count = mod;
+                        data = new float[count + 2];
+                    }
+
+                    var br = new BinaryReader(fs);
+                    int index = 0;
+                    while (index < count)
+                    {
+                        data[index] = br.ReadInt16();
+                        index++;
+                    }
+
+                    Fourier.ForwardReal(data, count, FourierOptions.Matlab);
+
+                    for (int i = 0; i < data.Length; i++)
+                    {
+                        list.Add((short)(data[i] / muilt));
+                    }
+                }
+            }
+
+            leftData = list.ToArray();
+            return true;
+        }
+
+
+        /// <summary>
+        /// 初始化波形数据[成功返回ttue;失败返回false]
+        /// </summary>
+        /// <param name="fileName">文件路径</param>
+        /// <param name="channelInfo">声道信息</param>
+        /// <param name="leftData">左声道数据</param>
+        /// <param name="rightData">右声道数据</param>
+        /// <param name="totalLength">bass获取到的总数据长度</param>
+        /// <param name="time">播放时长</param>
+        /// <param name="isStereo">当前文件是否是立体声,即双声道[true:双声道;false:单声道]</param>
+        /// <returns>成功返回ttue;失败返回false</returns>
+        private bool InitWavInfo_bk(string fileName, out BASS_CHANNELINFO_INTERNAL channelInfo, out short[] leftData, out short[] rightData,
+            out long totalLength, out double time, out bool isStereo)
         {
             int handle = -1;
             try
@@ -906,61 +992,83 @@ namespace UtilZ.Dotnet.Wav
                 handle = Bass.BASS_StreamCreateFile(false, fileName, 0, 0, BASSFileFlag.BASS_UNICODE | BASSFileFlag.BASS_STREAM_DECODE);
                 //获取文件信息
                 channelInfo = Bass.BASS_ChannelGetInfo(handle);
-                if (channelInfo.chans > 2)
-                {
-                    throw new ApplicationException("不支持双声道以上的多声道");
-                }
+                //if (channelInfo.chans > 2)
+                //{
+                //    throw new ApplicationException("不支持双声道以上的多声道");
+                //}
 
                 totalLength = Bass.BASS_ChannelGetLength(handle, BASSMode.BASS_POS_BYTE);
                 time = Bass.BASS_ChannelBytes2Seconds(handle, totalLength);//时间,秒
                 time = Math.Round(time, 3);
 
+
                 short[] shortData = new short[totalLength];
-                int charCount = Bass.BASS_ChannelGetData(handle, shortData, (uint)totalLength);
+                int byteCount = Bass.BASS_ChannelGetData(handle, shortData, (uint)totalLength);
+
+                //byte[] data = new byte[totalLength];
+                //int charCount = Bass.BASS_ChannelGetData(handle, data,0);
                 //int charCount = Bass.BASS_ChannelGetData(handle, shortData, (uint)(BASS_ChannelGetDataLengthMode.BASS_DATA_FFT2048 | BASS_ChannelGetDataLengthMode.BASS_DATA_FFT_COMPLEX));
                 //int charCount = Bass.BASS_ChannelGetData(handle, shortData, (uint)(BASS_ChannelGetDataLengthMode.BASS_DATA_FFT2048));
-                if (charCount == -1)
+                if (byteCount == -1)
                 {
                     this.OnRaiseLog(BassErrorCode.GetErrorInfo());
-                    srcData = null;
+
                     leftData = null;
                     rightData = null;
                     isStereo = false;
                     return false;
                 }
 
-                //因为输出数据是short,而数据长度为char的数据长度,short=char*2,所以此处除以2
-                int shortCount = charCount / 2;
-                srcData = new short[shortCount];
-                Array.Copy(shortData, 0, srcData, 0, srcData.Length);
+                int channelFFTDataByteCount = byteCount / channelInfo.chans;//每个声道的FFT数据字节长度
+                int channelFFTDataShortCount = channelFFTDataByteCount / 2;//因为输出数据是short,而数据长度为char的数据长度,short=char*2,所以此处除以2
+                isStereo = channelInfo.chans >= 2;
 
-                isStereo = channelInfo.chans == 2;
                 if (isStereo)
                 {
-                    uint channelDataLength;
-                    if (shortCount < totalLength)
-                    {
-                        channelDataLength = (uint)(shortCount / 2);
-                    }
-                    else
-                    {
-                        channelDataLength = (uint)(totalLength / 2);
-                    }
+                    leftData = new short[channelFFTDataShortCount];
+                    rightData = new short[channelFFTDataShortCount];
+                    int index = 0;
+                    int offsetCount = channelInfo.chans - 2;
 
-                    leftData = new short[channelDataLength];
-                    rightData = new short[channelDataLength];
-                    int position = 0;
-                    for (int i = 0; i < srcData.Length; i += 2)
+                    for (int i = 0; i < channelFFTDataShortCount; i++)
                     {
-                        leftData[position] = srcData[i];
-                        rightData[position] = srcData[i + 1];
-                        position++;
+                        try
+                        {
+                            //The return values are interleaved in the same order as the channel's sample data, eg. stereo = left,right,left,etc. 
+                            //5.1声道FFT数据顺序: L-R-C-LFE-LS-RS
+
+                            leftData[i] = shortData[index++];
+                            rightData[i] = shortData[index++];
+
+                            index += offsetCount;
+                            //index++;
+                            //index++;
+
+                            //index++;
+                            //index++;
+                        }
+                        catch (Exception ex)
+                        {
+
+                        }
                     }
                 }
                 else
                 {
-                    leftData = srcData;
+                    leftData = new short[channelFFTDataShortCount];
                     rightData = null;
+
+                    for (int i = 0; i < channelFFTDataShortCount; i++)
+                    {
+                        try
+                        {
+                            leftData[i] = shortData[i];
+                        }
+                        catch (Exception ex)
+                        {
+
+                        }
+                    }
                 }
 
                 return true;

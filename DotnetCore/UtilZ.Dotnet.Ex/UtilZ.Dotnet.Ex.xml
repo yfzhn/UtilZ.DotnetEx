@@ -3542,6 +3542,288 @@
             <param name="xdoc">xml配置</param>
             <param name="config">指定的配置对象</param>
         </member>
+        <member name="T:UtilZ.Dotnet.Ex.Base.ConstantValueDescription.DefaultExtendDescription">
+            <summary>
+            默认扩展描述类
+            </summary>
+        </member>
+        <member name="M:UtilZ.Dotnet.Ex.Base.ConstantValueDescription.DefaultExtendDescription.#ctor">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="M:UtilZ.Dotnet.Ex.Base.ConstantValueDescription.DefaultExtendDescription.#ctor(System.Func{System.Object,UtilZ.Dotnet.Ex.Base.ConstantValueDescription.ValueDescriptionGroup,System.String},System.Func{System.Object,UtilZ.Dotnet.Ex.Base.ConstantValueDescription.ValueDescriptionGroup,System.String})">
+            <summary>
+            构造函数
+            </summary>
+            <param name="getNameFunc">获取名称回调(第一个参数为值,第二个为值描述组,第三个为返回值)</param>
+            <param name="getDescriptionFunc">获取描述回调(第一个参数为值,第二个为值描述组,第三个为返回值)</param>
+        </member>
+        <member name="M:UtilZ.Dotnet.Ex.Base.ConstantValueDescription.DefaultExtendDescription.PrimitiveGetName(System.Object,UtilZ.Dotnet.Ex.Base.ConstantValueDescription.ValueDescriptionGroup)">
+            <summary>
+            获取扩展值对应的名称
+            </summary>
+            <param name="value">值</param>
+            <param name="group">描述组</param>
+            <returns>值对应的名称</returns>
+        </member>
+        <member name="M:UtilZ.Dotnet.Ex.Base.ConstantValueDescription.DefaultExtendDescription.PrimitiveGetDescription(System.Object,UtilZ.Dotnet.Ex.Base.ConstantValueDescription.ValueDescriptionGroup)">
+            <summary>
+            获取扩展值对应的描述
+            </summary>
+            <param name="value">值</param>
+            <param name="group">描述组</param>
+            <returns>值对应的描述</returns>
+        </member>
+        <member name="T:UtilZ.Dotnet.Ex.Base.ConstantValueDescription.IExtendDescription">
+            <summary>
+            扩展描述接口
+            </summary>
+        </member>
+        <member name="M:UtilZ.Dotnet.Ex.Base.ConstantValueDescription.IExtendDescription.GetName(System.Object,UtilZ.Dotnet.Ex.Base.ConstantValueDescription.ValueDescriptionGroup)">
+            <summary>
+            获取扩展值对应的名称
+            </summary>
+            <param name="value">值</param>
+            <param name="group">描述组</param>
+            <returns>值对应的名称</returns>
+        </member>
+        <member name="M:UtilZ.Dotnet.Ex.Base.ConstantValueDescription.IExtendDescription.GetDescription(System.Object,UtilZ.Dotnet.Ex.Base.ConstantValueDescription.ValueDescriptionGroup)">
+            <summary>
+            获取扩展值对应的描述
+            </summary>
+            <param name="value">值</param>
+            <param name="group">描述组</param>
+            <returns>值对应的描述</returns>
+        </member>
+        <member name="T:UtilZ.Dotnet.Ex.Base.ConstantValueDescription.ExtendDescriptionAbs">
+            <summary>
+            扩展描述基类
+            </summary>
+        </member>
+        <member name="M:UtilZ.Dotnet.Ex.Base.ConstantValueDescription.ExtendDescriptionAbs.#ctor">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="M:UtilZ.Dotnet.Ex.Base.ConstantValueDescription.ExtendDescriptionAbs.GetName(System.Object,UtilZ.Dotnet.Ex.Base.ConstantValueDescription.ValueDescriptionGroup)">
+            <summary>
+            获取扩展值对应的名称
+            </summary>
+            <param name="value">值</param>
+            <param name="group">描述组</param>
+            <returns>值对应的名称</returns>
+        </member>
+        <member name="M:UtilZ.Dotnet.Ex.Base.ConstantValueDescription.ExtendDescriptionAbs.PrimitiveGetName(System.Object,UtilZ.Dotnet.Ex.Base.ConstantValueDescription.ValueDescriptionGroup)">
+            <summary>
+            获取扩展值对应的名称
+            </summary>
+            <param name="value">值</param>
+            <param name="group">描述组</param>
+            <returns>值对应的名称</returns>
+        </member>
+        <member name="M:UtilZ.Dotnet.Ex.Base.ConstantValueDescription.ExtendDescriptionAbs.GetDescription(System.Object,UtilZ.Dotnet.Ex.Base.ConstantValueDescription.ValueDescriptionGroup)">
+            <summary>
+            获取扩展值对应的描述
+            </summary>
+            <param name="value">值</param>
+            <param name="group">描述组</param>
+            <returns>值对应的描述</returns>
+        </member>
+        <member name="M:UtilZ.Dotnet.Ex.Base.ConstantValueDescription.ExtendDescriptionAbs.PrimitiveGetDescription(System.Object,UtilZ.Dotnet.Ex.Base.ConstantValueDescription.ValueDescriptionGroup)">
+            <summary>
+            获取扩展值对应的描述
+            </summary>
+            <param name="value">值</param>
+            <param name="group">描述组</param>
+            <returns>值对应的描述</returns>
+        </member>
+        <member name="T:UtilZ.Dotnet.Ex.Base.ConstantValueDescription.ValueDescriptionGroup">
+            <summary>
+            值描述组
+            </summary>
+        </member>
+        <member name="P:UtilZ.Dotnet.Ex.Base.ConstantValueDescription.ValueDescriptionGroup.GroupDescriptionAttribute">
+            <summary>
+            获取组描述特性
+            </summary>
+        </member>
+        <member name="M:UtilZ.Dotnet.Ex.Base.ConstantValueDescription.ValueDescriptionGroup.#ctor(UtilZ.Dotnet.Ex.Base.ConstantValueDescription.ValueDescriptionGroupAttribute)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="groupDescriptionAttribute">组描述特性</param>
+        </member>
+        <member name="T:UtilZ.Dotnet.Ex.Base.ConstantValueDescription.ValueDescriptionGroupAttribute">
+            <summary>
+            值描述组特性
+            </summary>
+        </member>
+        <member name="P:UtilZ.Dotnet.Ex.Base.ConstantValueDescription.ValueDescriptionGroupAttribute.Extend">
+            <summary>
+            扩展描述类类型
+            </summary>
+        </member>
+        <member name="M:UtilZ.Dotnet.Ex.Base.ConstantValueDescription.ValueDescriptionGroupAttribute.#ctor(System.String)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="displayName">显示文本</param>
+        </member>
+        <member name="M:UtilZ.Dotnet.Ex.Base.ConstantValueDescription.ValueDescriptionGroupAttribute.#ctor(System.String,System.Type)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="displayName">显示文本</param>
+            <param name="extendDescriptionType">扩展描述类类型,该类型需要实现IExtendDescription接口</param>
+        </member>
+        <member name="M:UtilZ.Dotnet.Ex.Base.ConstantValueDescription.ValueDescriptionGroupAttribute.#ctor(System.String,System.String,System.Type)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="displayName">显示文本</param>
+            <param name="description">描述</param>
+            <param name="extendDescriptionType">扩展描述类类型,该类型需要实现IExtendDescription接口</param>
+        </member>
+        <member name="T:UtilZ.Dotnet.Ex.Base.ConstantValueDescription.ValueDescriptionManager">
+            <summary>
+            值描述管理类
+            </summary>
+        </member>
+        <member name="M:UtilZ.Dotnet.Ex.Base.ConstantValueDescription.ValueDescriptionManager.Registe``1">
+            <summary>
+            注册常量或枚举值描述
+            </summary>
+            <typeparam name="T">目标类型</typeparam>
+        </member>
+        <member name="M:UtilZ.Dotnet.Ex.Base.ConstantValueDescription.ValueDescriptionManager.Registe(System.Object,UtilZ.Dotnet.Ex.Base.ConstantValueDescription.ValueDescriptionGroup)">
+            <summary>
+            注册描述组
+            </summary>
+            <param name="groupId">组标识</param>
+            <param name="group">值描述组</param>
+        </member>
+        <member name="M:UtilZ.Dotnet.Ex.Base.ConstantValueDescription.ValueDescriptionManager.GetValueDescriptionGroup``1">
+            <summary>
+            根据类型获取值描述组
+            </summary>
+            <typeparam name="T">目标类型</typeparam>
+            <returns>值名称映射字典集合</returns>
+        </member>
+        <member name="M:UtilZ.Dotnet.Ex.Base.ConstantValueDescription.ValueDescriptionManager.GetValueDescriptionGroupById(System.Object)">
+            <summary>
+            根据组标识获取值描述组
+            </summary>
+            <param name="groupId">组标识</param>
+            <returns>值名称映射字典集合</returns>
+        </member>
+        <member name="M:UtilZ.Dotnet.Ex.Base.ConstantValueDescription.ValueDescriptionManager.Remove``1">
+            <summary>
+            根据类型移除值描述组,并返回移除的组,不为null则移除成功
+            </summary>
+            <typeparam name="T">目标类型</typeparam>
+            <returns>移除的值名称映射集合</returns>
+        </member>
+        <member name="M:UtilZ.Dotnet.Ex.Base.ConstantValueDescription.ValueDescriptionManager.RemoveById(System.Object)">
+            <summary>
+            根据组标识移除值描述组,并返回移除的组,不为null则移除成功
+            </summary>
+            <param name="groupId">组标识</param>
+            <returns>移除的值名称映射集合</returns>
+        </member>
+        <member name="M:UtilZ.Dotnet.Ex.Base.ConstantValueDescription.ValueDescriptionManager.Clear">
+            <summary>
+            清空值描述组
+            </summary>
+        </member>
+        <member name="M:UtilZ.Dotnet.Ex.Base.ConstantValueDescription.ValueDescriptionManager.Clear``1">
+            <summary>
+            清空指定类型值描述组
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:UtilZ.Dotnet.Ex.Base.ConstantValueDescription.ValueDescriptionManager.Clear(System.Object)">
+            <summary>
+            清空指定组标识值描述组
+            </summary>
+            <param name="groupId">组标识</param>
+        </member>
+        <member name="M:UtilZ.Dotnet.Ex.Base.ConstantValueDescription.ValueDescriptionManager.GetNameByValue``1(System.Object)">
+            <summary>
+            根据值获取值名称
+            </summary>
+            <typeparam name="T">目标类型</typeparam>
+            <param name="value">值</param>
+            <returns>值描述</returns>
+        </member>
+        <member name="M:UtilZ.Dotnet.Ex.Base.ConstantValueDescription.ValueDescriptionManager.GetNameByValue(System.Object,System.Object)">
+            <summary>
+            根据组标识和值获取值名称
+            </summary>
+            <param name="groupId">组标识</param>
+            <param name="value">值</param>
+            <returns>值描述</returns>
+        </member>
+        <member name="M:UtilZ.Dotnet.Ex.Base.ConstantValueDescription.ValueDescriptionManager.GetDescriptionByValue``1(System.Object)">
+            <summary>
+            根据值获取值描述
+            </summary>
+            <typeparam name="T">目标类型</typeparam>
+            <param name="value">值</param>
+            <returns>值描述</returns>
+        </member>
+        <member name="M:UtilZ.Dotnet.Ex.Base.ConstantValueDescription.ValueDescriptionManager.GetDescriptionByValue(System.Object,System.Object)">
+            <summary>
+            根据组标识和值获取值描述
+            </summary>
+            <param name="groupId">组标识</param>
+            <param name="value">值</param>
+            <returns>值描述</returns>
+        </member>
+        <member name="M:UtilZ.Dotnet.Ex.Base.ConstantValueDescription.ValueDescriptionManager.GerValueByName``1(System.String)">
+            <summary>
+            根据名称获取值
+            </summary>
+            <typeparam name="T">目标类型</typeparam>
+            <param name="name">名称</param>
+            <returns>值</returns>
+        </member>
+        <member name="M:UtilZ.Dotnet.Ex.Base.ConstantValueDescription.ValueDescriptionManager.GerValueByName(System.Object,System.String)">
+            <summary>
+            根据名称获取值
+            </summary>
+            <param name="groupId">组标识</param>
+            <param name="name">名称</param>
+            <returns>值</returns>
+        </member>
+        <member name="M:UtilZ.Dotnet.Ex.Base.ConstantValueDescription.ValueDescriptionManager.GetValues``1">
+            <summary>
+            获取指定类型值数组
+            </summary>
+            <typeparam name="T">目标类型</typeparam>
+            <returns>类型所有定义常量值数组</returns>
+        </member>
+        <member name="M:UtilZ.Dotnet.Ex.Base.ConstantValueDescription.ValueDescriptionManager.GetValues(System.Object)">
+            <summary>
+            获取指定类型值数组
+            </summary>
+            <param name="groupId">组标识</param>
+            <returns>类型所有定义常量值数组</returns>
+        </member>
+        <member name="M:UtilZ.Dotnet.Ex.Base.ConstantValueDescription.ValueDescriptionManager.GetNames``1">
+            <summary>
+            获取指定类型名称数组
+            </summary>
+            <typeparam name="T">目标类型</typeparam>
+            <returns>类型所有定义常量值数组</returns>
+        </member>
+        <member name="M:UtilZ.Dotnet.Ex.Base.ConstantValueDescription.ValueDescriptionManager.GetNames(System.Object)">
+            <summary>
+            获取指定类型名称数组
+            </summary>
+            <typeparam name="T">目标类型</typeparam>
+            <returns>类型所有定义常量值数组</returns>
+        </member>
         <member name="T:UtilZ.Dotnet.Ex.Base.MemoryCache.CacheEntryRemovedArguments">
             <summary>
             提供有关已从缓存中移除的缓存项的信息
@@ -6531,210 +6813,6 @@
             <summary>
             
             </summary>
-        </member>
-        <member name="T:UtilZ.Dotnet.Ex.ValueNameMap.CustomerValueNameAbs">
-            <summary>
-            值名称获取自定义基类
-            </summary>
-        </member>
-        <member name="M:UtilZ.Dotnet.Ex.ValueNameMap.CustomerValueNameAbs.#ctor">
-            <summary>
-            构造函数
-            </summary>
-        </member>
-        <member name="M:UtilZ.Dotnet.Ex.ValueNameMap.CustomerValueNameAbs.GetName(System.Object,UtilZ.Dotnet.Ex.ValueNameMap.ValueNameDictionary)">
-            <summary>
-            获取值对应的名称
-            </summary>
-            <param name="value">值</param>
-            <param name="dic">值名称映射字典集合</param>
-            <returns>值对应的名称</returns>
-        </member>
-        <member name="M:UtilZ.Dotnet.Ex.ValueNameMap.CustomerValueNameAbs.PrimitiveGetName(System.Object,UtilZ.Dotnet.Ex.ValueNameMap.ValueNameDictionary)">
-            <summary>
-            获取值对应的名称
-            </summary>
-            <param name="value">值</param>
-            <param name="dic">值名称映射字典集合</param>
-            <returns>值对应的名称</returns>
-        </member>
-        <member name="T:UtilZ.Dotnet.Ex.ValueNameMap.DefaultCustomerValueName">
-            <summary>
-            默认值名称获取自定义类
-            </summary>
-        </member>
-        <member name="M:UtilZ.Dotnet.Ex.ValueNameMap.DefaultCustomerValueName.#ctor">
-            <summary>
-            构造函数
-            </summary>
-        </member>
-        <member name="M:UtilZ.Dotnet.Ex.ValueNameMap.DefaultCustomerValueName.#ctor(System.Func{System.Object,UtilZ.Dotnet.Ex.ValueNameMap.ValueNameDictionary,System.String})">
-            <summary>
-            构造函数
-            </summary>
-        </member>
-        <member name="M:UtilZ.Dotnet.Ex.ValueNameMap.DefaultCustomerValueName.PrimitiveGetName(System.Object,UtilZ.Dotnet.Ex.ValueNameMap.ValueNameDictionary)">
-            <summary>
-            获取值对应的名称
-            </summary>
-            <param name="value">值</param>
-            <param name="dic">值名称映射字典集合</param>
-            <returns>值对应的名称</returns>
-        </member>
-        <member name="T:UtilZ.Dotnet.Ex.ValueNameMap.ICustomerValueName">
-            <summary>
-            值名称获取自定义接口
-            </summary>
-        </member>
-        <member name="M:UtilZ.Dotnet.Ex.ValueNameMap.ICustomerValueName.GetName(System.Object,UtilZ.Dotnet.Ex.ValueNameMap.ValueNameDictionary)">
-            <summary>
-            获取值对应的名称
-            </summary>
-            <param name="value">值</param>
-            <param name="dic">值名称映射字典集合</param>
-            <returns>值对应的名称</returns>
-        </member>
-        <member name="T:UtilZ.Dotnet.Ex.ValueNameMap.ValueNameDictionary">
-            <summary>
-            值名称映射字典
-            </summary>
-        </member>
-        <member name="P:UtilZ.Dotnet.Ex.ValueNameMap.ValueNameDictionary.ValueNameMapTypeAttribute">
-            <summary>
-            值名称映射类型特性
-            </summary>
-        </member>
-        <member name="M:UtilZ.Dotnet.Ex.ValueNameMap.ValueNameDictionary.#ctor(UtilZ.Dotnet.Ex.ValueNameMap.ValueNameMapTypeAttribute)">
-            <summary>
-            构造函数
-            </summary>
-            <param name="valueNameMapTypeAttribute">值名称映射类型特性</param>
-        </member>
-        <member name="T:UtilZ.Dotnet.Ex.ValueNameMap.ValueNameMapFieldAttribute">
-            <summary>
-            常量字段值名称映射特性
-            </summary>
-        </member>
-        <member name="P:UtilZ.Dotnet.Ex.ValueNameMap.ValueNameMapFieldAttribute.Name">
-            <summary>
-            名称
-            </summary>
-        </member>
-        <member name="M:UtilZ.Dotnet.Ex.ValueNameMap.ValueNameMapFieldAttribute.#ctor(System.String)">
-            <summary>
-            构造函数 
-            </summary>
-            <param name="name"></param>
-        </member>
-        <member name="T:UtilZ.Dotnet.Ex.ValueNameMap.ValueNameMapManager">
-            <summary>
-            值名称映射管理类
-            </summary>
-        </member>
-        <member name="M:UtilZ.Dotnet.Ex.ValueNameMap.ValueNameMapManager.RegisteType``1">
-            <summary>
-            注册常量类
-            </summary>
-            <typeparam name="T">目标类型</typeparam>
-        </member>
-        <member name="M:UtilZ.Dotnet.Ex.ValueNameMap.ValueNameMapManager.RegisteType``1(UtilZ.Dotnet.Ex.ValueNameMap.ValueNameDictionary)">
-            <summary>
-            注册常量类
-            </summary>
-            <typeparam name="T">目标类型</typeparam>
-            <param name="valueNameDic">值名称字典集合</param>
-        </member>
-        <member name="M:UtilZ.Dotnet.Ex.ValueNameMap.ValueNameMapManager.RegisteType(System.Type,UtilZ.Dotnet.Ex.ValueNameMap.ValueNameDictionary)">
-            <summary>
-            注册指定类型的值名称映射
-            </summary>
-            <param name="type">目标类型</param>
-            <param name="valueNameDic">值名称字典集合</param>
-        </member>
-        <member name="M:UtilZ.Dotnet.Ex.ValueNameMap.ValueNameMapManager.GetValueNameDictionary``1">
-            <summary>
-            获取指定类型的值名称映射字典集合
-            </summary>
-            <typeparam name="T">目标类型</typeparam>
-            <returns>值名称映射字典集合</returns>
-        </member>
-        <member name="M:UtilZ.Dotnet.Ex.ValueNameMap.ValueNameMapManager.GetValueNameDictionary(System.Type)">
-            <summary>
-            获取指定类型的值名称映射字典集合
-            </summary>
-            <param name="type">目标类型</param>
-            <returns>值名称映射字典集合</returns>
-        </member>
-        <member name="M:UtilZ.Dotnet.Ex.ValueNameMap.ValueNameMapManager.Remove``1">
-            <summary>
-            移除指定类型的映射
-            </summary>
-            <typeparam name="T">目标类型</typeparam>
-            <returns>移除的值名称映射集合</returns>
-        </member>
-        <member name="M:UtilZ.Dotnet.Ex.ValueNameMap.ValueNameMapManager.Clear``1">
-            <summary>
-            清空映射所有映射
-            </summary>
-            <typeparam name="T"></typeparam>
-        </member>
-        <member name="M:UtilZ.Dotnet.Ex.ValueNameMap.ValueNameMapManager.GetNameByValue``1(System.Object)">
-            <summary>
-            根据值获取名称
-            </summary>
-            <typeparam name="T">目标类型</typeparam>
-            <param name="value">值</param>
-            <returns>名称</returns>
-        </member>
-        <member name="M:UtilZ.Dotnet.Ex.ValueNameMap.ValueNameMapManager.GerValueByName``1(System.String)">
-            <summary>
-            根据名称获取值
-            </summary>
-            <typeparam name="T">目标类型</typeparam>
-            <param name="name">名称</param>
-            <returns>值</returns>
-        </member>
-        <member name="M:UtilZ.Dotnet.Ex.ValueNameMap.ValueNameMapManager.GetValues``1">
-            <summary>
-            获取指定类型值数组
-            </summary>
-            <typeparam name="T">目标类型</typeparam>
-            <returns>类型所有定义常量值数组</returns>
-        </member>
-        <member name="M:UtilZ.Dotnet.Ex.ValueNameMap.ValueNameMapManager.GetNames``1">
-            <summary>
-            获取指定类型名称数组
-            </summary>
-            <typeparam name="T">目标类型</typeparam>
-            <returns>类型所有定义常量值数组</returns>
-        </member>
-        <member name="T:UtilZ.Dotnet.Ex.ValueNameMap.ValueNameMapTypeAttribute">
-            <summary>
-            值名称映射类型特性
-            </summary>
-        </member>
-        <member name="P:UtilZ.Dotnet.Ex.ValueNameMap.ValueNameMapTypeAttribute.Name">
-            <summary>
-            名称
-            </summary>
-        </member>
-        <member name="P:UtilZ.Dotnet.Ex.ValueNameMap.ValueNameMapTypeAttribute.CustomerValueName">
-            <summary>
-            自定义值名称获取接口
-            </summary>
-        </member>
-        <member name="M:UtilZ.Dotnet.Ex.ValueNameMap.ValueNameMapTypeAttribute.#ctor(System.String)">
-            <summary>
-            构造函数 
-            </summary>
-            <param name="name"></param>
-        </member>
-        <member name="M:UtilZ.Dotnet.Ex.ValueNameMap.ValueNameMapTypeAttribute.#ctor(System.String,System.Type)">
-            <summary>
-            构造函数
-            </summary>
-            <param name="name"></param>
-            <param name="customerValueNameType"></param>
         </member>
         <member name="T:UtilZ.Dotnet.Ex.Basepression.BaseCalate">
             <summary>

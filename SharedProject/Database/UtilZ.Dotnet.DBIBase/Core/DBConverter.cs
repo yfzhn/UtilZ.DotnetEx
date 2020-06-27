@@ -224,6 +224,43 @@ namespace UtilZ.Dotnet.DBIBase.Core
         }
 
         /// <summary>
+        /// 将数据库字段值转换为float
+        /// </summary>
+        /// <param name="obj">数据库字段值</param>
+        /// <param name="digits">转换精度,小于等于0为数据库中的全值</param>
+        /// <returns>转换结果</returns>
+        public static float ToSingle2(object obj, int digits = DBConstant.DIGITS)
+        {
+            float? value = ToSingle(obj, digits);
+            if (value.HasValue)
+            {
+                return value.Value;
+            }
+            else
+            {
+                return float.NaN;
+            }
+        }
+
+        /// <summary>
+        /// 将数据库字段值转换为float
+        /// </summary>
+        /// <param name="value">float?值</param>
+        /// <param name="digits">转换精度,小于等于0为数据库中的全值</param>
+        /// <returns>转换结果</returns>
+        public static float ToSingle2(float? value, int digits = DBConstant.DIGITS)
+        {
+            if (value.HasValue)
+            {
+                return value.Value;
+            }
+            else
+            {
+                return float.NaN;
+            }
+        }
+
+        /// <summary>
         /// 将数据库字段值转换为double
         /// </summary>
         /// <param name="obj">数据库字段值</param>
@@ -252,6 +289,43 @@ namespace UtilZ.Dotnet.DBIBase.Core
             }
 
             return value;
+        }
+
+        /// <summary>
+        /// 将数据库字段值转换为double
+        /// </summary>
+        /// <param name="obj">数据库字段值</param>
+        /// <param name="digits">转换精度,小于等于0为数据库中的全值</param>
+        /// <returns>转换结果</returns>
+        public static double ToDouble2(object obj, int digits = DBConstant.DIGITS)
+        {
+            double? value = ToDouble(obj, digits);
+            if (value.HasValue)
+            {
+                return value.Value;
+            }
+            else
+            {
+                return float.NaN;
+            }
+        }
+
+        /// <summary>
+        /// 将数据库字段值转换为double
+        /// </summary>
+        /// <param name="value">double? 值</param>
+        /// <param name="digits">转换精度,小于等于0为数据库中的全值</param>
+        /// <returns>转换结果</returns>
+        public static double ToDouble2(double? value, int digits = DBConstant.DIGITS)
+        {
+            if (value.HasValue)
+            {
+                return value.Value;
+            }
+            else
+            {
+                return float.NaN;
+            }
         }
 
         /// <summary>

@@ -40,6 +40,18 @@ namespace UtilZ.Dotnet.Ex.Base
         }
 
         /// <summary>
+        /// 获取一个调试对象
+        /// </summary>
+        /// <param name="key">对象key</param>
+        /// <returns>对象</returns>
+        public static object Get(string key)
+        {
+            object obj;
+            _objDic.TryGetValue(key, out obj);
+            return obj;
+        }
+
+        /// <summary>
         /// 移除一个调试对象
         /// </summary>
         /// <param name="key">对象key</param>

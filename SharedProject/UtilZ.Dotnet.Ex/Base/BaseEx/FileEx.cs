@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
+using UtilZ.Dotnet.Ex.Log;
 
 namespace UtilZ.Dotnet.Ex.Base
 {
@@ -208,14 +209,15 @@ namespace UtilZ.Dotnet.Ex.Base
 
                 if (!File.Exists(filePath))
                 {
-                    return false;
+                    return true;
                 }
 
                 File.Delete(filePath);
                 return true;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Loger.Warn(ex);
                 return false;
             }
         }

@@ -259,9 +259,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\GifImage\WebReadState.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\LogControl.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\NumberControl.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\NumericTextBox.xaml.cs">
-      <DependentUpon>NumericTextBox.xaml</DependentUpon>
-    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\PartAsynWait\ContainerControlType.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\PartAsynWait\PartAsynExcuteFactoryWPF.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\PartAsynWait\PartAsynWaitHelper.cs" />
@@ -382,10 +379,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)WPF\Controls\GifImage\GifImage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="$(MSBuildThisFileDirectory)WPF\Controls\NumericTextBox.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

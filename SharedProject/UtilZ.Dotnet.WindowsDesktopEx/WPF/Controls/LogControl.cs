@@ -25,19 +25,22 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls
         /// 最多显示项数依赖属性
         /// </summary>
         private static readonly DependencyProperty MaxItemCountProperty =
-            DependencyProperty.RegisterAttached(nameof(MaxItemCount), typeof(int), typeof(LogControl), new PropertyMetadata(100, PropertyChanged));
+            DependencyProperty.Register(nameof(MaxItemCount), typeof(int), typeof(LogControl),
+                new FrameworkPropertyMetadata(100, new PropertyChangedCallback(PropertyChanged)));
 
         /// <summary>
         /// 是否锁定滚动依赖属性
         /// </summary>
         private static readonly DependencyProperty IsLockProperty =
-            DependencyProperty.RegisterAttached(nameof(IsLock), typeof(bool), typeof(LogControl), new PropertyMetadata(false, PropertyChanged));
+            DependencyProperty.Register(nameof(IsLock), typeof(bool), typeof(LogControl),
+                new FrameworkPropertyMetadata(false, new PropertyChangedCallback(PropertyChanged)));
 
         /// <summary>
         /// 显示优化级依赖属性
         /// </summary>
         private static readonly DependencyProperty PriorityProperty =
-            DependencyProperty.RegisterAttached(nameof(Priority), typeof(DispatcherPriority), typeof(LogControl), new PropertyMetadata(DispatcherPriority.ApplicationIdle, PropertyChanged));
+            DependencyProperty.Register(nameof(Priority), typeof(DispatcherPriority), typeof(LogControl),
+                new FrameworkPropertyMetadata(DispatcherPriority.ApplicationIdle, new PropertyChangedCallback(PropertyChanged)));
 
 
         private static void PropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)

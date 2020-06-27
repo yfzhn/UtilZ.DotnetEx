@@ -9,7 +9,7 @@ namespace UtilZ.Dotnet.Wav
     public partial class WavePlayer
     {
         /// <summary>
-        /// 一次数据采样率
+        /// 第一次数据采样率
         /// </summary>
         private const int FIRSTSAMPLE = 1000000;
 

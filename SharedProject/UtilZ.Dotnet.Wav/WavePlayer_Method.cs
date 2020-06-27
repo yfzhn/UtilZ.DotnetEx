@@ -392,6 +392,7 @@ namespace UtilZ.Dotnet.Wav
             }
         }
 
+
         /// <summary>
         /// 快进快退
         /// </summary>
@@ -473,6 +474,7 @@ namespace UtilZ.Dotnet.Wav
             Bass.BASS_ChannelSetAttribute(this._handle, attri, value);
         }
 
+        /*
         /// <summary>
         /// 写文件
         /// </summary>
@@ -543,6 +545,7 @@ namespace UtilZ.Dotnet.Wav
             System.Runtime.InteropServices.Marshal.FreeHGlobal(structPtr);
             return bytes;
         }
+        */
     }
 
     /// <summary>

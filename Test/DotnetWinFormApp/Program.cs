@@ -14,9 +14,20 @@ namespace DotnetWinFormApp
         [STAThread]
         static void Main()
         {
+            //var list = UtilZ.Dotnet.Ex.Base.BaseEx.ConstantHelper.GetDisplayNameExAttributeItemList<XX>(false);
+
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FTestDB());
+            Application.Run(new FWave());
         }
+    }
+
+    public class XX
+    {
+        [UtilZ.Dotnet.Ex.Base.DisplayNameEx("代码")]
+        public const string Code = "abc";
+
+        public const int Age = 23;
     }
 }

@@ -533,7 +533,7 @@ namespace UtilZ.Dotnet.Ex.Transfer.Net
                     if (this._revItemDic.TryGetValue(message.Header.Rid, out receiveDataItem))
                     {
                         //发送收到响应数据通知
-                        var eventHandle = AutoEventWaitHandleManager.GetEventWaitHandle(message.ContextId);
+                        EventWaitHandle eventHandle = AutoEventWaitHandleManager.GetEventWaitHandle(message.ContextId);
                         if (eventHandle != null)
                         {
                             try
@@ -610,16 +610,16 @@ namespace UtilZ.Dotnet.Ex.Transfer.Net
         private void SendTransferCompletedAckEventhandleNotify(int rid)
         {
             var id = CacheKeyGenerator.GenerateWaitTransferCompletedAckMessageEventWaitHandleId(rid);
-            var eventHandle = AutoEventWaitHandleManager.GetEventWaitHandle(id);
-            try
+            EventWaitHandle eventHandle = AutoEventWaitHandleManager.GetEventWaitHandle(rid);
+            if (eventHandle != null)
             {
-                if (eventHandle != null)
+                try
                 {
                     eventHandle.Set();
                 }
+                catch (ObjectDisposedException)
+                { }
             }
-            catch (ObjectDisposedException)
-            { }
         }
 
         public void Dispose()

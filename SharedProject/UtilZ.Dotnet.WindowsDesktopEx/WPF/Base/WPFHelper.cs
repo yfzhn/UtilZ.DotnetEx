@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Base
 {
@@ -103,6 +104,103 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Base
             }
 
             return window;
+        }
+
+        /// <summary>
+        /// 查找指定控件模板里的子控件,未找到返回null
+        /// </summary>
+        /// <param name="control">目标控件</param>
+        /// <param name="predicate">匹配条件</param>
+        /// <returns>模板里的子控件</returns>
+        public static Visual FindTemplateControl(DependencyObject control, Func<Visual, bool> predicate)
+        {
+            int count = VisualTreeHelper.GetChildrenCount(control);
+            DependencyObject obj;
+            Visual child;
+            for (int i = 0; i < count; i++)
+            {
+                obj = VisualTreeHelper.GetChild(control, i);
+                child = obj as Visual;
+                if (child != null && predicate(child))
+                {
+                    return child;
+                }
+
+                child = FindTemplateControl(obj, predicate);
+                if (child != null)
+                {
+                    return child;
+                }
+            }
+
+            return null;
+        }
+
+        /// <summary>
+        /// 查找指定控件模板里的子控件,未找到返回null
+        /// </summary>
+        /// <param name="control">目标控件</param>
+        /// <param name="name">模板内子控件名称</param>
+        /// <returns>模板里的子控件</returns>
+        public static FrameworkElement FindTemplateControlByName(DependencyObject control, string name)
+        {
+            int count = VisualTreeHelper.GetChildrenCount(control);
+            DependencyObject obj;
+            FrameworkElement child;
+            for (int i = 0; i < count; i++)
+            {
+                obj = VisualTreeHelper.GetChild(control, i);
+                child = obj as FrameworkElement;
+                if (child != null && string.Equals(child.Name, name))
+                {
+                    return child;
+                }
+
+                child = FindTemplateControlByName(obj, name);
+                if (child != null)
+                {
+                    return child;
+                }
+            }
+
+            return null;
+        }
+
+        /// <summary>
+        /// 获取指定控件模板里的子控件列表
+        /// </summary>
+        /// <param name="control">目标控件</param>
+        /// <returns>模板里的子控件列表</returns>
+        public static List<Visual> GetTemplateControlList(DependencyObject control)
+        {
+            List<Visual> visualList = new List<Visual>();
+            PrimitiveGetTemplateControlList(control, visualList);
+            return visualList;
+        }
+        private static void PrimitiveGetTemplateControlList(DependencyObject control, List<Visual> visualList)
+        {
+            int count = VisualTreeHelper.GetChildrenCount(control);
+            if (count == 0)
+            {
+                return;
+            }
+
+            DependencyObject obj;
+            Visual child;
+            for (int i = 0; i < count; i++)
+            {
+                obj = VisualTreeHelper.GetChild(control, i);
+                child = obj as Visual;
+                if (child != null)
+                {
+                    visualList.Add(child);
+                    PrimitiveGetTemplateControlList(obj, visualList);
+                }
+                else
+                {
+                    PrimitiveGetTemplateControlList(obj, visualList);
+                }
+            }
         }
     }
 }

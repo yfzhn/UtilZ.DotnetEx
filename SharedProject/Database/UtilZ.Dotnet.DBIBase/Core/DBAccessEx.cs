@@ -59,6 +59,19 @@ namespace UtilZ.Dotnet.DBIBase.Core
         /// <summary>
         /// 快速创建命令
         /// </summary>
+        /// <param name="dbConnectionInfo">连接对象</param>
+        /// <returns>命令</returns>
+        public static IDbCommand CreateCommand(IDbConnectionInfo dbConnectionInfo)
+        {
+            var config = DatabaseConfigManager.GetConfig(dbConnectionInfo.DBID);
+            var cmd = dbConnectionInfo.DbConnection.CreateCommand();
+            SetCommandPara(cmd, config);
+            return cmd;
+        }
+
+        /// <summary>
+        /// 快速创建命令
+        /// </summary>
         /// <param name="dbid">数据库ID</param>
         /// <param name="con">连接对象</param>
         /// <returns>命令</returns>

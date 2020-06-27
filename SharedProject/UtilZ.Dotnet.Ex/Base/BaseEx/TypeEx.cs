@@ -129,7 +129,6 @@ namespace UtilZ.Dotnet.Ex.Base
         }
 
 
-
 #if NET4_0
         /// <summary>
         /// 在派生类中重写时，返回由 System.Type 标识的自定义特性的数组
@@ -153,5 +152,17 @@ namespace UtilZ.Dotnet.Ex.Base
             return (Attribute)attriArr[0];
         }
 #endif
+
+        /// <summary>
+        /// 检查类型是否有无参构造函数[true:有无参构造函数;false:没有无参构造函数]
+        /// </summary>
+        /// <param name="type">被检查类型</param>
+        /// <returns>true:有无参构造函数;false:没有无参构造函数</returns>
+        public static bool TypeHasNoParaConstructors(Type type)
+        {
+            return type.IsClass &&
+               !type.IsAbstract &&
+               type.GetConstructors().Where(t => { return t.GetParameters().Length == 0; }).Count() > 0;
+        }
     }
 }

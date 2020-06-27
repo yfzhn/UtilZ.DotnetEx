@@ -33,6 +33,9 @@
     <DocumentationFile>bin\Release\UtilZ.Dotnet.Wav.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MathNet.Numerics">
+      <HintPath>..\..\..\..\Projects\CDBVoiceSpy\Code\Sound\TestExLib\MathNet.Numerics.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
