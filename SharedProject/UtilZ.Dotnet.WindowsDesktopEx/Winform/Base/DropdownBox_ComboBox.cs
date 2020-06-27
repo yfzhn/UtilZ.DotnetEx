@@ -36,7 +36,7 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.Winform.Base
             try
             {
                 combox.Items.Clear();
-                List<DropdownBindingItem> items = EnumEx.GetDisplayNameExAttributeItemList(enumType);
+                List<PropertyFieldInfo> items = EnumEx.GetEnumPropertyFieldInfoList(enumType);
                 if (items.Count == 0)
                 {
                     return;
@@ -60,7 +60,7 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.Winform.Base
                     combox.Items.Add(item);
                 }
 
-                combox.DisplayMember = nameof(DropdownBindingItem.DisplayName);
+                combox.DisplayMember = nameof(PropertyFieldInfo.DisplayName);
                 combox.SelectedIndex = selectedIndex == -1 ? 0 : selectedIndex;
             }
             catch (Exception ex)
@@ -93,7 +93,7 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.Winform.Base
             {
                 for (int i = 0; i < combox.Items.Count; i++)
                 {
-                    if (object.Equals(enumValue, ((DropdownBindingItem)combox.Items[i]).Value))
+                    if (object.Equals(enumValue, ((PropertyFieldInfo)combox.Items[i]).Value))
                     {
                         combox.SelectedIndex = i;
                         return;
@@ -124,7 +124,7 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.Winform.Base
 
             try
             {
-                DropdownBindingItem selectedItem = (DropdownBindingItem)(combox.Items[combox.SelectedIndex]);
+                PropertyFieldInfo selectedItem = (PropertyFieldInfo)(combox.Items[combox.SelectedIndex]);
                 return (T)selectedItem.Value;
             }
             catch (Exception ex)
@@ -142,7 +142,7 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.Winform.Base
         /// <param name="combox">ComboBox</param>
         /// <param name="bindItems">要绑定的集合</param>
         /// <param name="selectedItem">默认选中项,不设置默认选中时该值为null[默认值为null]</param>        
-        private static void BindingIEnumerableGenericToComboBox<T>(System.Windows.Forms.ComboBox combox, List<DropdownBindingItem> bindItems, T selectedItem = null) where T : class
+        private static void BindingIEnumerableGenericToComboBox<T>(System.Windows.Forms.ComboBox combox, List<PropertyFieldInfo> bindItems, T selectedItem = null) where T : class
         {
             if (combox == null)
             {
@@ -152,13 +152,13 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.Winform.Base
             try
             {
                 combox.DataSource = bindItems;
-                combox.DisplayMember = nameof(DropdownBindingItem.DisplayName);
+                combox.DisplayMember = nameof(PropertyFieldInfo.DisplayName);
                 if (bindItems.Count == 0)
                 {
                     return;
                 }
 
-                DropdownBindingItem tmpItem;
+                PropertyFieldInfo tmpItem;
                 for (int i = 0; i < bindItems.Count; i++)
                 {
                     tmpItem = bindItems[i];
@@ -185,7 +185,7 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.Winform.Base
         /// <param name="selectedItem">默认选中项,不设置默认选中时该值为null[默认值为null]</param>        
         public static void BindingIEnumerableGenericToComboBox<T>(System.Windows.Forms.ComboBox combox, IEnumerable<T> items, string displayMember = null, T selectedItem = null) where T : class
         {
-            List<DropdownBindingItem> bindItems = DropdownBindingItem.GenericToDropdownBindingItems<T>(items, displayMember);
+            List<PropertyFieldInfo> bindItems = PropertyFieldInfo.GenericToDropdownBindingItems<T>(items, displayMember);
             BindingIEnumerableGenericToComboBox<T>(combox, bindItems, selectedItem);
         }
 
@@ -199,7 +199,7 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.Winform.Base
         /// <param name="selectedItem">默认选中项,不设置默认选中时该值为null[默认值为null]</param>        
         public static void BindingIEnumerableGenericToComboBox<T>(System.Windows.Forms.ComboBox combox, Func<T, string> displayFun, IEnumerable<T> items, T selectedItem = null) where T : class
         {
-            List<DropdownBindingItem> bindItems = DropdownBindingItem.GenericToDropdownBindingItems<T>(items, displayFun);
+            List<PropertyFieldInfo> bindItems = PropertyFieldInfo.GenericToDropdownBindingItems<T>(items, displayFun);
             BindingIEnumerableGenericToComboBox<T>(combox, bindItems, selectedItem);
         }
 
@@ -225,7 +225,7 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.Winform.Base
                 object value = null;
                 for (int i = 0; i < combox.Items.Count; i++)
                 {
-                    value = ((DropdownBindingItem)combox.Items[i]).Value;
+                    value = ((PropertyFieldInfo)combox.Items[i]).Value;
                     if (selectedItem == value || object.Equals(selectedItem, value))
                     {
                         combox.SelectedIndex = i;
@@ -261,7 +261,7 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.Winform.Base
 
             try
             {
-                return (T)((DropdownBindingItem)combox.SelectedItem).Value;
+                return (T)((PropertyFieldInfo)combox.SelectedItem).Value;
             }
             catch (Exception ex)
             {
@@ -303,7 +303,7 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.Winform.Base
                 for (int i = 0; i < items.Count(); i++)
                 {
                     item = items.ElementAt(i);
-                    combox.Items.Add(new DropdownBindingItem(item, item, string.Empty, item));
+                    combox.Items.Add(new PropertyFieldInfo(item, item, string.Empty, item));
 
                     if (selectedIndex != -1)
                     {
@@ -321,7 +321,7 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.Winform.Base
                     }
                 }
 
-                combox.DisplayMember = nameof(DropdownBindingItem.DisplayName);
+                combox.DisplayMember = nameof(PropertyFieldInfo.DisplayName);
                 combox.SelectedIndex = selectedIndex == -1 ? 0 : selectedIndex;
             }
             catch (Exception ex)
@@ -359,7 +359,7 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.Winform.Base
                 string item;
                 for (int i = 0; i < combox.Items.Count; i++)
                 {
-                    value = ((DropdownBindingItem)combox.Items[i]).Value;
+                    value = ((PropertyFieldInfo)combox.Items[i]).Value;
                     if (value == null)
                     {
                         if (selectedItem == null)
@@ -411,7 +411,7 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.Winform.Base
 
             try
             {
-                object value = ((DropdownBindingItem)combox.Items[combox.SelectedIndex]).Value;
+                object value = ((PropertyFieldInfo)combox.Items[combox.SelectedIndex]).Value;
                 return value == null ? null : value.ToString();
             }
             catch (Exception ex)

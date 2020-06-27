@@ -88,7 +88,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Base\Model\NotifyPropertyChangedAbs.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Base\Model\BasePropertyValueVerifyModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Base\BaseEx\ClrSystemType.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Base\Model\DropdownBindingItem.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Base\Model\PropertyFieldInfo.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Base\Model\IPropertyValueVerify.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Base\Model\PropertyChangedExEventArgs.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Base\Model\PropertyValueVerifyArgs.cs" />

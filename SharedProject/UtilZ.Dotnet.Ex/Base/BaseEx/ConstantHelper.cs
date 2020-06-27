@@ -23,22 +23,22 @@ namespace UtilZ.Dotnet.Ex.Base
         }
 
         /// <summary>
-        /// 获取常量字段特性转换成的DropdownBindingItem列表
+        /// 获取常量字段特性信息列表
         /// </summary>
         /// <param name="ignoreNoAttibute">忽略未标记的字段</param>
         /// <returns>绑定列表集合</returns>
-        public static List<DropdownBindingItem> GetDisplayNameExAttributeItemList<T>(bool ignoreNoAttibute = true)
+        public static List<PropertyFieldInfo> GetDisplayNameExAttributeItemList<T>(bool ignoreNoAttibute = true)
         {
             return GetDisplayNameExAttributeItemList(typeof(T), ignoreNoAttibute);
         }
 
         /// <summary>
-        /// 获取常量字段特性转换成的DropdownBindingItem列表
+        /// 获取常量字段特性信息列表
         /// </summary>
         /// <param name="type">类类型</param>
         /// <param name="ignoreNoAttibute">忽略未标记的字段</param>
         /// <returns>绑定列表集合</returns>
-        public static List<DropdownBindingItem> GetDisplayNameExAttributeItemList(Type type, bool ignoreNoAttibute = true)
+        public static List<PropertyFieldInfo> GetDisplayNameExAttributeItemList(Type type, bool ignoreNoAttibute = true)
         {
             AssertClass(type);
 
@@ -74,13 +74,13 @@ namespace UtilZ.Dotnet.Ex.Base
 
             attriItems = attriItems.OrderBy(new Func<Tuple<DisplayNameExAttribute, object>, int>((item) => { return item.Item1.OrderIndex; })).ToList();
 
-            List<DropdownBindingItem> dbiItems = new List<DropdownBindingItem>();
+            var list = new List<PropertyFieldInfo>();
             foreach (var enumAttriItem in attriItems)
             {
-                dbiItems.Add(new DropdownBindingItem(enumAttriItem.Item1.DisplayName, enumAttriItem.Item2, enumAttriItem.Item1.Description, enumAttriItem.Item1));
+                list.Add(new PropertyFieldInfo(enumAttriItem.Item1.DisplayName, enumAttriItem.Item2, enumAttriItem.Item1.Description, enumAttriItem.Item1));
             }
 
-            return dbiItems;
+            return list;
         }
     }
 }

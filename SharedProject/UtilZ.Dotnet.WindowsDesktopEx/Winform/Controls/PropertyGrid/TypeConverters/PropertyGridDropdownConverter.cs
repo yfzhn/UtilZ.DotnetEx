@@ -58,7 +58,7 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.PropertyGrid.TypeConver
 
                 if (context.PropertyDescriptor.PropertyType.IsEnum)
                 {
-                    List<DropdownBindingItem> dbiItems = EnumEx.GetDisplayNameExAttributeItemList(context.PropertyDescriptor.PropertyType);
+                    List<PropertyFieldInfo> dbiItems = EnumEx.GetEnumPropertyFieldInfoList(context.PropertyDescriptor.PropertyType);
                     var enumItems = (from item in dbiItems select item.Value).ToArray();
                     return new StandardValuesCollection(enumItems);
                 }

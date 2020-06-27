@@ -38,7 +38,7 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.Winform.Base
             try
             {
                 toolStripComboBox.Items.Clear();
-                List<DropdownBindingItem> items = EnumEx.GetDisplayNameExAttributeItemList(enumType);
+                List<PropertyFieldInfo> items = EnumEx.GetEnumPropertyFieldInfoList(enumType);
                 int selectedIndex = -1;
 
                 for (int i = 0; i < items.Count; i++)
@@ -90,7 +90,7 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.Winform.Base
             {
                 for (int i = 0; i < toolStripComboBox.Items.Count; i++)
                 {
-                    if (enumValue.Equals(((DropdownBindingItem)toolStripComboBox.Items[i]).Value))
+                    if (enumValue.Equals(((PropertyFieldInfo)toolStripComboBox.Items[i]).Value))
                     {
                         toolStripComboBox.SelectedIndex = i;
                         return;
@@ -121,7 +121,7 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.Winform.Base
 
             try
             {
-                DropdownBindingItem selectedItem = (DropdownBindingItem)(toolStripComboBox.Items[toolStripComboBox.SelectedIndex]);
+                PropertyFieldInfo selectedItem = (PropertyFieldInfo)(toolStripComboBox.Items[toolStripComboBox.SelectedIndex]);
                 return (T)selectedItem.Value;
             }
             catch (Exception ex)
@@ -139,7 +139,7 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.Winform.Base
         /// <param name="toolStripComboBox">ToolStripComboBox</param>
         /// <param name="bindItemss">要绑定的集合</param>
         /// <param name="selectedItem">默认选中项,不设置默认选中时该值为null[默认值为null]</param>  
-        private static void BindingIEnumerableGenericToToolStripComboBox<T>(System.Windows.Forms.ToolStripComboBox toolStripComboBox, List<DropdownBindingItem> bindItemss, T selectedItem = null) where T : class
+        private static void BindingIEnumerableGenericToToolStripComboBox<T>(System.Windows.Forms.ToolStripComboBox toolStripComboBox, List<PropertyFieldInfo> bindItemss, T selectedItem = null) where T : class
         {
             if (toolStripComboBox == null)
             {
@@ -155,7 +155,7 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.Winform.Base
                 }
 
                 int selectedIndex = 0;
-                DropdownBindingItem item = null;
+                PropertyFieldInfo item = null;
                 for (int i = 0; i < bindItemss.Count; i++)
                 {
                     item = bindItemss[i];
@@ -185,7 +185,7 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.Winform.Base
         /// <param name="selectedItem">默认选中项,不设置默认选中时该值为null[默认值为null]</param>  
         public static void BindingIEnumerableGenericToToolStripComboBox<T>(System.Windows.Forms.ToolStripComboBox toolStripComboBox, IEnumerable<T> items, string displayMember = null, T selectedItem = null) where T : class
         {
-            List<DropdownBindingItem> bindItems = DropdownBindingItem.GenericToDropdownBindingItems<T>(items, displayMember);
+            List<PropertyFieldInfo> bindItems = PropertyFieldInfo.GenericToDropdownBindingItems<T>(items, displayMember);
             BindingIEnumerableGenericToToolStripComboBox<T>(toolStripComboBox, bindItems);
         }
 
@@ -199,7 +199,7 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.Winform.Base
         /// <param name="selectedItem">默认选中项,不设置默认选中时该值为null[默认值为null]</param>        
         public static void BindingIEnumerableGenericToToolStripComboBox<T>(System.Windows.Forms.ToolStripComboBox toolStripComboBox, Func<T, string> displayFun, IEnumerable<T> items, T selectedItem = null) where T : class
         {
-            List<DropdownBindingItem> bindItems = DropdownBindingItem.GenericToDropdownBindingItems<T>(items, displayFun);
+            List<PropertyFieldInfo> bindItems = PropertyFieldInfo.GenericToDropdownBindingItems<T>(items, displayFun);
             BindingIEnumerableGenericToToolStripComboBox<T>(toolStripComboBox, bindItems);
         }
 
@@ -230,7 +230,7 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.Winform.Base
                 object value = null;
                 for (int i = 0; i < toolStripComboBox.Items.Count; i++)
                 {
-                    value = ((DropdownBindingItem)toolStripComboBox.Items[i]).Value;
+                    value = ((PropertyFieldInfo)toolStripComboBox.Items[i]).Value;
                     if (object.Equals(value, selectedItem))
                     {
                         toolStripComboBox.SelectedIndex = i;
@@ -266,7 +266,7 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.Winform.Base
 
             try
             {
-                return (T)((DropdownBindingItem)toolStripComboBox.Items[toolStripComboBox.SelectedIndex]).Value;
+                return (T)((PropertyFieldInfo)toolStripComboBox.Items[toolStripComboBox.SelectedIndex]).Value;
             }
             catch (Exception ex)
             {
@@ -308,7 +308,7 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.Winform.Base
                 for (int i = 0; i < items.Count(); i++)
                 {
                     item = items.ElementAt(i);
-                    toolStripComboBox.Items.Add(new DropdownBindingItem(item.ToString(), item, string.Empty, item));
+                    toolStripComboBox.Items.Add(new PropertyFieldInfo(item.ToString(), item, string.Empty, item));
 
                     if (selectedIndex != -1)
                     {
@@ -364,7 +364,7 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.Winform.Base
                 string item;
                 for (int i = 0; i < toolStripComboBox.Items.Count; i++)
                 {
-                    value = ((DropdownBindingItem)toolStripComboBox.Items[i]).Value;
+                    value = ((PropertyFieldInfo)toolStripComboBox.Items[i]).Value;
                     if (value == null)
                     {
                         if (selectedItem == null)
@@ -416,7 +416,7 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.Winform.Base
 
             try
             {
-                object value = ((DropdownBindingItem)toolStripComboBox.Items[toolStripComboBox.SelectedIndex]).Value;
+                object value = ((PropertyFieldInfo)toolStripComboBox.Items[toolStripComboBox.SelectedIndex]).Value;
                 return value == null ? null : value.ToString();
             }
             catch (Exception ex)

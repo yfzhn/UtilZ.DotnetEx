@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -7,9 +8,9 @@ using System.Text;
 namespace UtilZ.Dotnet.Ex.Base
 {
     /// <summary>
-    /// UI显示基类
+    /// 属性字段信息
     /// </summary>
-    public class DropdownBindingItem
+    public class PropertyFieldInfo
     {
         /// <summary>
         /// 获取或设置显示名称
@@ -34,7 +35,7 @@ namespace UtilZ.Dotnet.Ex.Base
         /// <summary>
         /// 默认构造函数
         /// </summary>
-        public DropdownBindingItem()
+        public PropertyFieldInfo()
             : this(string.Empty, null, string.Empty, null)
         {
 
@@ -45,7 +46,7 @@ namespace UtilZ.Dotnet.Ex.Base
         /// </summary>
         /// <param name="displayName">显示文本</param>
         /// <param name="value">值</param>
-        public DropdownBindingItem(string displayName, object value)
+        public PropertyFieldInfo(string displayName, object value)
             : this(displayName, value, string.Empty, null)
         {
 
@@ -57,7 +58,7 @@ namespace UtilZ.Dotnet.Ex.Base
         /// <param name="displayName">显示文本</param>
         /// <param name="value">值</param>
         /// <param name="description">项描述</param>
-        public DropdownBindingItem(string displayName, object value, string description)
+        public PropertyFieldInfo(string displayName, object value, string description)
             : this(displayName, value, description, null)
         {
 
@@ -70,7 +71,7 @@ namespace UtilZ.Dotnet.Ex.Base
         /// <param name="value">值</param>
         /// <param name="description">项描述</param>
         /// <param name="tag">数据标识</param>
-        public DropdownBindingItem(string displayName, object value, string description, object tag)
+        public PropertyFieldInfo(string displayName, object value, string description, object tag)
         {
             this.DisplayName = displayName;
             this.Value = value;
@@ -94,17 +95,17 @@ namespace UtilZ.Dotnet.Ex.Base
         /// <param name="srcItems">原始泛型集合</param>
         /// <param name="displayMember">显示的成员,属性名或字段名,当为null时调用成员的ToString方法的值作为显示值[默认值为null]</param>
         /// <returns>DropdownBindingItem列表</returns>
-        public static List<DropdownBindingItem> GenericToDropdownBindingItems<T>(IEnumerable<T> srcItems, string displayMember = null) where T : class
+        public static List<PropertyFieldInfo> GenericToDropdownBindingItems<T>(IEnumerable<T> srcItems, string displayMember = null) where T : class
         {
             if (srcItems == null || srcItems.Count() == 0)
             {
-                return new List<DropdownBindingItem>();
+                return new List<PropertyFieldInfo>();
             }
 
-            List<DropdownBindingItem> items;
+            List<PropertyFieldInfo> items;
             if (string.IsNullOrWhiteSpace(displayMember))
             {
-                items = srcItems.Select(t => { return new DropdownBindingItem(t?.ToString(), t); }).ToList();
+                items = srcItems.Select(t => { return new PropertyFieldInfo(t?.ToString(), t); }).ToList();
             }
             else
             {
@@ -112,18 +113,18 @@ namespace UtilZ.Dotnet.Ex.Base
                 PropertyInfo proInfo = type.GetProperty(displayMember);
                 if (proInfo != null)
                 {
-                    items = srcItems.Select(t => { return new DropdownBindingItem(proInfo.GetValue(t, null)?.ToString(), t); }).ToList();
+                    items = srcItems.Select(t => { return new PropertyFieldInfo(proInfo.GetValue(t, null)?.ToString(), t); }).ToList();
                 }
                 else
                 {
                     FieldInfo fieldInfo = type.GetField(displayMember);
                     if (fieldInfo != null)
                     {
-                        items = srcItems.Select(t => { return new DropdownBindingItem(fieldInfo.GetValue(t)?.ToString(), t); }).ToList();
+                        items = srcItems.Select(t => { return new PropertyFieldInfo(fieldInfo.GetValue(t)?.ToString(), t); }).ToList();
                     }
                     else
                     {
-                        items = srcItems.Select(t => { return new DropdownBindingItem(t?.ToString(), t); }).ToList();
+                        items = srcItems.Select(t => { return new PropertyFieldInfo(t?.ToString(), t); }).ToList();
                     }
                 }
             }
@@ -138,21 +139,21 @@ namespace UtilZ.Dotnet.Ex.Base
         /// <param name="srcItems">原始泛型集合</param>
         /// <param name="displayFun">显示转换委托</param>
         /// <returns>DropdownBindingItem列表</returns>
-        public static List<DropdownBindingItem> GenericToDropdownBindingItems<T>(IEnumerable<T> srcItems, Func<T, string> displayFun = null) where T : class
+        public static List<PropertyFieldInfo> GenericToDropdownBindingItems<T>(IEnumerable<T> srcItems, Func<T, string> displayFun = null) where T : class
         {
             if (srcItems == null || srcItems.Count() == 0)
             {
-                return new List<DropdownBindingItem>();
+                return new List<PropertyFieldInfo>();
             }
 
-            List<DropdownBindingItem> items;
+            List<PropertyFieldInfo> items;
             if (displayFun == null)
             {
-                items = srcItems.Select(t => { return new DropdownBindingItem(t?.ToString(), t); }).ToList();
+                items = srcItems.Select(t => { return new PropertyFieldInfo(t?.ToString(), t); }).ToList();
             }
             else
             {
-                items = srcItems.Select(t => { return new DropdownBindingItem(displayFun(t), t); }).ToList();
+                items = srcItems.Select(t => { return new PropertyFieldInfo(displayFun(t), t); }).ToList();
             }
             return items;
         }

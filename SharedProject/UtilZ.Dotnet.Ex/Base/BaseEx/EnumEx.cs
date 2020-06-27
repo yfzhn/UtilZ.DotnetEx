@@ -70,7 +70,7 @@ namespace UtilZ.Dotnet.Ex.Base
                     continue;
                 }
 
-                if (displayName.Equals(((DisplayNameExAttribute)csAttris[0]).DisplayName))
+                if (string.Equals(displayName, ((DisplayNameExAttribute)csAttris[0]).DisplayName))
                 {
                     return enumValue;
                 }
@@ -80,7 +80,7 @@ namespace UtilZ.Dotnet.Ex.Base
             foreach (var field in noNEnumAttributeFields)
             {
                 enumValue = field.GetValue(null);
-                if (displayName.Equals(enumValue.ToString()))
+                if (string.Equals(displayName, enumValue.ToString()))
                 {
                     return enumValue;
                 }
@@ -92,11 +92,21 @@ namespace UtilZ.Dotnet.Ex.Base
 
 
         /// <summary>
-        /// 获取枚举特性转换成的DropdownBindingItem列表
+        /// 获取枚举字段特性信息列表
+        /// </summary>
+        /// <typeparam name="T">枚举类型</typeparam>
+        /// <returns>绑定列表集合</returns>
+        public static List<PropertyFieldInfo> GetEnumPropertyFieldInfoList<T>() where T : Enum
+        {
+            return GetEnumPropertyFieldInfoList(typeof(T));
+        }
+
+        /// <summary>
+        /// 获取枚举字段特性信息列表
         /// </summary>
         /// <param name="enumType">枚举类型</param>
         /// <returns>绑定列表集合</returns>
-        public static List<DropdownBindingItem> GetDisplayNameExAttributeItemList(Type enumType)
+        public static List<PropertyFieldInfo> GetEnumPropertyFieldInfoList(Type enumType)
         {
             AssertEnum(enumType);
 
@@ -127,14 +137,16 @@ namespace UtilZ.Dotnet.Ex.Base
 
             enumAttriItems = enumAttriItems.OrderBy(new Func<Tuple<DisplayNameExAttribute, object>, int>((item) => { return item.Item1.OrderIndex; })).ToList();
 
-            List<DropdownBindingItem> dbiItems = new List<DropdownBindingItem>();
+            var list = new List<PropertyFieldInfo>();
             foreach (var enumAttriItem in enumAttriItems)
             {
-                dbiItems.Add(new DropdownBindingItem(enumAttriItem.Item1.DisplayName, enumAttriItem.Item2, enumAttriItem.Item1.Description, enumAttriItem.Item1));
+                list.Add(new PropertyFieldInfo(enumAttriItem.Item1.DisplayName, enumAttriItem.Item2, enumAttriItem.Item1.Description, enumAttriItem.Item1));
             }
 
-            return dbiItems;
+            return list;
         }
+
+
 
         /// <summary>
         /// 获取枚举特性转换成的字典集合[key:枚举值;value:枚举项上标记的特性(多项取第一项)]
@@ -241,7 +253,7 @@ namespace UtilZ.Dotnet.Ex.Base
 
 
 
-        #region 获取枚举项上的标识
+        #region 获取枚举字段上的标识
         /// <summary>
         /// 获取枚举项上的标识
         /// </summary>
@@ -303,7 +315,7 @@ namespace UtilZ.Dotnet.Ex.Base
 
 
 
-        #region 获取枚举项上的描述
+        #region 获取枚举字段上的描述
         /// <summary>
         /// 获取枚举项上的描述
         /// </summary>
@@ -365,7 +377,7 @@ namespace UtilZ.Dotnet.Ex.Base
 
 
 
-        #region 获取枚举项上的特性显示文本
+        #region 获取枚举字段特性显示文本
         /// <summary>
         /// 获取枚举项上的特性
         /// </summary>
