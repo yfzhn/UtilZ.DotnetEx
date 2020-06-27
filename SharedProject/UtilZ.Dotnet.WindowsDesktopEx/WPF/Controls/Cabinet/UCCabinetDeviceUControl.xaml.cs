@@ -18,14 +18,21 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls
     /// <summary>
     /// UCCabinetU.xaml 的交互逻辑
     /// </summary>
-    public partial class UCCabinetDeviceUControl : UserControl, IDisposable
+    public sealed partial class UCCabinetDeviceUControl : UserControl, IDisposable
     {
+        /// <summary>
+        /// 构造函数
+        /// </summary>
         public UCCabinetDeviceUControl()
         {
             InitializeComponent();
         }
 
-
+        /// <summary>
+        /// 更新机柜设备单元
+        /// </summary>
+        /// <param name="deviceUnit"></param>
+        /// <param name="deviceNameStyle"></param>
         public void UpdateCabinetDevice(CabinetDeviceUnit deviceUnit, Style deviceNameStyle)
         {
             this.Height = deviceUnit.Height * CabinetConstant.SINGLE_U_HEIGHT;
@@ -74,7 +81,10 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls
             }
         }
 
-
+        /// <summary>
+        /// 更新设备名称样式
+        /// </summary>
+        /// <param name="style"></param>
         public void UpdateDeviceNameStyle(Style style)
         {
             if (stackPanel.Children.Count == 0)
@@ -91,13 +101,18 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls
             }
         }
 
-
+        /// <summary>
+        /// 选中设备改变事件
+        /// </summary>
         public Action<CabinetDevice> SelectedDeviceChanged;
         private void DeviceSelectedChanged(CabinetDevice device)
         {
             this.SelectedDeviceChanged?.Invoke(device);
         }
 
+        /// <summary>
+        /// 释放资源
+        /// </summary>
         public void Dispose()
         {
             foreach (var ele in stackPanel.Children)

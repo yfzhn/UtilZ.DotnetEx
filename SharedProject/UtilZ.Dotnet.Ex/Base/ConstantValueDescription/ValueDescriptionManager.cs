@@ -371,7 +371,7 @@ namespace UtilZ.Dotnet.Ex.Base.ConstantValueDescription
         /// <summary>
         /// 获取指定类型名称数组
         /// </summary>
-        /// <typeparam name="T">目标类型</typeparam>
+        /// <param name="groupId">组标识</param>
         /// <returns>类型所有定义常量值数组</returns>
         public static string[] GetNames(object groupId)
         {

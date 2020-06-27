@@ -18,7 +18,7 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls
     /// <summary>
     /// UCCabinetControl.xaml 的交互逻辑
     /// </summary>
-    public partial class UCCabinetControl : UserControl, IDisposable
+    public sealed partial class UCCabinetControl : UserControl, IDisposable
     {
         #region 依赖属性
         /// <summary>
@@ -290,8 +290,14 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls
         }
         #endregion
 
-
+        /// <summary>
+        /// 选中设备改变事件
+        /// </summary>
         public event EventHandler<SelectedDeviceChangedArgs> SelectedDeviceChanged;
+
+        /// <summary>
+        /// 构造函数
+        /// </summary>
         public UCCabinetControl()
         {
             InitializeComponent();
@@ -430,6 +436,12 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls
                 }
             }
         }
+
+
+
+        /// <summary>
+        /// 释放资源
+        /// </summary>
 
         public void Dispose()
         {

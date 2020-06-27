@@ -12,7 +12,7 @@ using System.IO;
 using System.Drawing.Drawing2D;
 using System.Threading.Tasks;
 using System.Diagnostics;
-using MathNet.Numerics.IntegralTransforms;
+using UtilZ.Dotnet.Wav.WavMaterial;
 
 namespace UtilZ.Dotnet.Wav
 {
@@ -906,7 +906,7 @@ namespace UtilZ.Dotnet.Wav
         /// <param name="time">播放时长</param>
         /// <param name="isStereo">当前文件是否是立体声,即双声道[true:双声道;false:单声道]</param>
         /// <returns>成功返回ttue;失败返回false</returns>
-        private bool InitWavInfo(string fileName, out BASS_CHANNELINFO_INTERNAL channelInfo, out short[] leftData, out short[] rightData,
+        private bool InitWavInfo_bk(string fileName, out BASS_CHANNELINFO_INTERNAL channelInfo, out short[] leftData, out short[] rightData,
             out long totalLength, out double time, out bool isStereo)
         {
             int handle = Bass.BASS_StreamCreateFile(false, fileName, 0, 0, BASSFileFlag.BASS_UNICODE | BASSFileFlag.BASS_STREAM_DECODE);
@@ -958,7 +958,7 @@ namespace UtilZ.Dotnet.Wav
                         index++;
                     }
 
-                    Fourier.ForwardReal(data, count, FourierOptions.Matlab);
+                    //Fourier.ForwardReal(data, count, FourierOptions.Matlab);
 
                     for (int i = 0; i < data.Length; i++)
                     {
@@ -983,7 +983,7 @@ namespace UtilZ.Dotnet.Wav
         /// <param name="time">播放时长</param>
         /// <param name="isStereo">当前文件是否是立体声,即双声道[true:双声道;false:单声道]</param>
         /// <returns>成功返回ttue;失败返回false</returns>
-        private bool InitWavInfo_bk(string fileName, out BASS_CHANNELINFO_INTERNAL channelInfo, out short[] leftData, out short[] rightData,
+        private bool InitWavInfo(string fileName, out BASS_CHANNELINFO_INTERNAL channelInfo, out short[] leftData, out short[] rightData,
             out long totalLength, out double time, out bool isStereo)
         {
             int handle = -1;
@@ -1049,7 +1049,7 @@ namespace UtilZ.Dotnet.Wav
                         }
                         catch (Exception ex)
                         {
-
+                            this.OnRaiseLog(ex);
                         }
                     }
                 }
@@ -1066,7 +1066,7 @@ namespace UtilZ.Dotnet.Wav
                         }
                         catch (Exception ex)
                         {
-
+                            this.OnRaiseLog(ex);
                         }
                     }
                 }

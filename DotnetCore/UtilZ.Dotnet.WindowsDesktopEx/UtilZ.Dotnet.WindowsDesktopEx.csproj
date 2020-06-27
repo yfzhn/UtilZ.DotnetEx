@@ -9,6 +9,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <OutputPath></OutputPath>
     <DocumentationFile>F:\Code\Git\UtilZ\UtilZ.Dotnet2020\UtilZ.DotnetCore.WindowEx\UtilZ.DotnetCore.WindowEx.xml</DocumentationFile>
+    <DefineConstants>TRACE;CORE</DefineConstants>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">

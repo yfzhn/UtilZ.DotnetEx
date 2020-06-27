@@ -18,7 +18,7 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls
     /// <summary>
     /// UCCabinetControl.xaml 的交互逻辑
     /// </summary>
-    public partial class UCSingleCabinetControl : UserControl, IDisposable
+    public sealed partial class UCSingleCabinetControl : UserControl, IDisposable
     {
         #region 依赖属性
         /// <summary>
@@ -160,6 +160,11 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls
             return _cabinetNameDefaultStyle;
         }
 
+        /// <summary>
+        /// 计算机柜控件高度
+        /// </summary>
+        /// <param name="height"></param>
+        /// <returns></returns>
         public static double CalCabinetControlHeight(int height)
         {
             return height * CabinetConstant.SINGLE_U_HEIGHT + _titleHeight + _bottomHeight;
@@ -169,8 +174,14 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls
 
 
 
-
+        /// <summary>
+        /// 选中设备改变事件
+        /// </summary>
         public event EventHandler<SelectedDeviceChangedArgs> SelectedDeviceChanged;
+
+        /// <summary>
+        /// 构造函数
+        /// </summary>
         public UCSingleCabinetControl()
         {
             InitializeComponent();
@@ -277,6 +288,9 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls
             tbName.Style = style;
         }
 
+        /// <summary>
+        /// 释放资源
+        /// </summary>
         public void Dispose()
         {
             foreach (var ele in stackPanel.Children)

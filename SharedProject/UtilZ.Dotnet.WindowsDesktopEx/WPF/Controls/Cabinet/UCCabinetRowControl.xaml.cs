@@ -18,7 +18,7 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls
     /// <summary>
     /// UCCabinetRowControl.xaml 的交互逻辑
     /// </summary>
-    public partial class UCCabinetRowControl : UserControl, IDisposable
+    public sealed partial class UCCabinetRowControl : UserControl, IDisposable
     {
         internal const int COLUMN_COUNT = 5;
         internal const double SEPARATOR = 10d;
@@ -277,9 +277,15 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls
         }
 
 
-
+        /// <summary>
+        /// 选中设备改变事件
+        /// </summary>
         public event EventHandler<SelectedDeviceChangedArgs> SelectedDeviceChanged;
 
+
+        /// <summary>
+        /// 构造函数
+        /// </summary>
         public UCCabinetRowControl()
         {
             InitializeComponent();
@@ -402,6 +408,9 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls
             }
         }
 
+        /// <summary>
+        /// Dispose
+        /// </summary>
         public void Dispose()
         {
             foreach (var ele in canvas.Children)

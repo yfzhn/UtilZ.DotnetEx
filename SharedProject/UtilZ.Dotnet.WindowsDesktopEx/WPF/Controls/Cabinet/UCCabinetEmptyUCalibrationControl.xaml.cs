@@ -20,6 +20,9 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls
     /// </summary>
     public partial class UCCabinetEmptyUCalibrationControl : UserControl
     {
+        /// <summary>
+        /// 构造函数
+        /// </summary>
         public UCCabinetEmptyUCalibrationControl()
         {
             InitializeComponent();
