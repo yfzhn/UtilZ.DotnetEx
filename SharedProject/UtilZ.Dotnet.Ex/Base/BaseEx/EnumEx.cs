@@ -95,7 +95,7 @@ namespace UtilZ.Dotnet.Ex.Base
         /// 获取枚举字段特性信息列表
         /// </summary>
         /// <typeparam name="T">枚举类型</typeparam>
-        /// <returns>绑定列表集合</returns>
+        /// <returns>PropertyFieldInfo列表</returns>
         public static List<PropertyFieldInfo> GetEnumPropertyFieldInfoList<T>() where T : Enum
         {
             return GetEnumPropertyFieldInfoList(typeof(T));
@@ -105,7 +105,7 @@ namespace UtilZ.Dotnet.Ex.Base
         /// 获取枚举字段特性信息列表
         /// </summary>
         /// <param name="enumType">枚举类型</param>
-        /// <returns>绑定列表集合</returns>
+        /// <returns>PropertyFieldInfo列表</returns>
         public static List<PropertyFieldInfo> GetEnumPropertyFieldInfoList(Type enumType)
         {
             AssertEnum(enumType);

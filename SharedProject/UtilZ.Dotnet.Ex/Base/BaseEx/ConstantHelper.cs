@@ -25,20 +25,21 @@ namespace UtilZ.Dotnet.Ex.Base
         /// <summary>
         /// 获取常量字段特性信息列表
         /// </summary>
-        /// <param name="ignoreNoAttibute">忽略未标记的字段</param>
-        /// <returns>绑定列表集合</returns>
-        public static List<PropertyFieldInfo> GetDisplayNameExAttributeItemList<T>(bool ignoreNoAttibute = true)
+        /// <typeparam name="T">常量定义类</typeparam>
+        /// <param name="ignoreNoAttibute">忽略未标记的字段[true:忽略;false:使用字段名。默认为true]</param>
+        /// <returns>PropertyFieldInfo列表</returns>
+        public static List<PropertyFieldInfo> GetConstantPropertyFieldInfoList<T>(bool ignoreNoAttibute = true)
         {
-            return GetDisplayNameExAttributeItemList(typeof(T), ignoreNoAttibute);
+            return GetConstantPropertyFieldInfoList(typeof(T), ignoreNoAttibute);
         }
 
         /// <summary>
         /// 获取常量字段特性信息列表
         /// </summary>
         /// <param name="type">类类型</param>
-        /// <param name="ignoreNoAttibute">忽略未标记的字段</param>
-        /// <returns>绑定列表集合</returns>
-        public static List<PropertyFieldInfo> GetDisplayNameExAttributeItemList(Type type, bool ignoreNoAttibute = true)
+        /// <param name="ignoreNoAttibute">忽略未标记的字段[true:忽略;false:使用字段名。默认为true]</param>
+        /// <returns>PropertyFieldInfo列表</returns>
+        public static List<PropertyFieldInfo> GetConstantPropertyFieldInfoList(Type type, bool ignoreNoAttibute = true)
         {
             AssertClass(type);
 
