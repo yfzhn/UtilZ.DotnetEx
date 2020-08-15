@@ -113,11 +113,11 @@
     <Compile Include="FTestPRopertyGrid.designer.cs">
       <DependentUpon>FTestPRopertyGrid.cs</DependentUpon>
     </Compile>
-    <Compile Include="FWave.cs">
+    <Compile Include="FTestWaveControl.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FWave.designer.cs">
-      <DependentUpon>FWave.cs</DependentUpon>
+    <Compile Include="FTestWaveControl.Designer.cs">
+      <DependentUpon>FTestWaveControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -150,8 +150,8 @@
     <EmbeddedResource Include="FTestPRopertyGrid.resx">
       <DependentUpon>FTestPRopertyGrid.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FWave.resx">
-      <DependentUpon>FWave.cs</DependentUpon>
+    <EmbeddedResource Include="FTestWaveControl.resx">
+      <DependentUpon>FTestWaveControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -176,6 +176,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\..\Projects\CDBVoiceSpy\Code\Sound\UtilZ.Dotnet.Wav.VoicePlayer\UtilZ.Dotnet.Wav.VoicePlayer.csproj">
+      <Project>{da7aa3a0-8a80-48f6-bac9-8d5d8fecc19b}</Project>
+      <Name>UtilZ.Dotnet.Wav.VoicePlayer</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Dotnet\Database\UtilZ.Dotnet.DBIBase\UtilZ.Dotnet.DBIBase.csproj">
       <Project>{136ec218-cfea-4d4f-ae2f-6d0d6a1e2058}</Project>
       <Name>UtilZ.Dotnet.DBIBase</Name>
@@ -183,10 +187,6 @@
     <ProjectReference Include="..\..\Dotnet\UtilZ.Dotnet.Ex\UtilZ.Dotnet.Ex.csproj">
       <Project>{55847880-1c12-48d9-b3d7-5baee632c3e7}</Project>
       <Name>UtilZ.Dotnet.Ex</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Dotnet\UtilZ.Dotnet.Wav\UtilZ.Dotnet.Wav.csproj">
-      <Project>{73a0a120-8020-48df-bb16-d73841f1d183}</Project>
-      <Name>UtilZ.Dotnet.Wav</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Dotnet\UtilZ.Dotnet.WindowsDesktopEx\UtilZ.Dotnet.WindowsDesktopEx.csproj">
       <Project>{4b7b4cee-5d03-4727-9d39-e4eff830fae1}</Project>

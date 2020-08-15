@@ -46,7 +46,7 @@ namespace UtilZ.Dotnet.Ex.LMQ
         /// <summary>
         /// 发布消息
         /// </summary>
-        /// <param name="message">数据消息</param>
+        /// <param name="message">消息</param>
         internal void Publish(object message)
         {
             try

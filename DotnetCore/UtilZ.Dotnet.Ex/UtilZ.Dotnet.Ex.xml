@@ -523,6 +523,124 @@
             <param name="valueObj">值对象</param>
             <param name="targetObj">目标对象</param>
         </member>
+        <member name="T:UtilZ.Dotnet.Ex.Base.AutoEventWaitHandleManager">
+            <summary>
+            EventWaitHandle自动管理类
+            </summary>
+        </member>
+        <member name="F:UtilZ.Dotnet.Ex.Base.AutoEventWaitHandleManager._eventWaitHandleDic">
+            <summary>
+            key:EventKey(object);value:(EventWaitHandleInfo)
+            </summary>
+        </member>
+        <member name="M:UtilZ.Dotnet.Ex.Base.AutoEventWaitHandleManager.AddIdToCache(System.Object,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="id"></param>
+            <param name="expirationMilliseconds">缓存项有效时间,小于等于0永不过期,单位/毫秒</param>
+        </member>
+        <member name="M:UtilZ.Dotnet.Ex.Base.AutoEventWaitHandleManager.CreateEventWaitHandle(System.Object,System.Int32,System.Object)">
+            <summary>
+            创建并添加EventWaitHandle
+            </summary>
+            <param name="id">EventWaitHandle的唯一标识</param>
+            <param name="expirationMilliseconds">缓存项有效时间,小于等于0永不过期,单位/毫秒</param>
+            <param name="tag">Tag</param>
+            <returns>创建的EventWaitHandle</returns>
+        </member>
+        <member name="M:UtilZ.Dotnet.Ex.Base.AutoEventWaitHandleManager.AddEventWaitHandle(System.Object,System.Threading.EventWaitHandle,System.Int32,System.Object)">
+            <summary>
+            添加外部创建的EventWaitHandle
+            </summary>
+            <param name="id">EventWaitHandle的唯一标识</param>
+            <param name="eventWaitHandle">EventWaitHandle</param>
+            <param name="expirationMilliseconds">缓存项有效时间,小于等于0永不过期,单位/毫秒</param>
+            <param name="tag">Tag</param>
+        </member>
+        <member name="M:UtilZ.Dotnet.Ex.Base.AutoEventWaitHandleManager.AddOrUpdateEventWaitHandle(System.Object,System.Threading.EventWaitHandle,System.Int32,System.Object)">
+            <summary>
+            添加或更新外部创建的EventWaitHandle,如果id存在则替换并返回旧的项,否则则添加返回null
+            </summary>
+            <param name="id">EventWaitHandle的唯一标识</param>
+            <param name="eventWaitHandle">EventWaitHandle</param>
+            <param name="expiration">缓存项有效时间,小于等于0永不过期,单位/毫秒</param>
+            <param name="tag">Tag</param>
+            <returns>旧的EventWaitHandle</returns>
+        </member>
+        <member name="M:UtilZ.Dotnet.Ex.Base.AutoEventWaitHandleManager.GetEventWaitHandle(System.Object)">
+            <summary>
+            获取EventWaitHandle,获取成功返回获取EventWaitHandle;失败返回null
+            </summary>
+            <param name="id">EventWaitHandle的唯一标识</param>
+            <returns>EventWaitHandle</returns>
+        </member>
+        <member name="M:UtilZ.Dotnet.Ex.Base.AutoEventWaitHandleManager.GetEventWaitHandleInfo(System.Object)">
+            <summary>
+            获取EventWaitHandleInfo
+            </summary>
+            <param name="id">EventWaitHandle的唯一标识</param>
+            <returns>EventWaitHandleInfo</returns>
+        </member>
+        <member name="M:UtilZ.Dotnet.Ex.Base.AutoEventWaitHandleManager.RemoveEventWaitHandle(System.Object)">
+            <summary>
+            移除并返回EventWaitHandle
+            </summary>
+            <param name="id">EventWaitHandle的唯一标识</param>
+            <returns>EventWaitHandle</returns>
+        </member>
+        <member name="T:UtilZ.Dotnet.Ex.Base.EventWaitHandleInfo">
+            <summary>
+            EventWaitHandleInfo
+            </summary>
+        </member>
+        <member name="P:UtilZ.Dotnet.Ex.Base.EventWaitHandleInfo.Id">
+            <summary>
+            EventWaitHandle的唯一标识
+            </summary>
+        </member>
+        <member name="P:UtilZ.Dotnet.Ex.Base.EventWaitHandleInfo.EventWaitHandle">
+            <summary>
+            EventWaitHandle
+            </summary>
+        </member>
+        <member name="P:UtilZ.Dotnet.Ex.Base.EventWaitHandleInfo.Tag">
+            <summary>
+            Tag
+            </summary>
+        </member>
+        <member name="M:UtilZ.Dotnet.Ex.Base.EventWaitHandleInfo.#ctor(System.Object,System.Threading.EventWaitHandle,System.Object)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="id"></param>
+            <param name="eventWaitHandle"></param>
+            <param name="tag"></param>
+        </member>
+        <member name="M:UtilZ.Dotnet.Ex.Base.EventWaitHandleInfo.Set(System.Object)">
+            <summary>
+            发出通知,对象释放将抛出异常
+            </summary>
+            <param name="tag">tag</param>
+        </member>
+        <member name="M:UtilZ.Dotnet.Ex.Base.EventWaitHandleInfo.Set">
+            <summary>
+            发出通知,对象释放将抛出异常
+            </summary>
+        </member>
+        <member name="M:UtilZ.Dotnet.Ex.Base.EventWaitHandleInfo.TrySet(System.Object)">
+            <summary>
+            尝试发出通知,成功返回true,否则返回false
+            </summary>
+            <param name="tag">tag</param>
+            <returns>成功返回true,否则返回false</returns>
+        </member>
+        <member name="M:UtilZ.Dotnet.Ex.Base.EventWaitHandleInfo.TrySet">
+            <summary>
+            尝试发出通知,成功返回true,否则返回false
+            </summary>
+            <returns>成功返回true,否则返回false</returns>
+        </member>
         <member name="T:UtilZ.Dotnet.Ex.Base.BlockingCollectionEx`1">
             <summary>
             线程安全集合提供阻止和限制功能
@@ -782,6 +900,33 @@
             </summary>
             <param name="fileToDecompress"></param>
         </member>
+        <member name="T:UtilZ.Dotnet.Ex.Base.ConstantHelper">
+            <summary>
+            常量辅助类
+            </summary>
+        </member>
+        <member name="M:UtilZ.Dotnet.Ex.Base.ConstantHelper.AssertClass(System.Type)">
+            <summary>
+            断言类型T为类类型
+            </summary>
+            <param name="type">类型</param>
+        </member>
+        <member name="M:UtilZ.Dotnet.Ex.Base.ConstantHelper.GetConstantFieldInfoExList``1(System.Boolean)">
+            <summary>
+            获取常量字段特性信息列表
+            </summary>
+            <typeparam name="T">常量定义类</typeparam>
+            <param name="ignoreNoAttibute">忽略未标记的字段[true:忽略;false:使用字段名。默认为true]</param>
+            <returns>PropertyFieldInfo列表</returns>
+        </member>
+        <member name="M:UtilZ.Dotnet.Ex.Base.ConstantHelper.GetConstantFieldInfoExList(System.Type,System.Boolean)">
+            <summary>
+            获取常量字段特性信息列表
+            </summary>
+            <param name="type">类类型</param>
+            <param name="ignoreNoAttibute">忽略未标记的字段[true:忽略;false:使用字段名。默认为true]</param>
+            <returns>PropertyFieldInfo列表</returns>
+        </member>
         <member name="T:UtilZ.Dotnet.Ex.Base.ConvertEx">
             <summary>
             Convert类型扩展方法类
@@ -906,6 +1051,13 @@
             <param name="key">对象key</param>
             <param name="obj">对象</param>
         </member>
+        <member name="M:UtilZ.Dotnet.Ex.Base.DebugEx.Get(System.String)">
+            <summary>
+            获取一个调试对象
+            </summary>
+            <param name="key">对象key</param>
+            <returns>对象</returns>
+        </member>
         <member name="M:UtilZ.Dotnet.Ex.Base.DebugEx.Remove(System.String)">
             <summary>
             移除一个调试对象
@@ -1011,12 +1163,19 @@
             <param name="displayName">显示文本</param>
             <returns>枚举项</returns>
         </member>
-        <member name="M:UtilZ.Dotnet.Ex.Base.EnumEx.GetDisplayNameExAttributeItemList(System.Type)">
+        <member name="M:UtilZ.Dotnet.Ex.Base.EnumEx.GetEnumFieldInfoExList``1">
             <summary>
-            获取枚举特性转换成的DropdownBindingItem列表
+            获取枚举字段特性信息列表
+            </summary>
+            <typeparam name="T">枚举类型</typeparam>
+            <returns>PropertyFieldInfo列表</returns>
+        </member>
+        <member name="M:UtilZ.Dotnet.Ex.Base.EnumEx.GetEnumFieldInfoExList(System.Type)">
+            <summary>
+            获取枚举字段特性信息列表
             </summary>
             <param name="enumType">枚举类型</param>
-            <returns>绑定列表集合</returns>
+            <returns>PropertyFieldInfo列表</returns>
         </member>
         <member name="M:UtilZ.Dotnet.Ex.Base.EnumEx.GetEnumItemAttribute``2">
             <summary>
@@ -1199,112 +1358,6 @@
             释放资源方法
             </summary>
             <param name="isDispose">是否释放标识</param>
-        </member>
-        <member name="T:UtilZ.Dotnet.Ex.Base.AutoEventWaitHandleManager">
-            <summary>
-            EventWaitHandle自动管理类
-            </summary>
-        </member>
-        <member name="F:UtilZ.Dotnet.Ex.Base.AutoEventWaitHandleManager._htEventWaitHandle">
-            <summary>
-            key:EventKey(object);value:(EventWaitHandleInfo)
-            </summary>
-        </member>
-        <member name="M:UtilZ.Dotnet.Ex.Base.AutoEventWaitHandleManager.AddIdToCache(System.Object,System.Int32)">
-            <summary>
-            
-            </summary>
-            <param name="id"></param>
-            <param name="expirationMilliseconds">缓存项有效时间,小于等于0永不过期,单位/毫秒</param>
-        </member>
-        <member name="M:UtilZ.Dotnet.Ex.Base.AutoEventWaitHandleManager.CreateEventWaitHandle(System.Object,System.Int32,System.Object)">
-            <summary>
-            创建并添加EventWaitHandle
-            </summary>
-            <param name="id">EventWaitHandle的唯一标识</param>
-            <param name="expirationMilliseconds">缓存项有效时间,小于等于0永不过期,单位/毫秒</param>
-            <param name="tag">Tag</param>
-            <returns>创建的EventWaitHandle</returns>
-        </member>
-        <member name="M:UtilZ.Dotnet.Ex.Base.AutoEventWaitHandleManager.AddEventWaitHandle(System.Object,System.Threading.EventWaitHandle,System.Int32,System.Object)">
-            <summary>
-            添加外部创建的EventWaitHandle
-            </summary>
-            <param name="id">EventWaitHandle的唯一标识</param>
-            <param name="eventWaitHandle">EventWaitHandle</param>
-            <param name="expiration">缓存项有效时间,小于等于0永不过期,单位/毫秒</param>
-            <param name="tag">Tag</param>
-        </member>
-        <member name="M:UtilZ.Dotnet.Ex.Base.AutoEventWaitHandleManager.SetEventWaitHandle(System.Object,System.Threading.EventWaitHandle,System.Int32,System.Object)">
-            <summary>
-            设置外部创建的EventWaitHandle,如果id存在则替换,否则则添加
-            </summary>
-            <param name="id">EventWaitHandle的唯一标识</param>
-            <param name="eventWaitHandle">EventWaitHandle</param>
-            <param name="expiration">缓存项有效时间,小于等于0永不过期,单位/毫秒</param>
-            <param name="tag">Tag</param>
-        </member>
-        <member name="M:UtilZ.Dotnet.Ex.Base.AutoEventWaitHandleManager.GetEventWaitHandle(System.Object)">
-            <summary>
-            获取EventWaitHandle
-            </summary>
-            <param name="id">EventWaitHandle的唯一标识</param>
-            <returns>EventWaitHandle</returns>
-        </member>
-        <member name="M:UtilZ.Dotnet.Ex.Base.AutoEventWaitHandleManager.GetEventWaitHandleInfo(System.Object)">
-            <summary>
-            获取EventWaitHandleInfo
-            </summary>
-            <param name="id">EventWaitHandle的唯一标识</param>
-            <returns>EventWaitHandleInfo</returns>
-        </member>
-        <member name="M:UtilZ.Dotnet.Ex.Base.AutoEventWaitHandleManager.RemoveEventWaitHandle(System.Object)">
-            <summary>
-            移除并返回EventWaitHandle
-            </summary>
-            <param name="id">EventWaitHandle的唯一标识</param>
-            <returns>EventWaitHandle</returns>
-        </member>
-        <member name="T:UtilZ.Dotnet.Ex.Base.EventWaitHandleInfo">
-            <summary>
-            EventWaitHandleInfo
-            </summary>
-        </member>
-        <member name="P:UtilZ.Dotnet.Ex.Base.EventWaitHandleInfo.Id">
-            <summary>
-            EventWaitHandle的唯一标识
-            </summary>
-        </member>
-        <member name="P:UtilZ.Dotnet.Ex.Base.EventWaitHandleInfo.EventWaitHandle">
-            <summary>
-            EventWaitHandle
-            </summary>
-        </member>
-        <member name="P:UtilZ.Dotnet.Ex.Base.EventWaitHandleInfo.Tag">
-            <summary>
-            Tag
-            </summary>
-        </member>
-        <member name="M:UtilZ.Dotnet.Ex.Base.EventWaitHandleInfo.#ctor(System.Object,System.Threading.EventWaitHandle,System.Object)">
-            <summary>
-            构造函数
-            </summary>
-            <param name="id"></param>
-            <param name="eventWaitHandle"></param>
-            <param name="tag"></param>
-        </member>
-        <member name="M:UtilZ.Dotnet.Ex.Base.EventWaitHandleInfo.Set(System.Object)">
-            <summary>
-            发出通知,对象释放将抛出异常
-            </summary>
-            <param name="tag">tag</param>
-        </member>
-        <member name="M:UtilZ.Dotnet.Ex.Base.EventWaitHandleInfo.TrySet(System.Object)">
-            <summary>
-            尝试发出通知,成功返回true,否则返回false
-            </summary>
-            <param name="tag">tag</param>
-            <returns>成功返回true,否则返回false</returns>
         </member>
         <member name="T:UtilZ.Dotnet.Ex.Base.FileEx">
             <summary>
@@ -1530,6 +1583,13 @@
             <summary>
             IP类型扩展方法类
             </summary>
+        </member>
+        <member name="M:UtilZ.Dotnet.Ex.Base.IPAddressEx.GetIPString(System.Net.EndPoint)">
+            <summary>
+            获取EndPoint String
+            </summary>
+            <param name="endPoint">EndPoint</param>
+            <returns>IP String</returns>
         </member>
         <member name="M:UtilZ.Dotnet.Ex.Base.IPAddressEx.ValidateIPV4(System.String)">
             <summary>
@@ -2485,17 +2545,25 @@
              Type类型扩展方法类
             </summary>
         </member>
-        <member name="F:UtilZ.Dotnet.Ex.Base.TypeEx._htTypes">
+        <member name="F:UtilZ.Dotnet.Ex.Base.TypeEx._typeDic">
             <summary>
             已创建过后类型[key:类型名称;value:Type]
             </summary>
         </member>
-        <member name="M:UtilZ.Dotnet.Ex.Base.TypeEx.ConvertTypeByTypeFullName(System.String,System.Boolean)">
+        <member name="M:UtilZ.Dotnet.Ex.Base.TypeEx.GetType(System.String,System.Boolean)">
             <summary>
             根据类型全名称转换为类型
             </summary>
-            <param name="typeFullName">类型名称[格式:类型名,程序集命名.例如:Oracle.ManagedDataAccess.Client.OracleConnection,Oracle.ManagedDataAccess, Version=4.121.1.0, Culture=neutral, PublicKeyToken=89b483f429c47342]</param>
+            <param name="assemblyQualifiedName">System.Type.AssemblyQualifiedName
+            例如:Oracle.ManagedDataAccess.Client.OracleConnection,Oracle.ManagedDataAccess, Version=4.121.1.0, Culture=neutral, PublicKeyToken=89b483f429c47342</param>
             <param name="hasCache">是否缓存转换之后的类型[true:缓存;false:不缓存]</param>
+        </member>
+        <member name="M:UtilZ.Dotnet.Ex.Base.TypeEx.GetAssemblyByName(System.String)">
+            <summary>
+            根据程序集名称获取程序集,成功返回Assembly,失败返回null
+            </summary>
+            <param name="assemblyName">可带路径的程序集名称</param>
+            <returns></returns>
         </member>
         <member name="M:UtilZ.Dotnet.Ex.Base.TypeEx.IsSubInterfaceOf(System.Type,System.Type)">
             <summary>
@@ -2504,6 +2572,34 @@
             <param name="type">当前的类型</param>
             <param name="interfaceType">接口类型</param>
             <returns>true:继承自接口;false:未继承自接口</returns>
+        </member>
+        <member name="M:UtilZ.Dotnet.Ex.Base.TypeEx.TypeHasNoParaConstructors(System.Type)">
+            <summary>
+            检查类型是否有无参构造函数[true:有无参构造函数;false:没有无参构造函数]
+            </summary>
+            <param name="type">被检查类型</param>
+            <returns>true:有无参构造函数;false:没有无参构造函数</returns>
+        </member>
+        <member name="M:UtilZ.Dotnet.Ex.Base.TypeEx.GetTypeName``1">
+            <summary>
+            获取 System.Type.AssemblyQualifiedName 的程序集限定名，其中包括从中加载 System.Type.AssemblyQualifiedName 的程序集的名称
+            </summary>
+            <typeparam name="T">泛型类型</typeparam>
+            <returns>System.Type.AssemblyQualifiedName</returns>
+        </member>
+        <member name="M:UtilZ.Dotnet.Ex.Base.TypeEx.GetTypeName(System.Object)">
+            <summary>
+            获取 System.Type.AssemblyQualifiedName 的程序集限定名，其中包括从中加载 System.Type.AssemblyQualifiedName 的程序集的名称
+            </summary>
+            <param name="obj">获取类型的名称的对象</param>
+            <returns>System.Type.AssemblyQualifiedName</returns>
+        </member>
+        <member name="M:UtilZ.Dotnet.Ex.Base.TypeEx.GetTypeName(System.Type)">
+            <summary>
+            获取 System.Type.AssemblyQualifiedName 的程序集限定名，其中包括从中加载 System.Type.AssemblyQualifiedName 的程序集的名称
+            </summary>
+            <param name="type">类型</param>
+            <returns>System.Type.AssemblyQualifiedName</returns>
         </member>
         <member name="T:UtilZ.Dotnet.Ex.Base.XmlEx">
             <summary>
@@ -3821,7 +3917,7 @@
             <summary>
             获取指定类型名称数组
             </summary>
-            <typeparam name="T">目标类型</typeparam>
+            <param name="groupId">组标识</param>
             <returns>类型所有定义常量值数组</returns>
         </member>
         <member name="T:UtilZ.Dotnet.Ex.Base.MemoryCache.CacheEntryRemovedArguments">
@@ -4491,44 +4587,44 @@
             <param name="targetValueType">目标类型</param>
             <returns>true:是;false:否</returns>
         </member>
-        <member name="T:UtilZ.Dotnet.Ex.Base.DropdownBindingItem">
+        <member name="T:UtilZ.Dotnet.Ex.Base.FieldInfoEx">
             <summary>
-            UI显示基类
+            字段扩展信息
             </summary>
         </member>
-        <member name="P:UtilZ.Dotnet.Ex.Base.DropdownBindingItem.DisplayName">
+        <member name="P:UtilZ.Dotnet.Ex.Base.FieldInfoEx.DisplayName">
             <summary>
             获取或设置显示名称
             </summary>
         </member>
-        <member name="P:UtilZ.Dotnet.Ex.Base.DropdownBindingItem.Description">
+        <member name="P:UtilZ.Dotnet.Ex.Base.FieldInfoEx.Description">
             <summary>
             获取或设置描述
             </summary>
         </member>
-        <member name="P:UtilZ.Dotnet.Ex.Base.DropdownBindingItem.Value">
+        <member name="P:UtilZ.Dotnet.Ex.Base.FieldInfoEx.Value">
             <summary>
             获取或设置值
             </summary>
         </member>
-        <member name="P:UtilZ.Dotnet.Ex.Base.DropdownBindingItem.Tag">
+        <member name="P:UtilZ.Dotnet.Ex.Base.FieldInfoEx.Tag">
             <summary>
             数据标识
             </summary>
         </member>
-        <member name="M:UtilZ.Dotnet.Ex.Base.DropdownBindingItem.#ctor">
+        <member name="M:UtilZ.Dotnet.Ex.Base.FieldInfoEx.#ctor">
             <summary>
             默认构造函数
             </summary>
         </member>
-        <member name="M:UtilZ.Dotnet.Ex.Base.DropdownBindingItem.#ctor(System.String,System.Object)">
+        <member name="M:UtilZ.Dotnet.Ex.Base.FieldInfoEx.#ctor(System.String,System.Object)">
             <summary>
             构造函数
             </summary>
             <param name="displayName">显示文本</param>
             <param name="value">值</param>
         </member>
-        <member name="M:UtilZ.Dotnet.Ex.Base.DropdownBindingItem.#ctor(System.String,System.Object,System.String)">
+        <member name="M:UtilZ.Dotnet.Ex.Base.FieldInfoEx.#ctor(System.String,System.Object,System.String)">
             <summary>
             构造函数
             </summary>
@@ -4536,7 +4632,7 @@
             <param name="value">值</param>
             <param name="description">项描述</param>
         </member>
-        <member name="M:UtilZ.Dotnet.Ex.Base.DropdownBindingItem.#ctor(System.String,System.Object,System.String,System.Object)">
+        <member name="M:UtilZ.Dotnet.Ex.Base.FieldInfoEx.#ctor(System.String,System.Object,System.String,System.Object)">
             <summary>
             构造函数
             </summary>
@@ -4545,13 +4641,13 @@
             <param name="description">项描述</param>
             <param name="tag">数据标识</param>
         </member>
-        <member name="M:UtilZ.Dotnet.Ex.Base.DropdownBindingItem.ToString">
+        <member name="M:UtilZ.Dotnet.Ex.Base.FieldInfoEx.ToString">
             <summary>
             重写ToString
             </summary>
             <returns>下拉框显示文本</returns>
         </member>
-        <member name="M:UtilZ.Dotnet.Ex.Base.DropdownBindingItem.GenericToDropdownBindingItems``1(System.Collections.Generic.IEnumerable{``0},System.String)">
+        <member name="M:UtilZ.Dotnet.Ex.Base.FieldInfoEx.GenericToDropdownBindingItems``1(System.Collections.Generic.IEnumerable{``0},System.String)">
             <summary>
             转换泛型集合为DropdownBindingItem列表
             </summary>
@@ -4560,7 +4656,7 @@
             <param name="displayMember">显示的成员,属性名或字段名,当为null时调用成员的ToString方法的值作为显示值[默认值为null]</param>
             <returns>DropdownBindingItem列表</returns>
         </member>
-        <member name="M:UtilZ.Dotnet.Ex.Base.DropdownBindingItem.GenericToDropdownBindingItems``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.String})">
+        <member name="M:UtilZ.Dotnet.Ex.Base.FieldInfoEx.GenericToDropdownBindingItems``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.String})">
             <summary>
             转换泛型集合为DropdownBindingItem列表
             </summary>
@@ -7531,9 +7627,9 @@
             本地消息队列中心
             </summary>
         </member>
-        <member name="F:UtilZ.Dotnet.Ex.LMQ.LMQCenter._htSubscibeItems">
+        <member name="F:UtilZ.Dotnet.Ex.LMQ.LMQCenter._subscibeItemDic">
             <summary>
-            订阅项集合
+            订阅组字典集合[key:Topic;value:SubscibeGroup]
             </summary>
         </member>
         <member name="M:UtilZ.Dotnet.Ex.LMQ.LMQCenter.Subscibe(UtilZ.Dotnet.Ex.LMQ.SubscibeItem)">
@@ -7548,25 +7644,30 @@
             </summary>
             <param name="item">订阅项</param>
         </member>
+        <member name="M:UtilZ.Dotnet.Ex.LMQ.LMQCenter.Clear">
+            <summary>
+            清空所有订阅
+            </summary>
+        </member>
         <member name="M:UtilZ.Dotnet.Ex.LMQ.LMQCenter.Clear(System.String)">
             <summary>
-            清空订阅
+            清空指定主题订阅
             </summary>
-            <param name="topic">订阅ID下要清空订阅主题,为null清空所有订阅组</param>
+            <param name="topic">主题</param>
         </member>
         <member name="M:UtilZ.Dotnet.Ex.LMQ.LMQCenter.Publish(System.String,System.Object)">
             <summary>
             发布数据消息
             </summary>
-            <param name="topic">主题名称</param>
-            <param name="obj">数据对象</param>
+            <param name="topic">主题</param>
+            <param name="message">消息</param>
         </member>
         <member name="T:UtilZ.Dotnet.Ex.LMQ.LMQConfigManager">
             <summary>
             本地消息队列中心配置管理类
             </summary>
         </member>
-        <member name="F:UtilZ.Dotnet.Ex.LMQ.LMQConfigManager._htLMQConfig">
+        <member name="F:UtilZ.Dotnet.Ex.LMQ.LMQConfigManager._lmqConfigDic">
             <summary>
             本地消息队列中心配置集合
             </summary>
@@ -7600,31 +7701,35 @@
             主题
             </summary>
         </member>
-        <member name="P:UtilZ.Dotnet.Ex.LMQ.LMQConfig.IsSyncPublish">
+        <member name="P:UtilZ.Dotnet.Ex.LMQ.LMQConfig.SyncPublish">
             <summary>
             发布数据时是否同步发布[true:单线程同同步发布;false:多线程并行发布]
             </summary>
         </member>
-        <member name="M:UtilZ.Dotnet.Ex.LMQ.LMQConfig.#ctor(System.String,System.Boolean)">
+        <member name="P:UtilZ.Dotnet.Ex.LMQ.LMQConfig.ParallelPublish">
+            <summary>
+            多线程并行发布[true:多线程并行发布;false:单线程循环发布]
+            </summary>
+        </member>
+        <member name="M:UtilZ.Dotnet.Ex.LMQ.LMQConfig.#ctor(System.String)">
             <summary>
             构造函数
             </summary>
             <param name="topic">主题</param>
-            <param name="isSyncPublish">发布数据时是否同步发布[true:单线程同同步发布;false:多线程并行发布]</param>
         </member>
         <member name="T:UtilZ.Dotnet.Ex.LMQ.SubscibeGroup">
             <summary>
             订阅组
             </summary>
         </member>
-        <member name="F:UtilZ.Dotnet.Ex.LMQ.SubscibeGroup._items">
+        <member name="F:UtilZ.Dotnet.Ex.LMQ.SubscibeGroup._subscibeItemList">
             <summary>
-            订阅项集合
+            订阅项列表
             </summary>
         </member>
-        <member name="F:UtilZ.Dotnet.Ex.LMQ.SubscibeGroup._itemsMonitor">
+        <member name="F:UtilZ.Dotnet.Ex.LMQ.SubscibeGroup._subscibeItemListMonitor">
             <summary>
-            订阅项集合线程锁
+            订阅项列表线程锁
             </summary>
         </member>
         <member name="F:UtilZ.Dotnet.Ex.LMQ.SubscibeGroup._asynPublishParaQueueThread">
@@ -7638,17 +7743,17 @@
             </summary>
             <param name="topic">主题</param>
         </member>
-        <member name="M:UtilZ.Dotnet.Ex.LMQ.SubscibeGroup.PublishThreadMethod(System.Object)">
+        <member name="M:UtilZ.Dotnet.Ex.LMQ.SubscibeGroup.PublishThreadMethod(UtilZ.Dotnet.Ex.LMQ.PublishItem)">
             <summary>
             发布消息线程方法
             </summary>
-            <param name="dataMessage">数据消息</param>
+            <param name="publishItem">数据消息</param>
         </member>
         <member name="M:UtilZ.Dotnet.Ex.LMQ.SubscibeGroup.Publish(System.Object)">
             <summary>
             发布消息
             </summary>
-            <param name="dataMessage">数据消息</param>
+            <param name="message">消息</param>
         </member>
         <member name="P:UtilZ.Dotnet.Ex.LMQ.SubscibeGroup.Count">
             <summary>
@@ -7723,7 +7828,7 @@
             <summary>
             发布消息
             </summary>
-            <param name="message">数据消息</param>
+            <param name="message">消息</param>
         </member>
         <member name="T:UtilZ.Dotnet.Ex.Log.AppenderBase">
             <summary>

@@ -213,7 +213,7 @@ namespace UtilZ.Dotnet.DBIBase.Factory
         /// <returns>数据库访问工厂实例</returns>
         private static IDBFactory GetDBFactoryByDBFactoryName(string dbFactoryName)
         {
-            Type type = TypeEx.ConvertTypeByTypeFullName(dbFactoryName, true);
+            Type type = TypeEx.GetType(dbFactoryName, true);
             if (type == null)
             {
                 throw new ApplicationException(string.Format("获取名称为{0}数据库创建工厂实例失败", dbFactoryName));

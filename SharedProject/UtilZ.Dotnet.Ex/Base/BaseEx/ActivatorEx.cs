@@ -25,7 +25,7 @@ namespace UtilZ.Dotnet.Ex.Base
                 return null;
             }
 
-            Type type = TypeEx.ConvertTypeByTypeFullName(typeFullName);
+            Type type = TypeEx.GetType(typeFullName);
             if (type == null)
             {
                 return null;

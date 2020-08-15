@@ -29,6 +29,36 @@ namespace UtilZ.Dotnet.Ex.Base
             _currentAssemblyDirectory = System.AppDomain.CurrentDomain.BaseDirectory;
         }
 
+
+
+        /// <summary>
+        /// 获取定义类型程序集目录
+        /// </summary>
+        /// <typeparam name="T">类型</typeparam>
+        /// <returns>定义类型程序集目录</returns>
+        public static string GetAssemblyDirectory<T>()
+        {
+            return GetAssemblyDirectory(typeof(T));
+        }
+
+        /// <summary>
+        /// 获取定义类型程序集目录
+        /// </summary>
+        /// <param name="type">类型</param>
+        /// <returns>定义类型程序集目录</returns>
+        public static string GetAssemblyDirectory(Type type)
+        {
+            if (type == null)
+            {
+                throw new ArgumentNullException(nameof(type));
+            }
+
+            return Path.GetDirectoryName(type.Assembly.Location);
+        }
+
+
+
+
         /// <summary>
         /// 复制文件夹内容到指定目录
         /// </summary>

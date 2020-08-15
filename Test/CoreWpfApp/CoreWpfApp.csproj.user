@@ -7,6 +7,15 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="TestAutoCompleteTextBox.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="TestAutoCompleteTextBox222.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="TestNumberControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="TestWave.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -22,6 +31,12 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="TestAsynQueue.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="TestAutoCompleteTextBox.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="TestAutoCompleteTextBox222.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="TestChart.xaml">
@@ -40,6 +55,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="TestMemoryCacheEx.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="TestNumberControl.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="TestWave.xaml">

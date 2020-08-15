@@ -7,6 +7,7 @@ using System.Net.Sockets;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Text.RegularExpressions;
+using UtilZ.Dotnet.Ex.Log;
 
 namespace UtilZ.Dotnet.Ex.Base
 {
@@ -15,6 +16,48 @@ namespace UtilZ.Dotnet.Ex.Base
     /// </summary>
     public static class IPAddressEx
     {
+        /// <summary>
+        /// 获取EndPoint String
+        /// </summary>
+        /// <param name="endPoint">EndPoint</param>
+        /// <returns>IP String</returns>
+        public static string GetIPString(EndPoint endPoint)
+        {
+            if (endPoint == null)
+            {
+                return string.Empty;
+            }
+
+            string ipStr;
+            try
+            {
+                if (endPoint is IPEndPoint)
+                {
+                    //::ffff:127.0.0.1
+                    var ipEndPoint = (IPEndPoint)endPoint;
+                    ipStr = ipEndPoint.Address.ToString();
+                    int captureStartIndex = ipStr.LastIndexOf(':');
+                    if (captureStartIndex >= 0)
+                    {
+                        ipStr = ipStr.Substring(captureStartIndex + 1);
+                    }
+
+                    //ipStr = $"{ipStr}:{ipEndPoint.Port}";
+                }
+                else
+                {
+                    ipStr = endPoint.ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+                ipStr = endPoint.ToString();
+                Loger.Error(ex, "转换IP地址异常");
+            }
+
+            return ipStr;
+        }
+
         /// <summary>
         /// 验证IP是否是一个IPV4地址[是合法的ipv4地址返回true,否则返回flase]
         /// </summary>

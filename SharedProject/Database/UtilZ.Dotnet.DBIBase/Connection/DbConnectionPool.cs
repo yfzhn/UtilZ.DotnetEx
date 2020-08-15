@@ -94,12 +94,9 @@ namespace UtilZ.Dotnet.DBIBase.Connection
                     }
                     else
                     {
-                        lock (this._readConPool)
+                        if (!this._readConPool.TryTake(out con, this._config.GetConTimeout))
                         {
-                            if (!this._readConPool.TryTake(out con, this._config.GetConTimeout))
-                            {
-                                throw new ApplicationException("从连接池获取读连接超时");
-                            }
+                            throw new ApplicationException("从连接池获取读连接超时");
                         }
                     }
                     break;
@@ -110,12 +107,9 @@ namespace UtilZ.Dotnet.DBIBase.Connection
                     }
                     else
                     {
-                        lock (this._writeConPool)
+                        if (!this._writeConPool.TryTake(out con, this._config.GetConTimeout))
                         {
-                            if (!this._writeConPool.TryTake(out con, this._config.GetConTimeout))
-                            {
-                                throw new ApplicationException("从连接池获取写连接超时");
-                            }
+                            throw new ApplicationException("从连接池获取写连接超时");
                         }
                     }
                     break;

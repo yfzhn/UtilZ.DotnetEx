@@ -28,9 +28,9 @@ namespace UtilZ.Dotnet.Ex.Base
         /// <typeparam name="T">常量定义类</typeparam>
         /// <param name="ignoreNoAttibute">忽略未标记的字段[true:忽略;false:使用字段名。默认为true]</param>
         /// <returns>PropertyFieldInfo列表</returns>
-        public static List<PropertyFieldInfo> GetConstantPropertyFieldInfoList<T>(bool ignoreNoAttibute = true)
+        public static List<FieldInfoEx> GetConstantFieldInfoExList<T>(bool ignoreNoAttibute = true)
         {
-            return GetConstantPropertyFieldInfoList(typeof(T), ignoreNoAttibute);
+            return GetConstantFieldInfoExList(typeof(T), ignoreNoAttibute);
         }
 
         /// <summary>
@@ -39,7 +39,7 @@ namespace UtilZ.Dotnet.Ex.Base
         /// <param name="type">类类型</param>
         /// <param name="ignoreNoAttibute">忽略未标记的字段[true:忽略;false:使用字段名。默认为true]</param>
         /// <returns>PropertyFieldInfo列表</returns>
-        public static List<PropertyFieldInfo> GetConstantPropertyFieldInfoList(Type type, bool ignoreNoAttibute = true)
+        public static List<FieldInfoEx> GetConstantFieldInfoExList(Type type, bool ignoreNoAttibute = true)
         {
             AssertClass(type);
 
@@ -75,10 +75,10 @@ namespace UtilZ.Dotnet.Ex.Base
 
             attriItems = attriItems.OrderBy(new Func<Tuple<DisplayNameExAttribute, object>, int>((item) => { return item.Item1.OrderIndex; })).ToList();
 
-            var list = new List<PropertyFieldInfo>();
+            var list = new List<FieldInfoEx>();
             foreach (var enumAttriItem in attriItems)
             {
-                list.Add(new PropertyFieldInfo(enumAttriItem.Item1.DisplayName, enumAttriItem.Item2, enumAttriItem.Item1.Description, enumAttriItem.Item1));
+                list.Add(new FieldInfoEx(enumAttriItem.Item1.DisplayName, enumAttriItem.Item2, enumAttriItem.Item1.Description, enumAttriItem.Item1));
             }
 
             return list;

@@ -23,7 +23,7 @@ namespace UtilZ.Dotnet.Ex.LMQ
         {
             if (string.IsNullOrEmpty(topic))
             {
-                throw new ArgumentException("主题不能为空或null", "topic");
+                throw new ArgumentException("主题不能为空或null", nameof(topic));
             }
 
             this.Topic = topic;

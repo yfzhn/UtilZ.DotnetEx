@@ -137,16 +137,37 @@
     <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\Resource.Designer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\TreeViewZ.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\UCOpacityControlBase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\Voice\AreaType.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\Voice\PeakMeterCtrl.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\Voice\PlayLinePostionSettingArgs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\Voice\VoiceSpecControl.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\Voice\XAxisPlotElementInfo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\Voice\ChannelPlotData.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\Voice\ContentPlotElementInfo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\Voice\GlobalViewPlotElementInfo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\Voice\PlotConstant.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\Voice\PlotElementInfoAbs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\Voice\SelectedInfo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\Voice\UIArea.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\Voice\WaveControl.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\Voice\WaveControl_Draw.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\Voice\WaveControl_Method.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\Voice\WaveControl_Property.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\Voice\WavePlotPara.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\Voice\YAxisPlotElementInfo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\Voice\ZoomInfo.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Winform\Interface\IControl.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Winform\Interface\IForm.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Winform\Interface\IOriginalDataShow.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Winform\Interface\IUIAction.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)WPF\Base\ChromeWindowHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WPF\Base\CountToVisConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)WPF\Base\TextBlockEx.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)WPF\Base\TextBoxEx.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)WPF\Base\ValueConverterAbs.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)WPF\Base\VisibilityBoolConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)WPF\Base\WPFHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\AutoCompleteTextBox\BindingEvaluator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\AutoCompleteTextBox\Enumerations.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\Cabinet\CabinetDeviceUnit.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\Cabinet\SelectedDeviceChangedArgs.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\Cabinet\UCCabinetCalibrationControl.xaml.cs">
@@ -174,7 +195,7 @@
       <DependentUpon>UCSingleCabinetControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\Chart\Axis\AxisAbs.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\Chart\Axis\AxisLabelLocation.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Winform\Base\AxisLabelLocation.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\Chart\Axis\AxisLabelOrientation.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\Chart\Axis\AxisType.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\Chart\Axis\DateTimeAxis.cs" />
@@ -250,6 +271,10 @@
     <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\DateTimePicker.xaml.cs">
       <DependentUpon>DateTimePicker.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\AutoCompleteTextBox\AutoCompleteTextBox.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\AutoCompleteTextBox\ISuggestionProvider.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\AutoCompleteTextBox\SelectionAdapter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\AutoCompleteTextBox\SuggestionProvider.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\GifImage\GifAnimation.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\GifImage\GifFrame.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\GifImage\GifImage.xaml.cs">
@@ -283,6 +308,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\ZoomTranslateContainer.xaml.cs">
       <DependentUpon>ZoomTranslateContainer.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)WPF\Converters\NullOrEmpyToVisibilityConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WPF\Converters\ValueConverterAbs.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="$(MSBuildThisFileDirectory)Resources\dropdown.png" />
@@ -326,6 +353,10 @@
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Winform\Controls\Resource.resx" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="$(MSBuildThisFileDirectory)WPF\Controls\Cabinet\UCCabinetCalibrationControl.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

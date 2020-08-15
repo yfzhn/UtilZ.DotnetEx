@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.Common;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -150,6 +151,32 @@ namespace UtilZ.Dotnet.DBIBase.Core
             parameter.ParameterName = parameterName;
             cmd.Parameters.Add(parameter);
             return parameter;
+        }
+
+        /// <summary>
+        /// 创建命令参数列表
+        /// </summary>
+        /// <param name="dbAccess">IDBAccess</param>
+        /// <param name="parameterNameValueDic">参数字典[Key:参数名称;Value:参数值]</param>
+        /// <returns>命令参数</returns>
+        public static List<IDbDataParameter> CreateParameterList(IDBAccess dbAccess, Dictionary<string, object> parameterNameValueDic)
+        {
+            DbProviderFactory dbProviderFactory = dbAccess.DBInteraction.GetProviderFactory();
+            List<IDbDataParameter> parameterList = new List<IDbDataParameter>();
+            if (parameterNameValueDic == null || parameterNameValueDic.Count == 0)
+            {
+                return parameterList;
+            }
+
+            foreach (var kv in parameterNameValueDic)
+            {
+                DbParameter dbParameter = dbProviderFactory.CreateParameter();
+                dbParameter.ParameterName = kv.Key;
+                dbParameter.Value = kv.Value;
+                parameterList.Add(dbParameter);
+            }
+
+            return parameterList;
         }
     }
 }

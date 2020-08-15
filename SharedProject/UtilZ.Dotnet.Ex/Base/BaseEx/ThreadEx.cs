@@ -205,7 +205,6 @@ namespace UtilZ.Dotnet.Ex.Base
             {
                 var token = threadStartPara.Cts.Token;
                 this._action(new ThreadExPara(token, threadStartPara.Obj));
-
                 if (token.IsCancellationRequested)
                 {
                     this.OnRaiseCompleted(ThreadExCompletedType.Cancel);
@@ -223,7 +222,11 @@ namespace UtilZ.Dotnet.Ex.Base
             {
                 this.OnRaiseCompleted(ThreadExCompletedType.Exception, ex);
             }
-            threadStartPara.Set();
+            finally
+            {
+                this._runing = false;
+                threadStartPara.Set();
+            }
         }
 
         /// <summary>

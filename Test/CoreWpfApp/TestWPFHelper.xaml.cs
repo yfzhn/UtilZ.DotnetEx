@@ -66,7 +66,7 @@ namespace CoreWpfApp
 
         private void btnFindTemplateControlByName_Click(object sender, RoutedEventArgs e)
         {
-            Visual result = WPFHelper.FindTemplateControlByName(slider, "PART_Track");
+            FrameworkElement result = WPFHelper.FindTemplateControlByName(slider, "PART_Track");
         }
     }
 }

@@ -6,6 +6,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using UtilZ.Dotnet.WindowsDesktopEx.Base;
+using UtilZ.Dotnet.WindowsDesktopEx.Winform.Base;
 
 namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls
 {

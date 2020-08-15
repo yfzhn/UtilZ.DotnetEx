@@ -74,9 +74,16 @@ namespace UtilZ.Dotnet.DBIBase.Core
         /// <returns>返回执行结果</returns>
         protected object PrimitiveExecuteScalar(IDbConnection con, string sqlStr, Dictionary<string, object> parameterNameValueDic = null)
         {
-            using (var cmd = DBAccessEx.CreateCommand(this._dbAccess, con, sqlStr, parameterNameValueDic))
+            try
             {
-                return cmd.ExecuteScalar();
+                using (var cmd = DBAccessEx.CreateCommand(this._dbAccess, con, sqlStr, parameterNameValueDic))
+                {
+                    return cmd.ExecuteScalar();
+                }
+            }
+            catch (Exception ex)
+            {
+                return 0;
             }
         }
         #endregion

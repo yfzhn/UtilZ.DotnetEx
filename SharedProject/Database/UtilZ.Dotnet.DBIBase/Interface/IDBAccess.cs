@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using UtilZ.Dotnet.DBIBase.Config;
 using UtilZ.Dotnet.DBIBase.Connection;
 using UtilZ.Dotnet.DBIBase.EF;
+using UtilZ.Dotnet.DBIBase.Interaction;
 using UtilZ.Dotnet.DBIBase.Model;
 
 namespace UtilZ.Dotnet.DBIBase.Interface
@@ -19,6 +20,11 @@ namespace UtilZ.Dotnet.DBIBase.Interface
         /// 数据库编号ID
         /// </summary>
         int DBID { get; }
+
+        /// <summary>
+        /// 数据库交互对象
+        /// </summary>
+        IDBInteraction DBInteraction { get; }
 
         /// <summary>
         /// 数据库配置实例

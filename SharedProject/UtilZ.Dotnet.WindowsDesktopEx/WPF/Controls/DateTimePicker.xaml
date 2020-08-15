@@ -22,7 +22,6 @@
             <Setter Property="VerticalAlignment" Value="Center"/>
             <Setter Property="BorderThickness" Value="0"/>
             <Setter Property="FontSize" Value="13"/>
-            <Setter Property="NumberWidthFillDirection" Value="Left"/>
             <Setter Property="Padding" Value="0"/>
         </Style>
 
@@ -62,17 +61,54 @@
                 </Grid.ColumnDefinitions>
 
 
-                <local:NumberControl Grid.Column="0" Text="2019" Style="{StaticResource numberControlStyle}" x:Name="txtYear" Minimum="0" Maximum="9999" NumberWidth="4"/>
+                <local:NumberControl Grid.Column="0" Value="2019" 
+                                     Style="{StaticResource numberControlStyle}" 
+                                     x:Name="txtYear" 
+                                     Minimum="0" 
+                                     Maximum="9999" 
+                                     IntegerWidth="4" 
+                                     DecimalWidth="0"/>
                 <TextBlock Grid.Column="1" Text="-" Style="{StaticResource textBlockStytle}"/>
-                <local:NumberControl Grid.Column="2" Text="12" Style="{StaticResource numberControlStyle}" x:Name="txtMonth" Minimum="1" Maximum="12" NumberWidth="2"/>
+                <local:NumberControl Grid.Column="2" Value="12" 
+                                     Style="{StaticResource numberControlStyle}" 
+                                     x:Name="txtMonth" 
+                                     Minimum="1" 
+                                     Maximum="12" 
+                                     IntegerWidth="2" 
+                                     DecimalWidth="0"/>
                 <TextBlock Grid.Column="3" Text="-" Style="{StaticResource textBlockStytle}"/>
-                <local:NumberControl Grid.Column="4" Text="17" Style="{StaticResource numberControlStyle}" x:Name="txtDay" NumberWidth="2"/>
+                <local:NumberControl Grid.Column="4" 
+                                     Value="17" 
+                                     Style="{StaticResource numberControlStyle}" 
+                                     x:Name="txtDay" 
+                                     IntegerWidth="2"/>
 
-                <local:NumberControl Grid.Column="6" Text="11" Style="{StaticResource numberControlStyle}" x:Name="txtHour" Minimum="0" Maximum="23" NumberWidth="2"/>
+                <local:NumberControl Grid.Column="6" 
+                                     Value="11" 
+                                     Style="{StaticResource numberControlStyle}" 
+                                     x:Name="txtHour" 
+                                     Minimum="0"
+                                     Maximum="23" 
+                                     IntegerWidth="2"
+                                     DecimalWidth="0"/>
                 <TextBlock Grid.Column="7" Text=":" Style="{StaticResource textBlockStytle}"/>
-                <local:NumberControl Grid.Column="8" Text="37" Style="{StaticResource numberControlStyle}" x:Name="txtMinute" Minimum="0" Maximum="59" NumberWidth="2"/>
+                <local:NumberControl Grid.Column="8" 
+                                     Value="37" 
+                                     Style="{StaticResource numberControlStyle}" 
+                                     x:Name="txtMinute" 
+                                     Minimum="0" 
+                                     Maximum="59" 
+                                     IntegerWidth="2"
+                                     DecimalWidth="0"/>
                 <TextBlock Grid.Column="9" Text=":" Style="{StaticResource textBlockStytle}"/>
-                <local:NumberControl Grid.Column="10" Text="25" Style="{StaticResource numberControlStyle}" x:Name="txtSecond" Minimum="0" Maximum="59" NumberWidth="2"/>
+                <local:NumberControl Grid.Column="10" 
+                                     Value="25" 
+                                     Style="{StaticResource numberControlStyle}" 
+                                     x:Name="txtSecond" 
+                                     Minimum="0" 
+                                     Maximum="59"
+                                     IntegerWidth="2"
+                                     DecimalWidth="0"/>
             </Grid>
 
 
@@ -138,11 +174,32 @@
 
                             <Border Grid.Column="1" Grid.ColumnSpan="5" BorderThickness="1" BorderBrush="{StaticResource borderBrush}" Margin="-1,0,-1,0"/>
 
-                            <local:NumberControl Grid.Column="1" Text="11" Style="{StaticResource numberControlStyle}" x:Name="txtCalendarHour" Minimum="0" Maximum="23" NumberWidth="2"/>
+                            <local:NumberControl Grid.Column="1"
+                                                 Value="11" 
+                                                 Style="{StaticResource numberControlStyle}" 
+                                                 x:Name="txtCalendarHour" 
+                                                 Minimum="0"
+                                                 Maximum="23" 
+                                                 IntegerWidth="2"
+                                                 DecimalWidth="0"/>
                             <TextBlock Grid.Column="2" Text=":" Style="{StaticResource textBlockStytle}"/>
-                            <local:NumberControl Grid.Column="3" Text="37" Style="{StaticResource numberControlStyle}" x:Name="txtCalendarMinute" Minimum="0" Maximum="59" NumberWidth="2"/>
+                            <local:NumberControl Grid.Column="3" 
+                                                 Value="37" 
+                                                 Style="{StaticResource numberControlStyle}"
+                                                 x:Name="txtCalendarMinute" 
+                                                 Minimum="0" 
+                                                 Maximum="59" 
+                                                 IntegerWidth="2"
+                                                 DecimalWidth="0"/>
                             <TextBlock Grid.Column="4" Text=":" Style="{StaticResource textBlockStytle}"/>
-                            <local:NumberControl Grid.Column="5" Text="25" Style="{StaticResource numberControlStyle}" x:Name="txtCalendarSecond" Minimum="0" Maximum="59" NumberWidth="2"/>
+                            <local:NumberControl Grid.Column="5" 
+                                                 Value="25" 
+                                                 Style="{StaticResource numberControlStyle}" 
+                                                 x:Name="txtCalendarSecond" 
+                                                 Minimum="0"
+                                                 Maximum="59" 
+                                                 IntegerWidth="2"
+                                                 DecimalWidth="0"/>
 
                             <Button Grid.Column="7" Content="确定" Style="{StaticResource buttonStytle}" x:Name="btnCalendarOk" Click="btnCalendarOk_Click"/>
                             <Button Grid.Column="8" Content="取消" Style="{StaticResource buttonStytle}" x:Name="btnCalendarCancell" Click="btnCalendarCancell_Click"/>

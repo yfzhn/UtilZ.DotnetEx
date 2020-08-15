@@ -71,6 +71,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Base\Config\Base\IConfigCustomerRW.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Base\Config\ConfigCore.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Base\Config\ConfigHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Base\Config\IConfig.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Base\ConstantValueDescription\DefaultExtendDescription.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Base\ConstantValueDescription\IExtendDescription.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Base\ConstantValueDescription\ExtendDescriptionAbs.cs" />
@@ -88,7 +89,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Base\Model\NotifyPropertyChangedAbs.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Base\Model\BasePropertyValueVerifyModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Base\BaseEx\ClrSystemType.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Base\Model\PropertyFieldInfo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Base\Model\FieldInfoEx.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Base\Model\IPropertyValueVerify.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Base\Model\PropertyChangedExEventArgs.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Base\Model\PropertyValueVerifyArgs.cs" />

@@ -1,0 +1,421 @@
+﻿<Window x:Class="CoreWpfApp.TestAutoCompleteTextBox"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CoreWpfApp"
+        xmlns:utilz="clr-namespace:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls;assembly=UtilZ.Dotnet.WindowsDesktopEx"
+        mc:Ignorable="d"
+        Title="TestAutoCompleteTextBox" Height="450" Width="800"
+        Loaded="Window_Loaded">
+    <Window.DataContext>
+        <local:TestAutoCompleteTextBoxVM/>
+    </Window.DataContext>
+
+    <Window.Resources>
+        <TextBlock x:Key="LoadingContent" Text="Loading..." Margin="5" FontSize="14" />
+
+        <local:StateSuggestionProvider x:Key="StateSuggestionProvider"/>
+        <local:FreqSuggestionProvider x:Key="freqSuggestionProvider"/>
+
+
+        <DataTemplate x:Key="StateTemplate">
+            <Grid>
+                <TextBlock Text="{Binding Path=Name}"></TextBlock>
+            </Grid>
+        </DataTemplate>
+
+        <local:WebColorsSuggestionProvider x:Key="WebColorsSuggestionProvider"/>
+        <DataTemplate x:Key="WebColorItemTemplate">
+            <Grid Grid.IsSharedSizeScope="True">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="16" SharedSizeGroup="AutoColor"/>
+                    <ColumnDefinition Width="Auto" SharedSizeGroup="AutoName"/>
+                    <ColumnDefinition Width="Auto" SharedSizeGroup="AutoDesc"/>
+                </Grid.ColumnDefinitions>
+                <Border Grid.Column="0" Background="{Binding Brush}"/>
+                <TextBlock Grid.Column="1" Text="{Binding Name}" Margin="5,0,0,0"/>
+                <TextBlock Grid.Column="2" Text="{Binding HexCode}" Margin="5,0,0,0" Foreground="LightGray"/>
+            </Grid>
+        </DataTemplate>
+
+
+
+
+
+
+
+
+
+
+        <BooleanToVisibilityConverter x:Key="BoolToVisConverter" />
+
+        <Style x:Key="MaterialDesignTextBox" TargetType="TextBox">
+
+        </Style>
+
+
+        <Style x:Key="MaterialAutoCompleteTextBox" TargetType="utilz:AutoCompleteTextBox" >
+            <Setter Property="Focusable" Value="True" />
+            <Setter Property="BorderThickness" Value="0 0 0 1"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <!--<Setter Property="KeyboardNavigation.TabNavigation" Value="None"/>-->
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="VerticalContentAlignment" Value="Top"/>
+            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+            <Setter Property="AllowDrop" Value="true"/>
+            <Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst"/>
+            <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
+            <!--<Setter Property="Validation.ErrorTemplate" Value="{DynamicResource MaterialDesignValidationErrorTemplate}"/>-->
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type utilz:AutoCompleteTextBox}">
+                        <Grid>
+                            <DockPanel>
+                                <ContentPresenter ContentSource="Icon"
+                                                  x:Name="PART_Icon"
+                                                  Visibility="{TemplateBinding IconVisibility}" />
+                                <Grid>
+                                    <TextBlock x:Name="PART_Watermark"
+                                               Text="{TemplateBinding Watermark}"
+                                               Visibility="Collapsed"
+                                               VerticalAlignment="Center"
+                                               HorizontalAlignment="Left"
+                                               Focusable="False"
+                                               Foreground="Gray"
+                                               Margin="3,0" />
+
+                                    <TextBox x:Name="PART_Editor"
+                                             Focusable="True"
+                                             HorizontalAlignment="Stretch"
+                                             VerticalAlignment="Center"
+                                             Style="{StaticResource ResourceKey=MaterialDesignTextBox}"
+                                             MaxLength="{Binding Path=MaxLength, RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=TwoWay}"
+                                             CharacterCasing="{Binding Path=CharacterCasing, RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=TwoWay}"
+                                             Text="{Binding Path=Text, RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=TwoWay}" />
+                                </Grid>
+                            </DockPanel>
+
+                            <Popup x:Name="PART_Popup"
+                                   IsOpen="{Binding Path=IsDropDownOpen, RelativeSource={RelativeSource Mode=TemplatedParent},Mode=TwoWay}"
+                                   Width="{TemplateBinding ActualWidth}"
+                                   HorizontalOffset="0"
+                                   MinHeight="25"
+                                   MaxHeight="600"
+                                   AllowsTransparency="True"
+                                   PopupAnimation="Slide"
+                                   Focusable="False">
+                                <Border Background="White"
+                                        BorderThickness="1"
+                                        BorderBrush="Gray"
+                                        CornerRadius="0"
+                                        Padding="2">
+                                    <Grid>
+                                        <ListBox x:Name="PART_Selector"
+                                                 ItemTemplate="{TemplateBinding ItemTemplate}"
+                                                 ItemTemplateSelector="{TemplateBinding ItemTemplateSelector}"
+                                                 Focusable="False"
+                                                 BorderThickness="0"
+                                                 MaxHeight="{Binding Path=MaxPopupHeight, RelativeSource={RelativeSource Mode=TemplatedParent},Mode=TwoWay}"
+                                                 ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                                                 ScrollViewer.VerticalScrollBarVisibility="Auto">
+                                        </ListBox>
+
+                                        <Border Visibility="{Binding Path=IsLoading, RelativeSource={RelativeSource Mode=TemplatedParent}, Converter={StaticResource   ResourceKey=BoolToVisConverter}}">
+                                            <ContentPresenter ContentSource="LoadingContent"/>
+                                        </Border>
+                                    </Grid>
+                                </Border>
+                            </Popup>
+
+                        </Grid>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="Text"
+                                 Value=""
+                                 SourceName="PART_Editor">
+                                <Setter Property="Visibility"
+                                    Value="Visible"
+                                    TargetName="PART_Watermark" />
+                            </Trigger>
+                            <Trigger Property="IconPlacement"
+                                 Value="Left">
+                                <Setter Property="DockPanel.Dock"
+                                    Value="Left"
+                                    TargetName="PART_Icon" />
+                            </Trigger>
+                            <Trigger Property="IconPlacement"
+                                 Value="Right">
+                                <Setter Property="DockPanel.Dock"
+                                    Value="Right"
+                                    TargetName="PART_Icon" />
+                            </Trigger>
+                            <Trigger Property="Validation.HasError" Value="True">
+                                <Setter Property="BorderBrush"
+                                    Value="Red"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="100"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel DataContext="{Binding SelectedPerson}" Orientation="Vertical">
+                <StackPanel Margin="0,20,0,0" Orientation="Vertical">
+                    <TextBlock>Your name</TextBlock>
+                    <TextBox MaxLength="100" CharacterCasing="Upper" 
+                                 HorizontalAlignment="Stretch"
+                                 Margin="0,0,6,0"
+                                 ToolTip="Type your full name please"
+                                 Text="{Binding Path=Name, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, ValidatesOnNotifyDataErrors=True, Mode=TwoWay}">
+                    </TextBox>
+                </StackPanel>
+
+                <StackPanel Margin="0,20,0,0" Orientation="Vertical">
+                    <TextBlock>State</TextBlock>
+                    <utilz:AutoCompleteTextBox HorizontalAlignment="Stretch"
+                                                 Style="{StaticResource MaterialAutoCompleteTextBox}"
+                                                 MaxLength="50"
+                                                 CharacterCasing="Upper"
+                                                 DisplayMember="Name"
+                                                 Height="26"
+                                                 Margin="0,0,6,0"
+                                                 Provider="{StaticResource ResourceKey=StateSuggestionProvider}"
+                                                 ItemTemplate="{StaticResource ResourceKey=StateTemplate}"
+                                                 LoadingContent="{StaticResource LoadingContent}"
+                                                 SelectedItem="{Binding Path=State, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                                 Watermark="Select a state">
+                    </utilz:AutoCompleteTextBox>
+
+                </StackPanel>
+
+                <StackPanel Margin="0,20,0,0" Orientation="Vertical">
+                    <TextBlock>Favorite Color</TextBlock>
+                    <utilz:AutoCompleteTextBox HorizontalAlignment="Stretch"
+                                                 Style="{StaticResource MaterialAutoCompleteTextBox}"
+                                                 MaxLength="50"
+                                                 CharacterCasing="Upper"
+                                                 DisplayMember="Name"
+                                                 Height="26"
+                                                 Margin="0,0,6,0"
+                                                 Provider="{StaticResource ResourceKey=WebColorsSuggestionProvider}"
+                                                 ItemTemplate="{StaticResource ResourceKey=WebColorItemTemplate}"
+                                                 SelectedItem="{Binding Path=Color, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                 Watermark="Enter favorite color">
+                        <utilz:AutoCompleteTextBox.LoadingContent>
+                            <TextBlock Text="Loading..." Margin="5" FontSize="14" />
+                        </utilz:AutoCompleteTextBox.LoadingContent>
+                    </utilz:AutoCompleteTextBox>
+
+                </StackPanel>
+            </StackPanel>
+
+            <GridSplitter Grid.Column="1" Width="5" HorizontalAlignment="Stretch"/>
+
+            <DataGrid Grid.Column="2"
+                          AutoGenerateColumns="False"
+                          ItemsSource="{Binding People}"
+                          SelectedItem="{Binding SelectedPerson}"
+                          HorizontalGridLinesBrush="LightGray"
+                          VerticalGridLinesBrush="LightGray">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
+                    <DataGridTemplateColumn Header="State">
+                        <DataGridTemplateColumn.CellEditingTemplate>
+                            <DataTemplate>
+                                <utilz:AutoCompleteTextBox MaxLength="50"
+                                                             CharacterCasing="Upper"
+                                                             DisplayMember="Name"
+                                                             Provider="{StaticResource ResourceKey=StateSuggestionProvider}"
+                                                             ItemTemplate="{StaticResource ResourceKey=StateTemplate}"
+                                                             LoadingContent="{StaticResource LoadingContent}"
+                                                             SelectedItem="{Binding State, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                                             />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellEditingTemplate>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding State.Name}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Header="Color">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <ContentPresenter Content="{Binding Color}" ContentTemplate="{StaticResource WebColorItemTemplate}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                        <DataGridTemplateColumn.CellEditingTemplate>
+                            <DataTemplate>
+                                <utilz:AutoCompleteTextBox MaxLength="50"
+                                                             CharacterCasing="Upper"
+                                                             DisplayMember="Name"
+                                                             Provider="{StaticResource ResourceKey=WebColorsSuggestionProvider}"
+                                                             ItemTemplate="{StaticResource ResourceKey=WebColorItemTemplate}"
+                                                             LoadingContent="{StaticResource LoadingContent}"
+                                                             SelectedItem="{Binding Color, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                                             />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellEditingTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <Grid.Background>
+                <SolidColorBrush Color="Gray" Opacity="0.4"/>
+            </Grid.Background>
+
+            <Grid.Resources>
+                <Style x:Key="freqAutoCompleteTextBoxStyle" TargetType="utilz:AutoCompleteTextBox" >
+                    <Setter Property="Focusable" Value="True" />
+                    <Setter Property="BorderThickness" Value="0 0 0 1"/>
+                    <Setter Property="Background" Value="Transparent"/>
+                    <!--<Setter Property="KeyboardNavigation.TabNavigation" Value="None"/>-->
+                    <Setter Property="HorizontalContentAlignment" Value="Left"/>
+                    <Setter Property="VerticalContentAlignment" Value="Top"/>
+                    <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+                    <Setter Property="AllowDrop" Value="true"/>
+                    <Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst"/>
+                    <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
+                    <!--<Setter Property="Validation.ErrorTemplate" Value="{DynamicResource MaterialDesignValidationErrorTemplate}"/>-->
+                    <Setter Property="Validation.ErrorTemplate" Value="{x:Null}"/>
+
+                    <!--<Setter Property="Validation.ErrorTemplate">
+                        <Setter.Value>
+                            <ControlTemplate>
+                                <Border BorderBrush="Green" BorderThickness="1" Margin="0">
+                                    <AdornedElementPlaceholder/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>-->
+
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type utilz:AutoCompleteTextBox}">
+                                <Grid>
+                                    <DockPanel>
+                                        <ContentPresenter ContentSource="Icon" x:Name="PART_Icon" Visibility="{TemplateBinding IconVisibility}" />
+                                        <Grid>
+                                            <TextBlock x:Name="PART_Watermark"
+                                                       Text="{TemplateBinding Watermark}"
+                                                       Visibility="Collapsed"
+                                                       VerticalAlignment="Center"
+                                                       HorizontalAlignment="Left"
+                                                       Focusable="False"
+                                                       Foreground="Gray"
+                                                       Margin="3,0" />
+
+                                            <TextBox x:Name="PART_Editor"
+                                                     Focusable="True"
+                                                     HorizontalAlignment="Stretch"
+                                                     VerticalAlignment="Center"
+                                                     TextChanged="PART_Editor_TextChanged"
+                                                     Style="{StaticResource ResourceKey=MaterialDesignTextBox}"
+                                                     MaxLength="{Binding Path=MaxLength, RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=TwoWay}"
+                                                     CharacterCasing="{Binding Path=CharacterCasing, RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=TwoWay}"
+                                                     Text="{Binding Path=Text, RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=TwoWay}" />
+                                        </Grid>
+                                    </DockPanel>
+
+                                    <Popup x:Name="PART_Popup"
+                                           IsOpen="{Binding Path=IsDropDownOpen, RelativeSource={RelativeSource Mode=TemplatedParent},Mode=TwoWay}"
+                                           Width="{TemplateBinding ActualWidth}"
+                                           HorizontalOffset="0"
+                                           MinHeight="25"
+                                           MaxHeight="600"
+                                           AllowsTransparency="True"
+                                           PopupAnimation="Slide"
+                                           Focusable="False">
+                                        <Border Background="White"
+                                                BorderThickness="1"
+                                                BorderBrush="Gray"
+                                                CornerRadius="0"
+                                                Padding="2">
+                                            <Grid>
+                                                <ListBox x:Name="PART_Selector"
+                                                         ItemTemplate="{TemplateBinding ItemTemplate}"
+                                                         ItemTemplateSelector="{TemplateBinding ItemTemplateSelector}"
+                                                         Focusable="False"
+                                                         BorderThickness="0"
+                                                         MaxHeight="{Binding Path=MaxPopupHeight, RelativeSource={RelativeSource Mode=TemplatedParent},Mode=TwoWay}"
+                                                         ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                                                         ScrollViewer.VerticalScrollBarVisibility="Auto"/>
+
+                                                <Border Visibility="{Binding Path=IsLoading, RelativeSource={RelativeSource Mode=TemplatedParent}, Converter={StaticResource ResourceKey=BoolToVisConverter}}">
+                                                    <ContentPresenter ContentSource="LoadingContent"/>
+                                                </Border>
+                                            </Grid>
+                                        </Border>
+                                    </Popup>
+
+                                </Grid>
+
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="Text" Value="" SourceName="PART_Editor">
+                                        <Setter Property="Visibility" Value="Visible" TargetName="PART_Watermark" />
+                                    </Trigger>
+                                    
+                                    <Trigger Property="IconPlacement" Value="Left">
+                                        <Setter Property="DockPanel.Dock" Value="Left" TargetName="PART_Icon" />
+                                    </Trigger>
+                                    
+                                    <Trigger Property="IconPlacement" Value="Right">
+                                        <Setter Property="DockPanel.Dock" Value="Right" TargetName="PART_Icon" />
+                                    </Trigger>
+                                    
+                                    <Trigger Property="Validation.HasError" Value="True">
+                                        <Setter Property="BorderBrush" Value="Red"/>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </Grid.Resources>
+
+            <utilz:AutoCompleteTextBox HorizontalAlignment="Left"
+                                       Style="{StaticResource freqAutoCompleteTextBoxStyle}"
+                                       MaxLength="50"
+                                       CharacterCasing="Upper"
+                                       Height="18"
+                                       Width="150"
+                                       Margin="10,0,0,0"
+                                       Delay="0"
+                                       Provider="{StaticResource ResourceKey=freqSuggestionProvider}"
+                                       Text="{Binding Path=Freq, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                       Watermark="输入频点">
+                <utilz:AutoCompleteTextBox.LoadingContent>
+                    <TextBlock Text="Loading..." Margin="5" FontSize="14" />
+                </utilz:AutoCompleteTextBox.LoadingContent>
+
+                <utilz:AutoCompleteTextBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding}"/>
+                    </DataTemplate>
+                </utilz:AutoCompleteTextBox.ItemTemplate>
+            </utilz:AutoCompleteTextBox>
+
+
+            <TextBlock x:Name="tb" HorizontalAlignment="Left" Margin="500,50,0,0" VerticalAlignment="Top"/>
+            <Button Content="Button" HorizontalAlignment="Left" Margin="686,50,0,0" VerticalAlignment="Top" Click="Button_Click"/>
+        </Grid>
+    </Grid>
+</Window>

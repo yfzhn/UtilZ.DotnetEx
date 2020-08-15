@@ -20,8 +20,11 @@ namespace DotnetWinFormApp
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            TextBox txt = null;
+            //txt.AutoCompleteCustomSource
+            //txt.AutoCompleteSource
+            //txt.AutoCompleteMode
 
-            
             //XElement ele = null;
             //ele.Add(new XComment());
         }

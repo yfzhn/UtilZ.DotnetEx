@@ -8,6 +8,7 @@ using System.Windows.Media;
 using System.Windows.Shapes;
 using UtilZ.Dotnet.WindowsDesktopEx.Base;
 using UtilZ.Dotnet.Ex.Base;
+using UtilZ.Dotnet.WindowsDesktopEx.Winform.Base;
 
 namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls
 {

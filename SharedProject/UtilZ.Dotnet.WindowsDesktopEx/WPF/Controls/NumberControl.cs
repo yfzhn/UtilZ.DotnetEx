@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Automation.Peers;
 using System.Windows.Controls;
+using System.Windows.Data;
 using System.Windows.Input;
 
 namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls
@@ -41,20 +42,27 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls
         /// </summary>
         public static readonly DependencyProperty MinimumProperty =
             DependencyProperty.Register(nameof(Minimum), typeof(double), typeof(NumberControl),
-                new FrameworkPropertyMetadata(double.NaN, new PropertyChangedCallback(OnPropertyChangedCallback)));
+                new FrameworkPropertyMetadata(0d, new PropertyChangedCallback(OnPropertyChangedCallback)));
 
         /// <summary>
         /// 最大值依赖属性
         /// </summary>
         public static readonly DependencyProperty MaximumProperty =
             DependencyProperty.Register(nameof(Maximum), typeof(double), typeof(NumberControl),
-                new FrameworkPropertyMetadata(double.NaN, new PropertyChangedCallback(OnPropertyChangedCallback)));
+                new FrameworkPropertyMetadata(100d, new PropertyChangedCallback(OnPropertyChangedCallback)));
 
         /// <summary>
-        /// 获取或设置数字显示框中要显示的十进制小数位数依赖属性
+        /// 获取或设置整小数显示位数依赖属性
         /// </summary>
-        public static readonly DependencyProperty DecimalPlacesProperty =
-            DependencyProperty.Register(nameof(DecimalPlaces), typeof(int), typeof(NumberControl),
+        public static readonly DependencyProperty DecimalWidthProperty =
+            DependencyProperty.Register(nameof(DecimalWidth), typeof(int), typeof(NumberControl),
+                new FrameworkPropertyMetadata(0, new PropertyChangedCallback(OnPropertyChangedCallback)));
+
+        /// <summary>
+        /// 整数显示位数依赖属性
+        /// </summary>
+        public static readonly DependencyProperty IntegerWidthProperty =
+            DependencyProperty.Register(nameof(IntegerWidth), typeof(int), typeof(NumberControl),
                 new FrameworkPropertyMetadata(0, new PropertyChangedCallback(OnPropertyChangedCallback)));
 
         ///// <summary>
@@ -65,20 +73,11 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls
         //        new FrameworkPropertyMetadata(double.NaN, new PropertyChangedCallback(OnPropertyChangedCallback)));
 
         /// <summary>
-        /// 数字显示宽度依赖属性
+        /// 转换器依赖属性
         /// </summary>
-        public static readonly DependencyProperty NumberWidthProperty =
-            DependencyProperty.Register(nameof(NumberWidth), typeof(int), typeof(NumberControl),
-                new FrameworkPropertyMetadata(0, new PropertyChangedCallback(OnPropertyChangedCallback)));
-
-        /// <summary>
-        /// 数字文本不足够显示宽度时0的填充方向依赖属性
-        /// </summary>
-        public static readonly DependencyProperty NumberWidthFillDirectionProperty =
-            DependencyProperty.Register(nameof(NumberWidthFillDirection), typeof(NumberWidthFillDirection), typeof(NumberControl),
-                new FrameworkPropertyMetadata(NumberWidthFillDirection.Right, new PropertyChangedCallback(OnPropertyChangedCallback)));
-
-
+        public static readonly DependencyProperty ConverterProperty =
+            DependencyProperty.Register(nameof(Converter), typeof(IValueConverter), typeof(NumberControl),
+                new FrameworkPropertyMetadata(null, new PropertyChangedCallback(OnPropertyChangedCallback)));
 
 
 
@@ -107,7 +106,7 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls
 
                     string valueStr = value.ToString();
                     int pointIndex = valueStr.IndexOf(_POINT);
-                    int decimalPlaces = this.DecimalPlaces;
+                    int decimalPlaces = this.DecimalWidth;
                     if (decimalPlaces >= _DECIMAL_PLACES_MIN &&
                         pointIndex > 0 &&
                         valueStr.Length - (pointIndex + 1) > decimalPlaces)
@@ -175,51 +174,50 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls
 
         private double _precision = 0d;
         /// <summary>
-        /// 获取或设置数字显示框中要显示的十进制小数位数,小于等于0表示小数位数为0
+        /// 获取或设置整小数显示位数,小于1表示无限制
         /// </summary>
-        public int DecimalPlaces
+        public int DecimalWidth
         {
             get
             {
-                return (int)base.GetValue(DecimalPlacesProperty);
+                return (int)base.GetValue(DecimalWidthProperty);
             }
             set
             {
-                base.SetValue(DecimalPlacesProperty, value);
+                base.SetValue(DecimalWidthProperty, value);
             }
         }
 
 
         /// <summary>
-        /// 获取或设置数字显示宽度,即固定字符长度,小于1表示无限制
+        /// 获取或设置整数显示位数,小于1表示无限制
         /// </summary>
-        public int NumberWidth
+        public int IntegerWidth
         {
             get
             {
-                return (int)base.GetValue(NumberWidthProperty);
+                return (int)base.GetValue(IntegerWidthProperty);
             }
             set
             {
-                base.SetValue(NumberWidthProperty, value);
+                base.SetValue(IntegerWidthProperty, value);
             }
         }
 
         /// <summary>
-        /// 获取或设置当数字文本不足够显示宽度时0的填充方向
+        /// 转换器
         /// </summary>
-        public NumberWidthFillDirection NumberWidthFillDirection
+        public IValueConverter Converter
         {
             get
             {
-                return (NumberWidthFillDirection)base.GetValue(NumberWidthFillDirectionProperty);
+                return (IValueConverter)base.GetValue(ConverterProperty);
             }
             set
             {
-                base.SetValue(NumberWidthFillDirectionProperty, value);
+                base.SetValue(ConverterProperty, value);
             }
         }
-
 
         ///// <summary>
         ///// 获取或设置单击向上或向下按钮时，数字显示框（也称作 up-down 控件）递增或递减的值
@@ -235,6 +233,8 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls
         //        base.SetValue(IncrementProperty, value);
         //    }
         //}
+
+
 
         private static void OnPropertyChangedCallback(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
@@ -259,9 +259,10 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls
 
 
             if (e.Property == ValueProperty ||
-                 e.Property == DecimalPlacesProperty ||
-                 e.Property == NumberWidthProperty ||
-                 e.Property == NumberWidthFillDirectionProperty)
+                 e.Property == DecimalWidthProperty ||
+                 e.Property == DecimalWidthProperty ||
+                 e.Property == IntegerWidthProperty ||
+                 e.Property == ConverterProperty)
             {
                 selfControl.UpdateTextByValue();
             }
@@ -269,40 +270,158 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls
 
         private void UpdateTextByValue()
         {
-            double value = this.Value;
-            if (double.IsNaN(value))
+            this._setShowText = true;
+            try
             {
-                this.Text = string.Empty;
+                double value = this.Value;
+                if (double.IsNaN(value))
+                {
+                    this.Text = string.Empty;
+                    return;
+                }
+
+                if (this.Converter == null)
+                {
+                    this.Text = value.ToString();
+                    this.FormatShowText();
+                }
+                else
+                {
+                    object result = this.Converter.Convert(value, null, null, null);
+                    if (result != null)
+                    {
+                        this.Text = result.ToString();
+                    }
+                    else
+                    {
+                        this.Text = string.Empty;
+                    }
+                }
+                this.SelectionStart = this.Text.Length;
+            }
+            finally
+            {
+                this._setShowText = false;
+            }
+        }
+
+        private bool _setShowText = false;
+        private void FormatShowText()
+        {
+            int decimalWidth = this.DecimalWidth;
+            int integerWidth = this.IntegerWidth;
+
+            if (decimalWidth < 1 && integerWidth < 1)
+            {
                 return;
             }
 
-            this.Text = value.ToString();
+            int pointIndex = this.Text.IndexOf('.');
+            bool minusNumber = this.Text.StartsWith("-");
+            int count;
+            string fillStr;
+            int insertFillStrIndex;
 
-            int numberWidth = this.NumberWidth;
-            if (numberWidth > 0 && this.Text.Length < numberWidth)
+            if (decimalWidth > 0)
             {
-                int count = numberWidth - this.Text.Length;
-                string fillStr = new string('0', count);
-
-                switch (this.NumberWidthFillDirection)
+                if (integerWidth > 0)
                 {
-                    case NumberWidthFillDirection.Left:
-                        this.Text = this.Text.Insert(0, fillStr);
-                        break;
-                    case NumberWidthFillDirection.Right:
-                        this.Text = this.Text.Insert(this.Text.Length, fillStr);
-                        break;
-                    default:
-                        throw new NotImplementedException();
+                    //整数+小数
+
+                    //整数
+                    if (pointIndex >= 0)
+                    {
+                        count = integerWidth - pointIndex;
+                    }
+                    else
+                    {
+                        count = integerWidth - this.Text.Length;
+                    }
+
+                    insertFillStrIndex = 0;
+                    if (minusNumber)
+                    {
+                        count -= 1;
+                        insertFillStrIndex = 1;
+                    }
+
+                    if (count > 0)
+                    {
+                        fillStr = new string('0', count);
+                        this.Text = this.Text.Insert(insertFillStrIndex, fillStr);
+                    }
+
+                    //小数
+                    pointIndex = this.Text.IndexOf('.');
+                    if (pointIndex >= 0)
+                    {
+                        insertFillStrIndex = pointIndex + 1;
+                        count = decimalWidth - (this.Text.Length - insertFillStrIndex);
+                        if (count > 0)
+                        {
+                            fillStr = new string('0', count);
+                            this.Text = this.Text + fillStr;
+                        }
+                    }
+                    else
+                    {
+                        fillStr = new string('0', decimalWidth);
+                        this.Text = $"{this.Text}.{fillStr}";
+                    }
+                }
+                else
+                {
+                    //只有小数
+                    if (pointIndex < 0)
+                    {
+                        fillStr = new string('0', decimalWidth);
+                        this.Text = $"{this.Text}.{fillStr}";
+                    }
+                    else
+                    {
+                        insertFillStrIndex = pointIndex + 1;
+                        count = decimalWidth - (this.Text.Length - insertFillStrIndex);
+                        if (count > 0)
+                        {
+                            fillStr = new string('0', count);
+                            this.Text = this.Text.Insert(insertFillStrIndex, fillStr);
+                        }
+                    }
                 }
             }
+            else
+            {
+                if (integerWidth > 0)
+                {
+                    //只有整数
+                    if (pointIndex >= 0)
+                    {
+                        count = integerWidth - pointIndex;
+                    }
+                    else
+                    {
+                        count = integerWidth - this.Text.Length;
+                    }
 
-            this.SelectionStart = this.Text.Length;
+                    insertFillStrIndex = 0;
+                    if (minusNumber)
+                    {
+                        count -= 1;
+                        insertFillStrIndex = 1;
+                    }
+
+                    if (count > 0)
+                    {
+                        fillStr = new string('0', count);
+                        this.Text = this.Text.Insert(insertFillStrIndex, fillStr);
+                    }
+                }
+                else
+                {
+                    //无限制
+                }
+            }
         }
-
-
-
-
 
         private void UpdatePrecision(int decimalPlaces)
         {
@@ -361,7 +480,10 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls
         {
             this.HorizontalContentAlignment = HorizontalAlignment.Left;
             this.VerticalContentAlignment = VerticalAlignment.Center;
-            this.UndoLimit = 0;
+            this.IsInactiveSelectionHighlightEnabled = true;
+            this.UndoLimit = 2;
+            this.UpdateTextByValue();
+
             InputMethod.SetPreferredImeState(this, InputMethodState.Off);//禁止输入中文
 
             var pasteCommand = new CommandBinding(ApplicationCommands.Paste);
@@ -468,8 +590,24 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls
             this.CommitValue();
         }
 
+
+
+
+
+
+        private static Key[] _numberKeyArr = null;
         private static Key[] _allowInputKeyArr = null;
         private bool _lastPressDownCtrl = false;
+        /// <summary>
+        /// 移除选中内容
+        /// </summary>
+        private const Key _REMOVE_SELECTION = Key.Clear;
+        /// <summary>
+        /// 无
+        /// </summary>
+        private const Key _NONE = Key.None;
+        private Key _textChangedKey = _NONE;
+
         /// <summary>
         /// 重写OnPreviewKeyDown
         /// </summary>
@@ -481,25 +619,6 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls
             if (e.Handled)
             {
                 //已验证,不再验证
-                return;
-            }
-
-            if (e.Key == Key.Tab ||
-                e.Key == Key.Left || e.Key == Key.Right ||
-                e.Key == Key.Back || e.Key == Key.Delete)
-            {
-                return;
-            }
-
-            if (e.Key == Key.Enter)
-            {
-                this.CommitValue();
-                return;
-            }
-
-            if (e.Key == Key.LeftCtrl || e.Key == Key.RightCtrl)
-            {
-                this._lastPressDownCtrl = true;
                 return;
             }
 
@@ -521,14 +640,131 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls
                 return;
             }
 
+
+            switch (e.Key)
+            {
+                case Key.Tab:
+                case Key.Left:
+                case Key.Right:
+                    return;
+                case Key.Back:
+                    if (this.SelectionLength > 0)
+                    {
+                        if (this.SelectionLength == 1 && this.IsNoNumberChar(this.SelectedText[0]))
+                        {
+                            this.SelectionLength = 0;
+                        }
+                        else
+                        {
+                            this._textChangedKey = _REMOVE_SELECTION;
+                            int removeStartIndex = this.SelectionStart - 1;
+                            int removeLength = this.SelectionLength;
+                            while (removeStartIndex >= 0 && this.IsNoNumberChar(this.Text[removeStartIndex]))
+                            {
+                                removeLength++;
+                                removeStartIndex--;
+                            }
+                            removeStartIndex += 1;
+                            this.Text = this.Text.Remove(removeStartIndex, removeLength);
+                            this.SelectionStart = removeStartIndex;
+                            this._textChangedKey = _NONE;
+                            this.FormatEditContent();
+                            e.Handled = true;
+                            return;
+                        }
+                    }
+                    else
+                    {
+                        int cursorPreCharIndex = this.SelectionStart - 1;
+                        while (cursorPreCharIndex < this.Text.Length &&
+                            cursorPreCharIndex >= 0 && this.IsNoNumberChar(this.Text[cursorPreCharIndex]))
+                        {
+                            cursorPreCharIndex--;
+                        }
+
+                        if (cursorPreCharIndex < this.SelectionStart - 1)
+                        {
+                            this.SelectionStart = cursorPreCharIndex + 1;
+                        }
+
+                        this._textChangedKey = e.Key;
+                        return;
+                    }
+                    break;
+                case Key.Delete:
+                    if (this.SelectionLength > 0)
+                    {
+                        if (this.SelectionLength == 1 && this.IsNoNumberChar(this.SelectedText[0]))
+                        {
+                            int selectionStart = this.SelectionStart + 1;
+                            if (selectionStart > this.Text.Length)
+                            {
+                                selectionStart = this.Text.Length - 1;
+                            }
+
+                            this.SelectionStart = selectionStart;
+                            this.SelectionLength = 0;
+                        }
+                        else
+                        {
+                            this._textChangedKey = _REMOVE_SELECTION;
+                            int removeStartIndex = this.SelectionStart - 1;
+                            int removeLength = this.SelectionLength;
+                            while (removeStartIndex >= 0 && this.IsNoNumberChar(this.Text[removeStartIndex]))
+                            {
+                                removeLength++;
+                                removeStartIndex--;
+                            }
+                            removeStartIndex += 1;
+                            this.Text = this.Text.Remove(removeStartIndex, removeLength);
+                            this.SelectionStart = removeStartIndex;
+                            this._textChangedKey = _NONE;
+                            this.FormatEditContent();
+                            e.Handled = true;
+                            return;
+                        }
+                    }
+                    else
+                    {
+                        int cursorNextCharIndex = this.SelectionStart;
+                        while (cursorNextCharIndex < this.Text.Length &&
+                            cursorNextCharIndex >= 0 && this.IsNoNumberChar(this.Text[cursorNextCharIndex]))
+                        {
+                            cursorNextCharIndex++;
+                        }
+
+                        if (cursorNextCharIndex < this.Text.Length && cursorNextCharIndex > this.SelectionStart)
+                        {
+                            this.SelectionStart = cursorNextCharIndex;
+                        }
+
+                        this._textChangedKey = e.Key;
+                        return;
+                    }
+                    break;
+                case Key.Enter:
+                    this.CommitValue();
+                    break;
+                case Key.LeftCtrl:
+                case Key.RightCtrl:
+                    this._lastPressDownCtrl = true;
+                    return;
+            }
+
             if (_allowInputKeyArr == null)
             {
+                _numberKeyArr = new Key[]
+                {
+                    Key.NumPad0, Key.NumPad1, Key.NumPad2, Key.NumPad3, Key.NumPad4, Key.NumPad5, Key.NumPad6, Key.NumPad7, Key.NumPad8, Key.NumPad9,  //小键盘数字
+                    Key.D0,Key.D1,Key.D2,Key.D3,Key.D4,Key.D5,Key.D6,Key.D7,Key.D8,Key.D9,  //数字
+                };
                 _allowInputKeyArr = new Key[]
                 {
                     Key.NumPad0, Key.NumPad1, Key.NumPad2, Key.NumPad3, Key.NumPad4, Key.NumPad5, Key.NumPad6, Key.NumPad7, Key.NumPad8, Key.NumPad9,  //小键盘数字
                     Key.D0,Key.D1,Key.D2,Key.D3,Key.D4,Key.D5,Key.D6,Key.D7,Key.D8,Key.D9,  //数字
                     Key.OemPeriod,Key.Decimal, //小数点
                     Key.OemMinus, Key.Subtract,  //减号
+                    Key.Home,Key.End
                 };
             }
 
@@ -540,9 +776,35 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls
 
             if (this.SelectionLength > 0)
             {
-                this.Text = string.Empty;
+                if (_numberKeyArr.Contains(e.Key) && this.SelectionLength == 1 && this.IsNoNumberChar(this.SelectedText[0]))
+                {
+                    this.SelectionLength = 0;
+                    e.Handled = true;
+                    return;
+                }
+
+                if (this.SelectionLength == this.Text.Length)
+                {
+                    this.Text = string.Empty;
+                }
+                else
+                {
+                    this._textChangedKey = _REMOVE_SELECTION;
+                    var selectionStart = this.SelectionStart;
+                    this.Text = this.Text.Remove(selectionStart, this.SelectionLength);
+                    this.SelectionStart = selectionStart;
+                    this._textChangedKey = _NONE;
+                }
             }
+
+            this._textChangedKey = e.Key;
         }
+
+        private bool IsNoNumberChar(char ch)
+        {
+            return ch != '.' && ch < 48 || ch > 57;
+        }
+
 
         private void CommitValue()
         {
@@ -552,7 +814,8 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls
             }
 
             double value;
-            string text = this.Text;
+            string text = this.GetValueText(this.Text);
+
             if (string.IsNullOrWhiteSpace(text))
             {
                 if (this.AllowNaN)
@@ -600,6 +863,27 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls
 
             this._valueNoComit = false;
         }
+
+        private string GetValueText(string srcText)
+        {
+            if (this.Converter == null)
+            {
+                return srcText;
+            }
+
+            object result = this.Converter.ConvertBack(srcText, null, null, null);
+            if (result != null)
+            {
+                return result.ToString();
+            }
+            else
+            {
+                return string.Empty;
+            }
+        }
+
+
+
 
 
         private static string[] _allowInputStrArr = null;
@@ -658,7 +942,7 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls
         /// <param name="e"></param>
         private void OnPreviewTextInput_AllLessThanZero(TextCompositionEventArgs e)
         {
-            int decimalPlaces = this.DecimalPlaces;
+            int decimalPlaces = this.DecimalWidth;
             if (decimalPlaces < _DECIMAL_PLACES_MIN && string.Equals(e.Text, _POINT))
             {
                 //小数位数为0,输入了小数点
@@ -666,7 +950,9 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls
                 return;
             }
 
-            string text = this.Text.Insert(this.SelectionStart, e.Text);
+            string text = this.GetPreviewTextInputText(e);
+            text = this.GetValueText(text);
+
             if (string.IsNullOrWhiteSpace(text) || string.Equals(text, _SUBTRACT))
             {
                 //没有值呀只有减号,不验证
@@ -770,7 +1056,7 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls
         /// <param name="e"></param>
         private void OnPreviewTextInput_MinimumLessThanZero(TextCompositionEventArgs e)
         {
-            int decimalPlaces = this.DecimalPlaces;
+            int decimalPlaces = this.DecimalWidth;
             if (decimalPlaces < _DECIMAL_PLACES_MIN && string.Equals(e.Text, _POINT))
             {
                 //小数位数为0,输入了小数点
@@ -778,7 +1064,9 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls
                 return;
             }
 
-            string text = this.Text.Insert(this.SelectionStart, e.Text);
+            string text = this.GetPreviewTextInputText(e);
+            text = this.GetValueText(text);
+
             if (string.IsNullOrWhiteSpace(text) || string.Equals(text, _SUBTRACT))
             {
                 //没有值呀只有减号,不验证
@@ -895,7 +1183,7 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls
                 return;
             }
 
-            int decimalPlaces = this.DecimalPlaces;
+            int decimalPlaces = this.DecimalWidth;
             if (decimalPlaces < _DECIMAL_PLACES_MIN && string.Equals(e.Text, _POINT))
             {
                 //小数位数为0,输入了小数点
@@ -903,7 +1191,9 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls
                 return;
             }
 
-            string text = this.Text.Insert(this.SelectionStart, e.Text);
+            string text = this.GetPreviewTextInputText(e);
+            text = this.GetValueText(text);
+
             if (string.IsNullOrWhiteSpace(text))
             {
                 //没有值,不验证
@@ -917,7 +1207,7 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls
                 return;
             }
 
-            if (text.Length >= 2 && text[0] == _ZEROR && text[1] == _ZEROR)
+            if (text.Length >= 2 && text[0] == _ZEROR && text[1] == _ZEROR && this.IntegerWidth == 0)
             {
                 //起始输入多个0
                 e.Handled = true;
@@ -964,7 +1254,7 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls
                     return;
                 }
 
-                if (text.Length - decimalPointPostion - 1 > decimalPlaces)
+                if (decimalPlaces > 0 && text.Length - decimalPointPostion - 1 > decimalPlaces)
                 {
                     //小数位数超过设定值
                     e.Handled = true;
@@ -987,6 +1277,12 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls
             }
         }
 
+        private string GetPreviewTextInputText(TextCompositionEventArgs e)
+        {
+            return this.Text.Insert(this.SelectionStart, e.Text);
+        }
+
+
 
 
 
@@ -998,9 +1294,48 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls
         {
             base.OnTextChanged(e);
 
+            if (this._setShowText)
+            {
+                return;
+            }
+
             this._valueNoComit = true;
+            if (this._textChangedKey == _REMOVE_SELECTION || this._textChangedKey == _NONE)
+            {
+                return;
+            }
+
+            this.FormatEditContent();
+            this._textChangedKey = _NONE;
+        }
+
+        private void FormatEditContent()
+        {
+            if (this.Converter != null)
+            {
+                int cursorRightContentLenth = this.Text.Length - this.SelectionStart;
+                object obj = this.Converter.ConvertBack(this.Text, null, null, null);
+                object result = this.Converter.Convert(obj, null, null, null);
+                if (result != null)
+                {
+                    this.Text = result.ToString();
+                    int selectionStart = this.Text.Length - cursorRightContentLenth;
+                    if (selectionStart < 0)
+                    {
+                        selectionStart = 0;
+                    }
+
+                    this.SelectionStart = selectionStart;
+                }
+                else
+                {
+                    this.Text = string.Empty;
+                }
+            }
         }
     }
+
+
 
     internal enum MinimumMaximumType
     {
@@ -1018,22 +1353,6 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls
         /// 最大最小值皆为负数
         /// </summary>
         AllLessThanZero
-    }
-
-    /// <summary>
-    /// 数值宽度填充方向
-    /// </summary>
-    public enum NumberWidthFillDirection
-    {
-        /// <summary>
-        /// 左侧补0
-        /// </summary>
-        Left,
-
-        /// <summary>
-        /// 右侧补0
-        /// </summary>
-        Right
     }
 
 

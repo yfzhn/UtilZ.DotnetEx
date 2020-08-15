@@ -42,6 +42,11 @@ namespace UtilZ.Dotnet.DBIBase.Core
         }
 
         /// <summary>
+        /// 数据库交互对象
+        /// </summary>
+        public IDBInteraction DBInteraction { get { return _dbInteraction; } }
+
+        /// <summary>
         /// 数据库配置实例
         /// </summary>
         public DatabaseConfig Config

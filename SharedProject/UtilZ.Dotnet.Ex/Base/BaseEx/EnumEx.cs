@@ -96,9 +96,9 @@ namespace UtilZ.Dotnet.Ex.Base
         /// </summary>
         /// <typeparam name="T">枚举类型</typeparam>
         /// <returns>PropertyFieldInfo列表</returns>
-        public static List<PropertyFieldInfo> GetEnumPropertyFieldInfoList<T>() where T : Enum
+        public static List<FieldInfoEx> GetEnumFieldInfoExList<T>() where T : Enum
         {
-            return GetEnumPropertyFieldInfoList(typeof(T));
+            return GetEnumFieldInfoExList(typeof(T));
         }
 
         /// <summary>
@@ -106,7 +106,7 @@ namespace UtilZ.Dotnet.Ex.Base
         /// </summary>
         /// <param name="enumType">枚举类型</param>
         /// <returns>PropertyFieldInfo列表</returns>
-        public static List<PropertyFieldInfo> GetEnumPropertyFieldInfoList(Type enumType)
+        public static List<FieldInfoEx> GetEnumFieldInfoExList(Type enumType)
         {
             AssertEnum(enumType);
 
@@ -137,10 +137,10 @@ namespace UtilZ.Dotnet.Ex.Base
 
             enumAttriItems = enumAttriItems.OrderBy(new Func<Tuple<DisplayNameExAttribute, object>, int>((item) => { return item.Item1.OrderIndex; })).ToList();
 
-            var list = new List<PropertyFieldInfo>();
+            var list = new List<FieldInfoEx>();
             foreach (var enumAttriItem in enumAttriItems)
             {
-                list.Add(new PropertyFieldInfo(enumAttriItem.Item1.DisplayName, enumAttriItem.Item2, enumAttriItem.Item1.Description, enumAttriItem.Item1));
+                list.Add(new FieldInfoEx(enumAttriItem.Item1.DisplayName, enumAttriItem.Item2, enumAttriItem.Item1.Description, enumAttriItem.Item1));
             }
 
             return list;

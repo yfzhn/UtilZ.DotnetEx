@@ -1,5 +1,93 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup />
-  <ItemGroup />
+  <ItemGroup>
+    <Compile Update="D:\SelfCode\UtilZ.DotnetEx\SharedProject\UtilZ.Dotnet.WindowsDesktopEx\Winform\Controls\BarChartControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="D:\SelfCode\UtilZ.DotnetEx\SharedProject\UtilZ.Dotnet.WindowsDesktopEx\Winform\Controls\DataGridViewEx.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="D:\SelfCode\UtilZ.DotnetEx\SharedProject\UtilZ.Dotnet.WindowsDesktopEx\Winform\Controls\FlowLayoutPanelZ.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="D:\SelfCode\UtilZ.DotnetEx\SharedProject\UtilZ.Dotnet.WindowsDesktopEx\Winform\Controls\LineChartControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="D:\SelfCode\UtilZ.DotnetEx\SharedProject\UtilZ.Dotnet.WindowsDesktopEx\Winform\Controls\LogControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="D:\SelfCode\UtilZ.DotnetEx\SharedProject\UtilZ.Dotnet.WindowsDesktopEx\Winform\Controls\LogControlWeb.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="D:\SelfCode\UtilZ.DotnetEx\SharedProject\UtilZ.Dotnet.WindowsDesktopEx\Winform\Controls\NoneBorderForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="D:\SelfCode\UtilZ.DotnetEx\SharedProject\UtilZ.Dotnet.WindowsDesktopEx\Winform\Controls\NumberTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="D:\SelfCode\UtilZ.DotnetEx\SharedProject\UtilZ.Dotnet.WindowsDesktopEx\Winform\Controls\OpacityPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="D:\SelfCode\UtilZ.DotnetEx\SharedProject\UtilZ.Dotnet.WindowsDesktopEx\Winform\Controls\PageGrid\FPageGridColumnsSetting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="D:\SelfCode\UtilZ.DotnetEx\SharedProject\UtilZ.Dotnet.WindowsDesktopEx\Winform\Controls\PageGrid\UCPageGridControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="D:\SelfCode\UtilZ.DotnetEx\SharedProject\UtilZ.Dotnet.WindowsDesktopEx\Winform\Controls\PageGrid\UCPageGridControl_Event.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="D:\SelfCode\UtilZ.DotnetEx\SharedProject\UtilZ.Dotnet.WindowsDesktopEx\Winform\Controls\PageGrid\UCPageGridControl_Method.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="D:\SelfCode\UtilZ.DotnetEx\SharedProject\UtilZ.Dotnet.WindowsDesktopEx\Winform\Controls\PageGrid\UCPageGridControl_Property.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="D:\SelfCode\UtilZ.DotnetEx\SharedProject\UtilZ.Dotnet.WindowsDesktopEx\Winform\Controls\PaintBaseControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="D:\SelfCode\UtilZ.DotnetEx\SharedProject\UtilZ.Dotnet.WindowsDesktopEx\Winform\Controls\PartAsynWait\V1\MetroShadeControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="D:\SelfCode\UtilZ.DotnetEx\SharedProject\UtilZ.Dotnet.WindowsDesktopEx\Winform\Controls\PartAsynWait\V2\UCMetroShadeControl2.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="D:\SelfCode\UtilZ.DotnetEx\SharedProject\UtilZ.Dotnet.WindowsDesktopEx\Winform\Controls\PartAsynWait\V3\UCMetroShadeControl3.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="D:\SelfCode\UtilZ.DotnetEx\SharedProject\UtilZ.Dotnet.WindowsDesktopEx\Winform\Controls\PartAsynWait\V4\UCMetroShadeControl4.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="D:\SelfCode\UtilZ.DotnetEx\SharedProject\UtilZ.Dotnet.WindowsDesktopEx\Winform\Controls\PartAsynWait\V5\ShadeControl5.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="D:\SelfCode\UtilZ.DotnetEx\SharedProject\UtilZ.Dotnet.WindowsDesktopEx\Winform\Controls\PropertyGrid\Demo\PropertyGridEnumControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="D:\SelfCode\UtilZ.DotnetEx\SharedProject\UtilZ.Dotnet.WindowsDesktopEx\Winform\Controls\TreeViewZ.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="D:\SelfCode\UtilZ.DotnetEx\SharedProject\UtilZ.Dotnet.WindowsDesktopEx\Winform\Controls\UCOpacityControlBase.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="D:\SelfCode\UtilZ.DotnetEx\SharedProject\UtilZ.Dotnet.WindowsDesktopEx\Winform\Controls\Voice\PeakMeterCtrl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="D:\SelfCode\UtilZ.DotnetEx\SharedProject\UtilZ.Dotnet.WindowsDesktopEx\Winform\Controls\Voice\VoiceSpecControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="D:\SelfCode\UtilZ.DotnetEx\SharedProject\UtilZ.Dotnet.WindowsDesktopEx\Winform\Controls\Voice\WaveControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="D:\SelfCode\UtilZ.DotnetEx\SharedProject\UtilZ.Dotnet.WindowsDesktopEx\Winform\Controls\Voice\WaveControl_Draw.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="D:\SelfCode\UtilZ.DotnetEx\SharedProject\UtilZ.Dotnet.WindowsDesktopEx\Winform\Controls\Voice\WaveControl_Method.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="D:\SelfCode\UtilZ.DotnetEx\SharedProject\UtilZ.Dotnet.WindowsDesktopEx\Winform\Controls\Voice\WaveControl_Property.cs">
+      <SubType>Component</SubType>
+    </Compile>
+  </ItemGroup>
 </Project>

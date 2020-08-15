@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,7 +15,12 @@ namespace UtilZ.Dotnet.Ex.LMQ
         /// <summary>
         /// 本地消息队列中心配置集合
         /// </summary>
-        private static readonly Hashtable _htLMQConfig = Hashtable.Synchronized(new Hashtable());
+        private static readonly ConcurrentDictionary<string, LMQConfig> _lmqConfigDic = null;
+
+        static LMQConfigManager()
+        {
+            _lmqConfigDic = new ConcurrentDictionary<string, LMQConfig>();
+        }
 
         /// <summary>
         /// 添加本地消息队列中心配置
@@ -27,7 +33,7 @@ namespace UtilZ.Dotnet.Ex.LMQ
                 return;
             }
 
-            _htLMQConfig[config.Topic] = config;
+            _lmqConfigDic.AddOrUpdate(config.Topic, config, (t, c) => { return config; });
         }
 
         /// <summary>
@@ -41,10 +47,8 @@ namespace UtilZ.Dotnet.Ex.LMQ
                 return;
             }
 
-            if (_htLMQConfig.ContainsKey(topic))
-            {
-                _htLMQConfig.Remove(topic);
-            }
+            LMQConfig config;
+            _lmqConfigDic.TryRemove(topic, out config);
         }
 
         /// <summary>
@@ -54,7 +58,9 @@ namespace UtilZ.Dotnet.Ex.LMQ
         /// <returns>本地消息队列中心配置</returns>
         public static LMQConfig GetLMQConfig(string topic)
         {
-            return _htLMQConfig[topic] as LMQConfig;
+            LMQConfig config;
+            _lmqConfigDic.TryGetValue(topic, out config);
+            return config;
         }
     }
 
@@ -72,22 +78,25 @@ namespace UtilZ.Dotnet.Ex.LMQ
         /// <summary>
         /// 发布数据时是否同步发布[true:单线程同同步发布;false:多线程并行发布]
         /// </summary>
-        public bool IsSyncPublish { get; private set; }
+        public bool SyncPublish { get; set; } = true;
+
+        /// <summary>
+        /// 多线程并行发布[true:多线程并行发布;false:单线程循环发布]
+        /// </summary>
+        public bool ParallelPublish { get; set; } = false;
 
         /// <summary>
         /// 构造函数
         /// </summary>
         /// <param name="topic">主题</param>
-        /// <param name="isSyncPublish">发布数据时是否同步发布[true:单线程同同步发布;false:多线程并行发布]</param>
-        public LMQConfig(string topic, bool isSyncPublish)
+        public LMQConfig(string topic)
         {
             if (string.IsNullOrEmpty(topic))
             {
-                throw new ArgumentNullException("topic");
+                throw new ArgumentNullException(nameof(topic));
             }
 
             this.Topic = topic;
-            this.IsSyncPublish = isSyncPublish;
         }
     }
 }

@@ -32,9 +32,9 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.PropertyGrid.Demo
                 throw new ArgumentException(string.Format("类型:{0}不是枚举类型", valueType.FullName));
             }
 
-            List<PropertyFieldInfo> dbiItems = EnumEx.GetEnumPropertyFieldInfoList(valueType);
-            PropertyFieldInfo selectedItem = (from item in dbiItems where value.Equals(item.Value) select item).FirstOrDefault();
-            DropdownBoxHelper.BindingIEnumerableGenericToComboBox<PropertyFieldInfo>(comboBoxEnum, dbiItems, "Text", selectedItem);
+            List<FieldInfoEx> dbiItems = EnumEx.GetEnumFieldInfoExList(valueType);
+            FieldInfoEx selectedItem = (from item in dbiItems where value.Equals(item.Value) select item).FirstOrDefault();
+            DropdownBoxHelper.BindingIEnumerableGenericToComboBox<FieldInfoEx>(comboBoxEnum, dbiItems, "Text", selectedItem);
         }
 
         /// <summary>
@@ -46,7 +46,7 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.PropertyGrid.Demo
         {
             get
             {
-                return DropdownBoxHelper.GetGenericFromComboBox<PropertyFieldInfo>(comboBoxEnum).Value;
+                return DropdownBoxHelper.GetGenericFromComboBox<FieldInfoEx>(comboBoxEnum).Value;
             }
         }
     }

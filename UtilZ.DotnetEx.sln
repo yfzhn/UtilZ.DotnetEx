@@ -77,6 +77,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UtilZ.Dotnet.DBSQLite", "Do
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UtilZ.Dotnet.DBSqlServer", "DotnetCore\Database\UtilZ.Dotnet.DBSqlServer\UtilZ.Dotnet.DBSqlServer.csproj", "{080579AC-8E95-41E9-831E-2EB30A1141FD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UtilZ.Dotnet.Wav.VoicePlayer", "..\..\Projects\CDBVoiceSpy\Code\Sound\UtilZ.Dotnet.Wav.VoicePlayer\UtilZ.Dotnet.Wav.VoicePlayer.csproj", "{DA7AA3A0-8A80-48F6-BAC9-8D5D8FECC19B}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		SharedProject\Database\UtilZ.Dotnet.DBMySql\UtilZ.Dotnet.DBMySql\UtilZ.Dotnet.DBMySql.projitems*{043790d5-9fc2-4e13-a4ef-0aec4face6bc}*SharedItemsImports = 13
@@ -187,6 +189,10 @@ Global
 		{080579AC-8E95-41E9-831E-2EB30A1141FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{080579AC-8E95-41E9-831E-2EB30A1141FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{080579AC-8E95-41E9-831E-2EB30A1141FD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA7AA3A0-8A80-48F6-BAC9-8D5D8FECC19B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA7AA3A0-8A80-48F6-BAC9-8D5D8FECC19B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA7AA3A0-8A80-48F6-BAC9-8D5D8FECC19B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA7AA3A0-8A80-48F6-BAC9-8D5D8FECC19B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -224,6 +230,7 @@ Global
 		{B114111C-638B-41D1-B54E-6B17D1C5E387} = {773E2981-821B-409A-A3CF-8339979102C2}
 		{86FC3459-D1E2-43C5-8E37-3355C2F21746} = {773E2981-821B-409A-A3CF-8339979102C2}
 		{080579AC-8E95-41E9-831E-2EB30A1141FD} = {773E2981-821B-409A-A3CF-8339979102C2}
+		{DA7AA3A0-8A80-48F6-BAC9-8D5D8FECC19B} = {D3C4C474-2ED3-4734-819D-E5C235014666}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {082591EF-FFAA-4786-B27E-B6ADC4BB2016}

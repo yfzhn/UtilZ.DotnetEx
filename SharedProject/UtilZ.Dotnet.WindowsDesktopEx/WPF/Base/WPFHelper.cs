@@ -114,6 +114,16 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Base
         /// <returns>模板里的子控件</returns>
         public static Visual FindTemplateControl(DependencyObject control, Func<Visual, bool> predicate)
         {
+            if (control == null)
+            {
+                throw new ArgumentNullException(nameof(control));
+            }
+
+            if (predicate == null)
+            {
+                throw new ArgumentNullException(nameof(predicate));
+            }
+
             int count = VisualTreeHelper.GetChildrenCount(control);
             DependencyObject obj;
             Visual child;
@@ -139,17 +149,33 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Base
         /// <summary>
         /// 查找指定控件模板里的子控件,未找到返回null
         /// </summary>
-        /// <param name="control">目标控件</param>
+        /// <param name="dependencyObject">目标控件</param>
         /// <param name="name">模板内子控件名称</param>
         /// <returns>模板里的子控件</returns>
-        public static FrameworkElement FindTemplateControlByName(DependencyObject control, string name)
+        public static FrameworkElement FindTemplateControlByName(DependencyObject dependencyObject, string name)
         {
-            int count = VisualTreeHelper.GetChildrenCount(control);
+            if (dependencyObject == null)
+            {
+                throw new ArgumentNullException(nameof(dependencyObject));
+            }
+
+            if (string.IsNullOrWhiteSpace(name))
+            {
+                throw new ArgumentNullException(nameof(name));
+            }
+
+            var controll = dependencyObject as Control;
+            if (controll != null)
+            {
+                return controll.Template.FindName(name, controll) as FrameworkElement;
+            }
+
+            int count = VisualTreeHelper.GetChildrenCount(dependencyObject);
             DependencyObject obj;
             FrameworkElement child;
             for (int i = 0; i < count; i++)
             {
-                obj = VisualTreeHelper.GetChild(control, i);
+                obj = VisualTreeHelper.GetChild(dependencyObject, i);
                 child = obj as FrameworkElement;
                 if (child != null && string.Equals(child.Name, name))
                 {
@@ -173,6 +199,11 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Base
         /// <returns>模板里的子控件列表</returns>
         public static List<Visual> GetTemplateControlList(DependencyObject control)
         {
+            if (control == null)
+            {
+                throw new ArgumentNullException(nameof(control));
+            }
+
             List<Visual> visualList = new List<Visual>();
             PrimitiveGetTemplateControlList(control, visualList);
             return visualList;
@@ -201,6 +232,33 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Base
                     PrimitiveGetTemplateControlList(obj, visualList);
                 }
             }
+        }
+
+        /// <summary>
+        /// 获取父控件中命中的子控件
+        /// </summary>
+        /// <typeparam name="T">子控件类型</typeparam>
+        /// <param name="element">父控件</param>
+        /// <param name="point">父控件中的命中坐标</param>
+        /// <returns>命中的子控件</returns>
+        public static T GetInputHitTestChildControl<T>(UIElement element, Point point) where T : FrameworkElement
+        {
+            var target = element.InputHitTest(point) as DependencyObject;
+            T result = null;
+            while (target != null)
+            {
+                if (target is T)
+                {
+                    result = (T)target;
+                    break;
+                }
+                else
+                {
+                    target = VisualTreeHelper.GetParent(target);
+                }
+            }
+
+            return result;
         }
     }
 }

@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using UtilZ.Dotnet.Ex.Base;
 
@@ -14,19 +16,19 @@ namespace UtilZ.Dotnet.Ex.LMQ
     internal class SubscibeGroup : LMQBase, IDisposable
     {
         /// <summary>
-        /// 订阅项集合
+        /// 订阅项列表
         /// </summary>
-        private readonly List<SubscibeItem> _items = new List<SubscibeItem>();
+        private readonly List<SubscibeItem> _subscibeItemList = new List<SubscibeItem>();
 
         /// <summary>
-        /// 订阅项集合线程锁
+        /// 订阅项列表线程锁
         /// </summary>
-        private readonly object _itemsMonitor = new object();
+        private readonly object _subscibeItemListMonitor = new object();
 
         /// <summary>
         /// 异步发布消息队列线程
         /// </summary>
-        private readonly AsynQueue<object> _asynPublishParaQueueThread;
+        private AsynQueue<PublishItem> _asynPublishParaQueueThread = null;
 
         /// <summary>
         /// 构造函数
@@ -35,49 +37,66 @@ namespace UtilZ.Dotnet.Ex.LMQ
         public SubscibeGroup(string topic)
             : base(topic)
         {
-            string name = string.Format("本地消息队列主题{0}数据消息发布线程", topic);
-            this._asynPublishParaQueueThread = new AsynQueue<object>(this.PublishThreadMethod, name, true, true);
+
         }
 
         /// <summary>
         /// 发布消息线程方法
         /// </summary>
-        /// <param name="dataMessage">数据消息</param>
-        private void PublishThreadMethod(object dataMessage)
+        /// <param name="publishItem">数据消息</param>
+        private void PublishThreadMethod(PublishItem publishItem)
         {
-            List<SubscibeItem> items;
-            lock (this._itemsMonitor)
-            {
-                items = this._items.ToList();
-            }
-
-            if (items.Count == 0)
+            if (this._subscibeItemList.Count == 0)
             {
                 return;
             }
 
-            var config = LMQConfigManager.GetLMQConfig(this.Topic);
-            if (config != null && config.IsSyncPublish)
+            Monitor.Enter(this._subscibeItemListMonitor);
+            try
             {
-                foreach (var item in items)
+                if (publishItem.Config != null && publishItem.Config.ParallelPublish)
                 {
-                    item.Publish(dataMessage);
+                    //多线程并行发布消息
+                    Parallel.ForEach(this._subscibeItemList, (tmpItem) => { tmpItem.Publish(publishItem.Message); });
+                }
+                else
+                {
+                    //单线程发布
+                    foreach (var item in this._subscibeItemList)
+                    {
+                        item.Publish(publishItem.Message);
+                    }
                 }
             }
-            else
+            finally
             {
-                //多线程并行发布消息
-                Parallel.ForEach(items, (tmpItem) => { tmpItem.Publish(dataMessage); });
+                Monitor.Exit(this._subscibeItemListMonitor);
             }
         }
 
         /// <summary>
         /// 发布消息
         /// </summary>
-        /// <param name="dataMessage">数据消息</param>
-        public void Publish(object dataMessage)
+        /// <param name="message">消息</param>
+        public void Publish(object message)
         {
-            this._asynPublishParaQueueThread.Enqueue(dataMessage);
+            LMQConfig config = LMQConfigManager.GetLMQConfig(this.Topic);
+            var publishItem = new PublishItem(config, message);
+
+            if (config != null && config.SyncPublish)
+            {
+                this.PublishThreadMethod(publishItem);
+            }
+            else
+            {
+                if (this._asynPublishParaQueueThread == null)
+                {
+                    string name = string.Format("本地消息队列主题{0}数据消息发布线程", this.Topic);
+                    this._asynPublishParaQueueThread = new AsynQueue<PublishItem>(this.PublishThreadMethod, name, true, true);
+                }
+
+                this._asynPublishParaQueueThread.Enqueue(publishItem);
+            }
         }
 
         /// <summary>
@@ -87,9 +106,14 @@ namespace UtilZ.Dotnet.Ex.LMQ
         {
             get
             {
-                lock (this._itemsMonitor)
+                Monitor.Enter(this._subscibeItemListMonitor);
+                try
                 {
-                    return this._items.Count;
+                    return this._subscibeItemList.Count;
+                }
+                finally
+                {
+                    Monitor.Exit(this._subscibeItemListMonitor);
                 }
             }
         }
@@ -105,12 +129,17 @@ namespace UtilZ.Dotnet.Ex.LMQ
                 return;
             }
 
-            lock (this._itemsMonitor)
+            Monitor.Enter(this._subscibeItemListMonitor);
+            try
             {
-                if (!this._items.Contains(item))
+                if (!this._subscibeItemList.Contains(item))
                 {
-                    this._items.Add(item);
+                    this._subscibeItemList.Add(item);
                 }
+            }
+            finally
+            {
+                Monitor.Exit(this._subscibeItemListMonitor);
             }
         }
 
@@ -119,9 +148,14 @@ namespace UtilZ.Dotnet.Ex.LMQ
         /// </summary>
         public void Clear()
         {
-            lock (this._itemsMonitor)
+            Monitor.Enter(this._subscibeItemListMonitor);
+            try
             {
-                this._items.Clear();
+                this._subscibeItemList.Clear();
+            }
+            finally
+            {
+                Monitor.Exit(this._subscibeItemListMonitor);
             }
         }
 
@@ -137,9 +171,14 @@ namespace UtilZ.Dotnet.Ex.LMQ
                 return false;
             }
 
-            lock (this._itemsMonitor)
+            Monitor.Enter(this._subscibeItemListMonitor);
+            try
             {
-                return this._items.Contains(item);
+                return this._subscibeItemList.Contains(item);
+            }
+            finally
+            {
+                Monitor.Exit(this._subscibeItemListMonitor);
             }
         }
 
@@ -155,9 +194,14 @@ namespace UtilZ.Dotnet.Ex.LMQ
                 return false;
             }
 
-            lock (this._itemsMonitor)
+            Monitor.Enter(this._subscibeItemListMonitor);
+            try
             {
-                return this._items.Remove(item);
+                return this._subscibeItemList.Remove(item);
+            }
+            finally
+            {
+                Monitor.Exit(this._subscibeItemListMonitor);
             }
         }
 
@@ -175,7 +219,25 @@ namespace UtilZ.Dotnet.Ex.LMQ
         /// <param name="isDispose">是否释放标识</param>
         protected virtual void Dispose(bool isDispose)
         {
-            this._asynPublishParaQueueThread.Dispose();
+            if (this._asynPublishParaQueueThread != null)
+            {
+                this._asynPublishParaQueueThread.Dispose();
+                this._asynPublishParaQueueThread = null;
+            }
+        }
+    }
+
+
+    internal sealed class PublishItem
+    {
+        public LMQConfig Config { get; private set; }
+
+        public object Message { get; private set; }
+
+        public PublishItem(LMQConfig config, object message)
+        {
+            this.Config = config;
+            this.Message = message;
         }
     }
 }
