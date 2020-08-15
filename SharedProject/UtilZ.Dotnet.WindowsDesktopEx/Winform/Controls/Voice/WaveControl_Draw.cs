@@ -605,13 +605,13 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls
             float separatorY = wave.Area.Y + channelWaveHalfHeight;
             float lx, y;
             bool drawSeparator = false;
-            float value;
-            float db;
+            //float value;
+            //float db;
             short[] pcmData;
-            bool negativePoint;
+            //bool negativePoint;
             float xStep = this.CalXStep(points.Length);
             //const float DB_MAX = 10.397177190355384f;  // = Math.Log(short.MaxValue);
-            const float DB_MAX = 4.5154366811416988f;  // = Math.Log10(short.MaxValue);
+            //const float DB_MAX = 4.5154366811416988f;  // = Math.Log10(short.MaxValue);
 
             foreach (ChannelPlotData channelPlotData in pcmDatas)
             {

@@ -19,7 +19,7 @@ namespace DotnetWinFormApp
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FTestWaveControl());
+            Application.Run(new FTestAGauge());
         }
     }
 

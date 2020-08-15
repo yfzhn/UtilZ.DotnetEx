@@ -39,6 +39,10 @@
     <Compile Include="$(MSBuildThisFileDirectory)Winform\Base\WindowNestProcess.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Winform\Base\WinformControlEx.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Winform\Base\WinformEx.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\AGauge.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\AGauge.Designer.cs">
+      <DependentUpon>AGauge.cs</DependentUpon>
+    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\BarChartControl.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\DataGridViewEx.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\FlowLayoutPanelZ.cs" />

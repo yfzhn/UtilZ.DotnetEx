@@ -311,6 +311,9 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls
         /// </summary>
         public Popup Popup { get; set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public bool PopupOpened { get; set; } = false;
 
         /// <summary>

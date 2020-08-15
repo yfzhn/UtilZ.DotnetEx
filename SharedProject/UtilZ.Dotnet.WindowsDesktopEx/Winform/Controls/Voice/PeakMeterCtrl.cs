@@ -28,32 +28,9 @@ using System.Threading;
 namespace UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls
 {
     /// <summary>
-    /// 样式
-    /// </summary>
-    public enum PeakMeterStyle
-    {
-        /// <summary>
-        /// 水平
-        /// </summary>
-        PMS_Horizontal = 0,
-
-        /// <summary>
-        /// 垂直
-        /// </summary>
-        PMS_Vertical = 1
-    }
-
-    internal struct PeakMeterData
-    {
-        public int Value;
-        public int Falloff;
-        public int Speed;
-    }
-
-    /// <summary>
     /// 音频频谱控件
     /// </summary>
-    [ToolboxBitmap(typeof(MyResourceNamespace))]
+    [ToolboxBitmap(typeof(PeakMeterCtrlResourceNamespace))]
     public partial class PeakMeterCtrl : Control
     {
         private const byte DarkenByDefault = 40;
@@ -119,8 +96,11 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls
             this.ResetControl();
         }
 
-        #region Control properties
+        #region Control properties        
         private PeakMeterStyle _PmsMeterStyle;
+        /// <summary>
+        /// 
+        /// </summary>
         [Category("Appearance"), DefaultValue(PeakMeterStyle.PMS_Horizontal)]
         public PeakMeterStyle MeterStyle
         {
@@ -129,6 +109,9 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls
         }
 
         private bool _ShowGrid;
+        /// <summary>
+        /// 
+        /// </summary>
         [Category("Appearance"), DefaultValue(true)]
         public bool ShowGrid
         {
@@ -137,6 +120,9 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls
         }
 
         private bool _ColoredGrid;
+        /// <summary>
+        /// 
+        /// </summary>
         [Category("Appearance"), DefaultValue(false)]
         public bool ColoredGrid
         {
@@ -145,6 +131,9 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls
         }
 
         private Color _GridColor;
+        /// <summary>
+        /// 
+        /// </summary>
         [Category("Appearance")]
         public Color GridColor
         {
@@ -153,6 +142,9 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls
         }
 
         private Color _ColorNormal;
+        /// <summary>
+        /// 
+        /// </summary>
         [Category("Appearance")]
         public Color ColorNormal
         {
@@ -161,6 +153,9 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls
         }
 
         private Color _ColorMedium;
+        /// <summary>
+        /// 
+        /// </summary>
         [Category("Appearance")]
         public Color ColorMedium
         {
@@ -169,6 +164,9 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls
         }
 
         private Color _ColorHigh;
+        /// <summary>
+        /// 
+        /// </summary>
         [Category("Appearance")]
         public Color ColorHigh
         {
@@ -177,6 +175,9 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls
         }
 
         private Color _ColorNormalBack;
+        /// <summary>
+        /// 
+        /// </summary>
         [Category("Appearance")]
         public Color ColorNormalBack
         {
@@ -185,6 +186,9 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls
         }
 
         private Color _ColorMediumBack;
+        /// <summary>
+        /// 
+        /// </summary>
         [Category("Appearance")]
         public Color ColorMediumBack
         {
@@ -193,6 +197,9 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls
         }
 
         private Color _ColorHighBack;
+        /// <summary>
+        /// 
+        /// </summary>
         [Category("Appearance")]
         public Color ColorHighBack
         {
@@ -201,6 +208,9 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls
         }
 
         private int _BandsCount;
+        /// <summary>
+        /// 
+        /// </summary>
         [Category("Appearance"), DefaultValue(BandsDefault)]
         public int BandsCount
         {
@@ -217,6 +227,9 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls
         }
 
         private int _LEDCount;
+        /// <summary>
+        /// 
+        /// </summary>
         [Category("Appearance"), DefaultValue(LEDDefault)]
         public int LEDCount
         {
@@ -232,6 +245,9 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls
         }
 
         private int _FalloffSpeed;
+        /// <summary>
+        /// 
+        /// </summary>
         [Category("Falloff Effect"), DefaultValue(FalloffDefault)]
         public int FalloffSpeed
         {
@@ -240,6 +256,9 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls
         }
 
         private bool _FalloffEffect;
+        /// <summary>
+        /// 
+        /// </summary>
         [Category("Falloff Effect"), DefaultValue(true)]
         public bool FalloffEffect
         {
@@ -248,6 +267,9 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls
         }
 
         private Color _FalloffColor;
+        /// <summary>
+        /// 
+        /// </summary>
         [Category("Falloff Effect")]
         public Color FalloffColor
         {
@@ -257,6 +279,9 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls
 
         #endregion
 
+        /// <summary>
+        /// 
+        /// </summary>
         [Browsable(false)]
         public bool IsActive
         {
@@ -420,11 +445,21 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls
             return Color.FromArgb(red, green, blue);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="rangeMin"></param>
+        /// <param name="rangeMax"></param>
+        /// <returns></returns>
         protected static bool InRange(int value, int rangeMin, int rangeMax)
         {
             return (value >= rangeMin && value <= rangeMax);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         protected void ResetControl()
         {
             _meterData = new PeakMeterData[_BandsCount];
@@ -437,6 +472,12 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls
                 _meterData[i] = pm;
             }
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="period"></param>
+        /// <returns></returns>
         protected bool StartAnimation(int period)
         {
             if (!IsActive)
@@ -447,6 +488,10 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls
             }
             return _animationTimer.Change(period, period);
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
         protected bool StopAnimation()
         {
             bool result = false;
@@ -466,15 +511,29 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls
             return result;
         }
 
+        /// <summary>
+        /// 重写OnHandleDestroyed
+        /// </summary>
+        /// <param name="e"></param>
         protected override void OnHandleDestroyed(EventArgs e)
         {
             Stop();
             base.OnHandleDestroyed(e);
         }
+
+        /// <summary>
+        /// 重写OnBackColorChanged
+        /// </summary>
+        /// <param name="e"></param>
         protected override void OnBackColorChanged(EventArgs e)
         {
             Refresh();
         }
+
+        /// <summary>
+        /// 重写OnPaint
+        /// </summary>
+        /// <param name="e"></param>
         protected override void OnPaint(PaintEventArgs e)
         {
             // Calling the base class OnPaint
@@ -496,6 +555,10 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="thisObject"></param>
         protected void TimerCallback(Object thisObject)
         {
             try
@@ -556,6 +619,12 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls
                 StopAnimation();
             }
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="g"></param>
+        /// <param name="rect"></param>
         protected void DrawHorzBand(Graphics g, Rectangle rect)
         {
             int nMaxRange = (_MedRangeValue == 0) ? Math.Abs(_MaxRangeValue - _MinRangeValue) : _MaxRangeValue;
@@ -670,6 +739,12 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls
                 rcBand.Offset(size.Width, size.Height * nVertBands);
             }
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="g"></param>
+        /// <param name="rect"></param>
         protected void DrawVertBand(Graphics g, Rectangle rect)
         {
             int nMaxRange = (_MedRangeValue == 0) ? Math.Abs(_MaxRangeValue - _MinRangeValue) : _MaxRangeValue;
@@ -785,9 +860,39 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls
             }
         }
     }
+
+    /// <summary>
+    /// 样式
+    /// </summary>
+    public enum PeakMeterStyle
+    {
+        /// <summary>
+        /// 水平
+        /// </summary>
+        PMS_Horizontal = 0,
+
+        /// <summary>
+        /// 垂直
+        /// </summary>
+        PMS_Vertical = 1
+    }
+
+    internal struct PeakMeterData
+    {
+        public int Value;
+        public int Falloff;
+        public int Speed;
+    }
 }
 
 // use this to find resource namespace
-internal class MyResourceNamespace
+internal class PeakMeterCtrlResourceNamespace
 {
+    /// <summary>
+    /// 
+    /// </summary>
+    public PeakMeterCtrlResourceNamespace()
+    {
+
+    }
 }

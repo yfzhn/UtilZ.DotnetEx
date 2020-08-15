@@ -61,6 +61,9 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls
 
 
         private bool _disposed = false;
+        /// <summary>
+        /// Dispose
+        /// </summary>
         public void Dispose()
         {
             if (this._disposed)
@@ -73,6 +76,10 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls
             this.Dispose(true);
         }
 
+        /// <summary>
+        /// Dispose
+        /// </summary>
+        /// <param name="disposing"></param>
         protected virtual void Dispose(bool disposing)
         {
             this.PrimitiveDisposable(this.BackgroudColor);
@@ -80,7 +87,10 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls
             this.PrimitiveDisposable(this.Pen);
         }
 
-
+        /// <summary>
+        /// PrimitiveDisposable
+        /// </summary>
+        /// <param name="disposable"></param>
 
         protected void PrimitiveDisposable(IDisposable disposable)
         {

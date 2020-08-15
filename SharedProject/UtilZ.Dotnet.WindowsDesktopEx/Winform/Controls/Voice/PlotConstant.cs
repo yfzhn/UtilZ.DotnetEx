@@ -11,9 +11,9 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls
     /// </summary>
     public class PlotConstant
     {
-        /// <summary>
-        /// 第一次数据采样率
-        /// </summary>
+        ///// <summary>
+        ///// 第一次数据采样率
+        ///// </summary>
         //public const int FIRSTSAMPLE = 1000000;
         //public const int FIRSTSAMPLE = 2000;
 

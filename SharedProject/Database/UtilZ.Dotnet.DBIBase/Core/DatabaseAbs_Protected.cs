@@ -4,6 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UtilZ.Dotnet.Ex.Log;
 
 namespace UtilZ.Dotnet.DBIBase.Core
 {
@@ -83,6 +84,7 @@ namespace UtilZ.Dotnet.DBIBase.Core
             }
             catch (Exception ex)
             {
+                Loger.Error(ex);
                 return 0;
             }
         }

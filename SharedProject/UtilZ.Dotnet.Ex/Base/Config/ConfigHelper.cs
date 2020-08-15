@@ -206,7 +206,6 @@ namespace UtilZ.Dotnet.Ex.Base.Config
         /// <summary>
         /// 保存配置
         /// </summary>
-        /// <typeparam name="T">配置类型</typeparam>
         /// <param name="config">要保存的配置</param>
         /// <param name="configFilePath">配置保存路径</param>
         public static void Save(object config, string configFilePath = DEFAULT_CONFIGFILE_NAME)
