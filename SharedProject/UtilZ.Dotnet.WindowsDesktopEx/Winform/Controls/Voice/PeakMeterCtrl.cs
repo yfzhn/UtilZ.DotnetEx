@@ -28,9 +28,32 @@ using System.Threading;
 namespace UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls
 {
     /// <summary>
+    /// 样式
+    /// </summary>
+    public enum PeakMeterStyle
+    {
+        /// <summary>
+        /// 水平
+        /// </summary>
+        PMS_Horizontal = 0,
+
+        /// <summary>
+        /// 垂直
+        /// </summary>
+        PMS_Vertical = 1
+    }
+
+    internal struct PeakMeterData
+    {
+        public int Value;
+        public int Falloff;
+        public int Speed;
+    }
+
+    /// <summary>
     /// 音频频谱控件
     /// </summary>
-    [ToolboxBitmap(typeof(PeakMeterCtrlResourceNamespace))]
+    [ToolboxBitmap(typeof(MyResourceNamespace))]
     public partial class PeakMeterCtrl : Control
     {
         private const byte DarkenByDefault = 40;
@@ -96,7 +119,7 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls
             this.ResetControl();
         }
 
-        #region Control properties        
+        #region Control properties
         private PeakMeterStyle _PmsMeterStyle;
         /// <summary>
         /// 
@@ -492,6 +515,7 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls
         /// <summary>
         /// 
         /// </summary>
+        /// <returns></returns>
         protected bool StopAnimation()
         {
             bool result = false;
@@ -512,7 +536,7 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls
         }
 
         /// <summary>
-        /// 重写OnHandleDestroyed
+        /// 
         /// </summary>
         /// <param name="e"></param>
         protected override void OnHandleDestroyed(EventArgs e)
@@ -522,7 +546,7 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls
         }
 
         /// <summary>
-        /// 重写OnBackColorChanged
+        /// 
         /// </summary>
         /// <param name="e"></param>
         protected override void OnBackColorChanged(EventArgs e)
@@ -531,7 +555,7 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls
         }
 
         /// <summary>
-        /// 重写OnPaint
+        /// 
         /// </summary>
         /// <param name="e"></param>
         protected override void OnPaint(PaintEventArgs e)
@@ -860,39 +884,9 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls
             }
         }
     }
-
-    /// <summary>
-    /// 样式
-    /// </summary>
-    public enum PeakMeterStyle
-    {
-        /// <summary>
-        /// 水平
-        /// </summary>
-        PMS_Horizontal = 0,
-
-        /// <summary>
-        /// 垂直
-        /// </summary>
-        PMS_Vertical = 1
-    }
-
-    internal struct PeakMeterData
-    {
-        public int Value;
-        public int Falloff;
-        public int Speed;
-    }
 }
 
 // use this to find resource namespace
-internal class PeakMeterCtrlResourceNamespace
+internal class MyResourceNamespace
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    public PeakMeterCtrlResourceNamespace()
-    {
-
-    }
 }

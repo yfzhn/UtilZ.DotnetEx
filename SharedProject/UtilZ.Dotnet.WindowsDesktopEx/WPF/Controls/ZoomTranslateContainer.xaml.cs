@@ -77,6 +77,13 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls
             DependencyProperty.Register(nameof(TranslateEnable), typeof(bool), typeof(ZoomTranslateContainer),
                 new FrameworkPropertyMetadata(true, new PropertyChangedCallback(OnPropertyChangedCallback)));
 
+        /// <summary>
+        /// 缩放粒度依赖属性
+        /// </summary>
+        public static readonly DependencyProperty ZoomDeltaProperty =
+            DependencyProperty.Register(nameof(ZoomDelta), typeof(double), typeof(ZoomTranslateContainer),
+                new FrameworkPropertyMetadata(double.NaN, new PropertyChangedCallback(OnPropertyChangedCallback)));
+
 
         /// <summary>
         /// 获取或设置进行缩放平移的控件
@@ -218,6 +225,21 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls
             }
         }
 
+        /// <summary>
+        /// 获取或设置缩放粒度,double.NaN自动计算,默认为double.NaN
+        /// </summary>
+        public double ZoomDelta
+        {
+            get
+            {
+                return (double)base.GetValue(ZoomDeltaProperty);
+            }
+            set
+            {
+                base.SetValue(ZoomDeltaProperty, value);
+            }
+        }
+
         private static void OnPropertyChangedCallback(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var selfControl = (ZoomTranslateContainer)d;
@@ -261,6 +283,7 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls
             {
                 oldElement.MouseWheel -= Child_MouseWheel;
                 oldElement.MouseLeftButtonDown -= Child_MouseLeftButtonDown;
+                oldElement.MouseLeftButtonUp -= NewElement_MouseLeftButtonUp;
                 oldElement.MouseMove -= Child_MouseMove;
                 oldElement.SizeChanged -= Child_SizeChanged;
                 canvasRoot.Children.Clear();
@@ -274,6 +297,7 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls
             newElement.Focusable = true;
             newElement.MouseWheel += Child_MouseWheel;
             newElement.MouseLeftButtonDown += Child_MouseLeftButtonDown;
+            newElement.MouseLeftButtonUp += NewElement_MouseLeftButtonUp;
             newElement.MouseMove += Child_MouseMove;
             newElement.SizeChanged += Child_SizeChanged;
 
@@ -305,6 +329,7 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls
         }
 
         //平移
+        private bool _leftButtonPressed = false;
         private Point _beginPoint;
         private double _beginLeft;
         private double _beginTop;
@@ -318,11 +343,19 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls
             this._beginPoint = Mouse.GetPosition(canvasRoot);
             this._beginLeft = Canvas.GetLeft(_child);
             this._beginTop = Canvas.GetTop(_child);
+            this._leftButtonPressed = true;
+        }
+
+        private void NewElement_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            this._leftButtonPressed = false;
         }
 
         private void Child_MouseMove(object sender, MouseEventArgs e)
         {
-            if (!this.TranslateEnable || e.LeftButton != MouseButtonState.Pressed)
+            if (!this.TranslateEnable ||
+                !this._leftButtonPressed ||
+                e.LeftButton != MouseButtonState.Pressed)
             {
                 return;
             }
@@ -330,7 +363,6 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls
             var endPoint = Mouse.GetPosition(canvasRoot);
             double left = this._beginLeft + (endPoint.X - this._beginPoint.X);
             double top = this._beginTop + (endPoint.Y - this._beginPoint.Y);
-
 
             const double OFFSET = 100d;
             double width = canvasRoot.ActualWidth;
@@ -361,46 +393,6 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls
             this._beginLeft = left;
             this._beginTop = top;
         }
-
-        //private void TranslateTranslateTransform()
-        //{
-        //    TranslateTransform translateTransform = this._translateTransform;
-        //    var endPoint = Mouse.GetPosition(this);
-
-        //    double x = translateTransform.X + (endPoint.X - this._beginPoint.X);
-        //    double y = translateTransform.Y + (endPoint.Y - this._beginPoint.Y);
-
-        //    const double PRE = 0.001d;
-        //    const double OFFSET = 100d;
-
-        //    double width = canvas.ActualWidth;// * this._scale;
-        //    //double width = this.ActualWidth;
-
-
-        //    if (x + width - OFFSET < PRE)
-        //    {
-        //        x = OFFSET - width;
-        //    }
-        //    else if (x - width + OFFSET > PRE)
-        //    {
-        //        x = width - OFFSET;
-        //    }
-
-        //    double height = canvas.ActualHeight;// * this._scale;
-        //    //double height = this.ActualHeight;
-        //    if (y + height - OFFSET < PRE)
-        //    {
-        //        y = OFFSET - height;
-        //    }
-        //    else if (y - height + OFFSET > PRE)
-        //    {
-        //        y = height - OFFSET;
-        //    }
-
-        //    translateTransform.X = x;
-        //    translateTransform.Y = y;
-        //    this._beginPoint = endPoint;
-        //}
         #endregion
 
 
@@ -415,8 +407,19 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls
                 return;
             }
 
-            var value = (double)e.Delta;
-            double offset = value / 1000;
+            double offset = this.ZoomDelta;
+            if (double.IsNaN(offset))
+            {
+                offset = ((double)e.Delta) / 1000;
+            }
+            else
+            {
+                if (e.Delta < 0)
+                {
+                    offset = 0d - offset;
+                }
+            }
+
             double scale = this.ZoomScale + offset;
             if (scale - this.ZoomMinScale < _PRE ||
                 scale - this.ZoomMaxScale > _PRE)

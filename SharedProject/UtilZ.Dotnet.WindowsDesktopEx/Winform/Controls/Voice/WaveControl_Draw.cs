@@ -95,6 +95,11 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls
         /// </summary>
         private void AllDraw()
         {
+            if (this._grafx == null)
+            {
+                return;
+            }
+
             //全部绘制
             Graphics graphics = this._grafx.Graphics;
             ////重置平移
@@ -610,7 +615,7 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls
             short[] pcmData;
             //bool negativePoint;
             float xStep = this.CalXStep(points.Length);
-            //const float DB_MAX = 10.397177190355384f;  // = Math.Log(short.MaxValue);
+            ////const float DB_MAX = 10.397177190355384f;  // = Math.Log(short.MaxValue);
             //const float DB_MAX = 4.5154366811416988f;  // = Math.Log10(short.MaxValue);
 
             foreach (ChannelPlotData channelPlotData in pcmDatas)

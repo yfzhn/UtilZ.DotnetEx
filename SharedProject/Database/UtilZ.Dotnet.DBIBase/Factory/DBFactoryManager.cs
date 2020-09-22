@@ -17,7 +17,7 @@ namespace UtilZ.Dotnet.DBIBase.Factory
     /// <summary>
     /// 数据库访问对象创建工厂
     /// </summary>
-    internal class DBFactoryManager
+    public class DBFactoryManager
     {
         /// <summary>
         /// 数据库工厂集合[key:数据库访问工厂类型(Type),value:数据库访问工厂实例(DBFactoryBase)]
@@ -169,7 +169,7 @@ namespace UtilZ.Dotnet.DBIBase.Factory
         /// </summary>
         /// <param name="config">数据库配置</param>
         /// <returns>数据库访问工厂实例</returns>
-        internal static IDBFactory GetDBFactory(DatabaseConfig config)
+        public static IDBFactory GetDBFactory(DatabaseConfig config)
         {
             return GetDBFactoryByConfig(config);
         }
@@ -235,7 +235,7 @@ namespace UtilZ.Dotnet.DBIBase.Factory
         /// </summary>
         /// <param name="config">数据库配置</param>
         /// <returns>Sql字段值格式化对象</returns>
-        internal static ISqlFieldValueFormator GetSqlFieldValueFormator(DatabaseConfig config)
+        public static ISqlFieldValueFormator GetSqlFieldValueFormator(DatabaseConfig config)
         {
             return GetDBFactoryByConfig(config).GetDBInteraction().SqlFieldValueFormator;
         }

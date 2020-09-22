@@ -106,47 +106,44 @@ namespace UtilZ.Dotnet.Ex.Base
                 return;
             }
 
-            lock (this._threadLock)
+            if (!this._allowAddThread)
             {
-                if (!this._allowAddThread)
-                {
-                    return;
-                }
-
-                if (this._isDisposed)
-                {
-                    this._allowAddThread = false;
-                    return;
-                }
-
-                if (this._threadList.Count >= Environment.ProcessorCount)
-                {
-                    this._allowAddThread = false;
-                    return;
-                }
-
-                if (this._addProcessThreadConditionType)
-                {
-                    if (!this._addProcessThreadFunc(this._threadList.Count))
-                    {
-                        this._allowAddThread = false;
-                        return;
-                    }
-                }
-                else
-                {
-                    if (this._maxThreadCount > 0 && this._threadList.Count >= this._maxThreadCount)
-                    {
-                        this._allowAddThread = false;
-                        return;
-                    }
-                }
-
-                string threadName = $"{this._threadNamePre}{this._threadList.Count}";
-                ThreadEx thread = new ThreadEx(this.ProcessThreadMethod, threadName, true);
-                this._threadList.Add(thread);
-                thread.Start();
+                return;
             }
+
+            if (this._isDisposed)
+            {
+                this._allowAddThread = false;
+                return;
+            }
+
+            if (this._threadList.Count >= Environment.ProcessorCount)
+            {
+                this._allowAddThread = false;
+                return;
+            }
+
+            if (this._addProcessThreadConditionType)
+            {
+                if (!this._addProcessThreadFunc(this._threadList.Count))
+                {
+                    this._allowAddThread = false;
+                    return;
+                }
+            }
+            else
+            {
+                if (this._maxThreadCount > 0 && this._threadList.Count >= this._maxThreadCount)
+                {
+                    this._allowAddThread = false;
+                    return;
+                }
+            }
+
+            string threadName = $"{this._threadNamePre}{this._threadList.Count}";
+            ThreadEx thread = new ThreadEx(this.ProcessThreadMethod, threadName, true);
+            this._threadList.Add(thread);
+            thread.Start();
         }
 
 
@@ -202,7 +199,10 @@ namespace UtilZ.Dotnet.Ex.Base
                 return;
             }
 
-            this.CreateProcessThread();
+            lock (this._threadLock)
+            {
+                this.CreateProcessThread();
+            }
         }
 
 
@@ -274,7 +274,7 @@ namespace UtilZ.Dotnet.Ex.Base
                         return;
                     }
                     this._isDisposed = true;
-
+                    this._allowAddThread = false;
                     this.ClearThread();
 
                     lock (this._blockingCollectionLock)

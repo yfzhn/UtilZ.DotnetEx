@@ -1080,6 +1080,20 @@
             获取当前程序集所在目录
             </summary>
         </member>
+        <member name="M:UtilZ.Dotnet.Ex.Base.DirectoryInfoEx.GetAssemblyDirectory``1">
+            <summary>
+            获取定义类型程序集目录
+            </summary>
+            <typeparam name="T">类型</typeparam>
+            <returns>定义类型程序集目录</returns>
+        </member>
+        <member name="M:UtilZ.Dotnet.Ex.Base.DirectoryInfoEx.GetAssemblyDirectory(System.Type)">
+            <summary>
+            获取定义类型程序集目录
+            </summary>
+            <param name="type">类型</param>
+            <returns>定义类型程序集目录</returns>
+        </member>
         <member name="M:UtilZ.Dotnet.Ex.Base.DirectoryInfoEx.CopyFolder(System.String,System.String)">
             <summary>
             复制文件夹内容到指定目录
@@ -2036,6 +2050,30 @@
             </summary>
             <param name="str">字符串</param>
             <returns>true:全小写;false:大小写混合</returns>
+        </member>
+        <member name="M:UtilZ.Dotnet.Ex.Base.StringEx.Trim(System.Object,System.Char[])">
+            <summary>
+            从当前 System.String 对象移除所有前导空白字符和尾部空白字符
+            </summary>
+            <param name="obj">转换为string进行Trim操作的对象</param>
+            <param name="trimChars">要删除的 Unicode 字符的数组，或 null</param>
+            <returns>从当前字符串的开头和结尾删除所有空白字符后剩余的字符串</returns>
+        </member>
+        <member name="M:UtilZ.Dotnet.Ex.Base.StringEx.TrimStart(System.Object,System.Char[])">
+            <summary>
+            从当前 System.String 对象移除数组中指定的一组字符的所有前导匹配项
+            </summary>
+            <param name="trimChars">要删除的 Unicode 字符的数组，或 null</param>
+            <param name="obj">转换为string进行TrimStart操作的对象</param>
+            <returns>从当前字符串的结尾移除所出现的所有 trimChars 参数中的字符后剩余的字符串。如果 trimChars 为 null 或空数组，则改为删除 Unicode空白字符</returns>
+        </member>
+        <member name="M:UtilZ.Dotnet.Ex.Base.StringEx.TrimEnd(System.Object,System.Char[])">
+            <summary>
+            从当前 System.String 对象移除数组中指定的一组字符的所有尾部匹配项
+            </summary>
+            <param name="obj">转换为string进行TrimEnd操作的对象</param>
+            <param name="trimChars">要删除的 Unicode 字符的数组，或 null</param>
+            <returns>从当前字符串的结尾移除所出现的所有 trimChars 参数中的字符后剩余的字符串。如果 trimChars 为 null 或空数组，则改为删除 Unicode空白字符</returns>
         </member>
         <member name="T:UtilZ.Dotnet.Ex.Base.StructEx">
             <summary>
@@ -3638,6 +3676,36 @@
             <param name="xdoc">xml配置</param>
             <param name="config">指定的配置对象</param>
         </member>
+        <member name="F:UtilZ.Dotnet.Ex.Base.Config.ConfigHelper.DEFAULT_CONFIGFILE_NAME">
+            <summary>
+            默认配置文件名称
+            </summary>
+        </member>
+        <member name="M:UtilZ.Dotnet.Ex.Base.Config.ConfigHelper.Load``1(System.String)">
+            <summary>
+            加载配置
+            </summary>
+            <typeparam name="T">配置类型</typeparam>
+            <param name="configFilePath">配置文件路径</param>
+            <returns>配置对象</returns>
+        </member>
+        <member name="M:UtilZ.Dotnet.Ex.Base.Config.ConfigHelper.Save(System.Object,System.String)">
+            <summary>
+            保存配置
+            </summary>
+            <param name="config">要保存的配置</param>
+            <param name="configFilePath">配置保存路径</param>
+        </member>
+        <member name="T:UtilZ.Dotnet.Ex.Base.Config.IConfig">
+            <summary>
+            配置接口
+            </summary>
+        </member>
+        <member name="M:UtilZ.Dotnet.Ex.Base.Config.IConfig.InitDefaultValue">
+            <summary>
+            初始化默认值
+            </summary>
+        </member>
         <member name="T:UtilZ.Dotnet.Ex.Base.ConstantValueDescription.DefaultExtendDescription">
             <summary>
             默认扩展描述类
@@ -3846,23 +3914,41 @@
         </member>
         <member name="M:UtilZ.Dotnet.Ex.Base.ConstantValueDescription.ValueDescriptionManager.GetNameByValue``1(System.Object)">
             <summary>
-            根据值获取值名称
+            根据组标识和值获取值名称(获取成功返回值名称;失败抛出ArgumentException异常)
             </summary>
             <typeparam name="T">目标类型</typeparam>
             <param name="value">值</param>
-            <returns>值描述</returns>
+            <returns>值名称</returns>
         </member>
         <member name="M:UtilZ.Dotnet.Ex.Base.ConstantValueDescription.ValueDescriptionManager.GetNameByValue(System.Object,System.Object)">
             <summary>
-            根据组标识和值获取值名称
+            根据组标识和值获取值名称(获取成功返回值名称;失败抛出ArgumentException异常)
             </summary>
             <param name="groupId">组标识</param>
             <param name="value">值</param>
-            <returns>值描述</returns>
+            <returns>值名称</returns>
+        </member>
+        <member name="M:UtilZ.Dotnet.Ex.Base.ConstantValueDescription.ValueDescriptionManager.TryGetNameByValue``1(System.Object,System.String@)">
+            <summary>
+            尝试根据组标识和值获取值名称(获取成功返回true;失败返回false)
+            </summary>
+            <typeparam name="T">目标类型</typeparam>
+            <param name="value">值</param>
+            <param name="name">值名称</param>
+            <returns>获取成功返回true;失败返回false</returns>
+        </member>
+        <member name="M:UtilZ.Dotnet.Ex.Base.ConstantValueDescription.ValueDescriptionManager.TryGetNameByValue(System.Object,System.Object,System.String@)">
+            <summary>
+            尝试根据组标识和值获取值名称(获取成功返回true;失败返回false)
+            </summary>
+            <param name="groupId">组标识</param>
+            <param name="value">值</param>
+            <param name="name">值名称</param>
+            <returns>获取成功返回true;失败返回false</returns>
         </member>
         <member name="M:UtilZ.Dotnet.Ex.Base.ConstantValueDescription.ValueDescriptionManager.GetDescriptionByValue``1(System.Object)">
             <summary>
-            根据值获取值描述
+            根据值获取值描述(获取成功返回值描述;失败抛出ArgumentException异常)
             </summary>
             <typeparam name="T">目标类型</typeparam>
             <param name="value">值</param>
@@ -3870,15 +3956,33 @@
         </member>
         <member name="M:UtilZ.Dotnet.Ex.Base.ConstantValueDescription.ValueDescriptionManager.GetDescriptionByValue(System.Object,System.Object)">
             <summary>
-            根据组标识和值获取值描述
+            根据组标识和值获取值描述(获取成功返回值描述;失败抛出ArgumentException异常)
             </summary>
             <param name="groupId">组标识</param>
             <param name="value">值</param>
             <returns>值描述</returns>
         </member>
+        <member name="M:UtilZ.Dotnet.Ex.Base.ConstantValueDescription.ValueDescriptionManager.TryGetDescriptionByValue``1(System.Object,System.String@)">
+            <summary>
+            尝试根据值获取值描述(获取成功返回true;失败返回false)
+            </summary>
+            <typeparam name="T">目标类型</typeparam>
+            <param name="value">值</param>
+            <param name="des">值描述</param>
+            <returns>获取成功返回true;失败返回false</returns>
+        </member>
+        <member name="M:UtilZ.Dotnet.Ex.Base.ConstantValueDescription.ValueDescriptionManager.TryGetDescriptionByValue(System.Object,System.Object,System.String@)">
+            <summary>
+            尝试根据组标识和值获取值描述(获取成功返回true;失败返回false)
+            </summary>
+            <param name="groupId">组标识</param>
+            <param name="value">值</param>
+            <param name="des">值描述</param>
+            <returns>获取成功返回true;失败返回false</returns>
+        </member>
         <member name="M:UtilZ.Dotnet.Ex.Base.ConstantValueDescription.ValueDescriptionManager.GerValueByName``1(System.String)">
             <summary>
-            根据名称获取值
+            根据名称获取值(获取成功返回值描述;失败抛出ArgumentException异常)
             </summary>
             <typeparam name="T">目标类型</typeparam>
             <param name="name">名称</param>
@@ -3886,11 +3990,29 @@
         </member>
         <member name="M:UtilZ.Dotnet.Ex.Base.ConstantValueDescription.ValueDescriptionManager.GerValueByName(System.Object,System.String)">
             <summary>
-            根据名称获取值
+            根据名称获取值(获取成功返回值描述;失败抛出ArgumentException异常)
             </summary>
             <param name="groupId">组标识</param>
             <param name="name">名称</param>
             <returns>值</returns>
+        </member>
+        <member name="M:UtilZ.Dotnet.Ex.Base.ConstantValueDescription.ValueDescriptionManager.TryGerValueByName``1(System.String,System.Object@)">
+            <summary>
+            根据名称获取值(获取成功返回true;失败返回false)
+            </summary>
+            <typeparam name="T">目标类型</typeparam>
+            <param name="name">名称</param>
+            <param name="value">值</param>
+            <returns>获取成功返回true;失败返回false</returns>
+        </member>
+        <member name="M:UtilZ.Dotnet.Ex.Base.ConstantValueDescription.ValueDescriptionManager.TryGerValueByName(System.Object,System.String,System.Object@)">
+            <summary>
+            根据名称获取值(获取成功返回true;失败返回false)
+            </summary>
+            <param name="groupId">组标识</param>
+            <param name="name">名称</param>
+            <param name="value">值</param>
+            <returns>获取成功返回true;失败返回false</returns>
         </member>
         <member name="M:UtilZ.Dotnet.Ex.Base.ConstantValueDescription.ValueDescriptionManager.GetValues``1">
             <summary>

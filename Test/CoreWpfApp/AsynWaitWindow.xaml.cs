@@ -78,7 +78,7 @@ namespace CoreWpfApp
             };
             para.ShowCancel = true;
             para.ImmediatelyCompleted = false;
-            para.AsynWaitBackground = Brushes.Red;
+            //para.AsynWaitBackground = Brushes.Red;
             para.Completed = (p) =>
             {
                 string str;
@@ -102,7 +102,7 @@ namespace CoreWpfApp
             };
 
             //WPFPartAsynWaitHelper.Wait(para, this.grid);
-            WPFPartAsynWaitHelper.Wait(para, container);
+            WPFPartAsynWaitHelper.Wait(para, container,true);
         }
 
 

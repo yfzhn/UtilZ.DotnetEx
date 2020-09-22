@@ -81,6 +81,77 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls
 
 
 
+
+
+        /// <summary>
+        /// 增加步进值命令依赖属性
+        /// </summary>
+        public static readonly DependencyProperty IncrementCommandProperty =
+            DependencyProperty.Register(nameof(IncrementCommand), typeof(ICommand), typeof(NumberControl),
+                new FrameworkPropertyMetadata(null, new PropertyChangedCallback(OnPropertyChangedCallback)));
+
+        /// <summary>
+        /// 减小步进值命令依赖属性
+        /// </summary>
+        public static readonly DependencyProperty DecrementCommandProperty =
+            DependencyProperty.Register(nameof(DecrementCommand), typeof(ICommand), typeof(NumberControl),
+                new FrameworkPropertyMetadata(null, new PropertyChangedCallback(OnPropertyChangedCallback)));
+
+        /// <summary>
+        /// 增加或减小步进值依赖属性
+        /// </summary>
+        public static readonly DependencyProperty StepProperty =
+            DependencyProperty.Register(nameof(Step), typeof(double), typeof(NumberControl),
+                new FrameworkPropertyMetadata(1.0d, new PropertyChangedCallback(OnPropertyChangedCallback)));
+
+        /// <summary>
+        /// 获取或设置增加步进值命令
+        /// </summary>
+        public ICommand IncrementCommand
+        {
+            get
+            {
+                return (ICommand)base.GetValue(IncrementCommandProperty);
+            }
+            set
+            {
+                base.SetValue(IncrementCommandProperty, value);
+            }
+        }
+
+        /// <summary>
+        /// 获取或设置减小步进值命令
+        /// </summary>
+        public ICommand DecrementCommand
+        {
+            get
+            {
+                return (ICommand)base.GetValue(DecrementCommandProperty);
+            }
+            set
+            {
+                base.SetValue(DecrementCommandProperty, value);
+            }
+        }
+
+        /// <summary>
+        /// 获取或设置增加或减小步进值
+        /// </summary>
+        public double Step
+        {
+            get
+            {
+                return (double)base.GetValue(StepProperty);
+            }
+            set
+            {
+                base.SetValue(StepProperty, value);
+            }
+        }
+
+
+
+
         /// <summary>
         /// 值改变事件
         /// </summary>
@@ -493,6 +564,28 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls
             //var copyCommand = new CommandBinding(ApplicationCommands.Copy);
             //copyCommand.Executed += CopyCommand_Executed; ;
             //this.CommandBindings.Add(copyCommand);
+
+            this.DecrementCommand = new NumberUpDownControlEditCommand(this.DecrementCommandCallback);
+            this.IncrementCommand = new NumberUpDownControlEditCommand(this.IncrementCommandCallback);
+        }
+
+        private void IncrementCommandCallback(object parameter)
+        {
+            var newValue = this.Value + this.Step;
+            if (this.Maximum - newValue >= this._precision)
+            {
+                this.Value = newValue;
+            }
+        }
+
+
+        private void DecrementCommandCallback(object parameter)
+        {
+            var newValue = this.Value - this.Step;
+            if (this.Minimum - newValue <= this._precision)
+            {
+                this.Value = newValue;
+            }
         }
 
         private void CopyCommand_Executed(object sender, ExecutedRoutedEventArgs e)
@@ -1380,6 +1473,30 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls
         {
             this.OldValue = oldValue;
             this.NewValue = newValue;
+        }
+    }
+
+    internal class NumberUpDownControlEditCommand : ICommand
+    {
+        private readonly Action<object> _editAction;
+        public NumberUpDownControlEditCommand(Action<object> editAction)
+        {
+            this._editAction = editAction;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public event EventHandler CanExecuteChanged;
+
+        public bool CanExecute(object parameter)
+        {
+            return true;
+        }
+
+        public void Execute(object parameter)
+        {
+            this._editAction(parameter);
         }
     }
 }

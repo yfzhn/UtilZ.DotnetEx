@@ -39,10 +39,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Winform\Base\WindowNestProcess.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Winform\Base\WinformControlEx.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Winform\Base\WinformEx.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\AGauge.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\AGauge.Designer.cs">
-      <DependentUpon>AGauge.cs</DependentUpon>
-    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\BarChartControl.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\DataGridViewEx.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\FlowLayoutPanelZ.cs" />
@@ -102,6 +98,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\PartAsynWait\V4\WinformPartAsynExcute4.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\PartAsynWait\V5\ShadeControl5.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\PartAsynWait\V5\WinformPartAsynExcute5.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\PartAsynWait\WinformNonePartAsynWait.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\PartAsynWait\WinformPartAsynExcuteAbs.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\PartAsynWait\WinformPartAsynExcuteHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Winform\Controls\PartAsynWait\WinformPartAsynExcuteTypeDefine.cs" />
@@ -295,6 +292,8 @@
       <DependentUpon>UCShadeControl1.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\PartAsynWait\V1\WPFPartAsynExcuteV1.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\PartAsynWait\WPFAsynExcuteAbs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\PartAsynWait\WPFNonePartAsynWait.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\PartAsynWait\WPFPartAsynExcuteBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\PartAsynWait\WPFPartAsynExcuteTypeDefine.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\PartAsynWait\WPFPartAsynWaitHelper.cs" />
@@ -312,6 +311,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)WPF\Controls\ZoomTranslateContainer.xaml.cs">
       <DependentUpon>ZoomTranslateContainer.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)WPF\Converters\NullOrEmpyToBoolConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)WPF\Converters\NullOrEmpyToVisibilityConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)WPF\Converters\ValueConverterAbs.cs" />
   </ItemGroup>

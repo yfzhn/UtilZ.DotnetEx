@@ -9,6 +9,7 @@ using UtilZ.Dotnet.WindowsDesktopEx.AsynWait;
 using UtilZ.Dotnet.WindowsDesktopEx.Base.PartAsynWait.Excute;
 using UtilZ.Dotnet.WindowsDesktopEx.Base.PartAsynWait.Model;
 using UtilZ.Dotnet.Ex.Log;
+using System.Windows.Forms.Integration;
 
 namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.PartAsynWait.V1
 {
@@ -18,12 +19,12 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.PartAsynWait.V1
     /// <typeparam name="T">异步执行参数类型</typeparam>
     /// <typeparam name="TContainer">容器控件类型</typeparam>
     /// <typeparam name="TResult">异步执行返回值类型</typeparam>
-    internal class WPFPartAsynExcuteV1<T, TContainer, TResult> : AsynExcuteAbs<T, TContainer, TResult> where TContainer : class
+    internal class WPFPartAsynExcuteV1<T, TContainer, TResult> : WPFAsynExcuteAbs<T, TContainer, TResult> where TContainer : class
     {
         /// <summary>
         /// 异步等待控件类型
         /// </summary>
-        protected readonly static Type _asynControlType;
+        private readonly static Type _asynControlType;
 
         /// <summary>
         /// 静态构造函数
@@ -157,7 +158,14 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.PartAsynWait.V1
         private void RemoveAsynWaitControl(FrameworkElement asynWaitControl, Panel containerControl)
         {
             //移除控件
-            containerControl.Children.Remove(asynWaitControl);
+            if (this.HasWinformControl)
+            {
+                containerControl.Children.Remove((FrameworkElement)asynWaitControl.Tag);
+            }
+            else
+            {
+                containerControl.Children.Remove(asynWaitControl);
+            }
 
             if (containerControl is Grid)
             {
@@ -205,6 +213,18 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.PartAsynWait.V1
 
             if (containerControl is Grid)
             {
+                if (this.HasWinformControl)
+                {
+                    var windowsFormsHost = new WindowsFormsHost();
+                    windowsFormsHost.Background = System.Windows.Media.Brushes.Transparent;
+                    var elementHost = new ElementHost();
+                    elementHost.Child = asynWaitControl;
+                    windowsFormsHost.Child = elementHost;
+                    asynWaitControl.Tag = windowsFormsHost;
+                    asynWaitControl = windowsFormsHost;
+                }
+
+
                 this.AddAsynWaitControlToGrid((Grid)containerControl, asynWaitControl);
             }
             //else if (containerControl is StackPanel)

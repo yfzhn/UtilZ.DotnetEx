@@ -359,13 +359,13 @@
             this.logControl.Size = new System.Drawing.Size(1265, 582);
             this.logControl.TabIndex = 0;
             // 
-            // FTest
+            // FTestDB
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1265, 788);
             this.Controls.Add(this.splitContainer1);
-            this.Name = "FTest";
+            this.Name = "FTestDB";
             this.Text = "Test";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FTest_FormClosing);
             this.Load += new System.EventHandler(this.FTest_Load);

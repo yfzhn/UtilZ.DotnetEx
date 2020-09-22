@@ -493,7 +493,7 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls
 
             this.listBoxPage.ItemsSource = this._pageIndexCollection;
             this.listBoxPage.SelectionChanged += listBoxPage_SelectionChanged;
-            txtPageSize.Text = _DEFAULT_PAGE_SIZE.ToString();
+            txtPageSize.Text = this.PageSize.ToString();
 
             this.AddTextChanged(this.txtPageSize);
             this.AddTextChanged(this.txtGoPageIndex);

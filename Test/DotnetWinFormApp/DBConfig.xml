@@ -12,7 +12,7 @@
     <DBConfigItem DBID="2"
          ConName="SqlServer"
          DBConInfoType="0"
-         ConStr="data source=192.168.10.11;initial catalog=OMData;user id=sa;password=qweQWE123"
+         ConStr="data source=192.168.10.11;initial catalog=CDBVoiceSpy;user id=sa;password=qweQWE123"
          DBFactory="UtilZ.Dotnet.DBSqlServer.Core.SQLServerDBFactory,DBPlugins\SQLServer\UtilZ.Dotnet.DBSqlServer"/>
 
     <!--<DBConfigItem DBID="3"

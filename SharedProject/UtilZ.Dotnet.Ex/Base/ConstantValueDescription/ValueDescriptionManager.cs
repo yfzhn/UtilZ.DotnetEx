@@ -188,49 +188,94 @@ namespace UtilZ.Dotnet.Ex.Base.ConstantValueDescription
 
 
         /// <summary>
-        /// 根据值获取值名称
+        /// 根据组标识和值获取值名称(获取成功返回值名称;失败抛出ArgumentException异常)
         /// </summary>
         /// <typeparam name="T">目标类型</typeparam>
         /// <param name="value">值</param>
-        /// <returns>值描述</returns>
+        /// <returns>值名称</returns>
         public static string GetNameByValue<T>(object value)
         {
             return GetNameByValue(typeof(T), value);
         }
 
         /// <summary>
-        /// 根据组标识和值获取值名称
+        /// 根据组标识和值获取值名称(获取成功返回值名称;失败抛出ArgumentException异常)
         /// </summary>
         /// <param name="groupId">组标识</param>
         /// <param name="value">值</param>
-        /// <returns>值描述</returns>
+        /// <returns>值名称</returns>
         public static string GetNameByValue(object groupId, object value)
         {
             ValueDescriptionGroup group = GetValueDescriptionGroupById(groupId);
-            if (group != null)
-            {
-                DisplayNameExAttribute desAtt;
-                if (group.TryGetValue(value, out desAtt))
-                {
-                    return desAtt.DisplayName;
-                }
-                else
-                {
-                    var groupDescriptionAtt = group.GroupDescriptionAttribute;
-                    if (groupDescriptionAtt != null && groupDescriptionAtt.Extend != null)
-                    {
-                        return groupDescriptionAtt.Extend.GetName(value, group);
-                    }
-                    else
-                    {
-                        throw new ArgumentException($"组标识\"{groupId}\"对应的值\"{value}\"名称不存在");
-                    }
-                }
-            }
-            else
+            if (group == null)
             {
                 throw new ArgumentException($"组标识\"{groupId}\"未注册");
             }
+
+            DisplayNameExAttribute desAtt;
+            if (group.TryGetValue(value, out desAtt))
+            {
+                return desAtt.DisplayName;
+            }
+
+            var groupDescriptionAtt = group.GroupDescriptionAttribute;
+            if (groupDescriptionAtt != null && groupDescriptionAtt.Extend != null)
+            {
+                return groupDescriptionAtt.Extend.GetName(value, group);
+            }
+            else
+            {
+                throw new ArgumentException($"组标识\"{groupId}\"对应的值\"{value}\"名称不存在");
+            }
+        }
+
+
+
+
+
+        /// <summary>
+        /// 尝试根据组标识和值获取值名称(获取成功返回true;失败返回false)
+        /// </summary>
+        /// <typeparam name="T">目标类型</typeparam>
+        /// <param name="value">值</param>
+        /// <param name="name">值名称</param>
+        /// <returns>获取成功返回true;失败返回false</returns>
+        public static bool TryGetNameByValue<T>(object value, out string name)
+        {
+            return TryGetNameByValue(typeof(T), value, out name);
+        }
+
+        /// <summary>
+        /// 尝试根据组标识和值获取值名称(获取成功返回true;失败返回false)
+        /// </summary>
+        /// <param name="groupId">组标识</param>
+        /// <param name="value">值</param>
+        /// <param name="name">值名称</param>
+        /// <returns>获取成功返回true;失败返回false</returns>
+        public static bool TryGetNameByValue(object groupId, object value, out string name)
+        {
+            name = null;
+            ValueDescriptionGroup group = GetValueDescriptionGroupById(groupId);
+            if (group == null)
+            {
+                return false;
+            }
+
+            DisplayNameExAttribute desAtt;
+            if (group.TryGetValue(value, out desAtt))
+            {
+                name = desAtt.DisplayName;
+                return true;
+            }
+
+            var groupDescriptionAtt = group.GroupDescriptionAttribute;
+            if (groupDescriptionAtt != null && groupDescriptionAtt.Extend != null)
+            {
+                name = groupDescriptionAtt.Extend.GetName(value, group);
+                return true;
+            }
+
+            return false;
         }
 
 
@@ -239,7 +284,7 @@ namespace UtilZ.Dotnet.Ex.Base.ConstantValueDescription
 
 
         /// <summary>
-        /// 根据值获取值描述
+        /// 根据值获取值描述(获取成功返回值描述;失败抛出ArgumentException异常)
         /// </summary>
         /// <typeparam name="T">目标类型</typeparam>
         /// <param name="value">值</param>
@@ -250,7 +295,7 @@ namespace UtilZ.Dotnet.Ex.Base.ConstantValueDescription
         }
 
         /// <summary>
-        /// 根据组标识和值获取值描述
+        /// 根据组标识和值获取值描述(获取成功返回值描述;失败抛出ArgumentException异常)
         /// </summary>
         /// <param name="groupId">组标识</param>
         /// <param name="value">值</param>
@@ -258,36 +303,80 @@ namespace UtilZ.Dotnet.Ex.Base.ConstantValueDescription
         public static string GetDescriptionByValue(object groupId, object value)
         {
             ValueDescriptionGroup group = GetValueDescriptionGroupById(groupId);
-            if (group != null)
-            {
-                DisplayNameExAttribute desAtt;
-                if (group.TryGetValue(value, out desAtt))
-                {
-                    return desAtt.Description;
-                }
-                else
-                {
-                    var groupDescriptionAtt = group.GroupDescriptionAttribute;
-                    if (groupDescriptionAtt != null && groupDescriptionAtt.Extend != null)
-                    {
-                        return groupDescriptionAtt.Extend.GetDescription(value, group);
-                    }
-                    else
-                    {
-                        throw new ArgumentException($"组标识\"{groupId}\"值\"{value}\"对应的描述不存在");
-                    }
-                }
-            }
-            else
+            if (group == null)
             {
                 throw new ArgumentException($"组标识\"{groupId}\"未注册");
             }
+
+            DisplayNameExAttribute desAtt;
+            if (group.TryGetValue(value, out desAtt))
+            {
+                return desAtt.Description;
+            }
+
+            var groupDescriptionAtt = group.GroupDescriptionAttribute;
+            if (groupDescriptionAtt != null && groupDescriptionAtt.Extend != null)
+            {
+                return groupDescriptionAtt.Extend.GetDescription(value, group);
+            }
+            else
+            {
+                throw new ArgumentException($"组标识\"{groupId}\"值\"{value}\"对应的描述不存在");
+            }
+        }
+
+        /// <summary>
+        /// 尝试根据值获取值描述(获取成功返回true;失败返回false)
+        /// </summary>
+        /// <typeparam name="T">目标类型</typeparam>
+        /// <param name="value">值</param>
+        /// <param name="des">值描述</param>
+        /// <returns>获取成功返回true;失败返回false</returns>
+        public static bool TryGetDescriptionByValue<T>(object value, out string des)
+        {
+            return TryGetDescriptionByValue(typeof(T), value, out des);
+        }
+
+        /// <summary>
+        /// 尝试根据组标识和值获取值描述(获取成功返回true;失败返回false)
+        /// </summary>
+        /// <param name="groupId">组标识</param>
+        /// <param name="value">值</param>
+        /// <param name="des">值描述</param>
+        /// <returns>获取成功返回true;失败返回false</returns>
+        public static bool TryGetDescriptionByValue(object groupId, object value, out string des)
+        {
+            des = null;
+            ValueDescriptionGroup group = GetValueDescriptionGroupById(groupId);
+            if (group == null)
+            {
+                return false;
+            }
+
+            DisplayNameExAttribute desAtt;
+            if (group.TryGetValue(value, out desAtt))
+            {
+                des = desAtt.Description;
+                return true;
+            }
+
+            var groupDescriptionAtt = group.GroupDescriptionAttribute;
+            if (groupDescriptionAtt != null && groupDescriptionAtt.Extend != null)
+            {
+                des = groupDescriptionAtt.Extend.GetDescription(value, group);
+                return true;
+            }
+
+            return false;
         }
 
 
 
+
+
+
         /// <summary>
-        /// 根据名称获取值
+        /// 根据名称获取值(获取成功返回值描述;失败抛出ArgumentException异常)
         /// </summary>
         /// <typeparam name="T">目标类型</typeparam>
         /// <param name="name">名称</param>
@@ -298,7 +387,7 @@ namespace UtilZ.Dotnet.Ex.Base.ConstantValueDescription
         }
 
         /// <summary>
-        /// 根据名称获取值
+        /// 根据名称获取值(获取成功返回值描述;失败抛出ArgumentException异常)
         /// </summary>
         /// <param name="groupId">组标识</param>
         /// <param name="name">名称</param>
@@ -306,23 +395,60 @@ namespace UtilZ.Dotnet.Ex.Base.ConstantValueDescription
         public static object GerValueByName(object groupId, string name)
         {
             ValueDescriptionGroup group = GetValueDescriptionGroupById(groupId);
-            if (group != null)
-            {
-                var kvArr = group.ToArray().Where(t => { return string.Equals(t.Value, name); }).ToArray();
-                if (kvArr.Length > 0)
-                {
-                    return kvArr[0].Key;
-                }
-                else
-                {
-                    throw new ArgumentException($"组标识\"{groupId}\"名称\"{name}\"对应的值不存在");
-                }
-            }
-            else
+            if (group == null)
             {
                 throw new ArgumentException($"组标识\"{groupId}\"未注册");
             }
+
+            var kvArr = group.ToArray().Where(t => { return string.Equals(t.Value, name); }).ToArray();
+            if (kvArr.Length > 0)
+            {
+                return kvArr[0].Key;
+            }
+            else
+            {
+                throw new ArgumentException($"组标识\"{groupId}\"名称\"{name}\"对应的值不存在");
+            }
         }
+
+        /// <summary>
+        /// 根据名称获取值(获取成功返回true;失败返回false)
+        /// </summary>
+        /// <typeparam name="T">目标类型</typeparam>
+        /// <param name="name">名称</param>
+        /// <param name="value">值</param>
+        /// <returns>获取成功返回true;失败返回false</returns>
+        public static bool TryGerValueByName<T>(string name, out object value)
+        {
+            return TryGerValueByName(typeof(T), name, out value);
+        }
+
+        /// <summary>
+        /// 根据名称获取值(获取成功返回true;失败返回false)
+        /// </summary>
+        /// <param name="groupId">组标识</param>
+        /// <param name="name">名称</param>
+        /// <param name="value">值</param>
+        /// <returns>获取成功返回true;失败返回false</returns>
+        public static bool TryGerValueByName(object groupId, string name, out object value)
+        {
+            ValueDescriptionGroup group = GetValueDescriptionGroupById(groupId);
+            if (group == null)
+            {
+                throw new ArgumentException($"组标识\"{groupId}\"未注册");
+            }
+
+            var kvArr = group.ToArray().Where(t => { return string.Equals(t.Value, name); }).ToArray();
+            if (kvArr.Length > 0)
+            {
+                value = kvArr[0].Key;
+                return true;
+            }
+
+            throw new ArgumentException($"组标识\"{groupId}\"名称\"{name}\"对应的值不存在");
+        }
+
+
 
 
 
@@ -355,6 +481,9 @@ namespace UtilZ.Dotnet.Ex.Base.ConstantValueDescription
                 throw new ArgumentException($"组标识\"{groupId}\"未注册");
             }
         }
+
+
+
 
 
 

@@ -646,27 +646,27 @@
             获取或设置一个异步等待
             </summary>
         </member>
-        <member name="F:UtilZ.Dotnet.WindowsDesktopEx.Base.PartAsynWait.Model.PartAsynWaitParaAbs._caption">
+        <member name="F:UtilZ.Dotnet.WindowsDesktopEx.Base.PartAsynWait.Model.PartAsynWaitParaAbs._title">
             <summary>
             标题
             </summary>
         </member>
-        <member name="P:UtilZ.Dotnet.WindowsDesktopEx.Base.PartAsynWait.Model.PartAsynWaitParaAbs.Caption">
+        <member name="P:UtilZ.Dotnet.WindowsDesktopEx.Base.PartAsynWait.Model.PartAsynWaitParaAbs.Title">
             <summary>
             获取或设置标题
             </summary>
         </member>
-        <member name="F:UtilZ.Dotnet.WindowsDesktopEx.Base.PartAsynWait.Model.PartAsynWaitParaAbs._hint">
+        <member name="F:UtilZ.Dotnet.WindowsDesktopEx.Base.PartAsynWait.Model.PartAsynWaitParaAbs._message">
             <summary>
             提示信息
             </summary>
         </member>
-        <member name="P:UtilZ.Dotnet.WindowsDesktopEx.Base.PartAsynWait.Model.PartAsynWaitParaAbs.Hint">
+        <member name="P:UtilZ.Dotnet.WindowsDesktopEx.Base.PartAsynWait.Model.PartAsynWaitParaAbs.Message">
             <summary>
             获取或设置提示信息
             </summary>
         </member>
-        <member name="P:UtilZ.Dotnet.WindowsDesktopEx.Base.PartAsynWait.Model.PartAsynWaitParaAbs.CancelButtonVisible">
+        <member name="P:UtilZ.Dotnet.WindowsDesktopEx.Base.PartAsynWait.Model.PartAsynWaitParaAbs.ShowCancel">
             <summary>
             取消按钮可见性[true:显示;false:隐藏]
             </summary>
@@ -1560,7 +1560,7 @@
             <param name="combox">ComboBox</param>
             <returns>选中项枚举值</returns>
         </member>
-        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.Winform.Base.DropdownBoxHelper.BindingIEnumerableGenericToComboBox``1(System.Windows.Forms.ComboBox,System.Collections.Generic.List{UtilZ.Dotnet.Ex.Base.DropdownBindingItem},``0)">
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.Winform.Base.DropdownBoxHelper.BindingIEnumerableGenericToComboBox``1(System.Windows.Forms.ComboBox,System.Collections.Generic.List{UtilZ.Dotnet.Ex.Base.FieldInfoEx},``0)">
             <summary>
             绑定泛型集合到ComboBox
             </summary>
@@ -1653,7 +1653,7 @@
             <param name="toolStripComboBox">ToolStripComboBox</param>
             <returns>选中项枚举值</returns>
         </member>
-        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.Winform.Base.DropdownBoxHelper.BindingIEnumerableGenericToToolStripComboBox``1(System.Windows.Forms.ToolStripComboBox,System.Collections.Generic.List{UtilZ.Dotnet.Ex.Base.DropdownBindingItem},``0)">
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.Winform.Base.DropdownBoxHelper.BindingIEnumerableGenericToToolStripComboBox``1(System.Windows.Forms.ToolStripComboBox,System.Collections.Generic.List{UtilZ.Dotnet.Ex.Base.FieldInfoEx},``0)">
             <summary>
             绑定集合到ToolStripComboBox
             </summary>
@@ -2284,162 +2284,162 @@
             IDisposable
             </summary>
         </member>
-        <member name="T:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.LogControlF">
+        <member name="T:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.LogControl">
             <summary>
             Winform日志控件,对WPF版本进行封装得到
             </summary>
         </member>
-        <member name="P:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.LogControlF.MaxItemCount">
+        <member name="P:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.LogControl.MaxItemCount">
             <summary>
             获取或设置最多显示项数
             </summary>
         </member>
-        <member name="P:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.LogControlF.IsLock">
+        <member name="P:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.LogControl.IsLock">
             <summary>
             是否锁定滚动
             </summary>
         </member>
-        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.LogControlF.SetLogRefreshInfo(System.Int32,System.Int32)">
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.LogControl.SetLogRefreshInfo(System.Int32,System.Int32)">
             <summary>
             设置日志刷新信息
             </summary>
             <param name="refreshCount">单次最大刷新日志条数</param>
             <param name="cacheCapcity">日志缓存容量,建议等于日志最大项数</param>
         </member>
-        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.LogControlF.SetStyle(UtilZ.Dotnet.WindowsDesktopEx.Base.LogShowStyle)">
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.LogControl.SetStyle(UtilZ.Dotnet.WindowsDesktopEx.Base.LogShowStyle)">
             <summary>
             设置样式,不存在添加,存在则用新样式替换旧样式
             </summary>
             <param name="style">样式</param>
         </member>
-        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.LogControlF.RemoveStyle(UtilZ.Dotnet.WindowsDesktopEx.Base.LogShowStyle)">
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.LogControl.RemoveStyle(UtilZ.Dotnet.WindowsDesktopEx.Base.LogShowStyle)">
             <summary>
             移除样式
             </summary>
             <param name="style">样式标识</param>
         </member>
-        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.LogControlF.ClearStyle">
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.LogControl.ClearStyle">
             <summary>
             清空样式
             </summary>
         </member>
-        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.LogControlF.GetStyles">
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.LogControl.GetStyles">
             <summary>
             获取当前所有样式数组
             </summary>
             <returns>当前所有样式数组</returns>
         </member>
-        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.LogControlF.GetStyleById(System.Int32)">
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.LogControl.GetStyleById(System.Int32)">
             <summary>
             根据样式标识ID获取样式
             </summary>
             <param name="id">样式标识ID</param>
             <returns>获取样式</returns>
         </member>
-        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.LogControlF.AddLog(System.String,UtilZ.Dotnet.Ex.Log.LogLevel)">
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.LogControl.AddLog(System.String,UtilZ.Dotnet.Ex.Log.LogLevel)">
             <summary>
             添加显示日志
             </summary>
             <param name="logText">显示内容</param>
             <param name="level">日志级别</param>
         </member>
-        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.LogControlF.AddLog(System.String,System.Int32)">
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.LogControl.AddLog(System.String,System.Int32)">
             <summary>
             添加显示日志
             </summary>
             <param name="logText">显示内容</param>
             <param name="styleId">样式标识ID</param>
         </member>
-        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.LogControlF.Clear">
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.LogControl.Clear">
             <summary>
             清空日志
             </summary>
         </member>
-        <member name="P:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.LogControlF.BackColor">
+        <member name="P:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.LogControl.BackColor">
             <summary>
             获取或设置日志控件背景色
             </summary>
         </member>
-        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.LogControlF.#ctor">
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.LogControl.#ctor">
             <summary>
             构造函数
             </summary>
         </member>
-        <member name="F:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.LogControlF.components">
+        <member name="F:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.LogControl.components">
             <summary> 
             必需的设计器变量。
             </summary>
         </member>
-        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.LogControlF.Dispose(System.Boolean)">
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.LogControl.Dispose(System.Boolean)">
             <summary> 
             清理所有正在使用的资源。
             </summary>
             <param name="disposing">如果应释放托管资源，为 true；否则为 false。</param>
         </member>
-        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.LogControlF.InitializeComponent">
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.LogControl.InitializeComponent">
             <summary> 
             设计器支持所需的方法 - 不要修改
             使用代码编辑器修改此方法的内容。
             </summary>
         </member>
-        <member name="T:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.LogControl_bk">
+        <member name="T:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.LogControlWeb">
             <summary>
             日志显示控件
             </summary>
         </member>
-        <member name="F:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.LogControl_bk._maxItemCount">
+        <member name="F:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.LogControlWeb._maxItemCount">
             <summary>
             最多显示项数
             </summary>
         </member>
-        <member name="P:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.LogControl_bk.MaxItemCount">
+        <member name="P:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.LogControlWeb.MaxItemCount">
             <summary>
             获取或设置最多显示项数
             </summary>
         </member>
-        <member name="P:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.LogControl_bk.IsLock">
+        <member name="P:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.LogControlWeb.IsLock">
             <summary>
             是否锁定滚动
             </summary>
         </member>
-        <member name="F:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.LogControl_bk._templateType">
+        <member name="F:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.LogControlWeb._templateType">
             <summary>
             模板类型[true:内置模板;false:外部文件模板]
             </summary>
         </member>
-        <member name="F:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.LogControl_bk._htStyle">
+        <member name="F:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.LogControlWeb._htStyle">
             <summary>
             key:ClassId,value:style
             </summary>
         </member>
-        <member name="F:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.LogControl_bk._refreshCount">
+        <member name="F:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.LogControlWeb._refreshCount">
             <summary>
             单次最大刷新日志条数
             </summary>
         </member>
-        <member name="F:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.LogControl_bk._cacheCapcity">
+        <member name="F:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.LogControlWeb._cacheCapcity">
             <summary>
             日志缓存容量
             </summary>
         </member>
-        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.LogControl_bk.#ctor">
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.LogControlWeb.#ctor">
             <summary>
             构造函数
             </summary>
         </member>
-        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.LogControl_bk.StartRefreshLogThread(System.Int32,System.Int32)">
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.LogControlWeb.StartRefreshLogThread(System.Int32,System.Int32)">
             <summary>
             启动刷新日志线程
             </summary>
             <param name="refreshCount">单次最大刷新日志条数</param>
             <param name="cacheCapcity">日志缓存容量,建议等于日志最大项数</param>
         </member>
-        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.LogControl_bk.RemoveOutElements">
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.LogControlWeb.RemoveOutElements">
             <summary>
             移除超出限制的日志项
             </summary>
         </member>
-        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.LogControl_bk.SetTemplate(System.String,System.String,System.String)">
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.LogControlWeb.SetTemplate(System.String,System.String,System.String)">
             <summary>
             设置日志显示模板
             </summary>
@@ -2447,39 +2447,39 @@
             <param name="logContainerEleId">显示日志的容器元素id</param>
             <param name="logItemEleName">日志项内容名称</param>
         </member>
-        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.LogControl_bk.AddLog(System.String)">
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.LogControlWeb.AddLog(System.String)">
             <summary>
             添加显示日志
             </summary>
             <param name="logText">日志文本</param>
         </member>
-        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.LogControl_bk.AddLogStyleForColor(System.String,System.Drawing.Color)">
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.LogControlWeb.AddLogStyleForColor(System.String,System.Drawing.Color)">
             <summary>
             添加显示日志,样式指定为颜色
             </summary>
             <param name="logText">日志文本</param>
             <param name="color">该条记录文本所显示的颜色</param>
         </member>
-        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.LogControl_bk.AddLogStyleForCss(System.String,System.String)">
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.LogControlWeb.AddLogStyleForCss(System.String,System.String)">
             <summary>
             添加显示日志,样式指定为style
             </summary>
             <param name="logText">日志文本</param>
             <param name="style">样式</param>
         </member>
-        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.LogControl_bk.AddLogStyleForClass(System.String,System.String)">
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.LogControlWeb.AddLogStyleForClass(System.String,System.String)">
             <summary>
             添加显示日志,样式指定为css中定义的类名
             </summary>
             <param name="logText">日志文本</param>
             <param name="className">css class名称</param>
         </member>
-        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.LogControl_bk.Clear">
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.LogControlWeb.Clear">
             <summary>
             清空日志
             </summary>
         </member>
-        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.LogControl_bk.ShowLogItem.#ctor(System.String,System.String,UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.LogControl_bk.StyleType)">
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.LogControlWeb.ShowLogItem.#ctor(System.String,System.String,UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.LogControlWeb.StyleType)">
             <summary>
             
             </summary>
@@ -2487,18 +2487,18 @@
             <param name="css"></param>
             <param name="styleType">样式类型</param>
         </member>
-        <member name="F:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.LogControl_bk.components">
+        <member name="F:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.LogControlWeb.components">
             <summary> 
             必需的设计器变量。
             </summary>
         </member>
-        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.LogControl_bk.Dispose(System.Boolean)">
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.LogControlWeb.Dispose(System.Boolean)">
             <summary> 
             清理所有正在使用的资源。
             </summary>
             <param name="disposing">如果应释放托管资源，为 true；否则为 false。</param>
         </member>
-        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.LogControl_bk.InitializeComponent">
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.LogControlWeb.InitializeComponent">
             <summary> 
             设计器支持所需的方法 - 不要
             使用代码编辑器修改此方法的内容。
@@ -4425,6 +4425,97 @@
             自定义半透明控件+禁用控件Tab
             </summary>
         </member>
+        <member name="T:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.PartAsynWait.WinformNonePartAsynWait">
+            <summary>
+            Winform空IPartAsynWait
+            </summary>
+        </member>
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.PartAsynWait.WinformNonePartAsynWait.#ctor">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="P:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.PartAsynWait.WinformNonePartAsynWait.Canceled">
+            <summary>
+            获取是否已经取消
+            </summary>
+        </member>
+        <member name="P:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.PartAsynWait.WinformNonePartAsynWait.Title">
+            <summary>
+            获取或设置提示标题
+            </summary>
+        </member>
+        <member name="P:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.PartAsynWait.WinformNonePartAsynWait.Message">
+            <summary>
+            获取或设置提示内容
+            </summary>
+        </member>
+        <member name="P:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.PartAsynWait.WinformNonePartAsynWait.ShowCancel">
+            <summary>
+            是否显示取消按钮
+            </summary>
+        </member>
+        <member name="P:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.PartAsynWait.WinformNonePartAsynWait.ShadeBackground">
+            <summary>
+            获取或设置遮罩层背景色
+            </summary>
+        </member>
+        <member name="P:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.PartAsynWait.WinformNonePartAsynWait.UtilZ#Dotnet#Ex#Base#IPartAsynWait#InvokeRequired">
+            <summary>
+            获取 或设置是否需要调用Invoke
+            </summary>
+        </member>
+        <member name="E:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.PartAsynWait.WinformNonePartAsynWait.CanceledNotify">
+            <summary>
+            取消通知事件
+            </summary>
+        </member>
+        <member name="F:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.PartAsynWait.WinformNonePartAsynWait._monitor">
+            <summary>
+            线程锁
+            </summary>
+        </member>
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.PartAsynWait.WinformNonePartAsynWait.Cancel">
+            <summary>
+            取消操作
+            </summary>
+        </member>
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.PartAsynWait.WinformNonePartAsynWait.UtilZ#Dotnet#Ex#Base#IPartAsynWait#Invoke(System.Delegate)">
+            <summary>
+            在拥有此控件的基础窗口句柄的线程上执行指定的委托
+            </summary>
+            <param name="method">包含要在控件的线程上下文中调用的方法的委托</param>
+            <returns>正在被调用的委托的返回值，或者如果委托没有返回值，则为 null</returns>
+        </member>
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.PartAsynWait.WinformNonePartAsynWait.UtilZ#Dotnet#Ex#Base#IPartAsynWait#Invoke(System.Delegate,System.Object[])">
+            <summary>
+            在拥有控件的基础窗口句柄的线程上，用指定的自变量列表执行指定委托
+            </summary>
+            <param name="method">一个方法委托，它采用的参数的数量和类型与 args 参数中所包含的相同</param>
+            <param name="args">作为指定方法的自变量传递的对象数组。 如果此方法没有参数，该参数可以是 null</param>
+            <returns>System.Object，它包含正被调用的委托返回值；如果该委托没有返回值，则为 null</returns>
+        </member>
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.PartAsynWait.WinformNonePartAsynWait.Reset">
+            <summary>
+            重置异步等待框
+            </summary>
+        </member>
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.PartAsynWait.WinformNonePartAsynWait.SetInfo(System.Object)">
+            <summary>
+            设置信息(保留接口)
+            </summary>
+            <param name="para">参数</param>
+        </member>
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.PartAsynWait.WinformNonePartAsynWait.StartAnimation">
+            <summary>
+            开始动画
+            </summary>
+        </member>
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.PartAsynWait.WinformNonePartAsynWait.StopAnimation">
+            <summary>
+            停止动画
+            </summary>
+        </member>
         <member name="T:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.PartAsynWait.WinformPartAsynWaitHelper">
             <summary>
             Winform异步等待辅助类
@@ -5695,6 +5786,1118 @@
             </summary>
             <param name="e">e</param>
         </member>
+        <member name="F:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.AreaType.GlobalView">
+            <summary>
+            全局视图
+            </summary>
+        </member>
+        <member name="F:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.AreaType.AxisX">
+            <summary>
+            X坐标
+            </summary>
+        </member>
+        <member name="F:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.AreaType.AxisY">
+            <summary>
+            Y坐
+            </summary>
+        </member>
+        <member name="F:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.AreaType.Content">
+            <summary>
+            内容
+            </summary>
+        </member>
+        <member name="T:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.PeakMeterStyle">
+            <summary>
+            样式
+            </summary>
+        </member>
+        <member name="F:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.PeakMeterStyle.PMS_Horizontal">
+            <summary>
+            水平
+            </summary>
+        </member>
+        <member name="F:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.PeakMeterStyle.PMS_Vertical">
+            <summary>
+            垂直
+            </summary>
+        </member>
+        <member name="T:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.PeakMeterCtrl">
+            <summary>
+            音频频谱控件
+            </summary>
+        </member>
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.PeakMeterCtrl.#ctor">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="P:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.PeakMeterCtrl.MeterStyle">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.PeakMeterCtrl.ShowGrid">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.PeakMeterCtrl.ColoredGrid">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.PeakMeterCtrl.GridColor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.PeakMeterCtrl.ColorNormal">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.PeakMeterCtrl.ColorMedium">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.PeakMeterCtrl.ColorHigh">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.PeakMeterCtrl.ColorNormalBack">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.PeakMeterCtrl.ColorMediumBack">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.PeakMeterCtrl.ColorHighBack">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.PeakMeterCtrl.BandsCount">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.PeakMeterCtrl.LEDCount">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.PeakMeterCtrl.FalloffSpeed">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.PeakMeterCtrl.FalloffEffect">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.PeakMeterCtrl.FalloffColor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.PeakMeterCtrl.IsActive">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.PeakMeterCtrl.Start(System.Int32)">
+            <summary>
+            Start animation
+            </summary>
+            <param name="delay"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.PeakMeterCtrl.Stop">
+            <summary>
+            Stop Animation
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.PeakMeterCtrl.SetMeterBands(System.Int32,System.Int32)">
+            <summary>
+            Set number of LED bands
+            </summary>
+            <param name="BandsCount">Number of bands</param>
+            <param name="LEDCount">Number of LED per bands</param>
+        </member>
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.PeakMeterCtrl.SetRange(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Set range info
+            </summary>
+            <param name="minRangeVal">Min Range</param>
+            <param name="medRangeVal">Medium Range</param>
+            <param name="maxRangeVal">High Range</param>
+        </member>
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.PeakMeterCtrl.SetData(System.Int32[],System.Int32,System.Int32)">
+            <summary>
+            Set meter band value
+            </summary>
+            <param name="arrayValue">Array value for the bands</param>
+            <param name="offset">Starting offset position</param>
+            <param name="size">Number of values to set</param>
+            <returns></returns>
+        </member>
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.PeakMeterCtrl.DarkenColor(System.Drawing.Color,System.Byte)">
+            <summary>
+            Make a color darker
+            </summary>
+            <param name="color">Color to darken</param>
+            <param name="darkenBy">Value to decrease by</param>
+        </member>
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.PeakMeterCtrl.LightenColor(System.Drawing.Color,System.Byte)">
+            <summary>
+            Make a color lighter
+            </summary>
+            <param name="color"></param>
+            <param name="lightenBy"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.PeakMeterCtrl.InRange(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="value"></param>
+            <param name="rangeMin"></param>
+            <param name="rangeMax"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.PeakMeterCtrl.ResetControl">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.PeakMeterCtrl.StartAnimation(System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="period"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.PeakMeterCtrl.StopAnimation">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.PeakMeterCtrl.OnHandleDestroyed(System.EventArgs)">
+            <summary>
+            
+            </summary>
+            <param name="e"></param>
+        </member>
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.PeakMeterCtrl.OnBackColorChanged(System.EventArgs)">
+            <summary>
+            
+            </summary>
+            <param name="e"></param>
+        </member>
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.PeakMeterCtrl.OnPaint(System.Windows.Forms.PaintEventArgs)">
+            <summary>
+            
+            </summary>
+            <param name="e"></param>
+        </member>
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.PeakMeterCtrl.TimerCallback(System.Object)">
+            <summary>
+            
+            </summary>
+            <param name="thisObject"></param>
+        </member>
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.PeakMeterCtrl.DrawHorzBand(System.Drawing.Graphics,System.Drawing.Rectangle)">
+            <summary>
+            
+            </summary>
+            <param name="g"></param>
+            <param name="rect"></param>
+        </member>
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.PeakMeterCtrl.DrawVertBand(System.Drawing.Graphics,System.Drawing.Rectangle)">
+            <summary>
+            
+            </summary>
+            <param name="g"></param>
+            <param name="rect"></param>
+        </member>
+        <member name="T:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.PlayLinePostionSettingArgs">
+            <summary>
+            播放线位置设置事件参数
+            </summary>
+        </member>
+        <member name="P:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.PlayLinePostionSettingArgs.OffsetMilliseconds">
+            <summary>
+            相对起始时间的偏移时间,毫秒
+            </summary>
+        </member>
+        <member name="P:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.PlayLinePostionSettingArgs.Time">
+            <summary>
+            相对起始时间的偏移时间
+            </summary>
+        </member>
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.PlayLinePostionSettingArgs.#ctor(System.Double,System.DateTime)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="offsetMilliseconds">相对起始时间的偏移时间,毫秒</param>
+            <param name="time">相对起始时间的偏移时间</param>
+        </member>
+        <member name="T:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.VoiceSpecControl">
+            <summary>
+            语谱图
+            </summary>
+        </member>
+        <member name="F:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.VoiceSpecControl._grafx">
+            <summary>
+            图形双缓冲缓冲区对象
+            </summary>
+        </member>
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.VoiceSpecControl.#ctor">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.VoiceSpecControl.OnSizeChanged(System.EventArgs)">
+            <summary>
+            重写OnSizeChanged
+            </summary>
+            <param name="e"></param>
+        </member>
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.VoiceSpecControl.CreateBufferedGraphics">
+            <summary>
+            创建双缓冲绘图
+            </summary>
+        </member>
+        <member name="T:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.XAxisPlotElementInfo">
+            <summary>
+            X坐标图元信息
+            </summary>
+        </member>
+        <member name="P:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.XAxisPlotElementInfo.Height">
+            <summary>
+            元素块高度像素
+            </summary>
+        </member>
+        <member name="P:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.XAxisPlotElementInfo.Font">
+            <summary>
+            文本字体
+            </summary>
+        </member>
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.XAxisPlotElementInfo.#ctor(System.Single,System.Drawing.Brush,System.Drawing.SolidBrush,System.Single,System.Drawing.Font,System.Int32)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="height">元素块高像素</param>
+            <param name="backgroudColor">背景色</param>
+            <param name="foreColor">前景色</param>
+            <param name="lineWidth">绘制线条宽度</param>
+            <param name="font">文本字体</param>
+            <param name="order">绘制顺序,从上往下,依次递增</param>
+        </member>
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.XAxisPlotElementInfo.Dispose(System.Boolean)">
+            <summary>
+            重写Dispose
+            </summary>
+            <param name="disposing"></param>
+        </member>
+        <member name="T:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.ChannelPlotData">
+            <summary>
+            一个声道绘图数据
+            </summary>
+        </member>
+        <member name="P:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.ChannelPlotData.PCMData">
+            <summary>
+            线性数据
+            </summary>
+        </member>
+        <member name="P:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.ChannelPlotData.Name">
+            <summary>
+            声道名称
+            </summary>
+        </member>
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.ChannelPlotData.#ctor(System.Int16[],System.String)">
+            <summary>
+            构造函数 
+            </summary>
+            <param name="pcmData">线性数据</param>
+            <param name="name"></param>
+        </member>
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.ChannelPlotData.Resample(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            对声道FFT数据进行重采样
+            </summary>
+            <param name="targetCount">目标数据个数</param>
+            <param name="begeinIndex">原始数据起始索引</param>
+            <param name="endIndex">原始数据结束索引</param>
+            <returns>FFT中最大值</returns>
+        </member>
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.ChannelPlotData.PrimitiveResample(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            对声道FFT数据进行重采样
+            </summary>
+            <param name="targetCount">目标数据个数</param>
+            <param name="begeinIndex">原始数据起始索引</param>
+            <param name="endIndex">原始数据结束索引</param>
+            <returns>FFT中最大值</returns>
+        </member>
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.ChannelPlotData.PrimitiveResample(UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.ChannelDataSegment)">
+            <summary>
+            重采样--指针
+            </summary>
+            <param name="channelDataSegment">重采样数据段信息</param>
+        </member>
+        <member name="T:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.ChannelDataSegment">
+            <summary>
+            声道数据段信息
+            </summary>
+        </member>
+        <member name="P:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.ChannelDataSegment.SrcData">
+            <summary>
+            原始数据
+            </summary>
+        </member>
+        <member name="P:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.ChannelDataSegment.BegeinIndex">
+            <summary>
+            起始位置
+            </summary>
+        </member>
+        <member name="P:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.ChannelDataSegment.EndIndex">
+            <summary>
+            结束位置
+            </summary>
+        </member>
+        <member name="P:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.ChannelDataSegment.Flag">
+            <summary>
+            最后一段数据是否特殊处理
+            </summary>
+        </member>
+        <member name="P:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.ChannelDataSegment.Sample">
+            <summary>
+            采样率
+            </summary>
+        </member>
+        <member name="P:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.ChannelDataSegment.Result">
+            <summary>
+            结果数据
+            </summary>
+        </member>
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.ChannelDataSegment.#ctor">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="T:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.ContentPlotElementInfo">
+            <summary>
+            内容图元信息
+            </summary>
+        </member>
+        <member name="P:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.ContentPlotElementInfo.PlayLineChannelPen">
+            <summary>
+            获取或设置播放位置线绘制画笔
+            </summary>
+        </member>
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.ContentPlotElementInfo.#ctor(System.Drawing.Brush,System.Drawing.SolidBrush,System.Single,System.Int32)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="backgroudColor">背景色</param>
+            <param name="foreColor">前景色</param>
+            <param name="lineWidth">绘制线条宽度</param>
+            <param name="order">绘制顺序,从上往下,依次递增</param>
+        </member>
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.ContentPlotElementInfo.Dispose(System.Boolean)">
+            <summary>
+            重写Dispose
+            </summary>
+            <param name="disposing"></param>
+        </member>
+        <member name="T:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.GlobalViewPlotElementInfo">
+             <summary>
+            全局视图图元信息
+             </summary>
+        </member>
+        <member name="P:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.GlobalViewPlotElementInfo.Height">
+            <summary>
+            全局视图高度像素
+            </summary>
+        </member>
+        <member name="P:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.GlobalViewPlotElementInfo.GlobalViewZoomAreaBackBrush">
+            <summary>
+            获取或设置显示波形区域在缩略波形中的对应的区域背景画刷
+            </summary>
+        </member>
+        <member name="P:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.GlobalViewPlotElementInfo.GlobalViewZoomAreaPen">
+            <summary>
+            获取或设置显示波形区域在缩略波形中的对应的区域背景画刷
+            </summary>
+        </member>
+        <member name="P:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.GlobalViewPlotElementInfo.PlayLineChannelPen">
+            <summary>
+            获取或设置播放位置线绘制画笔
+            </summary>
+        </member>
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.GlobalViewPlotElementInfo.#ctor(System.Single,System.Drawing.Brush,System.Drawing.SolidBrush,System.Single,System.Int32)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="height">全局视图高度像素</param>
+            <param name="backgroudColor">背景色</param>
+            <param name="foreColor">前景色</param>
+            <param name="lineWidth">绘制线条宽度</param>
+            <param name="order">绘制顺序,从上往下,依次递增</param>
+        </member>
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.GlobalViewPlotElementInfo.Dispose(System.Boolean)">
+            <summary>
+            重写Dispose
+            </summary>
+            <param name="disposing"></param>
+        </member>
+        <member name="T:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.PlotConstant">
+            <summary>
+            WavePlayer常量定义
+            </summary>
+        </member>
+        <member name="F:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.PlotConstant.DEFAULLINE_WIDTH">
+            <summary>
+            各种画笔默认宽度
+            </summary>
+        </member>
+        <member name="F:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.PlotConstant.BORDER_WIDTH">
+            <summary>
+            各种画笔默认宽度
+            </summary>
+        </member>
+        <member name="F:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.PlotConstant.PRECISION">
+            <summary>
+            浮点数精度值
+            </summary>
+        </member>
+        <member name="F:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.PlotConstant.ZEROR_D">
+            <summary>
+            浮点数精度值
+            </summary>
+        </member>
+        <member name="T:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.PlotElementInfoAbs">
+            <summary>
+            图元信息
+            </summary>
+        </member>
+        <member name="P:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.PlotElementInfoAbs.BackgroudColor">
+            <summary>
+            背景色
+            </summary>
+        </member>
+        <member name="P:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.PlotElementInfoAbs.ForeColor">
+            <summary>
+            前景色
+            </summary>
+        </member>
+        <member name="P:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.PlotElementInfoAbs.Pen">
+            <summary>
+            内容画笔
+            </summary>
+        </member>
+        <member name="P:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.PlotElementInfoAbs.Order">
+            <summary>
+            绘制顺序,从上往下,依次递增
+            </summary>
+        </member>
+        <member name="P:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.PlotElementInfoAbs.Area">
+            <summary>
+            元素块区域
+            </summary>
+        </member>
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.PlotElementInfoAbs.#ctor(System.Drawing.Brush,System.Drawing.SolidBrush,System.Single,System.Int32)">
+            <summary>
+            构造函数-绘制内容
+            </summary>
+            <param name="backgroudColor">背景色</param>
+            <param name="foreColor">前景色</param>
+            <param name="lineWidth">绘制线条宽度</param>
+            <param name="order">绘制顺序,从上往下,依次递增</param>
+        </member>
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.PlotElementInfoAbs.Dispose">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.PlotElementInfoAbs.Dispose(System.Boolean)">
+            <summary>
+            
+            </summary>
+            <param name="disposing"></param>
+        </member>
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.PlotElementInfoAbs.PrimitiveDisposable(System.IDisposable)">
+            <summary>
+            
+            </summary>
+            <param name="disposable"></param>
+        </member>
+        <member name="T:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.SelectedInfo">
+            <summary>
+            鼠标选中信息
+            </summary>
+        </member>
+        <member name="P:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.SelectedInfo.PlotBeginTime">
+            <summary>
+            总数据起始时间
+            </summary>
+        </member>
+        <member name="P:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.SelectedInfo.BeginMillisecond">
+            <summary>
+            起始总时长,单位/毫秒
+            </summary>
+        </member>
+        <member name="P:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.SelectedInfo.EndMillisecond">
+            <summary>
+            结束时间,单位/毫秒
+            </summary>
+        </member>
+        <member name="T:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.UIArea">
+            <summary>
+            UI区域
+            </summary>
+        </member>
+        <member name="F:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.UIArea.GlobalView">
+            <summary>
+            顶部全局 
+            </summary>
+        </member>
+        <member name="F:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.UIArea.GlobalViewZoomDisplay">
+            <summary>
+            整体视图中缩放后的显示区域
+            </summary>
+        </member>
+        <member name="F:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.UIArea.GlobalViewZoomNormal">
+            <summary>
+            整体视图中非缩放后的显示区域
+            </summary>
+        </member>
+        <member name="F:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.UIArea.Wave">
+            <summary>
+            波形图区域
+            </summary>
+        </member>
+        <member name="F:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.UIArea.WaveSelected">
+            <summary>
+            波形图选中区域
+            </summary>
+        </member>
+        <member name="F:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.UIArea.Voice">
+            <summary>
+            语谱图
+            </summary>
+        </member>
+        <member name="F:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.UIArea.VoiceSelected">
+            <summary>
+            语谱图选中区域
+            </summary>
+        </member>
+        <member name="F:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.UIArea.TimeArea">
+            <summary>
+            时间区域
+            </summary>
+        </member>
+        <member name="F:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.UIArea.DbArea">
+            <summary>
+            幅度区域
+            </summary>
+        </member>
+        <member name="F:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.UIArea.HzArea">
+            <summary>
+            幅度区域
+            </summary>
+        </member>
+        <member name="F:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.UIArea.Other">
+            <summary>
+            其它区域
+            </summary>
+        </member>
+        <member name="T:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.WaveControl">
+            <summary>
+            属性
+            </summary>
+        </member>
+        <member name="F:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.WaveControl._grafx">
+            <summary>
+            图形双缓冲缓冲区对象
+            </summary>
+        </member>
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.WaveControl.#ctor">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.WaveControl.OnSizeChanged(System.EventArgs)">
+            <summary>
+            重写OnSizeChanged
+            </summary>
+            <param name="e"></param>
+        </member>
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.WaveControl.CreateBufferedGraphics">
+            <summary>
+            创建双缓冲绘图
+            </summary>
+        </member>
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.WaveControl.OnPaint(System.Windows.Forms.PaintEventArgs)">
+            <summary>
+            重写OnPaint
+            </summary>
+            <param name="e"></param>
+        </member>
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.WaveControl.Dispose(System.Boolean)">
+            <summary>
+            重写Dispose
+            </summary>
+            <param name="disposing"></param>
+        </member>
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.WaveControl.OnPaintBackground(System.Windows.Forms.PaintEventArgs)">
+            <summary>
+            重写OnPaintBackground
+            </summary>
+            <param name="pevent"></param>
+        </member>
+        <member name="F:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.WaveControl._defaultCursor">
+            <summary>
+            鼠标进入到本控件时的样式
+            </summary>
+        </member>
+        <member name="F:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.WaveControl._wavAndVoiceSelecteMouseStyle">
+            <summary>
+            波形或语谱图可选中时鼠标样式
+            </summary>
+        </member>
+        <member name="F:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.WaveControl._zoomWavDisplayAreaMmoveMouseStyle">
+            <summary>
+            全局视图中-缩放操作后显示区域移动鼠标样式
+            </summary>
+        </member>
+        <member name="F:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.WaveControl._mouseDownArgs">
+            <summary>
+            鼠标按下时的事件参数
+            </summary>
+        </member>
+        <member name="F:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.WaveControl._lastMouseDownMoveLocation">
+            <summary>
+            鼠标按下后,上次移动完的坐标
+            </summary>
+        </member>
+        <member name="F:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.WaveControl._mouseDownUIArea">
+            <summary>
+            鼠标按下时所在区域
+            </summary>
+        </member>
+        <member name="F:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.WaveControl._currentMouseArgs">
+            <summary>
+            当前鼠标参数
+            </summary>
+        </member>
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.WaveControl.GetUIArea(System.Drawing.Point,UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.WavePlotPara,UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.SelectedInfo)">
+            <summary>
+            获取指定点所对应在UI中的区域
+            </summary>
+            <param name="point">指定点</param>
+            <param name="plotPara"></param>
+            <param name="selectedInfo"></param>
+            <returns>指定点所对应在UI中的区域</returns>
+        </member>
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.WaveControl.OnMouseDown(System.Windows.Forms.MouseEventArgs)">
+            <summary>
+            重写OnMouseDown
+            </summary>
+            <param name="e"></param>
+        </member>
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.WaveControl.OnMouseMove(System.Windows.Forms.MouseEventArgs)">
+            <summary>
+            重写OnMouseMove
+            </summary>
+            <param name="e"></param>
+        </member>
+        <member name="E:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.WaveControl.PlayLinePostionSetting">
+            <summary>
+            播放线位置设置事件
+            </summary>
+        </member>
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.WaveControl.OnMouseUp(System.Windows.Forms.MouseEventArgs)">
+            <summary>
+            重写OnMouseUp
+            </summary>
+            <param name="e"></param>
+        </member>
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.WaveControl.OnMouseEnter(System.EventArgs)">
+            <summary>
+            重写OnMouseEnter
+            </summary>
+            <param name="e"></param>
+        </member>
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.WaveControl.OnMouseLeave(System.EventArgs)">
+            <summary>
+            重写OnMouseLeave
+            </summary>
+            <param name="e"></param>
+        </member>
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.WaveControl.OnMouseWheel(System.Windows.Forms.MouseEventArgs)">
+            <summary>
+            重写OnMouseWheel
+            </summary>
+            <param name="e"></param>
+        </member>
+        <member name="F:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.WaveControl._partRefreshAreas">
+            <summary>
+            当前局部刷新区域集合
+            </summary>
+        </member>
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.WaveControl.AddPartRefreshArea(UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.PlotElementInfoAbs)">
+            <summary>
+            添加局部刷新区域[添加成功返回true,失败返回false]
+            </summary>
+            <param name="plotElementInfo">需要局部刷新的矩形区域</param>
+        </member>
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.WaveControl.AddPartRefreshArea(System.Nullable{System.Drawing.RectangleF})">
+            <summary>
+            添加局部刷新区域[添加成功返回true,失败返回false]
+            </summary>
+            <param name="reg">需要局部刷新的矩形区域</param>
+            <returns>添加成功返回true,失败返回false</returns>
+        </member>
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.WaveControl.AddPartRefreshArea(System.Drawing.RectangleF)">
+            <summary>
+            添加局部刷新区域[添加成功返回true,失败返回false]
+            </summary>
+            <param name="reg">需要局部刷新的矩形区域</param>
+            <returns>添加成功返回true,失败返回false</returns>
+        </member>
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.WaveControl.AllDraw">
+            <summary>
+            全部绘制
+            </summary>
+        </member>
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.WaveControl.DrawWaveDb(System.Drawing.Graphics,UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.PlotElementInfoAbs,UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.WavePlotPara,System.Collections.Generic.IEnumerable{UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.ChannelPlotData},System.Boolean)">
+            <summary>
+            
+            </summary>
+            <param name="graphics"></param>
+            <param name="wave"></param>
+            <param name="plotPara"></param>
+            <param name="pcmDatas"></param>
+            <param name="dataType">true:GlobalViewData;alse:DrawData</param>
+        </member>
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.WaveControl.DrawWave_A(System.Drawing.Graphics,UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.PlotElementInfoAbs,UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.WavePlotPara,System.Collections.Generic.IEnumerable{UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.ChannelPlotData},System.Boolean)">
+            <summary>
+            
+            </summary>
+            <param name="graphics"></param>
+            <param name="wave"></param>
+            <param name="plotPara"></param>
+            <param name="pcmDatas"></param>
+            <param name="dataType">true:GlobalViewData;alse:DrawData</param>
+        </member>
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.WaveControl.DrawDisplayAreaStyle(UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.GlobalViewPlotElementInfo,System.Drawing.Graphics,System.Drawing.RectangleF)">
+            <summary>
+            绘制显示区域样式
+            </summary>
+            <param name="globalView"></param>
+            <param name="graphics"></param>
+            <param name="globalViewZoomArea"></param>
+        </member>
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.WaveControl.DrawVerLine(System.Drawing.Graphics,System.Drawing.Pen,System.Single,System.Single,System.Single,System.Single,System.Int32)">
+            <summary>
+            绘制垂直线
+            </summary>
+            <param name="graphics">Graphics</param>
+            <param name="globalViewZoomAreaPen">Pen</param>
+            <param name="beginX">起始X</param>
+            <param name="endX">结束X</param>
+            <param name="beginY">起始Y</param>
+            <param name="endY">结束Y</param>
+            <param name="interval">像素间隔</param>
+        </member>
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.WaveControl.PartDraw_ZoomMove">
+            <summary>
+            完整绘制:整体视图-时间线-波形图
+            用于缩放-平移场景
+            </summary>
+        </member>
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.WaveControl.PrimitiveUpdatePostionLine(UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.WavePlotPara,System.Double)">
+            <summary>
+            更新播放位置指示线
+            </summary>
+            <param name="plotPara"></param>
+            <param name="offsetTimeMilliseconds">播放时间</param>
+        </member>
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.WaveControl.PartDraw_DrawDensityChanged">
+            <summary>
+            部分绘制-波形线密度改变
+            
+            </summary>
+        </member>
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.WaveControl.Clear">
+            <summary>
+            清除
+            </summary>
+        </member>
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.WaveControl.UpdateData(UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.WavePlotPara,System.Int16[])">
+            <summary>
+            
+            </summary>
+            <param name="plotPara">绘图参数</param>
+            <param name="pcmData">pcm数据</param>
+        </member>
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.WaveControl.UpdateData(System.Collections.Generic.IEnumerable{UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.ChannelPlotData},UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.WavePlotPara)">
+            <summary>
+            
+            </summary>
+            <param name="fftDatas">
+            声道数据集合
+            单声道:L
+            双声道:L-R
+            四声道:L-R-LS-RS
+            5.1声道FFT数据顺序: L-R-C-LFE-LS-RS
+            7.1声道FFT数据顺序: L-R-C-LFE-LS-RS-不晓得了
+            </param>
+            <param name="plotPara">绘图参数</param>
+        </member>
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.WaveControl.ZoomIn">
+            <summary>
+            放大时间
+            </summary>
+        </member>
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.WaveControl.ZoomOut">
+            <summary>
+            缩小时间
+            </summary>
+        </member>
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.WaveControl.UpdatePostionLine(System.DateTime)">
+            <summary>
+            更新播放位置指示线
+            </summary>
+            <param name="time">播放时间</param>
+        </member>
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.WaveControl.UpdatePostionLine(System.Double)">
+            <summary>
+            更新播放位置指示线
+            </summary>
+            <param name="offsetTimeMilliseconds">播放时间</param>
+        </member>
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.WaveControl.SaveSelectionToFile(System.String)">
+            <summary>
+            保存选中区域到文件
+            </summary>
+            <param name="filePath">文件路径</param>
+        </member>
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.WaveControl.Forward(System.Double)">
+            <summary>
+            快进
+            </summary>
+            <param name="time">快进时跳过的时间长度,单位/秒</param>
+        </member>
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.WaveControl.Back(System.Double)">
+            <summary>
+            快退
+            </summary>
+            <param name="time">快退时跳过的时间长度,单位/秒</param>
+        </member>
+        <member name="F:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.WaveControl._globalView">
+            <summary>
+            全局视图图元信息
+            </summary>
+        </member>
+        <member name="P:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.WaveControl.GlobalView">
+            <summary>
+            获取或设置全局视图图元信息
+            </summary>
+        </member>
+        <member name="F:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.WaveControl._xAxis">
+            <summary>
+            x轴(时间)坐标图元信息
+            </summary>
+        </member>
+        <member name="P:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.WaveControl.XAxis">
+            <summary>
+            获取或设置x轴(时间)坐标图元信息
+            </summary>
+        </member>
+        <member name="F:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.WaveControl._yAxis">
+            <summary>
+            y坐标图元信息
+            </summary>
+        </member>
+        <member name="P:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.WaveControl.YAxis">
+            <summary>
+            获取或设置y坐标图元信息
+            </summary>
+        </member>
+        <member name="F:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.WaveControl._content">
+            <summary>
+            内容图元信息
+            </summary>
+        </member>
+        <member name="P:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.WaveControl.Content">
+            <summary>
+            获取或设置内容图元信息
+            </summary>
+        </member>
+        <member name="F:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.WaveControl._channelSeparatorPen">
+            <summary>
+            波形分隔线绘制画笔
+            </summary>
+        </member>
+        <member name="P:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.WaveControl.ChannelSeparatorPen">
+            <summary>
+            获取或设置分隔线绘制画笔
+            </summary>
+        </member>
+        <member name="F:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.WaveControl._seleactionAreaBrush">
+            <summary>
+            选中区域背景画刷
+            </summary>
+        </member>
+        <member name="P:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.WaveControl.SeleactionAreaBrush">
+            <summary>
+            获取或设置选中区域背景画刷
+            </summary>
+        </member>
+        <member name="F:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.WaveControl._seleactionGlobalViewAreaBrush">
+            <summary>
+            整体视图选中区域背景画刷
+            </summary>
+        </member>
+        <member name="P:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.WaveControl.SeleactionGlobalViewAreaBrush">
+            <summary>
+            获取或设置整体视图选中区域背景画刷
+            </summary>
+        </member>
+        <member name="P:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.WaveControl.BackColor">
+            <summary>
+            获取或设置背景色
+            </summary>
+        </member>
+        <member name="F:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.WaveControl._drawDensity">
+            <summary>
+            图形绘制密度,值越大越密,同时绘制波形图也就越慢[建议值为1-5]
+            </summary>
+        </member>
+        <member name="P:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.WaveControl.DrawDensity">
+            <summary>
+            获取或设置波形图密度,值越大越密,同时绘制波形图也就越慢[建议值为1-5],默认为1
+            </summary>
+        </member>
+        <member name="F:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.WaveControl.CustomTimeAxisLabelFun">
+            <summary>
+            自定义时间坐标刻度文本回调
+            </summary>
+        </member>
+        <member name="F:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.WaveControl._playPositionLine">
+            <summary>
+            是否绘制播放位置线[true:绘制;false:不绘制]
+            </summary>
+        </member>
+        <member name="P:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.WaveControl.PlayPositionLine">
+            <summary>
+            是否绘制播放位置线[true:绘制;false:不绘制;默认为true]
+            </summary>
+        </member>
+        <member name="T:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.WavePlotPara">
+            <summary>
+            波形图参数
+            </summary>
+        </member>
+        <member name="P:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.WavePlotPara.BaseTime">
+            <summary>
+            起始的基准时间,其它时间皆基于此值往后增加多少毫秒
+            </summary>
+        </member>
+        <member name="P:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.WavePlotPara.DurationMillisecond">
+            <summary>
+            总时长,单位/毫秒
+            </summary>
+        </member>
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.WavePlotPara.#ctor(System.DateTime,System.Double)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="baseTime">起始的基准时间,其它时间皆基于此值往后增加多少毫秒</param>
+            <param name="durationMillisecond">总时长,单位/毫秒</param>
+        </member>
+        <member name="P:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.WavePlotPara.SBTOMillisecond">
+            <summary>
+            获取或设置相对于起始的基准时间的显示起始
+            SBTO=>showBeginTimeOffset
+            </summary>
+        </member>
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.WavePlotPara.UpdateSETOMillisecond(System.Double)">
+            <summary>
+            SETO=>ShowEndTimeOffsetMillisecond
+            </summary>
+        </member>
+        <member name="T:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.YAxisPlotElementInfo">
+            <summary>
+            Y坐标图元信息
+            </summary>
+        </member>
+        <member name="P:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.YAxisPlotElementInfo.Width">
+            <summary>
+            元素块宽度像素
+            </summary>
+        </member>
+        <member name="P:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.YAxisPlotElementInfo.Font">
+            <summary>
+            文本字体
+            </summary>
+        </member>
+        <member name="P:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.YAxisPlotElementInfo.Dock">
+            <summary>
+            坐标轴依靠方向
+            </summary>
+        </member>
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.YAxisPlotElementInfo.#ctor(System.Single,System.Drawing.Brush,System.Drawing.SolidBrush,System.Single,System.Drawing.Font,System.Windows.Forms.DockStyle)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="width">元素块宽度像素</param>
+            <param name="backgroudColor">背景色</param>
+            <param name="foreColor">前景色</param>
+            <param name="lineWidth">绘制线条宽度</param>
+            <param name="font">文本字体</param>
+            <param name="dock">坐标轴依靠方向</param>
+        </member>
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.YAxisPlotElementInfo.Dispose(System.Boolean)">
+            <summary>
+            重写Dispose
+            </summary>
+            <param name="disposing"></param>
+        </member>
+        <member name="F:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.ZoomInfo._zoomMultiple">
+            <summary>
+            缩放倍数
+            </summary>
+        </member>
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.ZoomInfo.HasZoom">
+            <summary>
+            是否有缩放
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.ZoomInfo.ZoomIn(UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.WavePlotPara,System.UInt32)">
+            <summary>
+            放大
+            </summary>
+            <param name="plotPara"></param>
+            <param name="minPointCount">图上最少点数</param>
+        </member>
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.ZoomInfo.ZoomOut(UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.WavePlotPara)">
+            <summary>
+            缩小
+            </summary>
+        </member>
         <member name="T:UtilZ.Dotnet.WindowsDesktopEx.Winform.Interface.IControl">
             <summary>
             控件接口
@@ -6106,17 +7309,49 @@
              <param name="targetWindowType">父窗口类型,不为null时查找与该类型匹配的父窗口;为null时找到第一级为结果</param>
             <returns>查找结果</returns>
         </member>
-        <member name="T:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.VisibilityBoolConverter">
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.WPF.Base.WPFHelper.FindTemplateControl(System.Windows.DependencyObject,System.Func{System.Windows.Media.Visual,System.Boolean})">
             <summary>
-            Visibility与Bool转换接口
+            查找指定控件模板里的子控件,未找到返回null
+            </summary>
+            <param name="control">目标控件</param>
+            <param name="predicate">匹配条件</param>
+            <returns>模板里的子控件</returns>
+        </member>
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.WPF.Base.WPFHelper.FindTemplateControlByName(System.Windows.DependencyObject,System.String)">
+            <summary>
+            查找指定控件模板里的子控件,未找到返回null
+            </summary>
+            <param name="dependencyObject">目标控件</param>
+            <param name="name">模板内子控件名称</param>
+            <returns>模板里的子控件</returns>
+        </member>
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.WPF.Base.WPFHelper.GetTemplateControlList(System.Windows.DependencyObject)">
+            <summary>
+            获取指定控件模板里的子控件列表
+            </summary>
+            <param name="control">目标控件</param>
+            <returns>模板里的子控件列表</returns>
+        </member>
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.WPF.Base.WPFHelper.GetInputHitTestChildControl``1(System.Windows.UIElement,System.Windows.Point)">
+            <summary>
+            获取父控件中命中的子控件
+            </summary>
+            <typeparam name="T">子控件类型</typeparam>
+            <param name="element">父控件</param>
+            <param name="point">父控件中的命中坐标</param>
+            <returns>命中的子控件</returns>
+        </member>
+        <member name="T:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.CountToVisConverter">
+            <summary>
+            数量与Bool转换接口
             </summary>
         </member>
-        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.VisibilityBoolConverter.#ctor">
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.CountToVisConverter.#ctor">
             <summary>
             构造函数 
             </summary>
         </member>
-        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.VisibilityBoolConverter.Convert(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.CountToVisConverter.Convert(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
             <summary>
             将后台对象转换为显示的对象
             </summary>
@@ -6126,15 +7361,53 @@
             <param name="culture"></param>
             <returns></returns>
         </member>
-        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.VisibilityBoolConverter.ConvertBack(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+        <member name="T:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.BindingEvaluator">
             <summary>
-            将显示的对象转换为后台对象
+            
             </summary>
-            <param name="value"></param>
-            <param name="targetType"></param>
-            <param name="parameter"></param>
-            <param name="culture"></param>
+        </member>
+        <member name="F:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.BindingEvaluator.ValueProperty">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.BindingEvaluator.#ctor(System.Windows.Data.Binding)">
+            <summary>
+            
+            </summary>
+            <param name="binding"></param>
+        </member>
+        <member name="P:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.BindingEvaluator.Value">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.BindingEvaluator.ValueBinding">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.BindingEvaluator.Evaluate(System.Object)">
+            <summary>
+            
+            </summary>
+            <param name="dataItem"></param>
             <returns></returns>
+        </member>
+        <member name="T:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.IconPlacement">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.IconPlacement.Left">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.IconPlacement.Right">
+            <summary>
+            
+            </summary>
         </member>
         <member name="T:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.CabinetInfoGroup">
             <summary>
@@ -6311,6 +7584,11 @@
             UCCabinetCalibrationControl
             </summary>
         </member>
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.UCCabinetCalibrationControl.#ctor">
+            <summary>
+            构造函数
+            </summary>
+        </member>
         <member name="M:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.UCCabinetCalibrationControl.InitializeComponent">
             <summary>
             InitializeComponent
@@ -6424,6 +7702,21 @@
             行头可见性
             </summary>
         </member>
+        <member name="E:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.UCCabinetControl.SelectedDeviceChanged">
+            <summary>
+            选中设备改变事件
+            </summary>
+        </member>
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.UCCabinetControl.#ctor">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.UCCabinetControl.Dispose">
+            <summary>
+            释放资源
+            </summary>
+        </member>
         <member name="M:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.UCCabinetControl.InitializeComponent">
             <summary>
             InitializeComponent
@@ -6447,6 +7740,34 @@
             获取或设置设备名称样式
             </summary>
         </member>
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.UCCabinetDeviceControl.#ctor">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.UCCabinetDeviceControl.OnMouseEnter(System.Windows.Input.MouseEventArgs)">
+            <summary>
+            重写OnMouseEnter
+            </summary>
+            <param name="e"></param>
+        </member>
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.UCCabinetDeviceControl.OnMouseLeave(System.Windows.Input.MouseEventArgs)">
+            <summary>
+            重写OnMouseLeave
+            </summary>
+            <param name="e"></param>
+        </member>
+        <member name="F:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.UCCabinetDeviceControl.SelectedDeviceChanged">
+            <summary>
+            选择设备改变事件
+            </summary>
+        </member>
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.UCCabinetDeviceControl.GetNoNameDeviceUWidth">
+            <summary>
+            获取无名称设备宽度
+            </summary>
+            <returns></returns>
+        </member>
         <member name="M:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.UCCabinetDeviceControl.InitializeComponent">
             <summary>
             InitializeComponent
@@ -6458,6 +7779,34 @@
             </summary>
             <summary>
             UCCabinetDeviceUControl
+            </summary>
+        </member>
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.UCCabinetDeviceUControl.#ctor">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.UCCabinetDeviceUControl.UpdateCabinetDevice(UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.CabinetDeviceUnit,System.Windows.Style)">
+            <summary>
+            更新机柜设备单元
+            </summary>
+            <param name="deviceUnit"></param>
+            <param name="deviceNameStyle"></param>
+        </member>
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.UCCabinetDeviceUControl.UpdateDeviceNameStyle(System.Windows.Style)">
+            <summary>
+            更新设备名称样式
+            </summary>
+            <param name="style"></param>
+        </member>
+        <member name="F:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.UCCabinetDeviceUControl.SelectedDeviceChanged">
+            <summary>
+            选中设备改变事件
+            </summary>
+        </member>
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.UCCabinetDeviceUControl.Dispose">
+            <summary>
+            释放资源
             </summary>
         </member>
         <member name="M:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.UCCabinetDeviceUControl.InitializeComponent">
@@ -6473,6 +7822,11 @@
             UCCabinetEmptyUCalibrationControl
             </summary>
         </member>
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.UCCabinetEmptyUCalibrationControl.#ctor">
+            <summary>
+            构造函数
+            </summary>
+        </member>
         <member name="M:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.UCCabinetEmptyUCalibrationControl.InitializeComponent">
             <summary>
             InitializeComponent
@@ -6485,6 +7839,17 @@
             <summary>
             UCCabinetEmptyUControl
             </summary>
+        </member>
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.UCCabinetEmptyUControl.#ctor">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.UCCabinetEmptyUControl.UpdateCabinetDevice(UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.CabinetDeviceUnit)">
+            <summary>
+            更新机柜设备
+            </summary>
+            <param name="deviceUnit"></param>
         </member>
         <member name="M:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.UCCabinetEmptyUControl.InitializeComponent">
             <summary>
@@ -6589,6 +7954,21 @@
             行头可见性
             </summary>
         </member>
+        <member name="E:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.UCCabinetRowControl.SelectedDeviceChanged">
+            <summary>
+            选中设备改变事件
+            </summary>
+        </member>
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.UCCabinetRowControl.#ctor">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.UCCabinetRowControl.Dispose">
+            <summary>
+            Dispose
+            </summary>
+        </member>
         <member name="M:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.UCCabinetRowControl.CalCabineRowControlWidth(System.Int32,System.Double,System.Double,System.Boolean)">
             <summary>
             计算机柜行宽度
@@ -6660,6 +8040,28 @@
         <member name="P:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.UCSingleCabinetControl.SelectedCabinetDevice">
             <summary>
             选中的设备
+            </summary>
+        </member>
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.UCSingleCabinetControl.CalCabinetControlHeight(System.Int32)">
+            <summary>
+            计算机柜控件高度
+            </summary>
+            <param name="height"></param>
+            <returns></returns>
+        </member>
+        <member name="E:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.UCSingleCabinetControl.SelectedDeviceChanged">
+            <summary>
+            选中设备改变事件
+            </summary>
+        </member>
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.UCSingleCabinetControl.#ctor">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.UCSingleCabinetControl.Dispose">
+            <summary>
+            释放资源
             </summary>
         </member>
         <member name="M:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.UCSingleCabinetControl.InitializeComponent">
@@ -9626,6 +11028,338 @@
             <param name="newValue"></param>
             <param name="oldValue"></param>
         </member>
+        <member name="T:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.AutoCompleteTextBox">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.AutoCompleteTextBox.PartEditor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.AutoCompleteTextBox.PartPopup">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.AutoCompleteTextBox.PartSelector">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.AutoCompleteTextBox.DelayProperty">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.AutoCompleteTextBox.DisplayMemberProperty">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.AutoCompleteTextBox.IconPlacementProperty">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.AutoCompleteTextBox.IconProperty">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.AutoCompleteTextBox.IconVisibilityProperty">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.AutoCompleteTextBox.IsDropDownOpenProperty">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.AutoCompleteTextBox.IsLoadingProperty">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.AutoCompleteTextBox.IsReadOnlyProperty">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.AutoCompleteTextBox.ItemTemplateProperty">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.AutoCompleteTextBox.ItemTemplateSelectorProperty">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.AutoCompleteTextBox.LoadingContentProperty">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.AutoCompleteTextBox.ProviderProperty">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.AutoCompleteTextBox.SelectedItemProperty">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.AutoCompleteTextBox.TextProperty">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.AutoCompleteTextBox.FilterProperty">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.AutoCompleteTextBox.MaxLengthProperty">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.AutoCompleteTextBox.CharacterCasingProperty">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.AutoCompleteTextBox.MaxPopUpHeightProperty">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.AutoCompleteTextBox.WatermarkProperty">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.AutoCompleteTextBox.SuggestionBackgroundProperty">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.AutoCompleteTextBox.MaxPopupHeight">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.AutoCompleteTextBox.BindingEvaluator">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.AutoCompleteTextBox.CharacterCasing">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.AutoCompleteTextBox.MaxLength">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.AutoCompleteTextBox.Delay">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.AutoCompleteTextBox.DisplayMember">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.AutoCompleteTextBox.Editor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.AutoCompleteTextBox.FetchTimer">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.AutoCompleteTextBox.Filter">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.AutoCompleteTextBox.Icon">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.AutoCompleteTextBox.IconPlacement">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.AutoCompleteTextBox.IconVisibility">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.AutoCompleteTextBox.IsDropDownOpen">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.AutoCompleteTextBox.IsLoading">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.AutoCompleteTextBox.IsReadOnly">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.AutoCompleteTextBox.ItemsSelector">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.AutoCompleteTextBox.ItemTemplate">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.AutoCompleteTextBox.ItemTemplateSelector">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.AutoCompleteTextBox.LoadingContent">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.AutoCompleteTextBox.Popup">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.AutoCompleteTextBox.PopupOpened">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.AutoCompleteTextBox.Provider">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.AutoCompleteTextBox.SelectedItem">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.AutoCompleteTextBox.SelectionAdapter">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.AutoCompleteTextBox.Text">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.AutoCompleteTextBox.Watermark">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.AutoCompleteTextBox.SuggestionBackground">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.AutoCompleteTextBox.OnSelectedItemChanged(System.Windows.DependencyObject,System.Windows.DependencyPropertyChangedEventArgs)">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.AutoCompleteTextBox.OnApplyTemplate">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.ISuggestionProvider">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.ISuggestionProvider.GetSuggestions(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="filter"></param>
+            <returns></returns>
+        </member>
+        <member name="T:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.SelectionAdapter">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.SelectionAdapter.#ctor(System.Windows.Controls.Primitives.Selector)">
+            <summary>
+            
+            </summary>
+            <param name="selector"></param>
+        </member>
+        <member name="E:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.SelectionAdapter.Cancel">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="E:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.SelectionAdapter.Commit">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="E:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.SelectionAdapter.SelectionChanged">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.SelectionAdapter.SelectorControl">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.SelectionAdapter.HandleKeyDown(System.Windows.Input.KeyEventArgs)">
+            <summary>
+            
+            </summary>
+            <param name="key"></param>
+        </member>
+        <member name="T:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.SuggestionProvider">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.SuggestionProvider.#ctor(System.Func{System.String,System.Collections.IEnumerable})">
+            <summary>
+            
+            </summary>
+            <param name="method"></param>
+        </member>
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.SuggestionProvider.GetSuggestions(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="filter"></param>
+            <returns></returns>
+        </member>
         <member name="T:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.GifAnimation">
             <summary>
             gif动画解析及显示类
@@ -10211,19 +11945,49 @@
             最大值依赖属性
             </summary>
         </member>
-        <member name="F:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.NumberControl.DecimalPlacesProperty">
+        <member name="F:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.NumberControl.DecimalWidthProperty">
             <summary>
-            获取或设置数字显示框中要显示的十进制小数位数依赖属性
+            获取或设置整小数显示位数依赖属性
             </summary>
         </member>
-        <member name="F:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.NumberControl.NumberWidthProperty">
+        <member name="F:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.NumberControl.IntegerWidthProperty">
             <summary>
-            数字显示宽度依赖属性
+            整数显示位数依赖属性
             </summary>
         </member>
-        <member name="F:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.NumberControl.NumberWidthFillDirectionProperty">
+        <member name="F:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.NumberControl.ConverterProperty">
             <summary>
-            数字文本不足够显示宽度时0的填充方向依赖属性
+            转换器依赖属性
+            </summary>
+        </member>
+        <member name="F:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.NumberControl.IncrementCommandProperty">
+            <summary>
+            增加步进值命令依赖属性
+            </summary>
+        </member>
+        <member name="F:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.NumberControl.DecrementCommandProperty">
+            <summary>
+            减小步进值命令依赖属性
+            </summary>
+        </member>
+        <member name="F:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.NumberControl.StepProperty">
+            <summary>
+            增加或减小步进值依赖属性
+            </summary>
+        </member>
+        <member name="P:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.NumberControl.IncrementCommand">
+            <summary>
+            获取或设置增加步进值命令
+            </summary>
+        </member>
+        <member name="P:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.NumberControl.DecrementCommand">
+            <summary>
+            获取或设置减小步进值命令
+            </summary>
+        </member>
+        <member name="P:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.NumberControl.Step">
+            <summary>
+            获取或设置增加或减小步进值
             </summary>
         </member>
         <member name="E:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.NumberControl.ValueChanged">
@@ -10251,19 +12015,19 @@
             获取或设置数字显示框的最大允许值,为double.NaN时无限制
             </summary>
         </member>
-        <member name="P:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.NumberControl.DecimalPlaces">
+        <member name="P:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.NumberControl.DecimalWidth">
             <summary>
-            获取或设置数字显示框中要显示的十进制小数位数,小于等于0表示小数位数为0
+            获取或设置整小数显示位数,小于1表示无限制
             </summary>
         </member>
-        <member name="P:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.NumberControl.NumberWidth">
+        <member name="P:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.NumberControl.IntegerWidth">
             <summary>
-            获取或设置数字显示宽度,即固定字符长度,小于1表示无限制
+            获取或设置整数显示位数,小于1表示无限制
             </summary>
         </member>
-        <member name="P:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.NumberControl.NumberWidthFillDirection">
+        <member name="P:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.NumberControl.Converter">
             <summary>
-            获取或设置当数字文本不足够显示宽度时0的填充方向
+            转换器
             </summary>
         </member>
         <member name="M:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.NumberControl.#ctor">
@@ -10288,6 +12052,16 @@
             重写OnLostFocus
             </summary>
             <param name="e"></param>
+        </member>
+        <member name="F:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.NumberControl._REMOVE_SELECTION">
+            <summary>
+            移除选中内容
+            </summary>
+        </member>
+        <member name="F:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.NumberControl._NONE">
+            <summary>
+            无
+            </summary>
         </member>
         <member name="M:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.NumberControl.OnPreviewKeyDown(System.Windows.Input.KeyEventArgs)">
             <summary>
@@ -10340,21 +12114,6 @@
             最大最小值皆为负数
             </summary>
         </member>
-        <member name="T:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.NumberWidthFillDirection">
-            <summary>
-            数值宽度填充方向
-            </summary>
-        </member>
-        <member name="F:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.NumberWidthFillDirection.Left">
-            <summary>
-            左侧补0
-            </summary>
-        </member>
-        <member name="F:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.NumberWidthFillDirection.Right">
-            <summary>
-            右侧补0
-            </summary>
-        </member>
         <member name="T:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.NumberValueChangedArgs">
             <summary>
             number控件值改变事件参数
@@ -10376,6 +12135,11 @@
             </summary>
             <param name="oldValue">旧值</param>
             <param name="newValue">新值</param>
+        </member>
+        <member name="E:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.NumberUpDownControlEditCommand.CanExecuteChanged">
+            <summary>
+            
+            </summary>
         </member>
         <member name="T:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.PartAsynWait.PartAsynExcuteFactoryWPF">
             <summary>
@@ -10591,6 +12355,115 @@
             <param name="asynWaitControl"></param>
             <param name="containerControl"></param>
         </member>
+        <member name="T:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.PartAsynWait.WPFAsynExcuteAbs`3">
+            <summary>
+            执行异步等待基类
+            </summary>
+            <typeparam name="T">异步执行参数类型</typeparam>
+            <typeparam name="TContainer">容器控件类型</typeparam>
+            <typeparam name="TResult">异步执行返回值类型</typeparam>
+        </member>
+        <member name="P:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.PartAsynWait.WPFAsynExcuteAbs`3.HasWinformControl">
+            <summary>
+            容器控件中是否含有Winform的子控件[true:有;false:没有]
+            </summary>
+        </member>
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.PartAsynWait.WPFAsynExcuteAbs`3.#ctor">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="T:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.PartAsynWait.WPFNonePartAsynWait">
+            <summary>
+            WPF空IPartAsynWait
+            </summary>
+        </member>
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.PartAsynWait.WPFNonePartAsynWait.#ctor">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="P:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.PartAsynWait.WPFNonePartAsynWait.Canceled">
+            <summary>
+            获取是否已经取消
+            </summary>
+        </member>
+        <member name="P:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.PartAsynWait.WPFNonePartAsynWait.Title">
+            <summary>
+            获取或设置提示标题
+            </summary>
+        </member>
+        <member name="P:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.PartAsynWait.WPFNonePartAsynWait.Message">
+            <summary>
+            获取或设置提示内容
+            </summary>
+        </member>
+        <member name="P:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.PartAsynWait.WPFNonePartAsynWait.ShowCancel">
+            <summary>
+            是否显示取消按钮
+            </summary>
+        </member>
+        <member name="P:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.PartAsynWait.WPFNonePartAsynWait.ShadeBackground">
+            <summary>
+            获取或设置遮罩层背景色
+            </summary>
+        </member>
+        <member name="P:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.PartAsynWait.WPFNonePartAsynWait.InvokeRequired">
+            <summary>
+            获取 或设置是否需要调用Invoke
+            </summary>
+        </member>
+        <member name="E:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.PartAsynWait.WPFNonePartAsynWait.CanceledNotify">
+            <summary>
+            取消通知事件
+            </summary>
+        </member>
+        <member name="F:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.PartAsynWait.WPFNonePartAsynWait._monitor">
+            <summary>
+            线程锁
+            </summary>
+        </member>
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.PartAsynWait.WPFNonePartAsynWait.Cancel">
+            <summary>
+            取消操作
+            </summary>
+        </member>
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.PartAsynWait.WPFNonePartAsynWait.Invoke(System.Delegate)">
+            <summary>
+            在拥有此控件的基础窗口句柄的线程上执行指定的委托
+            </summary>
+            <param name="method">包含要在控件的线程上下文中调用的方法的委托</param>
+            <returns>正在被调用的委托的返回值，或者如果委托没有返回值，则为 null</returns>
+        </member>
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.PartAsynWait.WPFNonePartAsynWait.Invoke(System.Delegate,System.Object[])">
+            <summary>
+            在拥有控件的基础窗口句柄的线程上，用指定的自变量列表执行指定委托
+            </summary>
+            <param name="method">一个方法委托，它采用的参数的数量和类型与 args 参数中所包含的相同</param>
+            <param name="args">作为指定方法的自变量传递的对象数组。 如果此方法没有参数，该参数可以是 null</param>
+            <returns>System.Object，它包含正被调用的委托返回值；如果该委托没有返回值，则为 null</returns>
+        </member>
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.PartAsynWait.WPFNonePartAsynWait.Reset">
+            <summary>
+            重置异步等待框
+            </summary>
+        </member>
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.PartAsynWait.WPFNonePartAsynWait.SetInfo(System.Object)">
+            <summary>
+            设置信息(保留接口)
+            </summary>
+            <param name="para">参数</param>
+        </member>
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.PartAsynWait.WPFNonePartAsynWait.StartAnimation">
+            <summary>
+            开始动画
+            </summary>
+        </member>
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.PartAsynWait.WPFNonePartAsynWait.StopAnimation">
+            <summary>
+            停止动画
+            </summary>
+        </member>
         <member name="T:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.PartAsynWait.WPFPartAsynExcuteBase`3">
             <summary>
             WPF异步执行基类
@@ -10644,7 +12517,7 @@
             获取或设置异步执行对象创建工厂对象
             </summary>
         </member>
-        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.PartAsynWait.WPFPartAsynWaitHelper.Wait``2(UtilZ.Dotnet.WindowsDesktopEx.Base.PartAsynWait.Model.PartAsynWaitPara{``0,``1},System.Windows.UIElement)">
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.PartAsynWait.WPFPartAsynWaitHelper.Wait``2(UtilZ.Dotnet.WindowsDesktopEx.Base.PartAsynWait.Model.PartAsynWaitPara{``0,``1},System.Windows.UIElement,System.Boolean)">
              <summary>
              异步等待
              </summary>
@@ -10652,8 +12525,9 @@
              <typeparam name="TResult">异步执行返回值类型</typeparam>
             <param name="asynWaitPara">异步等待执行参数</param>
             <param name="containerControl">容器控件</param>
+            <param name="hasWinformControl">容器控件中是否含有Winform的子控件[true:有;false:没有]</param>
         </member>
-        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.PartAsynWait.WPFPartAsynWaitHelper.Wait``2(UtilZ.Dotnet.WindowsDesktopEx.Base.PartAsynWait.Model.PartAsynWaitPara{``0,``1},System.Windows.UIElement,UtilZ.Dotnet.Ex.Base.IPartAsynWait)">
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.PartAsynWait.WPFPartAsynWaitHelper.Wait``2(UtilZ.Dotnet.WindowsDesktopEx.Base.PartAsynWait.Model.PartAsynWaitPara{``0,``1},System.Windows.UIElement,UtilZ.Dotnet.Ex.Base.IPartAsynWait,System.Boolean)">
              <summary>
              异步等待
              </summary>
@@ -10662,6 +12536,7 @@
             <param name="asynWaitPara">异步等待执行参数</param>
             <param name="containerControl">容器控件</param>
             <param name="asynWait">异步等待UI</param>
+            <param name="hasWinformControl">容器控件中是否含有Winform的子控件[true:有;false:没有]</param>
         </member>
         <member name="T:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.PopupEx">
             <summary>
@@ -10964,6 +12839,11 @@
             平移启用依赖属性
             </summary>
         </member>
+        <member name="F:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.ZoomTranslateContainer.ZoomDeltaProperty">
+            <summary>
+            缩放粒度依赖属性
+            </summary>
+        </member>
         <member name="P:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.ZoomTranslateContainer.Child">
             <summary>
             获取或设置进行缩放平移的控件
@@ -11002,6 +12882,11 @@
         <member name="P:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.ZoomTranslateContainer.TranslateEnable">
             <summary>
             获取或设置平移启用
+            </summary>
+        </member>
+        <member name="P:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.ZoomTranslateContainer.ZoomDelta">
+            <summary>
+            获取或设置缩放粒度,double.NaN自动计算,默认为double.NaN
             </summary>
         </member>
         <member name="M:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.ZoomTranslateContainer.#ctor">
@@ -11047,67 +12932,6 @@
         <member name="F:UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.ZoomToFullPolicy.Both">
             <summary>
             同时以宽度和高度为依据,当宽度或高度达到超出可视范围则停止
-            </summary>
-        </member>
-        <member name="T:UtilZ.Dotnet.WindowsDesktopEx.WPF.NumericTextBox">
-            <summary>
-            NumericTextBox.xaml 的交互逻辑
-            </summary>
-            <summary>
-            NumericTextBox
-            </summary>
-        </member>
-        <member name="F:UtilZ.Dotnet.WindowsDesktopEx.WPF.NumericTextBox.MaximumProperty">
-            <summary>
-            最大值依赖属性
-            </summary>
-        </member>
-        <member name="F:UtilZ.Dotnet.WindowsDesktopEx.WPF.NumericTextBox.MinimumProperty">
-            <summary>
-            最小值依赖属性
-            </summary>
-        </member>
-        <member name="F:UtilZ.Dotnet.WindowsDesktopEx.WPF.NumericTextBox.DigitsProperty">
-            <summary>
-            小数位数依赖属性
-            </summary>
-        </member>
-        <member name="P:UtilZ.Dotnet.WindowsDesktopEx.WPF.NumericTextBox.Maximum">
-            <summary>
-            获取或设置最大值
-            </summary>
-        </member>
-        <member name="P:UtilZ.Dotnet.WindowsDesktopEx.WPF.NumericTextBox.Minimum">
-            <summary>
-            获取或设置最小值
-            </summary>
-        </member>
-        <member name="P:UtilZ.Dotnet.WindowsDesktopEx.WPF.NumericTextBox.Digits">
-            <summary>
-            获取或设置小数位数
-            </summary>
-        </member>
-        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.WPF.NumericTextBox.PropertyChanged(System.Windows.DependencyObject,System.Windows.DependencyPropertyChangedEventArgs)">
-            <summary>
-            NumericTextBox依赖属性值改变事件
-            </summary>
-            <param name="d">依赖父控件</param>
-            <param name="e">属性参数</param>
-        </member>
-        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.WPF.NumericTextBox.#ctor">
-            <summary>
-            构造函数
-            </summary>
-        </member>
-        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.WPF.NumericTextBox.OnPreviewKeyDown(System.Windows.Input.KeyEventArgs)">
-            <summary>
-            
-            </summary>
-            <param name="e"></param>
-        </member>
-        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.WPF.NumericTextBox.InitializeComponent">
-            <summary>
-            InitializeComponent
             </summary>
         </member>
         <member name="T:UtilZ.Dotnet.WindowsDesktopEx.WPF.PartAsynWait.PartAsynWaitHelper">
@@ -11212,6 +13036,76 @@
             <summary>
             延迟时间
             </summary>
+        </member>
+        <member name="T:UtilZ.Dotnet.WindowsDesktopEx.WPF.Converters.NullOrEmpyToBoolConverter">
+            <summary>
+            null或空值NullOrEmpyToBoolConverter
+            </summary>
+        </member>
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.WPF.Converters.NullOrEmpyToBoolConverter.#ctor">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.WPF.Converters.NullOrEmpyToBoolConverter.Convert(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            内存对象中转换到显示
+            </summary>
+            <param name="value"></param>
+            <param name="targetType"></param>
+            <param name="parameter"></param>
+            <param name="culture"></param>
+            <returns></returns>
+        </member>
+        <member name="T:UtilZ.Dotnet.WindowsDesktopEx.WPF.Converters.NullOrEmpyToVisibilityConverter">
+            <summary>
+            null或空值VisibilityConverter
+            </summary>
+        </member>
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.WPF.Converters.NullOrEmpyToVisibilityConverter.#ctor">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.WPF.Converters.NullOrEmpyToVisibilityConverter.Convert(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            内存对象中转换到显示
+            </summary>
+            <param name="value"></param>
+            <param name="targetType"></param>
+            <param name="parameter"></param>
+            <param name="culture"></param>
+            <returns></returns>
+        </member>
+        <member name="T:UtilZ.Dotnet.WindowsDesktopEx.WPF.Converters.ValueConverterAbs">
+            <summary>
+            值转换基类
+            </summary>
+        </member>
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.WPF.Converters.ValueConverterAbs.#ctor">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.WPF.Converters.ValueConverterAbs.Convert(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            内存对象中转换到显示
+            </summary>
+            <param name="value"></param>
+            <param name="targetType"></param>
+            <param name="parameter"></param>
+            <param name="culture"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UtilZ.Dotnet.WindowsDesktopEx.WPF.Converters.ValueConverterAbs.ConvertBack(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            显示转换回内存对象
+            </summary>
+            <param name="value"></param>
+            <param name="targetType"></param>
+            <param name="parameter"></param>
+            <param name="culture"></param>
+            <returns></returns>
         </member>
     </members>
 </doc>

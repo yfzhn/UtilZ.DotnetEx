@@ -452,5 +452,77 @@ namespace UtilZ.Dotnet.Ex.Base
 
             //return result;
         }
+
+
+
+
+        /// <summary>
+        /// 从当前 System.String 对象移除所有前导空白字符和尾部空白字符
+        /// </summary>
+        /// <param name="obj">转换为string进行Trim操作的对象</param>
+        /// <param name="trimChars">要删除的 Unicode 字符的数组，或 null</param>
+        /// <returns>从当前字符串的开头和结尾删除所有空白字符后剩余的字符串</returns>
+        public static string Trim(object obj, params char[] trimChars)
+        {
+            if (obj == null)
+            {
+                return string.Empty;
+            }
+
+            if (obj is string)
+            {
+                return ((string)obj).Trim(trimChars);
+            }
+            else
+            {
+                return obj.ToString().Trim(trimChars);
+            }
+        }
+
+        /// <summary>
+        /// 从当前 System.String 对象移除数组中指定的一组字符的所有前导匹配项
+        /// </summary>
+        /// <param name="trimChars">要删除的 Unicode 字符的数组，或 null</param>
+        /// <param name="obj">转换为string进行TrimStart操作的对象</param>
+        /// <returns>从当前字符串的结尾移除所出现的所有 trimChars 参数中的字符后剩余的字符串。如果 trimChars 为 null 或空数组，则改为删除 Unicode空白字符</returns>
+        public static string TrimStart(object obj, params char[] trimChars)
+        {
+            if (obj == null)
+            {
+                return string.Empty;
+            }
+
+            if (obj is string)
+            {
+                return ((string)obj).TrimStart(trimChars);
+            }
+            else
+            {
+                return obj.ToString().TrimStart(trimChars);
+            }
+        }
+
+        /// <summary>
+        /// 从当前 System.String 对象移除数组中指定的一组字符的所有尾部匹配项
+        /// </summary>
+        /// <param name="obj">转换为string进行TrimEnd操作的对象</param>
+        /// <param name="trimChars">要删除的 Unicode 字符的数组，或 null</param>
+        /// <returns>从当前字符串的结尾移除所出现的所有 trimChars 参数中的字符后剩余的字符串。如果 trimChars 为 null 或空数组，则改为删除 Unicode空白字符</returns>
+        public static string TrimEnd(object obj, params char[] trimChars)
+        {
+            if (obj == null)
+            {
+                return string.Empty;
+            }
+
+            if (obj is string)
+            {
+                return ((string)obj).TrimEnd(trimChars);
+            }
+            else
+            {
+                return obj.ToString().TrimEnd(trimChars);
+            }
+        }
     }
 }

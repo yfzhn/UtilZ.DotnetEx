@@ -112,6 +112,27 @@ namespace DotnetWinFormApp
                 //    cmd.CommandText = "select CURRENT_TIMESTAMP";
                 //    object obj = cmd.ExecuteScalar();
                 //}
+
+
+                bool ret;
+                try
+                {
+                    //var config = DatabaseConfigManager.GetConfig(Config.Instance.DBID);
+                    UtilZ.Dotnet.DBIBase.Factory.IDBFactory dbFactory = UtilZ.Dotnet.DBIBase.Factory.DBFactoryManager.GetDBFactory(config);
+                    UtilZ.Dotnet.DBIBase.Interaction.IDBInteraction dbInteraction = dbFactory.GetDBInteraction();
+                    using (var con = dbInteraction.GetProviderFactory().CreateConnection())
+                    {
+                        string confStr = dbInteraction.GenerateDBConStr(config, DBVisitType.R);
+                        con.ConnectionString = confStr;
+                        con.Open();
+                        ret = con.State == ConnectionState.Open;
+                    }
+                }
+                catch(Exception exi)
+                {
+                    ret = false;
+                    Loger.Error(exi);
+                }
             }
             catch (Exception ex)
             {

@@ -9,6 +9,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using UtilZ.Dotnet.Ex.Base;
+using UtilZ.Dotnet.Wav.VoicePlayer.Ex;
 using UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls;
 
 namespace DotnetWinFormApp

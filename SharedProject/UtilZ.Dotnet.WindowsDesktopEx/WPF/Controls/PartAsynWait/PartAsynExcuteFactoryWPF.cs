@@ -44,6 +44,7 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.PartAsynWait
             set { _partAsynExcuteType = value; }
         }
 
+        private static SolidColorBrush _defaultShadeBackground = null;
         /// <summary>
         /// 转换遮罩层背景色
         /// </summary>
@@ -53,7 +54,12 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.PartAsynWait
         {
             if (shadeBackground == null)
             {
-                return Brushes.White;
+                if (_defaultShadeBackground == null)
+                {
+                    _defaultShadeBackground = new SolidColorBrush() { Color = Colors.Gray, Opacity = 0.5d };
+                }
+
+                return _defaultShadeBackground;
             }
             else
             {

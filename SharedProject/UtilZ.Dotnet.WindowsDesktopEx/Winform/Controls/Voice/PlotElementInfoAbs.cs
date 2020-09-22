@@ -62,7 +62,7 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls
 
         private bool _disposed = false;
         /// <summary>
-        /// Dispose
+        /// 
         /// </summary>
         public void Dispose()
         {
@@ -77,7 +77,7 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls
         }
 
         /// <summary>
-        /// Dispose
+        /// 
         /// </summary>
         /// <param name="disposing"></param>
         protected virtual void Dispose(bool disposing)
@@ -88,10 +88,9 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls
         }
 
         /// <summary>
-        /// PrimitiveDisposable
+        /// 
         /// </summary>
         /// <param name="disposable"></param>
-
         protected void PrimitiveDisposable(IDisposable disposable)
         {
             if (disposable != null)

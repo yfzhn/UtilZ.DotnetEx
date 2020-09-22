@@ -53,9 +53,10 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.PartAsynWait
         /// <typeparam name="TResult">异步执行返回值类型</typeparam>
         ///<param name="asynWaitPara">异步等待执行参数</param>
         ///<param name="containerControl">容器控件</param>
-        public static void Wait<T, TResult>(PartAsynWaitPara<T, TResult> asynWaitPara, UIElement containerControl)
+        ///<param name="hasWinformControl">容器控件中是否含有Winform的子控件[true:有;false:没有]</param>
+        public static void Wait<T, TResult>(PartAsynWaitPara<T, TResult> asynWaitPara, UIElement containerControl, bool hasWinformControl = false)
         {
-            Wait<T, TResult>(asynWaitPara, containerControl, null);
+            Wait<T, TResult>(asynWaitPara, containerControl, null, hasWinformControl);
         }
 
         /// <summary>
@@ -66,10 +67,12 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.PartAsynWait
         ///<param name="asynWaitPara">异步等待执行参数</param>
         ///<param name="containerControl">容器控件</param>
         ///<param name="asynWait">异步等待UI</param>
-        public static void Wait<T, TResult>(PartAsynWaitPara<T, TResult> asynWaitPara, UIElement containerControl, IPartAsynWait asynWait)
+        ///<param name="hasWinformControl">容器控件中是否含有Winform的子控件[true:有;false:没有]</param>
+        public static void Wait<T, TResult>(PartAsynWaitPara<T, TResult> asynWaitPara, UIElement containerControl, IPartAsynWait asynWait, bool hasWinformControl = false)
         {
             ParaValidate(asynWaitPara, containerControl);
-            var asynExcute = _partAsynExcuteFactory.CreateExcute<T, UIElement, TResult>();
+            var asynExcute = (WPFAsynExcuteAbs<T, UIElement, TResult>)_partAsynExcuteFactory.CreateExcute<T, UIElement, TResult>();
+            asynExcute.HasWinformControl = hasWinformControl;
             PartAsynUIParaProxy.SetAsynWait(asynWaitPara, asynWait);
             asynExcute.Excute(asynWaitPara, containerControl);
         }

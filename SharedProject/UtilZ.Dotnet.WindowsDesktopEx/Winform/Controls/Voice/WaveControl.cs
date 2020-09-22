@@ -225,7 +225,6 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls
 
             if (this._grafx != null)
             {
-                this._grafx.Graphics.Dispose();
                 this._grafx.Dispose();
                 this._grafx = null;
             }

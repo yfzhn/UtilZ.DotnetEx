@@ -4,7 +4,6 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using UtilZ.Dotnet.Ex.Log;
 
 namespace UtilZ.Dotnet.DBIBase.Core
 {
@@ -75,17 +74,9 @@ namespace UtilZ.Dotnet.DBIBase.Core
         /// <returns>返回执行结果</returns>
         protected object PrimitiveExecuteScalar(IDbConnection con, string sqlStr, Dictionary<string, object> parameterNameValueDic = null)
         {
-            try
+            using (var cmd = DBAccessEx.CreateCommand(this._dbAccess, con, sqlStr, parameterNameValueDic))
             {
-                using (var cmd = DBAccessEx.CreateCommand(this._dbAccess, con, sqlStr, parameterNameValueDic))
-                {
-                    return cmd.ExecuteScalar();
-                }
-            }
-            catch (Exception ex)
-            {
-                Loger.Error(ex);
-                return 0;
+                return cmd.ExecuteScalar();
             }
         }
         #endregion
