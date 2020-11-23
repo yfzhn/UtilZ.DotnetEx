@@ -20,7 +20,7 @@ namespace UtilZ.Dotnet.Wav.VoicePlayer.Ex
         /// <summary>
         /// 采样率
         /// </summary>
-        public int Freq { get; private set; }
+        public int SampleRate { get; private set; }
 
         /// <summary>
         /// 采样位数
@@ -56,12 +56,12 @@ namespace UtilZ.Dotnet.Wav.VoicePlayer.Ex
         /// 构造函数
         /// </summary>
         /// <param name="chanelCount">声道数</param>
-        /// <param name="freq">采样率</param>
+        /// <param name="sampleRate">采样率</param>
         /// <param name="sampleBit">采样位数</param>
         /// <param name="durationSeconds">线性数据播放持续时长,单位/秒</param>
         /// <param name="data">线性数据</param>
-        public PcmDataInfo(int chanelCount, int freq, int sampleBit, double durationSeconds, byte[] data)
-            : this(chanelCount, freq, sampleBit, durationSeconds)
+        public PcmDataInfo(int chanelCount, int sampleRate, int sampleBit, double durationSeconds, byte[] data)
+            : this(chanelCount, sampleRate, sampleBit, durationSeconds)
         {
             this.Data = data;
         }
@@ -70,12 +70,12 @@ namespace UtilZ.Dotnet.Wav.VoicePlayer.Ex
         /// 构造函数
         /// </summary>
         /// <param name="chanelCount">声道数</param>
-        /// <param name="freq">采样率</param>
+        /// <param name="sampleRate">采样率</param>
         /// <param name="sampleBit">采样位数</param>
         /// <param name="durationSeconds">线性数据播放持续时长,单位/秒</param>
         /// <param name="data">线性数据</param>
-        public PcmDataInfo(int chanelCount, int freq, int sampleBit, double durationSeconds, short[] data)
-            : this(chanelCount, freq, sampleBit, durationSeconds)
+        public PcmDataInfo(int chanelCount, int sampleRate, int sampleBit, double durationSeconds, short[] data)
+            : this(chanelCount, sampleRate, sampleBit, durationSeconds)
         {
             this.Data2 = data;
         }
@@ -92,7 +92,7 @@ namespace UtilZ.Dotnet.Wav.VoicePlayer.Ex
         private PcmDataInfo(int chanelCount, int freq, int sampleBit, double durationSeconds)
         {
             this.ChanelCount = chanelCount;
-            this.Freq = freq;
+            this.SampleRate = freq;
             this.SampleBit = sampleBit;
             this.DurationSeconds = durationSeconds;
         }

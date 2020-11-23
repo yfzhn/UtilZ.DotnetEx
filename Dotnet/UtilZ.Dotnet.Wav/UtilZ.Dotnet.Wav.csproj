@@ -46,6 +46,25 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Voice\AreaType.cs" />
+    <Compile Include="Voice\ChannelPlotData.cs" />
+    <Compile Include="Voice\ContentPlotElementInfo.cs" />
+    <Compile Include="Voice\GlobalViewPlotElementInfo.cs" />
+    <Compile Include="Voice\PeakMeterCtrl.cs" />
+    <Compile Include="Voice\PlayLinePostionSettingArgs.cs" />
+    <Compile Include="Voice\PlotConstant.cs" />
+    <Compile Include="Voice\PlotElementInfoAbs.cs" />
+    <Compile Include="Voice\SelectedInfo.cs" />
+    <Compile Include="Voice\UIArea.cs" />
+    <Compile Include="Voice\VoiceSpecControl.cs" />
+    <Compile Include="Voice\WaveControl.cs" />
+    <Compile Include="Voice\WaveControl_Draw.cs" />
+    <Compile Include="Voice\WaveControl_Method.cs" />
+    <Compile Include="Voice\WaveControl_Property.cs" />
+    <Compile Include="Voice\WavePlotPara.cs" />
+    <Compile Include="Voice\XAxisPlotElementInfo.cs" />
+    <Compile Include="Voice\YAxisPlotElementInfo.cs" />
+    <Compile Include="Voice\ZoomInfo.cs" />
   </ItemGroup>
   <Import Project="..\..\SharedProject\UtilZ.Dotnet.Wav\UtilZ.Dotnet.Wav.projitems" Label="Shared" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -282,7 +282,7 @@ namespace UtilZ.Dotnet.Wav.VoicePlayer.Ex
             }
 
             int sampleBitByteCount = pcmDataInfo.SampleBit / 8;//采样位数所占字节数
-            double secondByteCount = pcmDataInfo.Freq * pcmDataInfo.ChanelCount * sampleBitByteCount;//1秒数据长度,字节数
+            double secondByteCount = pcmDataInfo.SampleRate * pcmDataInfo.ChanelCount * sampleBitByteCount;//1秒数据长度,字节数
             double msByteCount = secondByteCount / 1000;//1毫秒数据长度,字节数
 
             int beginIndex, dataSize;
@@ -347,11 +347,11 @@ namespace UtilZ.Dotnet.Wav.VoicePlayer.Ex
                 fs.Write(buffer, 0, 2);
 
                 //[采样频率],4byte
-                buffer = BitConverter.GetBytes(pcmDataInfo.Freq);
+                buffer = BitConverter.GetBytes(pcmDataInfo.SampleRate);
                 fs.Write(buffer, 0, 4);
 
                 //[播放速度(传输速度)] 数据传输率,含义:播波形数据传输速率（每秒平均字节数,每秒所需播放字节数）,Bit率;[数据类型:long] 注: Bite率=采样频率*声道数*采样样本位数/8
-                buffer = BitConverter.GetBytes(pcmDataInfo.ChanelCount * pcmDataInfo.SampleBit * pcmDataInfo.Freq / 8);
+                buffer = BitConverter.GetBytes(pcmDataInfo.ChanelCount * pcmDataInfo.SampleBit * pcmDataInfo.SampleRate / 8);
                 fs.Write(buffer, 0, 4);
 
                 //块对齐=通道数*每次采样得到的样本位数/8，0002H，也就是2=1*16/8,2byte
