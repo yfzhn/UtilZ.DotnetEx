@@ -19,6 +19,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Base\BaseEx\AutoEventWaitHandleManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Base\BaseEx\BlockingCollectionEx.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Base\BaseEx\BlockingCollectionExThread.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Base\BaseEx\CancellationTokenEx.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Base\BaseEx\CharEx.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Base\BaseEx\CompressEx.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Base\BaseEx\ConstantHelper.cs" />

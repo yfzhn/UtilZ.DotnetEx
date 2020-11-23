@@ -83,6 +83,12 @@
     <Compile Include="FTestFTP.designer.cs">
       <DependentUpon>FTestFTP.cs</DependentUpon>
     </Compile>
+    <Compile Include="FTestImageEx.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FTestImageEx.designer.cs">
+      <DependentUpon>FTestImageEx.cs</DependentUpon>
+    </Compile>
     <Compile Include="FTestLMQCenter.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -135,6 +141,9 @@
     <EmbeddedResource Include="FTestFTP.resx">
       <DependentUpon>FTestFTP.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FTestImageEx.resx">
+      <DependentUpon>FTestImageEx.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FTestLMQCenter.resx">
       <DependentUpon>FTestLMQCenter.cs</DependentUpon>
     </EmbeddedResource>
@@ -176,7 +185,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\Projects\CDBVoiceSpy\Code\Sound\UtilZ.Dotnet.Wav.VoicePlayer\UtilZ.Dotnet.Wav.VoicePlayer.csproj">
+    <ProjectReference Include="..\..\Dotnet\UtilZ.Dotnet.Wav.VoicePlayer\UtilZ.Dotnet.Wav.VoicePlayer.csproj">
       <Project>{da7aa3a0-8a80-48f6-bac9-8d5d8fecc19b}</Project>
       <Name>UtilZ.Dotnet.Wav.VoicePlayer</Name>
     </ProjectReference>

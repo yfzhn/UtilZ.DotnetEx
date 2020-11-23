@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using UtilZ.Dotnet.Ex.Base;
 using UtilZ.Dotnet.WindowsDesktopEx.Base.PartAsynWait.Model;
 using UtilZ.Dotnet.WindowsDesktopEx.Winform.Base;
 using UtilZ.Dotnet.WindowsDesktopEx.Winform.Controls.PartAsynWait;
@@ -20,7 +21,7 @@ namespace DotnetWinFormApp
         {
             InitializeComponent();
         }
-        
+
         private readonly List<CobITemInfo> items = new List<CobITemInfo>();
         private void FTestPartAsynWait_Load(object sender, EventArgs e)
         {
@@ -39,13 +40,19 @@ namespace DotnetWinFormApp
         private void btnTestAsynWait_Click(object sender, EventArgs e)
         {
             var para = new PartAsynWaitPara<int, string>();
-            para.Para = 10;
+            para.Title = "处理XX数据";
+            para.Para = 100;
             para.Function = (inp) =>
             {
                 for (int i = 0; i < inp.Para; i++)
                 {
-                    inp.AsynWait.Message = string.Format("正在处理:{0}项..", i);
-                    Thread.Sleep(500);
+                    //inp.AsynWait.Message = string.Format("正在处理:{0}项..", i);
+                    inp.AsynWait.Message = string.Format("正在处理相信你我他，幸福靠大家。真的。相信我嘛:{0}项..", i);
+                    if (inp.WaitOne(5000))
+                    {
+                        break;
+                    }
+
                     if (inp.Token.IsCancellationRequested)
                     {
                         break;

@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UtilZ.Dotnet.Ex.Base;
 
 namespace UtilZ.Dotnet.WindowsDesktopEx.Base
 {
@@ -13,6 +15,55 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.Base
     /// </summary>
     public static class ImageEx
     {
+        /// <summary>
+        /// 将各种图片转换为Ico文件，
+        /// (以下四种文件经测试可行jpg-bmp-png-gif,其它不常见格式未测试)
+        /// </summary>
+        /// <param name="srcImgFilePath">待转换图片路径</param>
+        /// <param name="iconFilePath">转换后icon文件路径</param>
+        public static void ConvertToIcon(string srcImgFilePath, string iconFilePath)
+        {
+            if (string.IsNullOrWhiteSpace(srcImgFilePath))
+            {
+                throw new ArgumentNullException(nameof(srcImgFilePath));
+            }
+
+            if (!File.Exists(srcImgFilePath))
+            {
+                throw new FileNotFoundException("待转换图片不存在", srcImgFilePath);
+            }
+
+            if (string.IsNullOrWhiteSpace(iconFilePath))
+            {
+                throw new ArgumentNullException(nameof(iconFilePath));
+            }
+
+            DirectoryInfoEx.CheckFilePathDirectory(iconFilePath);
+
+            using (var src = new Bitmap(srcImgFilePath))
+            {
+                using (var dst = new Bitmap(src, src.Size))
+                {
+                    Icon icon = Icon.FromHandle(dst.GetHicon());
+                    using (var stream = new FileStream(iconFilePath, FileMode.Create))
+                    {
+                        icon.Save(stream);
+                    }
+                }
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
         /// <summary>
         /// 改变图片的透明度
         /// </summary>

@@ -10,17 +10,12 @@ namespace UtilZ.Dotnet.Ex.Base
     /// 异步执行执行委托参数
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public class PartAsynFuncPara<T>
+    public class PartAsynFuncPara<T> : CancellationTokenEx
     {
         /// <summary>
         /// 输入参数
         /// </summary>
         public T Para { get; private set; }
-
-        /// <summary>
-        /// 取消通知对象
-        /// </summary>
-        public CancellationToken Token { get; private set; }
 
         /// <summary>
         /// 异步等待提示UI
@@ -34,9 +29,9 @@ namespace UtilZ.Dotnet.Ex.Base
         /// <param name="token">取消通知对象</param>
         /// <param name="asynWait">异步等待提示UI</param>
         public PartAsynFuncPara(T para, CancellationToken token, IPartAsynWait asynWait)
+            : base(token)
         {
             this.Para = para;
-            this.Token = token;
             this.AsynWait = asynWait;
         }
     }
