@@ -195,12 +195,17 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.PartAsynWait.V1
         /// <param name="containerControl"></param>
         private void AddAsynWaitControl(FrameworkElement asynWaitControl, UIElement containerControl)
         {
-            if (containerControl is Window ||
-                containerControl is UserControl)
+            if (containerControl is ContentControl)
             {
                 var contentControl = (ContentControl)containerControl;
                 var innerContainerControl = contentControl.Content as UIElement;
                 this.AddAsynWaitControl(asynWaitControl, innerContainerControl);
+                return;
+            }
+            else if (containerControl is Border)
+            {
+                var border = (Border)containerControl;
+                this.AddAsynWaitControl(asynWaitControl, border.Child);
                 return;
             }
 
@@ -223,7 +228,6 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls.PartAsynWait.V1
                     asynWaitControl.Tag = windowsFormsHost;
                     asynWaitControl = windowsFormsHost;
                 }
-
 
                 this.AddAsynWaitControlToGrid((Grid)containerControl, asynWaitControl);
             }

@@ -32,7 +32,9 @@
 
             <TextBlock Grid.Row="0" FontSize="15" Text="温馨提示" x:Name="labelControlCaption"/>
 
-            <TextBlock Grid.Row="1" FontSize="12" Text="正在保存，请稍候..." x:Name="labelControlTitle"/>
+            <TextBlock Grid.Row="1" FontSize="12" Text="正在保存，请稍候..." 
+                       TextWrapping="Wrap"
+                       x:Name="labelControlTitle" Margin="10,0,10,0"/>
 
             <Viewbox Grid.Row="2" Width="40" Height="40">
                 <waitingControls:MetroRotaionIndicator x:Name="waitingAnimalControl" 

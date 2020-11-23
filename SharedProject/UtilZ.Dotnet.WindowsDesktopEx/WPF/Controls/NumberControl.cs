@@ -42,14 +42,14 @@ namespace UtilZ.Dotnet.WindowsDesktopEx.WPF.Controls
         /// </summary>
         public static readonly DependencyProperty MinimumProperty =
             DependencyProperty.Register(nameof(Minimum), typeof(double), typeof(NumberControl),
-                new FrameworkPropertyMetadata(0d, new PropertyChangedCallback(OnPropertyChangedCallback)));
+                new FrameworkPropertyMetadata(double.MinValue, new PropertyChangedCallback(OnPropertyChangedCallback)));
 
         /// <summary>
         /// 最大值依赖属性
         /// </summary>
         public static readonly DependencyProperty MaximumProperty =
             DependencyProperty.Register(nameof(Maximum), typeof(double), typeof(NumberControl),
-                new FrameworkPropertyMetadata(100d, new PropertyChangedCallback(OnPropertyChangedCallback)));
+                new FrameworkPropertyMetadata(double.MaxValue, new PropertyChangedCallback(OnPropertyChangedCallback)));
 
         /// <summary>
         /// 获取或设置整小数显示位数依赖属性

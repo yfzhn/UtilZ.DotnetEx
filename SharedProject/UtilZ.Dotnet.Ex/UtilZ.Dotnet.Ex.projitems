@@ -125,8 +125,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Base\TTLV\TTLVSerializeConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Base\TTLV\TTLVStructNode.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Base\TTLV\TTLVType.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Base\UnManagedDll.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Base\Util.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Base\BaseEx\UnManagedDll.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Base\BaseEx\Util.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Expression\BaseCalate.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Expression\ExpressionCalculator.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Expression\Models.cs" />

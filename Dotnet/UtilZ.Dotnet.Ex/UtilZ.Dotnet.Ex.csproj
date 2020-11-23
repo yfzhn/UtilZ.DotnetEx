@@ -52,6 +52,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Base\BaseEx\OcxRegisteHelper.cs" />
     <Compile Include="Base\BaseEx\ProcessEx.cs" />
     <Compile Include="Base\BaseEx\SerializeEx.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

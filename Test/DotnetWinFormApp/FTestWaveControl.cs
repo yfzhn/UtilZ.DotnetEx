@@ -62,7 +62,6 @@ namespace DotnetWinFormApp
             //     PlotConstant.DEFAULLINE_WIDTH, new Font("MS UI Gothic", 8), order++);
 
 
-            waveControl.DrawDensity = 3;
             waveControl.PlayLinePostionSetting += WaveControl_PlayLinePostionSetting; ;
         }
 
@@ -84,8 +83,6 @@ namespace DotnetWinFormApp
                 //filePath = @"F:\FA\混音_h\6chan\6chan.wma";
                 filePath = @"F:\Music\踏歌行.mp3";
 
-                filePath = @"G:\Tmp\Ring01.wav";
-                filePath = @"G:\Tmp\踏歌行_01.wav";
 
                 PcmDataInfo pcmDataInfo = FileSoundPlayer.GetPcmDataShort(filePath);
                 this._pcmDataInfo = pcmDataInfo;
